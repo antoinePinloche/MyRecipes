@@ -1,0 +1,11 @@
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Domain\bin\Debug\net8.0\MyRecepies.Authentification.Domain.deps.json
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Domain\bin\Debug\net8.0\MyRecepies.Authentification.Domain.dll
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Domain\bin\Debug\net8.0\MyRecepies.Authentification.Domain.pdb
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Domain\obj\Debug\net8.0\MyRecepies.Authentification.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Domain\obj\Debug\net8.0\MyRecepies.Authentification.Domain.AssemblyInfoInputs.cache
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Domain\obj\Debug\net8.0\MyRecepies.Authentification.Domain.AssemblyInfo.cs
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Domain\obj\Debug\net8.0\MyRecepies.Authentification.Domain.csproj.CoreCompileInputs.cache
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Domain\obj\Debug\net8.0\MyRecepies.Authentification.Domain.dll
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Domain\obj\Debug\net8.0\refint\MyRecepies.Authentification.Domain.dll
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Domain\obj\Debug\net8.0\MyRecepies.Authentification.Domain.pdb
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Domain\obj\Debug\net8.0\ref\MyRecepies.Authentification.Domain.dll

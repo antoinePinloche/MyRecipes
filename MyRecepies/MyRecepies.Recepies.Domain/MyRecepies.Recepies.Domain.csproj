@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Exception\" />
+    <Folder Include="Entity\" />
+    <Folder Include="Repository\RepositoryInstruction\" />
+    <Folder Include="Repository\RepositoryComments\" />
+    <Folder Include="Repository\RepositoryUser\" />
+    <Folder Include="Repository\RepositoryRecipy\" />
+    <Folder Include="Repository\RepositoryIngredient\" />
+  </ItemGroup>
+
+</Project>

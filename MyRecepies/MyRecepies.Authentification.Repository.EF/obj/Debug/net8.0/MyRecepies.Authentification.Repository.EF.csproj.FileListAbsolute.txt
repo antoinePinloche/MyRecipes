@@ -1,0 +1,17 @@
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\obj\Debug\net8.0\MyRecepies.Authentification.Repository.EF.csproj.AssemblyReference.cache
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\obj\Debug\net8.0\MyRecepies.Authentification.Repository.EF.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\obj\Debug\net8.0\MyRecepies.Authentification.Repository.EF.AssemblyInfoInputs.cache
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\obj\Debug\net8.0\MyRecepies.Authentification.Repository.EF.AssemblyInfo.cs
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\obj\Debug\net8.0\MyRecepies.Authentification.Repository.EF.csproj.CoreCompileInputs.cache
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\bin\Debug\net8.0\MyRecepies.Authentification.Repository.EF.deps.json
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\bin\Debug\net8.0\MyRecepies.Authentification.Repository.EF.runtimeconfig.json
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\bin\Debug\net8.0\MyRecepies.Authentification.Repository.EF.dll
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\bin\Debug\net8.0\MyRecepies.Authentification.Repository.EF.pdb
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\obj\Debug\net8.0\MyRecepies.Authentification.Repository.EF.dll
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\obj\Debug\net8.0\refint\MyRecepies.Authentification.Repository.EF.dll
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\obj\Debug\net8.0\MyRecepies.Authentification.Repository.EF.pdb
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\obj\Debug\net8.0\MyRecepies.Authentification.Repository.EF.genruntimeconfig.cache
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\obj\Debug\net8.0\ref\MyRecepies.Authentification.Repository.EF.dll
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\bin\Debug\net8.0\MyRecepies.Authentification.Domain.dll
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\bin\Debug\net8.0\MyRecepies.Authentification.Domain.pdb
+C:\Users\antoine\source\repos\MyRecepies\MyRecepies.Authentification.Repository.EF\obj\Debug\net8.0\MyRecepi.A3E79675.Up2Date
