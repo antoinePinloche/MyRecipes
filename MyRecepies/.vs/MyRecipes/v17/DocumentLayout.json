@@ -3,68 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{928FADCC-1735-4BCA-9143-14AD4CE4F892}|MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.authentification.application\\extensions\\authentificationstartupextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{928FADCC-1735-4BCA-9143-14AD4CE4F892}|MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj|solutionrelative:myrecepies.authentification.application\\extensions\\authentificationstartupextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB}|MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.recepies.domain\\entity\\recipeingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB}|MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj|solutionrelative:myrecepies.recepies.domain\\entity\\recipeingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{928FADCC-1735-4BCA-9143-14AD4CE4F892}|MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.authentification.application\\overrides\\identityapiendpointsbuilderoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{928FADCC-1735-4BCA-9143-14AD4CE4F892}|MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj|solutionrelative:myrecepies.authentification.application\\overrides\\identityapiendpointsbuilderoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB}|MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.recepies.domain\\entity\\recipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB}|MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj|solutionrelative:myrecepies.recepies.domain\\entity\\recipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{928FADCC-1735-4BCA-9143-14AD4CE4F892}|MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.authentification.application\\overrides\\identityapiendpointsbuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{928FADCC-1735-4BCA-9143-14AD4CE4F892}|MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj|solutionrelative:myrecepies.authentification.application\\overrides\\identityapiendpointsbuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB}|MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.recepies.domain\\entity\\instruction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB}|MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj|solutionrelative:myrecepies.recepies.domain\\entity\\instruction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B489078B-C031-421A-9140-E64958E54952}|MyRecepies\\MyRecipes.Web.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B489078B-C031-421A-9140-E64958E54952}|MyRecepies\\MyRecipes.Web.csproj|solutionrelative:myrecepies\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB}|MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.recepies.domain\\entity\\ingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB}|MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj|solutionrelative:myrecepies.recepies.domain\\entity\\ingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B489078B-C031-421A-9140-E64958E54952}|MyRecepies\\MyRecipes.Web.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies\\controllers\\authentificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B489078B-C031-421A-9140-E64958E54952}|MyRecepies\\MyRecipes.Web.csproj|solutionrelative:myrecepies\\controllers\\authentificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB}|MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.recepies.domain\\entity\\enum\\unitofmeasure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB}|MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj|solutionrelative:myrecepies.recepies.domain\\entity\\enum\\unitofmeasure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1FAA6EAF-8249-4E36-A95C-2DE2FE6644E8}|MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.authentification.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FAA6EAF-8249-4E36-A95C-2DE2FE6644E8}|MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj|solutionrelative:myrecepies.authentification.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB}|MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.recepies.domain\\entity\\enum\\ingredientcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB}|MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj|solutionrelative:myrecepies.recepies.domain\\entity\\enum\\ingredientcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{928FADCC-1735-4BCA-9143-14AD4CE4F892}|MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.authentification.application\\user\\command\\deleteuser\\deleteusercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{928FADCC-1735-4BCA-9143-14AD4CE4F892}|MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj|solutionrelative:myrecepies.authentification.application\\user\\command\\deleteuser\\deleteusercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{928FADCC-1735-4BCA-9143-14AD4CE4F892}|MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.authentification.application\\user\\command\\createuser\\createusercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{928FADCC-1735-4BCA-9143-14AD4CE4F892}|MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj|solutionrelative:myrecepies.authentification.application\\user\\command\\createuser\\createusercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{803C5C53-1B42-401E-982E-CD95BA6B3EF7}|MyRecepies.Authentification.Repository.EF\\MyRecipes.Authentification.Repository.EF.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.authentification.repository.ef\\efuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{803C5C53-1B42-401E-982E-CD95BA6B3EF7}|MyRecepies.Authentification.Repository.EF\\MyRecipes.Authentification.Repository.EF.csproj|solutionrelative:myrecepies.authentification.repository.ef\\efuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FAA6EAF-8249-4E36-A95C-2DE2FE6644E8}|MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.authentification.domain\\repository\\repositoryuser\\usersbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FAA6EAF-8249-4E36-A95C-2DE2FE6644E8}|MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj|solutionrelative:myrecepies.authentification.domain\\repository\\repositoryuser\\usersbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FAA6EAF-8249-4E36-A95C-2DE2FE6644E8}|MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.authentification.domain\\repository\\repositoryuser\\iusersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FAA6EAF-8249-4E36-A95C-2DE2FE6644E8}|MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj|solutionrelative:myrecepies.authentification.domain\\repository\\repositoryuser\\iusersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{928FADCC-1735-4BCA-9143-14AD4CE4F892}|MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.authentification.application\\user\\command\\deleteuser\\deleteusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{928FADCC-1735-4BCA-9143-14AD4CE4F892}|MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj|solutionrelative:myrecepies.authentification.application\\user\\command\\deleteuser\\deleteusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FAA6EAF-8249-4E36-A95C-2DE2FE6644E8}|MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.authentification.domain\\servicecollectionextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FAA6EAF-8249-4E36-A95C-2DE2FE6644E8}|MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj|solutionrelative:myrecepies.authentification.domain\\servicecollectionextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B489078B-C031-421A-9140-E64958E54952}|MyRecepies\\MyRecipes.Web.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies\\models\\class\\createusermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B489078B-C031-421A-9140-E64958E54952}|MyRecepies\\MyRecipes.Web.csproj|solutionrelative:myrecepies\\models\\class\\createusermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{928FADCC-1735-4BCA-9143-14AD4CE4F892}|MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.authentification.application\\user\\command\\createuser\\createusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{928FADCC-1735-4BCA-9143-14AD4CE4F892}|MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj|solutionrelative:myrecepies.authentification.application\\user\\command\\createuser\\createusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B489078B-C031-421A-9140-E64958E54952}|MyRecepies\\MyRecipes.Web.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B489078B-C031-421A-9140-E64958E54952}|MyRecepies\\MyRecipes.Web.csproj|solutionrelative:myrecepies\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB}|MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj|c:\\users\\antoine\\source\\git\\myrecipes\\myrecepies\\myrecepies.recepies.domain\\entity\\enum\\difficulty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB}|MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj|solutionrelative:myrecepies.recepies.domain\\entity\\enum\\difficulty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,230 +38,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthentificationStartupExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\Extensions\\AuthentificationStartupExtensions.cs",
-              "RelativeDocumentMoniker": "MyRecepies.Authentification.Application\\Extensions\\AuthentificationStartupExtensions.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\Extensions\\AuthentificationStartupExtensions.cs",
-              "RelativeToolTip": "MyRecepies.Authentification.Application\\Extensions\\AuthentificationStartupExtensions.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAowCIAAAArAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "Difficulty.cs",
+              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\Entity\\Enum\\Difficulty.cs",
+              "RelativeDocumentMoniker": "MyRecepies.Recepies.Domain\\Entity\\Enum\\Difficulty.cs",
+              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\Entity\\Enum\\Difficulty.cs",
+              "RelativeToolTip": "MyRecepies.Recepies.Domain\\Entity\\Enum\\Difficulty.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T21:04:16.17Z",
-              "IsPinned": true,
+              "WhenOpened": "2025-01-01T20:29:56.506Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies\\Program.cs",
-              "RelativeDocumentMoniker": "MyRecepies\\Program.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies\\Program.cs",
-              "RelativeToolTip": "MyRecepies\\Program.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAUwCYAAAAVAAAAAAAAAA==",
+              "Title": "Ingredient.cs",
+              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\Entity\\Ingredient.cs",
+              "RelativeDocumentMoniker": "MyRecepies.Recepies.Domain\\Entity\\Ingredient.cs",
+              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\Entity\\Ingredient.cs",
+              "RelativeToolTip": "MyRecepies.Recepies.Domain\\Entity\\Ingredient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-15T21:34:48.729Z",
-              "IsPinned": true,
+              "WhenOpened": "2025-01-01T20:29:15.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IngredientCategory.cs",
+              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\Entity\\Enum\\IngredientCategory.cs",
+              "RelativeDocumentMoniker": "MyRecepies.Recepies.Domain\\Entity\\Enum\\IngredientCategory.cs",
+              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\Entity\\Enum\\IngredientCategory.cs",
+              "RelativeToolTip": "MyRecepies.Recepies.Domain\\Entity\\Enum\\IngredientCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-01T20:29:14.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UnitOfMeasure.cs",
+              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\Entity\\Enum\\UnitOfMeasure.cs",
+              "RelativeDocumentMoniker": "MyRecepies.Recepies.Domain\\Entity\\Enum\\UnitOfMeasure.cs",
+              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\Entity\\Enum\\UnitOfMeasure.cs",
+              "RelativeToolTip": "MyRecepies.Recepies.Domain\\Entity\\Enum\\UnitOfMeasure.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-01T20:29:13.565Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IdentityApiEndpointsBuilderExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\Overrides\\IdentityApiEndpointsBuilderExtensions.cs",
-              "RelativeDocumentMoniker": "MyRecepies.Authentification.Application\\Overrides\\IdentityApiEndpointsBuilderExtensions.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\Overrides\\IdentityApiEndpointsBuilderExtensions.cs",
-              "RelativeToolTip": "MyRecepies.Authentification.Application\\Overrides\\IdentityApiEndpointsBuilderExtensions.cs",
-              "ViewState": "AgIAAJQAAAAAAAAAAAAwwK4AAABGAAAAAAAAAA==",
+              "Title": "Instruction.cs",
+              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\Entity\\Instruction.cs",
+              "RelativeDocumentMoniker": "MyRecepies.Recepies.Domain\\Entity\\Instruction.cs",
+              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\Entity\\Instruction.cs",
+              "RelativeToolTip": "MyRecepies.Recepies.Domain\\Entity\\Instruction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-01T16:04:52.462Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DeleteUserCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\User\\Command\\DeleteUser\\DeleteUserCommandHandler.cs",
-              "RelativeDocumentMoniker": "MyRecepies.Authentification.Application\\User\\Command\\DeleteUser\\DeleteUserCommandHandler.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\User\\Command\\DeleteUser\\DeleteUserCommandHandler.cs",
-              "RelativeToolTip": "MyRecepies.Authentification.Application\\User\\Command\\DeleteUser\\DeleteUserCommandHandler.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAhwBkAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T23:03:12.569Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UsersBase.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\Repository\\RepositoryUser\\UsersBase.cs",
-              "RelativeDocumentMoniker": "MyRecepies.Authentification.Domain\\Repository\\RepositoryUser\\UsersBase.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\Repository\\RepositoryUser\\UsersBase.cs",
-              "RelativeToolTip": "MyRecepies.Authentification.Domain\\Repository\\RepositoryUser\\UsersBase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T22:46:51.993Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AuthentificationController.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies\\Controllers\\AuthentificationController.cs",
-              "RelativeDocumentMoniker": "MyRecepies\\Controllers\\AuthentificationController.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies\\Controllers\\AuthentificationController.cs",
-              "RelativeToolTip": "MyRecepies\\Controllers\\AuthentificationController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAADwv0IAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T22:17:34.184Z",
+              "WhenOpened": "2025-01-01T20:29:12.988Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IdentityApiEndpointsBuilderOptions.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\Overrides\\IdentityApiEndpointsBuilderOptions.cs",
-              "RelativeDocumentMoniker": "MyRecepies.Authentification.Application\\Overrides\\IdentityApiEndpointsBuilderOptions.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\Overrides\\IdentityApiEndpointsBuilderOptions.cs",
-              "RelativeToolTip": "MyRecepies.Authentification.Application\\Overrides\\IdentityApiEndpointsBuilderOptions.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABQAAAAjAAAAAAAAAA==",
+              "Title": "Recipe.cs",
+              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\Entity\\Recipe.cs",
+              "RelativeDocumentMoniker": "MyRecepies.Recepies.Domain\\Entity\\Recipe.cs",
+              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\Entity\\Recipe.cs",
+              "RelativeToolTip": "MyRecepies.Recepies.Domain\\Entity\\Recipe.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-01T16:02:11.6Z",
+              "WhenOpened": "2025-01-01T20:29:12.386Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DeleteUserCommand.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\User\\Command\\DeleteUser\\DeleteUserCommand.cs",
-              "RelativeDocumentMoniker": "MyRecepies.Authentification.Application\\User\\Command\\DeleteUser\\DeleteUserCommand.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\User\\Command\\DeleteUser\\DeleteUserCommand.cs",
-              "RelativeToolTip": "MyRecepies.Authentification.Application\\User\\Command\\DeleteUser\\DeleteUserCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "RecipeIngredient.cs",
+              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\Entity\\RecipeIngredient.cs",
+              "RelativeDocumentMoniker": "MyRecepies.Recepies.Domain\\Entity\\RecipeIngredient.cs",
+              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\Entity\\RecipeIngredient.cs",
+              "RelativeToolTip": "MyRecepies.Recepies.Domain\\Entity\\RecipeIngredient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T23:03:13.896Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "IUsersRepository.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\Repository\\RepositoryUser\\IUsersRepository.cs",
-              "RelativeDocumentMoniker": "MyRecepies.Authentification.Domain\\Repository\\RepositoryUser\\IUsersRepository.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\Repository\\RepositoryUser\\IUsersRepository.cs",
-              "RelativeToolTip": "MyRecepies.Authentification.Domain\\Repository\\RepositoryUser\\IUsersRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T23:03:20.236Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "MyRecepies.Authentification.Domain\\Entities\\User.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\Entities\\User.cs",
-              "RelativeToolTip": "MyRecepies.Authentification.Domain\\Entities\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-01T16:03:52.242Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "EFUserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Repository.EF\\EFUserRepository.cs",
-              "RelativeDocumentMoniker": "MyRecepies.Authentification.Repository.EF\\EFUserRepository.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Repository.EF\\EFUserRepository.cs",
-              "RelativeToolTip": "MyRecepies.Authentification.Repository.EF\\EFUserRepository.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAAwBIAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T22:17:34.173Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ServiceCollectionExtension.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\ServiceCollectionExtension.cs",
-              "RelativeDocumentMoniker": "MyRecepies.Authentification.Domain\\ServiceCollectionExtension.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\ServiceCollectionExtension.cs",
-              "RelativeToolTip": "MyRecepies.Authentification.Domain\\ServiceCollectionExtension.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T23:03:00.857Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "CreateUserCommand.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\User\\Command\\CreateUser\\CreateUserCommand.cs",
-              "RelativeDocumentMoniker": "MyRecepies.Authentification.Application\\User\\Command\\CreateUser\\CreateUserCommand.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\User\\Command\\CreateUser\\CreateUserCommand.cs",
-              "RelativeToolTip": "MyRecepies.Authentification.Application\\User\\Command\\CreateUser\\CreateUserCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T22:42:46.766Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "CreateUserModel.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies\\Models\\Class\\CreateUserModel.cs",
-              "RelativeDocumentMoniker": "MyRecepies\\Models\\Class\\CreateUserModel.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies\\Models\\Class\\CreateUserModel.cs",
-              "RelativeToolTip": "MyRecepies\\Models\\Class\\CreateUserModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T22:42:26.704Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "WeatherForecastController.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies\\Controllers\\WeatherForecastController.cs",
-              "RelativeDocumentMoniker": "MyRecepies\\Controllers\\WeatherForecastController.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies\\Controllers\\WeatherForecastController.cs",
-              "RelativeToolTip": "MyRecepies\\Controllers\\WeatherForecastController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T22:27:46.954Z"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "b7c6cac9-7164-4f17-8e59-c5626c7553db",
-        "Display": 1,
-        "X": 27,
-        "Y": 346,
-        "Width": 1594,
-        "Height": 766,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CreateUserCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\User\\Command\\CreateUser\\CreateUserCommandHandler.cs",
-              "RelativeDocumentMoniker": "MyRecepies.Authentification.Application\\User\\Command\\CreateUser\\CreateUserCommandHandler.cs",
-              "ToolTip": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\User\\Command\\CreateUser\\CreateUserCommandHandler.cs",
-              "RelativeToolTip": "MyRecepies.Authentification.Application\\User\\Command\\CreateUser\\CreateUserCommandHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T22:17:34.163Z",
+              "WhenOpened": "2025-01-01T20:29:09.078Z",
               "EditorCaption": ""
             }
           ]
