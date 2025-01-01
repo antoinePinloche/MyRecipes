@@ -1,4 +1,4 @@
-﻿namespace MyRecepies.Authentification.Domain
+﻿namespace MyRecipes.Authentification.Domain
 {
     public static class ServiceCollectionExtension
     {

@@ -1,23 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyRecepies.Authentification.Domain.Entities;
-using MyRecepies.Authentification.Domain.Repository.RepositoryUser;
-using MyRecepies.Authentification.Repository.EF.DbContext;
+using MyRecipes.Authentification.Domain.Entities;
+using MyRecipes.Authentification.Domain.Repository.RepositoryUser;
+using MyRecipes.Authentification.Repository.EF.DbContext;
 
-namespace MyRecepies.Authentification.Repository.EF
+namespace MyRecipes.Authentification.Repository.EF
 {
     public class EFUserRepository : UsersBase
     {
         public AuthentificationDbContext Context { get; set; }
 
-        public EFUserRepository(AuthentificationDbContext context)
-        {
-            Context = context;
-        }
+        public EFUserRepository(AuthentificationDbContext context) => Context = context;
+
         public async override Task<User> AddAsync(User entity)
         {
             var result = await Context.Users.AddAsync(entity);
-            //await Context.SaveChangesAsync();
-            await SaveAsync();
+            await Context.SaveChangesAsync();
             return result.Entity;
         }
 
@@ -39,15 +36,21 @@ namespace MyRecepies.Authentification.Repository.EF
 
         public override async Task<User> GetAsync(Guid key)
         {
-            var result = await Context.Users.FirstOrDefaultAsync(f => f.Id == key);
-            if (result is null)
-                return null;
-            return (User)result;
+            //User? result = await Context.Users.FirstOrDefaultAsync(f => f.Id == key);
+            //if (result is null)
+            //    return null;
+            //return result;
+            throw new NotImplementedException();
         }
 
-        public override Task RemoveAsync(User entitie)
+        public override async Task RemoveAsync(User entitie)
         {
-            throw new NotImplementedException();
+            User? userFound = await Context.Users.FirstOrDefaultAsync(f => f == entitie);
+            if (userFound != null)
+            {
+                Context.Users.Remove(entitie);
+                await Context.SaveChangesAsync();
+            }
         }
 
         public override Task RemoveRangeAsync(ICollection<User> entities)
@@ -60,9 +63,10 @@ namespace MyRecepies.Authentification.Repository.EF
             await Context.SaveChangesAsync();
         }
 
-        public override Task UpdateAsync(User entity)
+        public override async Task UpdateAsync(User entity)
         {
-            throw new NotImplementedException();
+            Context.Users.Update(entity);
+            await SaveAsync();
         }
 
         public override Task UpdateRangeAsync(ICollection<User> entities)

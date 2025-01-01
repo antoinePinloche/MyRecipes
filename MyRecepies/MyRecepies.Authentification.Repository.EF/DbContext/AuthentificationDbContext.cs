@@ -1,10 +1,11 @@
 ﻿
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using MyRecepies.Authentification.Domain.Entities;
+using MyRecipes.Authentification.Domain.Entities;
 
-namespace MyRecepies.Authentification.Repository.EF.DbContext
+namespace MyRecipes.Authentification.Repository.EF.DbContext
 {
-    public class AuthentificationDbContext : Microsoft.EntityFrameworkCore.DbContext
+    public class AuthentificationDbContext : IdentityDbContext<User>
     {
         public DbSet<User> Users { get; set; }
 

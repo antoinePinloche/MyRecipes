@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "MyRecipes.Recipes.Domain/1.0.0": {
+        "runtime": {
+          "MyRecipes.Recipes.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MyRecipes.Recipes.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

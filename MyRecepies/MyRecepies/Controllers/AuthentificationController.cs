@@ -1,12 +1,13 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MyRecepies.Authentification.Application.User.Command.CreateUser;
-using MyRecepies.Authentification.Application.User.Query.GetAllUsers;
-using MyRecepies.web.Models.Class;
+using MyRecipes.Authentification.Application.User.Command.CreateUser;
+using MyRecipes.Authentification.Application.User.Command.DeleteUser;
+using MyRecipes.Authentification.Application.User.Command.UpdatePassword;
+using MyRecipes.Authentification.Application.User.Query.GetAllUsers;
+using MyRecipes.web.Models.Class;
 
-namespace MyRecepies.web.Controllers
+namespace MyRecipes.web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -28,11 +29,11 @@ namespace MyRecepies.web.Controllers
 
         [HttpPost]
         [Route("api/[controller]/[action]")]
-        public async Task<IActionResult> CreateUser(CreateUserModel user)
+        public async Task<IActionResult> Register(CreateUserModel user)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            await _sender.Send(new CreateUserCommand(user.UserName, user.Email, user.Password, user.FirstName, user.LastName));
+            await _sender.Send(new CreateUserCommand(user.UserName, user.Email, user.Password));
             return Created();
         }
 
@@ -52,6 +53,27 @@ namespace MyRecepies.web.Controllers
         {
             var tmp = await _sender.Send(new GetAllUsersQueryRequest());
             return Ok(tmp);
+        }
+
+        [HttpDelete]
+        [Route("api/[controller]/[action]/{guid}")]
+        public async Task<IActionResult> DeleteUser(string guid)
+        {
+            Guid guidSend;
+            if (!Guid.TryParse(guid, out guidSend))
+            {
+                return BadRequest("DeleteUser : BadParameter" + guid);
+            }
+            await _sender.Send(new DeleteUserCommand(guidSend));
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("api/[controller]/[action]")]
+        public async Task<IActionResult> UpdatePassword(string password)
+        {
+            await _sender.Send(new UpdatePasswordCommand(password, Guid.NewGuid()));
+            return Ok();
         }
     }
 }

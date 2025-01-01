@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyRecepies.Authentification.Application.User.Query.GetUserById
+namespace MyRecipes.Authentification.Application.User.Query.GetUserById
 {
     public class GetUserByIdQuery
     {

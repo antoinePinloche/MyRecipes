@@ -1,11 +1,4 @@
-﻿using MyRecepies.Authentification.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyRecepies.Authentification.Application.User.Query.GetAllUsers
+﻿namespace MyRecipes.Authentification.Application.User.Query.GetAllUsers
 {
     public class GetAllUsersQueryResult
     {

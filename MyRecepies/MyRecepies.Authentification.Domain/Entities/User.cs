@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace MyRecepies.Authentification.Domain.Entities
+using Microsoft.AspNetCore.Identity;
+
+namespace MyRecipes.Authentification.Domain.Entities
 {
-    public class User
+    public class User : IdentityUser
     {
-        public Guid Id { get; set; }
-        public string UserName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public User() : base() { }
+        //public Guid Id { get; set; }
+        //public string UserName { get; set; } = string.Empty;
+        //public string Email { get; set; } = string.Empty;
+        //public string Password { get; set; } = string.Empty;
+        //public string FirstName { get; set; } = string.Empty;
+        //public string LastName { get; set; } = string.Empty;
     }
 }

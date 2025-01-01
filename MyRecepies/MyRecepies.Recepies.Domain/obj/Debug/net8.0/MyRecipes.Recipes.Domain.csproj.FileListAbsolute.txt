@@ -1,0 +1,12 @@
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\MyRecepies.Recepies.Domain\bin\Debug\net8.0\MyRecipes.Recipes.Domain.deps.json
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\MyRecepies.Recepies.Domain\bin\Debug\net8.0\MyRecipes.Recipes.Domain.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\MyRecepies.Recepies.Domain\bin\Debug\net8.0\MyRecipes.Recipes.Domain.pdb
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\MyRecepies.Recepies.Domain\obj\Debug\net8.0\MyRecipes.Recipes.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\MyRecepies.Recepies.Domain\obj\Debug\net8.0\MyRecipes.Recipes.Domain.AssemblyInfoInputs.cache
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\MyRecepies.Recepies.Domain\obj\Debug\net8.0\MyRecipes.Recipes.Domain.AssemblyInfo.cs
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\MyRecepies.Recepies.Domain\obj\Debug\net8.0\MyRecipes.Recipes.Domain.csproj.CoreCompileInputs.cache
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\MyRecepies.Recepies.Domain\obj\Debug\net8.0\MyRecipes.Recipes.Domain.sourcelink.json
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\MyRecepies.Recepies.Domain\obj\Debug\net8.0\MyRecipes.Recipes.Domain.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\MyRecepies.Recepies.Domain\obj\Debug\net8.0\refint\MyRecipes.Recipes.Domain.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\MyRecepies.Recepies.Domain\obj\Debug\net8.0\MyRecipes.Recipes.Domain.pdb
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\MyRecepies.Recepies.Domain\obj\Debug\net8.0\ref\MyRecipes.Recipes.Domain.dll

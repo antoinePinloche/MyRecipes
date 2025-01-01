@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "MyRecepies.web.Controllers.AuthentificationController",
+    "ContainingType": "MyRecipes.web.Controllers.AuthentificationController",
     "Method": "ActualUserInformation",
     "RelativePath": "api/Authentification/api/Authentification/ActualUserInformation",
     "HttpMethod": "GET",
@@ -10,23 +10,23 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MyRecepies.web.Controllers.AuthentificationController",
-    "Method": "CreateUser",
-    "RelativePath": "api/Authentification/api/Authentification/CreateUser",
-    "HttpMethod": "POST",
+    "ContainingType": "MyRecipes.web.Controllers.AuthentificationController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/Authentification/api/Authentification/DeleteUser/{guid}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
-        "Type": "MyRecepies.web.Models.Class.CreateUserModel",
+        "Name": "guid",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MyRecepies.web.Controllers.AuthentificationController",
+    "ContainingType": "MyRecipes.web.Controllers.AuthentificationController",
     "Method": "GetAllUsers",
     "RelativePath": "api/Authentification/api/Authentification/GetAllUsers",
     "HttpMethod": "GET",
@@ -36,7 +36,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MyRecepies.web.Controllers.AuthentificationController",
+    "ContainingType": "MyRecipes.web.Controllers.AuthentificationController",
     "Method": "ModifyUser",
     "RelativePath": "api/Authentification/api/Authentification/ModifyUser",
     "HttpMethod": "PUT",
@@ -45,14 +45,166 @@
     "Parameters": [
       {
         "Name": "user",
-        "Type": "MyRecepies.web.Models.Class.CreateUserModel",
+        "Type": "MyRecipes.web.Models.Class.CreateUserModel",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MyRecepies.Controllers.WeatherForecastController",
+    "ContainingType": "MyRecipes.web.Controllers.AuthentificationController",
+    "Method": "Register",
+    "RelativePath": "api/Authentification/api/Authentification/Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "MyRecipes.web.Models.Class.CreateUserModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.web.Controllers.AuthentificationController",
+    "Method": "UpdatePassword",
+    "RelativePath": "api/Authentification/api/Authentification/UpdatePassword",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Authentification.Application.Overrides.IdentityApiEndpointsBuilderExtensions\u002B\u003C\u003Ec__1\u00601[[MyRecipes.Authentification.Domain.Entities.User, MyRecipes.Authentification.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "\u003CMapIdentityApiFilterable\u003Eb__1_3",
+    "RelativePath": "confirmEmail",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "changedEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "MapIdentityApiFilterable-/confirmEmail"
+  },
+  {
+    "ContainingType": "MyRecipes.Authentification.Application.Overrides.IdentityApiEndpointsBuilderExtensions\u002B\u003C\u003Ec__1\u00601[[MyRecipes.Authentification.Domain.Entities.User, MyRecipes.Authentification.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "\u003CMapIdentityApiFilterable\u003Eb__1_1",
+    "RelativePath": "login",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "Microsoft.AspNetCore.Identity.Data.LoginRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "useCookies",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "useSessionCookies",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Microsoft.AspNetCore.Authentication.BearerToken.AccessTokenResponse",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyRecipes.Authentification.Application.Overrides.IdentityApiEndpointsBuilderExtensions\u002B\u003C\u003Ec__DisplayClass1_0\u00601[[MyRecipes.Authentification.Domain.Entities.User, MyRecipes.Authentification.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "\u003CMapIdentityApiFilterable\u003Eb__2",
+    "RelativePath": "refresh",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "refreshRequest",
+        "Type": "Microsoft.AspNetCore.Identity.Data.RefreshRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Microsoft.AspNetCore.Authentication.BearerToken.AccessTokenResponse",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyRecipes.Authentification.Application.Overrides.IdentityApiEndpointsBuilderExtensions\u002B\u003C\u003Ec__DisplayClass1_0\u00601[[MyRecipes.Authentification.Domain.Entities.User, MyRecipes.Authentification.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "\u003CMapIdentityApiFilterable\u003Eb__0",
+    "RelativePath": "register",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registration",
+        "Type": "Microsoft.AspNetCore.Identity.Data.RegisterRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Http.HttpValidationProblemDetails",
+        "MediaTypes": [
+          "application/problem\u002Bjson"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyRecipes.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",
     "HttpMethod": "GET",
@@ -61,7 +213,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[MyRecepies.WeatherForecast, MyRecepies.web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MyRecepies.WeatherForecast, MyRecipes.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

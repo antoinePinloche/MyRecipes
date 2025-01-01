@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies\\MyRecepies.Web.csproj": {}
+    "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies\\MyRecepies.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Application\\MyRecepies.Authentification.Application.csproj": {
+    "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\MyRecepies.Authentification.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Application\\MyRecepies.Authentification.Application.csproj",
+        "projectUniqueName": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\MyRecepies.Authentification.Application.csproj",
         "projectName": "MyRecepies.Authentification.Application",
-        "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Application\\MyRecepies.Authentification.Application.csproj",
+        "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\MyRecepies.Authentification.Application.csproj",
         "packagesPath": "C:\\Users\\antoine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Application\\obj\\",
+        "outputPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,11 +33,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Domain\\MyRecepies.Authentification.Domain.csproj": {
-                "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Domain\\MyRecepies.Authentification.Domain.csproj"
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj"
               },
-              "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Repository.EF\\MyRecepies.Authentification.Repository.EF.csproj": {
-                "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Repository.EF\\MyRecepies.Authentification.Repository.EF.csproj"
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Repository.EF\\MyRecipes.Authentification.Repository.EF.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Repository.EF\\MyRecipes.Authentification.Repository.EF.csproj"
               }
             }
           }
@@ -87,14 +87,14 @@
         }
       }
     },
-    "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Domain\\MyRecepies.Authentification.Domain.csproj": {
+    "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Domain\\MyRecepies.Authentification.Domain.csproj",
-        "projectName": "MyRecepies.Authentification.Domain",
-        "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Domain\\MyRecepies.Authentification.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj",
+        "projectName": "MyRecipes.Authentification.Domain",
+        "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj",
         "packagesPath": "C:\\Users\\antoine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Domain\\obj\\",
+        "outputPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -153,14 +153,14 @@
         }
       }
     },
-    "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Repository.EF\\MyRecepies.Authentification.Repository.EF.csproj": {
+    "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Repository.EF\\MyRecipes.Authentification.Repository.EF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Repository.EF\\MyRecepies.Authentification.Repository.EF.csproj",
-        "projectName": "MyRecepies.Authentification.Repository.EF",
-        "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Repository.EF\\MyRecepies.Authentification.Repository.EF.csproj",
+        "projectUniqueName": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Repository.EF\\MyRecipes.Authentification.Repository.EF.csproj",
+        "projectName": "MyRecipes.Authentification.Repository.EF",
+        "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Repository.EF\\MyRecipes.Authentification.Repository.EF.csproj",
         "packagesPath": "C:\\Users\\antoine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Repository.EF\\obj\\",
+        "outputPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Repository.EF\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -182,8 +182,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Domain\\MyRecepies.Authentification.Domain.csproj": {
-                "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Domain\\MyRecepies.Authentification.Domain.csproj"
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj"
               }
             }
           }
@@ -257,14 +257,14 @@
         }
       }
     },
-    "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecepies.Recepies.Application.csproj": {
+    "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecepies.Recepies.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecepies.Recepies.Application.csproj",
+        "projectUniqueName": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecepies.Recepies.Application.csproj",
         "projectName": "MyRecepies.Recepies.Application",
-        "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecepies.Recepies.Application.csproj",
+        "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecepies.Recepies.Application.csproj",
         "packagesPath": "C:\\Users\\antoine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Application\\obj\\",
+        "outputPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -286,11 +286,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecepies.Recepies.Domain.csproj": {
-                "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecepies.Recepies.Domain.csproj"
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj"
               },
-              "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecepies.Recepies.Repository.EF.csproj": {
-                "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecepies.Recepies.Repository.EF.csproj"
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecipes.Recpes.Repository.EF.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecipes.Recpes.Repository.EF.csproj"
               }
             }
           }
@@ -340,14 +340,97 @@
         }
       }
     },
-    "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecepies.Recepies.Domain.csproj": {
+    "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecipes.Recepies.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecepies.Recepies.Domain.csproj",
-        "projectName": "MyRecepies.Recepies.Domain",
-        "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecepies.Recepies.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecipes.Recepies.Application.csproj",
+        "projectName": "MyRecipes.Recepies.Application",
+        "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecipes.Recepies.Application.csproj",
         "packagesPath": "C:\\Users\\antoine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Domain\\obj\\",
+        "outputPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\antoine\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj"
+              },
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecipes.Recipes.Repository.EF.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecipes.Recipes.Repository.EF.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj",
+        "projectName": "MyRecipes.Recipes.Domain",
+        "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj",
+        "packagesPath": "C:\\Users\\antoine\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -406,14 +489,14 @@
         }
       }
     },
-    "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecepies.Recepies.Repository.EF.csproj": {
+    "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecipes.Recipes.Repository.EF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecepies.Recepies.Repository.EF.csproj",
-        "projectName": "MyRecepies.Recepies.Repository.EF",
-        "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecepies.Recepies.Repository.EF.csproj",
+        "projectUniqueName": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecipes.Recipes.Repository.EF.csproj",
+        "projectName": "MyRecipes.Recipes.Repository.EF",
+        "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecipes.Recipes.Repository.EF.csproj",
         "packagesPath": "C:\\Users\\antoine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\obj\\",
+        "outputPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -435,8 +518,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecepies.Recepies.Domain.csproj": {
-                "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecepies.Recepies.Domain.csproj"
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj"
               }
             }
           }
@@ -510,14 +593,14 @@
         }
       }
     },
-    "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies\\MyRecepies.Web.csproj": {
+    "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecipes.Recpes.Repository.EF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies\\MyRecepies.Web.csproj",
-        "projectName": "MyRecepies.Web",
-        "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies\\MyRecepies.Web.csproj",
+        "projectUniqueName": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecipes.Recpes.Repository.EF.csproj",
+        "projectName": "MyRecipes.Recpes.Repository.EF",
+        "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\MyRecipes.Recpes.Repository.EF.csproj",
         "packagesPath": "C:\\Users\\antoine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies\\obj\\",
+        "outputPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Repository.EF\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -539,11 +622,118 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Application\\MyRecepies.Authentification.Application.csproj": {
-                "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Authentification.Application\\MyRecepies.Authentification.Application.csproj"
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.4.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies\\MyRecepies.Web.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies\\MyRecepies.Web.csproj",
+        "projectName": "MyRecepies.Web",
+        "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies\\MyRecepies.Web.csproj",
+        "packagesPath": "C:\\Users\\antoine\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\antoine\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\MyRecepies.Authentification.Application.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\MyRecepies.Authentification.Application.csproj"
               },
-              "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecepies.Recepies.Application.csproj": {
-                "projectPath": "C:\\Users\\antoine\\source\\repos\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecepies.Recepies.Application.csproj"
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecepies.Recepies.Application.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecepies.Recepies.Application.csproj"
+              },
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecipes.Recepies.Application.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecipes.Recepies.Application.csproj"
               }
             }
           }
