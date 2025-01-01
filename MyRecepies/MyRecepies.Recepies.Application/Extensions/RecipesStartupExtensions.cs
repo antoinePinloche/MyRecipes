@@ -1,17 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MyRecipes.Recipes.Repository.EF.Configuration;
 
 namespace MyRecipes.Recipes.Application.Extensions
 {
     public static class RecipesStartupExtensions
     {
-        public static void AddAuthentificationEx(this IServiceCollection services, string configuration)
+        public static void AddRecipesEx(this IServiceCollection services, string? configuration)
         {
-            //services.AddServiceCollectionAuthentificationRepositoryEF(configuration);
+            services.AddServiceCollectionRecipesRepositoryEF(configuration);
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(RecipesStartupExtensions).Assembly));
         }
     }

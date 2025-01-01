@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using System.Text;
+using System.Threading.Tasks;
+using MyRecipes.Recipes.Domain.Entity;
+
+namespace MyRecipes.Recipes.Repository.EF.DbContext
+{
+    public class RecipeDbContext : Microsoft.EntityFrameworkCore.DbContext
+    {
+        public DbSet<Ingredient> Ingredient { get; set; }
+        public DbSet<RecipeIngredient> RecipeIngredients { get; set; }
+        public DbSet<Instruction> Instructions { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
+        public RecipeDbContext(DbContextOptions<RecipeDbContext> options) : base(options) { }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.HasDefaultSchema("Recipe");
+        }
+    }
+}

@@ -14,6 +14,7 @@
           "Microsoft.EntityFrameworkCore.Abstractions": "9.0.0",
           "Microsoft.EntityFrameworkCore.Design": "9.0.0",
           "MyRecipes.Authentification.Application": "1.0.0",
+          "MyRecipes.Recipes.Application": "1.0.0",
           "Swashbuckle.AspNetCore": "6.6.2"
         },
         "runtime": {
@@ -1528,6 +1529,45 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "MyRecipes.Recipes.Application/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "9.0.0",
+          "Microsoft.Extensions.DependencyInjection": "9.0.0",
+          "MyRecipes.Recipes.Domain": "1.0.0",
+          "MyRecipes.Recipes.Repository.EF": "1.0.0"
+        },
+        "runtime": {
+          "MyRecipes.Recipes.Application.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "MyRecipes.Recipes.Domain/1.0.0": {
+        "runtime": {
+          "MyRecipes.Recipes.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "MyRecipes.Recipes.Repository.EF/1.0.0": {
+        "dependencies": {
+          "MediatR": "12.4.1",
+          "Microsoft.AspNetCore": "2.1.7",
+          "Microsoft.EntityFrameworkCore": "9.0.0",
+          "Microsoft.EntityFrameworkCore.Abstractions": "9.0.0",
+          "Microsoft.EntityFrameworkCore.Relational": "9.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
+          "MyRecipes.Recipes.Domain": "1.0.0"
+        },
+        "runtime": {
+          "MyRecipes.Recipes.Repository.EF.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -2486,6 +2526,21 @@
       "sha512": ""
     },
     "MyRecipes.Authentification.Repository.EF/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MyRecipes.Recipes.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MyRecipes.Recipes.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MyRecipes.Recipes.Repository.EF/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

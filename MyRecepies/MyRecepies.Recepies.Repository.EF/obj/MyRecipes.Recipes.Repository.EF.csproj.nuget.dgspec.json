@@ -125,6 +125,10 @@
               "target": "Package",
               "version": "[12.4.1, )"
             },
+            "Microsoft.AspNetCore": {
+              "target": "Package",
+              "version": "[2.1.7, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.0, )"

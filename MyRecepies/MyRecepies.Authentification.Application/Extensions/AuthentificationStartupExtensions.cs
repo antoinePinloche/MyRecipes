@@ -16,17 +16,16 @@ namespace MyRecipes.Authentification.Application.Extensions
 
         public static void AddMapIdentityApi(this WebApplication webApplication)
         {
-            webApplication.MapIdentityApi<Domain.Entities.User>();
             webApplication.MapIdentityApiFilterable<Domain.Entities.User>(
                 new IdentityApiEndpointsBuilderOptions()
                 {
                     IncludeRegisterPost = true,
                     IncludeLoginPost = true,
                     IncludeRefreshPost = true,
-                    IncludeConfirmEmailGet = true,
+                    IncludeConfirmEmailGet = false,
                     IncludeResendConfirmationEmailPost = false,
-                    IncludeForgotPasswordPost = false,
-                    IncludeResetPasswordPost = false,
+                    IncludeForgotPasswordPost = true,
+                    IncludeResetPasswordPost = true,
                     // setting IncludeManageGroup to true will disable
                     // 2FA and both Info Actions
                     IncludeManageGroup = false,

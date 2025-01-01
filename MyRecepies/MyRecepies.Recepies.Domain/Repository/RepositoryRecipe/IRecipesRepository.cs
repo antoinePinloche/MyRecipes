@@ -1,6 +1,8 @@
-﻿namespace MyRecipes.Recipes.Domain.Repository.RepositoryRecipe
+﻿using MyRecipes.Recipes.Domain.Entity;
+
+namespace MyRecipes.Recipes.Domain.Repository.RepositoryRecipe
 {
-    internal class IRecipesRepository 
+    public interface IRecipesRepository : IRepository<Recipe, Guid>
     {
     }
 }

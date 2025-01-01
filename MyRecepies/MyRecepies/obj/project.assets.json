@@ -2633,6 +2633,51 @@
         "runtime": {
           "bin/placeholder/MyRecipes.Authentification.Repository.EF.dll": {}
         }
+      },
+      "MyRecipes.Recipes.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "9.0.0",
+          "Microsoft.Extensions.DependencyInjection": "9.0.0",
+          "MyRecipes.Recipes.Domain": "1.0.0",
+          "MyRecipes.Recipes.Repository.EF": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MyRecipes.Recipes.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyRecipes.Recipes.Application.dll": {}
+        }
+      },
+      "MyRecipes.Recipes.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/MyRecipes.Recipes.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyRecipes.Recipes.Domain.dll": {}
+        }
+      },
+      "MyRecipes.Recipes.Repository.EF/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "MediatR": "12.4.1",
+          "Microsoft.AspNetCore": "2.1.7",
+          "Microsoft.EntityFrameworkCore": "9.0.0",
+          "Microsoft.EntityFrameworkCore.Abstractions": "9.0.0",
+          "Microsoft.EntityFrameworkCore.Relational": "9.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
+          "MyRecipes.Recipes.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MyRecipes.Recipes.Repository.EF.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyRecipes.Recipes.Repository.EF.dll": {}
+        }
       }
     }
   },
@@ -6824,6 +6869,21 @@
       "type": "project",
       "path": "../MyRecepies.Authentification.Repository.EF/MyRecipes.Authentification.Repository.EF.csproj",
       "msbuildProject": "../MyRecepies.Authentification.Repository.EF/MyRecipes.Authentification.Repository.EF.csproj"
+    },
+    "MyRecipes.Recipes.Application/1.0.0": {
+      "type": "project",
+      "path": "../MyRecepies.Recepies.Application/MyRecipes.Recipes.Application.csproj",
+      "msbuildProject": "../MyRecepies.Recepies.Application/MyRecipes.Recipes.Application.csproj"
+    },
+    "MyRecipes.Recipes.Domain/1.0.0": {
+      "type": "project",
+      "path": "../MyRecepies.Recepies.Domain/MyRecipes.Recipes.Domain.csproj",
+      "msbuildProject": "../MyRecepies.Recepies.Domain/MyRecipes.Recipes.Domain.csproj"
+    },
+    "MyRecipes.Recipes.Repository.EF/1.0.0": {
+      "type": "project",
+      "path": "../MyRecepies.Recepies.Repository.EF/MyRecipes.Recipes.Repository.EF.csproj",
+      "msbuildProject": "../MyRecepies.Recepies.Repository.EF/MyRecipes.Recipes.Repository.EF.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6834,6 +6894,7 @@
       "Microsoft.EntityFrameworkCore.Abstractions >= 9.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.0",
       "MyRecipes.Authentification.Application >= 1.0.0",
+      "MyRecipes.Recipes.Application >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.6.2"
     ]
   },
@@ -6872,6 +6933,9 @@
           "projectReferences": {
             "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj": {
               "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Authentification.Application\\MyRecipes.Authentification.Application.csproj"
+            },
+            "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecipes.Recipes.Application.csproj": {
+              "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies\\MyRecepies.Recepies.Application\\MyRecipes.Recipes.Application.csproj"
             }
           }
         }

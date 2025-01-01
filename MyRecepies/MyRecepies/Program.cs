@@ -3,6 +3,7 @@ using MyRecipes.Authentification.Application.Extensions;
 using Microsoft.AspNetCore.Identity;
 using MyRecipes.Authentification.Domain.Entities;
 using MyRecipes.Authentification.Repository.EF.DbContext;
+using MyRecipes.Recipes.Application.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -11,9 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Ajout des Services lié a la solution
 
-//builder.Services.AddRecipiesEx(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
 
@@ -22,6 +21,9 @@ string? connectionString = builder.Configuration.GetConnectionString("DefaultCon
 
 //Extension lié a l'authentification
 builder.Services.AddAuthentificationEx(connectionString);
+
+//Extension lié a l'application
+builder.Services.AddRecipesEx(connectionString);
 
 WebApplication app = builder.Build();
 
