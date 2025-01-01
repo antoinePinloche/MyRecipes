@@ -39,6 +39,8 @@ bld/
 
 # Visual Studio 2017 auto generated files
 Generated\ Files/
+*.AssemblyInfo.cs
+*.AssemblyInfoInputs.cache
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
