@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Exception\" />
+    <Folder Include="Entity\" />
     <Folder Include="Repository\RepositoryUser\" />
   </ItemGroup>
 
