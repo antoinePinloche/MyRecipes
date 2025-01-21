@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyRecipes.Authentification.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+45057ccb98a49b2b7193e36f0937c2e596002583")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69f9f16320e014a402b13b6619cb970271760e8b")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyRecipes.Authentification.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyRecipes.Authentification.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
