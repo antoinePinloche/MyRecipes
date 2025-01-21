@@ -73,5 +73,14 @@ namespace MyRecipes.Authentification.Repository.EF
         {
             throw new NotImplementedException();
         }
+
+        public override async Task CreateOrUpdateSchemaAsync()
+        {
+            bool pendingMigration = (await Context.Database.GetPendingMigrationsAsync()).Any();
+            if (pendingMigration)
+            {
+                await Context.Database.MigrateAsync();
+            }
+        }
     }
 }

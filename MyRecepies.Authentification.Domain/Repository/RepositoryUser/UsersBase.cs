@@ -15,5 +15,7 @@ namespace MyRecipes.Authentification.Domain.Repository.RepositoryUser
         public abstract Task UpdateAsync(User entity);
         public abstract Task UpdateRangeAsync(ICollection<User> entities);
 
+        public abstract Task CreateOrUpdateSchemaAsync();
+
     }
 }

@@ -80,7 +80,7 @@ namespace MyRecipes.Authentification.Application.Overrides
                         return CreateValidationProblem(result);
                     }
 
-                    await SendConfirmationEmailAsync(user, userManager, context, email);
+                    //await SendConfirmationEmailAsync(user, userManager, context, email);
                     return TypedResults.Ok();
                 });
             }

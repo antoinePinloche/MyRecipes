@@ -171,8 +171,8 @@
     ]
   },
   {
-    "ContainingType": "MyRecipes.Authentification.Application.Overrides.IdentityApiEndpointsBuilderExtensions\u002B\u003C\u003Ec__DisplayClass1_0\u00601[[MyRecipes.Authentification.Domain.Entities.User, MyRecipes.Authentification.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-    "Method": "\u003CMapIdentityApiFilterable\u003Eb__0",
+    "ContainingType": "MyRecipes.Authentification.Application.Overrides.IdentityApiEndpointsBuilderExtensions\u002B\u003C\u003Ec__1\u00601[[MyRecipes.Authentification.Domain.Entities.User, MyRecipes.Authentification.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "\u003CMapIdentityApiFilterable\u003Eb__1_0",
     "RelativePath": "register",
     "HttpMethod": "POST",
     "IsController": false,
@@ -238,7 +238,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[MyRecepies.WeatherForecast, MyRecipes.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MyRecepies.WeatherForecast, MyRecipes.Web.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

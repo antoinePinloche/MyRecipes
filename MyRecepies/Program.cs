@@ -27,6 +27,10 @@ builder.Services.AddRecipesEx(connectionString);
 
 WebApplication app = builder.Build();
 
+//Extension DB Auth
+app.DataBaseCreateOrUpdate();
+
+
 app.AddMapIdentityApi();
 
 if (app.Environment.IsDevelopment())

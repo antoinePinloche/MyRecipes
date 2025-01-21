@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using MyRecipes.Authentification.Domain.Entities;
 using MyRecipes.Authentification.Domain.Repository.RepositoryUser;
 using MyRecipes.Authentification.Repository.EF.DbContext;
@@ -26,7 +28,18 @@ namespace MyRecipes.Authentification.Repository.EF.Configuration
                 services.AddIdentityCore<User>().AddEntityFrameworkStores<AuthentificationDbContext>().AddApiEndpoints();
                 return services;
             }
-            throw new NotImplementedException();
+            throw new ArgumentNullException(nameof(ConnectionString));
+        }
+    
+        public static async Task InitOrUpdateAuthentificationDbExtension(this WebApplication webApp)
+        {
+            using var scope = webApp.Services.CreateScope();
+            var services = scope.ServiceProvider;
+
+            var AuthentificationContext = services.GetRequiredService<IUsersRepository>();
+            EFUserRepository context = (EFUserRepository)AuthentificationContext;
+
+            await context.CreateOrUpdateSchemaAsync();
         }
     }
 }

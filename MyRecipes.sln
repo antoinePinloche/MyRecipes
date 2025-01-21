@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipes.Web", "MyRecepies\MyRecipes.Web.csproj", "{B489078B-C031-421A-9140-E64958E54952}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipes.Web.API", "MyRecepies\MyRecipes.Web.API.csproj", "{B489078B-C031-421A-9140-E64958E54952}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Recepies", "Recepies", "{A784A47C-819A-418D-9A41-4D76C04C15A4}"
 EndProject

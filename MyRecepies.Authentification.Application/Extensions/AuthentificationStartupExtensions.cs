@@ -14,6 +14,11 @@ namespace MyRecipes.Authentification.Application.Extensions
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(AuthentificationStartupExtensions).Assembly));
         }
 
+        public static async  void DataBaseCreateOrUpdate(this WebApplication webApp)
+        {
+            await webApp.InitOrUpdateAuthentificationDbExtension();
+        }
+
         public static void AddMapIdentityApi(this WebApplication webApplication)
         {
             webApplication.MapIdentityApiFilterable<Domain.Entities.User>(

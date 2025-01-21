@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "drl43AOhPIgHYN+P5X6V/z+inFSmMiZGIe/3Ot7q0bY=",
-  "Source": "MyRecipes.Web",
-  "BasePath": "_content/MyRecipes.Web",
+  "Hash": "ynxnFmaW706WmYv0NI5mtIeUv07KgizJ4Me0MQPU8n4=",
+  "Source": "MyRecipes.Web.API",
+  "BasePath": "_content/MyRecipes.Web.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
