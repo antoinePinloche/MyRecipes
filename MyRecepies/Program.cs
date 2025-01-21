@@ -1,8 +1,4 @@
-using Microsoft.Extensions.DependencyInjection;
 using MyRecipes.Authentification.Application.Extensions;
-using Microsoft.AspNetCore.Identity;
-using MyRecipes.Authentification.Domain.Entities;
-using MyRecipes.Authentification.Repository.EF.DbContext;
 using MyRecipes.Recipes.Application.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,8 +24,8 @@ builder.Services.AddRecipesEx(connectionString);
 WebApplication app = builder.Build();
 
 //Extension DB Auth
-app.DataBaseCreateOrUpdate();
-
+app.AuthentificationDataBaseCreateOrUpdate();
+app.RecipeDataBaseCreateOrUpdate();
 
 app.AddMapIdentityApi();
 

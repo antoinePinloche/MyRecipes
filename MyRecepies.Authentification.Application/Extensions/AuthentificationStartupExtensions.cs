@@ -14,7 +14,7 @@ namespace MyRecipes.Authentification.Application.Extensions
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(AuthentificationStartupExtensions).Assembly));
         }
 
-        public static async  void DataBaseCreateOrUpdate(this WebApplication webApp)
+        public static async void AuthentificationDataBaseCreateOrUpdate(this WebApplication webApp)
         {
             await webApp.InitOrUpdateAuthentificationDbExtension();
         }

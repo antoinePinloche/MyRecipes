@@ -22,3 +22,4 @@ C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Domain\obj\Debug\net8.
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Domain\obj\Debug\net8.0\refint\MyRecipes.Recipes.Domain.dll
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Domain\obj\Debug\net8.0\MyRecipes.Recipes.Domain.pdb
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Domain\obj\Debug\net8.0\ref\MyRecipes.Recipes.Domain.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Domain\obj\Debug\net8.0\MyRecipes.Recipes.Domain.csproj.AssemblyReference.cache
