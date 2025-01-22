@@ -11,6 +11,8 @@ namespace MyRecipes.Recipes.Domain.Entity
     {
         public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public IngredientCategory IngredientCategory { get; set; }
+        public Guid FoodTypeId { get; set; }
+        public FoodType FoodType { get; set; }
+
     }
 }

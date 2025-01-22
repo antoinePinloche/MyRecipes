@@ -11,9 +11,11 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
 
         public EFIngredientRepository(RecipeDbContext context) => Context = context;
 
-        public override Task<Ingredient> AddAsync(Ingredient entity)
+        public override async Task<Ingredient> AddAsync(Ingredient entity)
         {
-            throw new NotImplementedException();
+            var ingredientAdd = await Context.AddAsync(entity);
+            await Context.SaveChangesAsync();
+            return ingredientAdd.Entity;
         }
 
         public override Task<Ingredient> AddRangeAsync(ICollection<Ingredient> entities)

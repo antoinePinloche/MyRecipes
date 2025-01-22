@@ -23,20 +23,37 @@ namespace MyRecipes.Recipes.Repository.EF.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("MyRecipes.Recipes.Domain.Entity.Ingredient", b =>
+            modelBuilder.Entity("MyRecipes.Recipes.Domain.Entity.FoodType", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("IngredientCategory")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.ToTable("FoodTypes", "Recipe");
+                });
+
+            modelBuilder.Entity("MyRecipes.Recipes.Domain.Entity.Ingredient", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("FoodTypeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FoodTypeId");
 
                     b.ToTable("Ingredient", "Recipe");
                 });
@@ -117,6 +134,17 @@ namespace MyRecipes.Recipes.Repository.EF.Migrations
                     b.HasIndex("RecipeId");
 
                     b.ToTable("RecipeIngredients", "Recipe");
+                });
+
+            modelBuilder.Entity("MyRecipes.Recipes.Domain.Entity.Ingredient", b =>
+                {
+                    b.HasOne("MyRecipes.Recipes.Domain.Entity.FoodType", "FoodType")
+                        .WithMany()
+                        .HasForeignKey("FoodTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FoodType");
                 });
 
             modelBuilder.Entity("MyRecipes.Recipes.Domain.Entity.Instruction", b =>

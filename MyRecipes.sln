@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipes.Recipes.Domain", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipes.Recipes.Repository.EF", "MyRecepies.Recepies.Repository.EF\MyRecipes.Recipes.Repository.EF.csproj", "{4031B36B-6F68-4E0D-9B86-D249A92BC176}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transverse", "Transverse", "{C87D0570-F3D0-4AE1-AAE7-66C03E715B8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipes.Transverse", "MyRecipes.Transverse\MyRecipes.Transverse.csproj", "{AAE8EAB0-5D30-4CE1-8FB8-241BF7F2CA25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,10 @@ Global
 		{4031B36B-6F68-4E0D-9B86-D249A92BC176}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4031B36B-6F68-4E0D-9B86-D249A92BC176}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4031B36B-6F68-4E0D-9B86-D249A92BC176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAE8EAB0-5D30-4CE1-8FB8-241BF7F2CA25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE8EAB0-5D30-4CE1-8FB8-241BF7F2CA25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE8EAB0-5D30-4CE1-8FB8-241BF7F2CA25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE8EAB0-5D30-4CE1-8FB8-241BF7F2CA25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,5 +74,6 @@ Global
 		{99757D36-23EE-440D-BA3B-A5DB22BB2688} = {A784A47C-819A-418D-9A41-4D76C04C15A4}
 		{00FA0B69-D67C-4A91-87FA-2EBA7EC3C7AB} = {A784A47C-819A-418D-9A41-4D76C04C15A4}
 		{4031B36B-6F68-4E0D-9B86-D249A92BC176} = {A784A47C-819A-418D-9A41-4D76C04C15A4}
+		{AAE8EAB0-5D30-4CE1-8FB8-241BF7F2CA25} = {C87D0570-F3D0-4AE1-AAE7-66C03E715B8B}
 	EndGlobalSection
 EndGlobal

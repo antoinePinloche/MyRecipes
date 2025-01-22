@@ -13,6 +13,7 @@ namespace MyRecipes.Recipes.Repository.EF.DbContext
         public DbSet<RecipeIngredient> RecipeIngredients { get; set; }
         public DbSet<Instruction> Instructions { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<FoodType> FoodTypes { get; set; }
         public RecipeDbContext(DbContextOptions<RecipeDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
