@@ -10,9 +10,11 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
         public RecipeDbContext Context { get; set; }
 
         public EFRecipeRepository(RecipeDbContext context) => Context = context;
-        public override Task<Recipe> AddAsync(Recipe entity)
+        public override async Task<Recipe> AddAsync(Recipe entity)
         {
-            throw new NotImplementedException();
+            var entityAdd = await Context.Recipes.AddAsync(entity);
+            await this.SaveAsync();
+            return entityAdd.Entity;
         }
 
         public override Task<Recipe> AddRangeAsync(ICollection<Recipe> entities)
@@ -34,14 +36,14 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             throw new NotImplementedException();
         }
 
-        public override Task<ICollection<Recipe>> GetAllAsync()
+        public override async Task<ICollection<Recipe>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await Context.Recipes.Include(i => i.Ingredients).ThenInclude(th => th.Ingredient.FoodType).Include(i => i.Instructions).ToListAsync();
         }
 
-        public override Task<Recipe> GetAsync(Guid key)
+        public override async Task<Recipe> GetAsync(Guid key)
         {
-            throw new NotImplementedException();
+            return await Context.Recipes.Include(i => i.Ingredients).ThenInclude(th => th.Ingredient.FoodType).Include(i => i.Instructions).FirstOrDefaultAsync(f => f.Id == key);
         }
 
         public override Task RemoveAsync(Recipe entitie)
@@ -54,14 +56,18 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             throw new NotImplementedException();
         }
 
-        public override Task SaveAsync()
+        public override async Task SaveAsync()
         {
-            throw new NotImplementedException();
+            await Context.SaveChangesAsync();
         }
 
-        public override Task UpdateAsync(Recipe entity)
+        public async override Task UpdateAsync(Recipe entity)
         {
-            throw new NotImplementedException();
+            if (entity is not null)
+            {
+                Context.Recipes.Update(entity);
+                await this.SaveAsync();
+            }
         }
 
         public override Task UpdateRangeAsync(ICollection<Recipe> entities)
