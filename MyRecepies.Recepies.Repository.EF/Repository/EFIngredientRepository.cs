@@ -13,7 +13,12 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
 
         public override async Task<Ingredient> AddAsync(Ingredient entity)
         {
-            var ingredientAdd = await Context.AddAsync(entity);
+            var ingredient = await Context.Ingredient.FirstOrDefaultAsync(f => f.Name == entity.Name);
+            if (ingredient is not null)
+            {
+                throw new InvalidOperationException();
+            }
+            var ingredientAdd = await Context.Ingredient.AddAsync(entity);
             await Context.SaveChangesAsync();
             return ingredientAdd.Entity;
         }
@@ -28,19 +33,20 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             throw new NotImplementedException();
         }
 
-        public override Task<ICollection<Ingredient>> GetAllAsync()
+        public override async Task<ICollection<Ingredient>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await Context.Ingredient.Include(i => i.FoodType).ToListAsync();
         }
 
-        public override Task<Ingredient> GetAsync(Guid key)
+        public override async Task<Ingredient> GetAsync(Guid key)
         {
-            throw new NotImplementedException();
+            return await Context.Ingredient.FirstOrDefaultAsync(i => i.Id == key);
         }
 
-        public override Task RemoveAsync(Ingredient entitie)
+        public override async Task RemoveAsync(Ingredient entitie)
         {
-            throw new NotImplementedException();
+            Context.Ingredient.Remove(entitie);
+            await Context.SaveChangesAsync();
         }
 
         public override Task RemoveRangeAsync(ICollection<Ingredient> entities)
@@ -69,6 +75,20 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             {
                 await Context.Database.MigrateAsync();
             }
+        }
+
+        public async override Task<bool> HasIngredient(string Name)
+        {
+            Ingredient? entityfound = await Context.Ingredient.FirstOrDefaultAsync(f => f.Name == Name);
+            if (entityfound is null)
+                return false;
+            return true;
+        }
+
+        public override async Task<List<Ingredient>> GetAllIngredientsByFoodTypeId(Guid foodTypeId)
+        {
+            List<Ingredient>? ingredients = await Context.Ingredient.Where(i => i.FoodTypeId == foodTypeId).Include(e => e.FoodType).ToListAsync();
+            return ingredients;
         }
     }
 }

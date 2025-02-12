@@ -9,6 +9,6 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryFoodType
 {
     public interface IFoodTypeRepository : IRepository<FoodType, Guid>
     {
-        public bool FoodTypeByName(string name);
+        public Task<bool> FoodTypeByName(string name);
     }
 }

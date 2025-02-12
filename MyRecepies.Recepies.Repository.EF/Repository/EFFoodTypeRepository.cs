@@ -55,16 +55,16 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
 
         public async override Task<FoodType> GetAsync(Guid key)
         {
-            FoodType? userFound = await Context.FoodTypes.FirstOrDefaultAsync(f => f.Id == key);
-            if (userFound is null)
+            FoodType? foodTypeFound = await Context.FoodTypes.FirstOrDefaultAsync(f => f.Id == key);
+            if (foodTypeFound is null)
                 return null;
-            return (FoodType)userFound;
+            return (FoodType)foodTypeFound;
         }
 
         public async override Task RemoveAsync(FoodType entitie)
         {
-            FoodType? userFound = await Context.FoodTypes.FirstOrDefaultAsync(f => f == entitie);
-            if (userFound != null)
+            FoodType? foodTypeFound = await Context.FoodTypes.FirstOrDefaultAsync(f => f == entitie);
+            if (foodTypeFound != null)
             {
                 Context.FoodTypes.Remove(entitie);
                 await Context.SaveChangesAsync();
@@ -81,9 +81,10 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             await Context.SaveChangesAsync();
         }
 
-        public override Task UpdateAsync(FoodType entity)
+        public override async Task UpdateAsync(FoodType entity)
         {
-            throw new NotImplementedException();
+            Context.FoodTypes.Update(entity);
+            await Context.SaveChangesAsync();
         }
 
         public override Task UpdateRangeAsync(ICollection<FoodType> entities)
@@ -91,9 +92,12 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             throw new NotImplementedException();
         }
 
-        public override bool FoodTypeByName(string name)
+        public async override Task<bool> FoodTypeByName(string name)
         {
-            throw new NotImplementedException();
+            FoodType? foodType = await Context.FoodTypes.FirstOrDefaultAsync(f => f.Name == name);
+            if (foodType is null) 
+                return false;
+            return true;
         }
     }
 }

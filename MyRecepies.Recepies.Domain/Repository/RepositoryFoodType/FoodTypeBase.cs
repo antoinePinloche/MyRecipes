@@ -14,7 +14,7 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryFoodType
         public abstract Task CreateOrUpdateSchemaAsync();
         public abstract FoodType FirstOrDefault(Func<FoodType, bool> predicate);
 
-        public abstract bool FoodTypeByName(string name);
+        public abstract Task<bool> FoodTypeByName(string name);
 
         public abstract Task<ICollection<FoodType>> GetAllAsync();
         public abstract Task<FoodType> GetAsync(Guid key);

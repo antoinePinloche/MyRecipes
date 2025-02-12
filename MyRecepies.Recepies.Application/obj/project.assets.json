@@ -1951,6 +1951,16 @@
         "runtime": {
           "bin/placeholder/MyRecipes.Recipes.Repository.EF.dll": {}
         }
+      },
+      "MyRecipes.Transverse/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/MyRecipes.Transverse.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyRecipes.Transverse.dll": {}
+        }
       }
     }
   },
@@ -4509,6 +4519,11 @@
       "type": "project",
       "path": "../MyRecepies.Recepies.Repository.EF/MyRecipes.Recipes.Repository.EF.csproj",
       "msbuildProject": "../MyRecepies.Recepies.Repository.EF/MyRecipes.Recipes.Repository.EF.csproj"
+    },
+    "MyRecipes.Transverse/1.0.0": {
+      "type": "project",
+      "path": "../MyRecipes.Transverse/MyRecipes.Transverse.csproj",
+      "msbuildProject": "../MyRecipes.Transverse/MyRecipes.Transverse.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4516,7 +4531,8 @@
       "Microsoft.Extensions.Configuration >= 9.0.0",
       "Microsoft.Extensions.DependencyInjection >= 9.0.0",
       "MyRecipes.Recipes.Domain >= 1.0.0",
-      "MyRecipes.Recipes.Repository.EF >= 1.0.0"
+      "MyRecipes.Recipes.Repository.EF >= 1.0.0",
+      "MyRecipes.Transverse >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -4557,6 +4573,9 @@
             },
             "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies.Recepies.Repository.EF\\MyRecipes.Recipes.Repository.EF.csproj": {
               "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies.Recepies.Repository.EF\\MyRecipes.Recipes.Repository.EF.csproj"
+            },
+            "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecipes.Transverse\\MyRecipes.Transverse.csproj": {
+              "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecipes.Transverse\\MyRecipes.Transverse.csproj"
             }
           }
         }

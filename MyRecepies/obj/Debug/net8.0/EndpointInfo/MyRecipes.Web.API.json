@@ -5,49 +5,6 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Authentification/api/Authentification/ActualUserInformation": {
-      "get": {
-        "tags": [
-          "Authentification"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Authentification/api/Authentification/Register": {
-      "post": {
-        "tags": [
-          "Authentification"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Authentification/api/Authentification/ModifyUser": {
       "put": {
         "tags": [
@@ -101,27 +58,6 @@
             "name": "guid",
             "in": "path",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Authentification/api/Authentification/UpdatePassword": {
-      "put": {
-        "tags": [
-          "Authentification"
-        ],
-        "parameters": [
-          {
-            "name": "password",
-            "in": "query",
             "schema": {
               "type": "string"
             }
@@ -199,6 +135,47 @@
         }
       }
     },
+    "/UpdateFoodType/{id}": {
+      "put": {
+        "tags": [
+          "FoodType"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFoodTypeModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFoodTypeModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFoodTypeModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Ingredient/api/Ingredient/GetIngredientList": {
       "get": {
         "tags": [
@@ -233,14 +210,36 @@
         }
       }
     },
-    "/api/Ingredient/api/Ingredient/DeleteIngredient/{Guid}": {
+    "/api/Ingredient/api/Ingredient/GetIngredientsByFoodType/{Id}": {
+      "get": {
+        "tags": [
+          "Ingredient"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Ingredient/api/Ingredient/DeleteIngredient/{id}": {
       "delete": {
         "tags": [
           "Ingredient"
         ],
         "parameters": [
           {
-            "name": "guid",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -478,6 +477,134 @@
         }
       }
     },
+    "/api/RecipeIngredient/GetAllRecipeIngredient": {
+      "get": {
+        "tags": [
+          "RecipeIngredient"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/RecipeIngredient/GetRecipeIngredient/{Id}": {
+      "get": {
+        "tags": [
+          "RecipeIngredient"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/RecipeIngredient/CreateRecipeIngredient": {
+      "post": {
+        "tags": [
+          "RecipeIngredient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecipeIngredientModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecipeIngredientModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecipeIngredientModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/RecipeIngredient/UpdateRecipeIngredient/{Id}": {
+      "put": {
+        "tags": [
+          "RecipeIngredient"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecipeIngredientModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecipeIngredientModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecipeIngredientModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/RecipeIngredient/DeleteRecipeIngredient/{Id}": {
+      "delete": {
+        "tags": [
+          "RecipeIngredient"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [
@@ -568,6 +695,23 @@
           "ingredientCategoryId": {
             "type": "string",
             "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateRecipeIngredientModel": {
+        "type": "object",
+        "properties": {
+          "ingredientId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "quantity": {
+            "type": "number",
+            "format": "double"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/UnitOfMeasure"
           }
         },
         "additionalProperties": false
@@ -716,6 +860,30 @@
           "newPassword": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UnitOfMeasure": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "UpdateFoodTypeModel": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false

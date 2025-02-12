@@ -14,17 +14,13 @@
   <ItemGroup>
     <ProjectReference Include="..\MyRecepies.Recepies.Domain\MyRecipes.Recipes.Domain.csproj" />
     <ProjectReference Include="..\MyRecepies.Recepies.Repository.EF\MyRecipes.Recipes.Repository.EF.csproj" />
+    <ProjectReference Include="..\MyRecipes.Transverse\MyRecipes.Transverse.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Ingredient\Command\DeteleIngredient\" />
     <Folder Include="Ingredient\Command\UpdateIngredient\" />
-    <Folder Include="Ingredient\Query\GetAllIngredient\" />
-    <Folder Include="Ingredient\Query\GetIngredientById\" />
     <Folder Include="Instruction\Command\" />
     <Folder Include="Instruction\Query\" />
-    <Folder Include="RecipeIngredient\Command\" />
-    <Folder Include="RecipeIngredient\Query\" />
     <Folder Include="Recipe\Command\" />
     <Folder Include="Recipe\Query\" />
   </ItemGroup>

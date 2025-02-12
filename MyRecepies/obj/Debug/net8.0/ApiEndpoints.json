@@ -1,16 +1,6 @@
 [
   {
     "ContainingType": "MyRecipes.web.Controllers.AuthentificationController",
-    "Method": "ActualUserInformation",
-    "RelativePath": "api/Authentification/api/Authentification/ActualUserInformation",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MyRecipes.web.Controllers.AuthentificationController",
     "Method": "DeleteUser",
     "RelativePath": "api/Authentification/api/Authentification/DeleteUser/{guid}",
     "HttpMethod": "DELETE",
@@ -52,38 +42,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MyRecipes.web.Controllers.AuthentificationController",
-    "Method": "Register",
-    "RelativePath": "api/Authentification/api/Authentification/Register",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "user",
-        "Type": "MyRecipes.web.Models.Class.CreateUserModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MyRecipes.web.Controllers.AuthentificationController",
-    "Method": "UpdatePassword",
-    "RelativePath": "api/Authentification/api/Authentification/UpdatePassword",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "password",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "MyRecipes.web.Controllers.IngredientController",
     "Method": "CreateIngredient",
     "RelativePath": "api/Ingredient/api/Ingredient/CreateIngredient",
@@ -102,13 +60,13 @@
   {
     "ContainingType": "MyRecipes.web.Controllers.IngredientController",
     "Method": "DeleteIngredient",
-    "RelativePath": "api/Ingredient/api/Ingredient/DeleteIngredient/{Guid}",
+    "RelativePath": "api/Ingredient/api/Ingredient/DeleteIngredient/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "guid",
+        "Name": "id",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -143,6 +101,22 @@
   },
   {
     "ContainingType": "MyRecipes.web.Controllers.IngredientController",
+    "Method": "GetIngredientsByFoodType",
+    "RelativePath": "api/Ingredient/api/Ingredient/GetIngredientsByFoodType/{Id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.web.Controllers.IngredientController",
     "Method": "UpdateIngredient",
     "RelativePath": "api/Ingredient/api/Ingredient/UpdateIngredient/{Guid}",
     "HttpMethod": "PUT",
@@ -158,6 +132,85 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MyRecipes.Web.API.Controllers.RecipeIngredientController",
+    "Method": "CreateRecipeIngredient",
+    "RelativePath": "api/RecipeIngredient/CreateRecipeIngredient",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "MyRecipes.Web.API.Models.Class.RecipeIngredient.CreateRecipeIngredientModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.RecipeIngredientController",
+    "Method": "DeleteRecipeIngredient",
+    "RelativePath": "api/RecipeIngredient/DeleteRecipeIngredient/{Id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.RecipeIngredientController",
+    "Method": "GetAllRecipeIngredient",
+    "RelativePath": "api/RecipeIngredient/GetAllRecipeIngredient",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.RecipeIngredientController",
+    "Method": "GetRecipeIngredient",
+    "RelativePath": "api/RecipeIngredient/GetRecipeIngredient/{Id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.RecipeIngredientController",
+    "Method": "UpdateRecipeIngredient",
+    "RelativePath": "api/RecipeIngredient/UpdateRecipeIngredient/{Id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "MyRecipes.Web.API.Models.Class.RecipeIngredient.CreateRecipeIngredientModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MyRecipes.Web.API.Controllers.FoodTypeController",
     "Method": "CreateFoodType",
     "RelativePath": "CreateFoodType",
@@ -167,7 +220,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "MyRecipes.Web.API.Models.Class.CreateFoodTypeModel",
+        "Type": "MyRecipes.Web.API.Models.Class.FoodType.CreateFoodTypeModel",
         "IsRequired": true
       }
     ],
@@ -343,6 +396,27 @@
         "StatusCode": 400
       }
     ]
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.FoodTypeController",
+    "Method": "UpdateFoodType",
+    "RelativePath": "UpdateFoodType/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "MyRecipes.Web.API.Models.Class.FoodType.UpdateFoodTypeModel",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "MyRecipes.Controllers.WeatherForecastController",

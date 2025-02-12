@@ -20,22 +20,6 @@ namespace MyRecipes.web.Controllers
             _sender = mediator;
         }
 
-        [HttpGet]
-        [Route("api/[controller]/[action]")]
-        public async Task<IActionResult> ActualUserInformation()
-        {
-            return Ok();
-        }
-
-        [HttpPost]
-        [Route("api/[controller]/[action]")]
-        public async Task<IActionResult> Register(CreateUserModel user)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            await _sender.Send(new CreateUserCommand(user.UserName, user.Email, user.Password));
-            return Created();
-        }
 
         [HttpPut]
         [Route("api/[controller]/[action]")]
@@ -59,20 +43,11 @@ namespace MyRecipes.web.Controllers
         [Route("api/[controller]/[action]/{guid}")]
         public async Task<IActionResult> DeleteUser(string guid)
         {
-            Guid guidSend;
-            if (!Guid.TryParse(guid, out guidSend))
+            if (!Guid.TryParse(guid, out Guid guidSend))
             {
                 return BadRequest("DeleteUser : BadParameter" + guid);
             }
             await _sender.Send(new DeleteUserCommand(guidSend));
-            return Ok();
-        }
-
-        [HttpPut]
-        [Route("api/[controller]/[action]")]
-        public async Task<IActionResult> UpdatePassword(string password)
-        {
-            await _sender.Send(new UpdatePasswordCommand(password, Guid.NewGuid()));
             return Ok();
         }
     }

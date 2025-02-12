@@ -10,9 +10,11 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
         public RecipeDbContext Context { get; set; }
 
         public EFInstructionRepository(RecipeDbContext context) => Context = context;
-        public override Task<Instruction> AddAsync(Instruction entity)
+        public override async Task<Instruction> AddAsync(Instruction entity)
         {
-            throw new NotImplementedException();
+            var entityAdd = await Context.Instructions.AddAsync(entity);
+            await Context.SaveChangesAsync();
+            return entityAdd.Entity;
         }
 
         public override Task<Instruction> AddRangeAsync(ICollection<Instruction> entities)
@@ -41,7 +43,8 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
 
         public override Task<Instruction> GetAsync(Guid key)
         {
-            throw new NotImplementedException();
+            var entity = Context.Instructions.FirstOrDefaultAsync(i => i.Id == key);
+            return entity;
         }
 
         public override Task RemoveAsync(Instruction entitie)

@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.IdentityModel.Tokens;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
+using MyRecipes.Transverse.Exception;
 
 namespace MyRecipes.Recipes.Application.Ingredient.Command.CreateIngredient
 {
@@ -14,15 +15,16 @@ namespace MyRecipes.Recipes.Application.Ingredient.Command.CreateIngredient
         {
             if (request is null)
             {
-                throw new ArgumentNullException(nameof(request));
+                throw new Exception(/*nameof(CreateIngredientCommandHandler), nameof(request),*/ "wrong parameter");
             }
             if (request.Name.IsNullOrEmpty())
             {
-                throw new ArgumentNullException(nameof(request.Name));
+                throw new Exception(/*nameof(CreateIngredientCommandHandler), nameof(request.Name), */"wrong parameter");
             }
-            //Checker si ingredient existe déja (recherche par nom)
-
-
+            if (await _ingredientRepository.HasIngredient(request.Name))
+            {
+                throw new Exception("Ingredient already Exist");
+            }
             Domain.Entity.Ingredient ingredient = new Domain.Entity.Ingredient() {Id = Guid.NewGuid(), FoodTypeId = request.FoodTypeId, Name = request.Name};
             await _ingredientRepository.AddAsync(ingredient);
         }

@@ -21,7 +21,7 @@ namespace MyRecipes.Authentification.Application.User.Command.DeleteUser
             
             if (userfound is null)
             {
-                throw new UserNotFoundException($"User With Guid {request.Guid} doesn't exist");
+                throw new Exception($"User With Guid {request.Guid} doesn't exist");
             }
             await _usersRepository.RemoveAsync(userfound);
         }

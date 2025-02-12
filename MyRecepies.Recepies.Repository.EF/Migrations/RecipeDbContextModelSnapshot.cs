@@ -115,7 +115,7 @@ namespace MyRecipes.Recipes.Repository.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IngredientId")
+                    b.Property<Guid?>("IngredientId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<double>("Quantity")
@@ -160,17 +160,13 @@ namespace MyRecipes.Recipes.Repository.EF.Migrations
                 {
                     b.HasOne("MyRecipes.Recipes.Domain.Entity.Ingredient", "Ingredient")
                         .WithMany()
-                        .HasForeignKey("IngredientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IngredientId");
 
-                    b.HasOne("MyRecipes.Recipes.Domain.Entity.Recipe", "Recipe")
+                    b.HasOne("MyRecipes.Recipes.Domain.Entity.Recipe", null)
                         .WithMany("Ingredients")
                         .HasForeignKey("RecipeId");
 
                     b.Navigation("Ingredient");
-
-                    b.Navigation("Recipe");
                 });
 
             modelBuilder.Entity("MyRecipes.Recipes.Domain.Entity.Recipe", b =>

@@ -34,3 +34,5 @@ C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Application\obj\Debug\
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Application\obj\Debug\net8.0\refint\MyRecipes.Recipes.Application.dll
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Application\obj\Debug\net8.0\MyRecipes.Recipes.Application.pdb
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Application\obj\Debug\net8.0\ref\MyRecipes.Recipes.Application.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Application\bin\Debug\net8.0\MyRecipes.Transverse.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Application\bin\Debug\net8.0\MyRecipes.Transverse.pdb

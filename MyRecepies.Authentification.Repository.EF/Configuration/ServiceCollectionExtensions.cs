@@ -28,7 +28,7 @@ namespace MyRecipes.Authentification.Repository.EF.Configuration
                 services.AddIdentityCore<User>().AddEntityFrameworkStores<AuthentificationDbContext>().AddApiEndpoints();
                 return services;
             }
-            throw new ArgumentNullException(nameof(ConnectionString));
+            throw new Exception(nameof(ConnectionString));
         }
     
         public static async Task InitOrUpdateAuthentificationDbExtension(this WebApplication webApp)

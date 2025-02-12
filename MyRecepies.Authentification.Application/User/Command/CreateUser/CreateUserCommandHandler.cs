@@ -13,7 +13,7 @@ namespace MyRecipes.Authentification.Application.User.Command.CreateUser
         {
             if (request is null)
             {
-                throw new ArgumentNullException(nameof(request));
+                throw new Exception(nameof(request));
             }
             Domain.Entities.User user = new Domain.Entities.User() { UserName = request.UserName, Email = request.Email, PasswordHash = request.Password, NormalizedUserName = request.UserName.ToUpper(), NormalizedEmail = request.Email.ToUpper() };
             await _usersRepository.AddAsync(user);

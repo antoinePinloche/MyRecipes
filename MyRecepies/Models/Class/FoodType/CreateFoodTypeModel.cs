@@ -1,4 +1,4 @@
-﻿namespace MyRecipes.Web.API.Models.Class
+﻿namespace MyRecipes.Web.API.Models.Class.FoodType
 {
     public class CreateFoodTypeModel
     {

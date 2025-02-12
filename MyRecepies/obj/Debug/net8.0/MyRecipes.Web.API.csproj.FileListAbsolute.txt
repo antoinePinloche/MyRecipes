@@ -194,3 +194,5 @@ C:\Users\antoine\source\Git\MyRecipes\MyRecepies\obj\Debug\net8.0\refint\MyRecip
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies\obj\Debug\net8.0\MyRecipes.Web.API.pdb
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies\obj\Debug\net8.0\MyRecipes.Web.API.genruntimeconfig.cache
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies\obj\Debug\net8.0\ref\MyRecipes.Web.API.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\MyRecipes.Transverse.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\MyRecipes.Transverse.pdb
