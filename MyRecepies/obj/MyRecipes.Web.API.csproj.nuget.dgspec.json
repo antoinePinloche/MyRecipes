@@ -466,6 +466,9 @@
             "projectReferences": {
               "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj": {
                 "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies.Recepies.Domain\\MyRecipes.Recipes.Domain.csproj"
+              },
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecipes.Transverse\\MyRecipes.Transverse.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecipes.Transverse\\MyRecipes.Transverse.csproj"
               }
             }
           }

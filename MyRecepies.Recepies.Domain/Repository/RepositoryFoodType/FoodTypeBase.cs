@@ -23,5 +23,10 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryFoodType
         public abstract Task SaveAsync();
         public abstract Task UpdateAsync(FoodType entity);
         public abstract Task UpdateRangeAsync(ICollection<FoodType> entities);
+
+        Task<ICollection<Instruction>> IRepository<FoodType, Guid>.AddRangeAsync(ICollection<FoodType> entities)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

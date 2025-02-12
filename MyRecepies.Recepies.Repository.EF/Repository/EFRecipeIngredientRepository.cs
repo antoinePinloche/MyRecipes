@@ -43,6 +43,14 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             return entitiesFound;
         }
 
+        public override async Task<ICollection<RecipeIngredient>> GetAllRecipeIngredientByRecipeIdlAsync(Guid Key)
+        {
+            var entitiesFound = await Context.RecipeIngredients.Include(i => i.Ingredient)
+                .Include(i => i.Ingredient.FoodType)
+                .Where(w => w.RecipeId == Key)
+                .ToListAsync();
+            return entitiesFound;
+        }
         public override async Task<RecipeIngredient> GetAsync(Guid key)
         {
             var entityFound = await Context.RecipeIngredients.Include(i => i.Ingredient).Include(i => i.Ingredient.FoodType).FirstOrDefaultAsync(f => f.Id == key);
@@ -55,13 +63,16 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             {
                 Context.ChangeTracker.Clear();
                 Context.RecipeIngredients.Remove(entitie);
+                await this.SaveAsync();
             }
-            await this.SaveAsync();
         }
 
-        public override Task RemoveRangeAsync(ICollection<RecipeIngredient> entities)
+        public override async Task RemoveRangeAsync(ICollection<RecipeIngredient> entities)
         {
-            throw new NotImplementedException();
+            foreach(var entity in entities)
+            {
+                await this.RemoveAsync(entity);
+            }
         }
 
         public override async Task SaveAsync()
@@ -76,9 +87,12 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             await this.SaveAsync();
         }
 
-        public override Task UpdateRangeAsync(ICollection<RecipeIngredient> entities)
+        public async override Task UpdateRangeAsync(ICollection<RecipeIngredient> entities)
         {
-            throw new NotImplementedException();
+            foreach(var entity in entities)
+            {
+                await this.UpdateAsync(entity);
+            }
         }
     }
 }

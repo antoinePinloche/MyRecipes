@@ -2678,7 +2678,8 @@
           "Microsoft.EntityFrameworkCore.Abstractions": "9.0.0",
           "Microsoft.EntityFrameworkCore.Relational": "9.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
-          "MyRecipes.Recipes.Domain": "1.0.0"
+          "MyRecipes.Recipes.Domain": "1.0.0",
+          "MyRecipes.Transverse": "1.0.0"
         },
         "compile": {
           "bin/placeholder/MyRecipes.Recipes.Repository.EF.dll": {}

@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
+using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,12 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.UpdateRecipeIng
                         var ingredientFound = await _ingredientRepository.GetAsync(request.IngredientId);
                         riFound.Ingredient = ingredientFound;
                     }
-                    //riFound.RecipeId = request.RecipeId;
+                    if (request.RecipeId.IsNullOrEmpty())
+                    {
+                        throw new Exception();
+                    }
+                    if (riFound.RecipeId != request.RecipeId)
+                        riFound.RecipeId = request.RecipeId;
                     riFound.Unit = request.Unit;
                     riFound.Quantity = request.Quantity;
                     await _recipeIngredientRepository.UpdateAsync(riFound);

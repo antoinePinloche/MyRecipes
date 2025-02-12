@@ -30,7 +30,7 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.CreateRecipeIng
                 {
                     Id = Guid.NewGuid(),
                     IngredientId = request.IngredientId,
-                    //RecipeId = null,
+                    RecipeId = request.RecipeId,
                     Quantity = request.Quantity,
                     Unit = request.Unit
 

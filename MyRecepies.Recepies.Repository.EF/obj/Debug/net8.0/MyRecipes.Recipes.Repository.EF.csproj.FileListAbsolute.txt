@@ -34,3 +34,5 @@ C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Repository.EF\obj\Debu
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Repository.EF\obj\Debug\net8.0\MyRecipes.Recipes.Repository.EF.pdb
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Repository.EF\obj\Debug\net8.0\MyRecipes.Recipes.Repository.EF.genruntimeconfig.cache
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Repository.EF\obj\Debug\net8.0\ref\MyRecipes.Recipes.Repository.EF.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Repository.EF\bin\Debug\net8.0\MyRecipes.Transverse.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Recepies.Repository.EF\bin\Debug\net8.0\MyRecipes.Transverse.pdb

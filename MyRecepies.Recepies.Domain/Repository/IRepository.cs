@@ -1,9 +1,11 @@
-﻿namespace MyRecipes.Recipes.Domain.Repository
+﻿using MyRecipes.Recipes.Domain.Entity;
+
+namespace MyRecipes.Recipes.Domain.Repository
 {
     public interface IRepository<TEntity, TKey> where TEntity : class
     {
         public Task<TEntity> AddAsync(TEntity entity);
-        public Task<TEntity> AddRangeAsync(ICollection<TEntity> entities);
+        public Task<ICollection<Instruction>> AddRangeAsync(ICollection<TEntity> entities);
         public Task<TEntity> GetAsync(TKey key);
         public Task<ICollection<TEntity>> GetAllAsync();
         public Task RemoveAsync(TEntity entitie);

@@ -14,15 +14,15 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.UpdateRecipeIng
         public Guid IngredientId { get; set; }
         public double Quantity { get; set; }
         public UnitOfMeasure Unit { get; set; }
-        //public Guid? RecipeId { get; set; }
+        public Guid? RecipeId { get; set; }
 
-        public UpdateRecipeIngredientCommand(Guid id, Guid ingredientId, double quantity, UnitOfMeasure unitOfMeasure/*, Guid? recipeId*/)
+        public UpdateRecipeIngredientCommand(Guid id, Guid ingredientId, double quantity, UnitOfMeasure unitOfMeasure, Guid? recipeId)
         {
             Id = id;
             IngredientId = ingredientId;
             Quantity = quantity;
             Unit = unitOfMeasure;
-            //RecipeId = recipeId;
+            RecipeId = recipeId;
         }
     }
 }

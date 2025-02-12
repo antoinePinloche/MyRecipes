@@ -47,7 +47,7 @@ namespace MyRecipes.Web.API.Controllers
             {
                 throw new Exception("Bad parameter");
             }
-            await _sender.Send(new CreateRecipeIngredientCommand() { IngredientId = model.IngredientId, Quantity = model.Quantity/*, RecipeId = model.RecipeId*/, Unit = model.Unit }); 
+            await _sender.Send(new CreateRecipeIngredientCommand() { IngredientId = model.IngredientId, Quantity = model.Quantity, RecipeId = model.RecipeId, Unit = model.Unit }); 
             return Ok();
         }
 
@@ -62,7 +62,7 @@ namespace MyRecipes.Web.API.Controllers
             {
                 return BadRequest("UpdateRecipeIngredient : BadParameter" + Id);
             }
-            await _sender.Send(new UpdateRecipeIngredientCommand(guid, model.IngredientId, model.Quantity, model.Unit/*, model.RecipeId*/));
+            await _sender.Send(new UpdateRecipeIngredientCommand(guid, model.IngredientId, model.Quantity, model.Unit, model.RecipeId));
             return Ok();
         }
 

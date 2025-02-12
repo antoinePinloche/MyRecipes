@@ -8,6 +8,6 @@ namespace MyRecipes.Web.API.Models.Class.RecipeIngredient
         public Guid IngredientId { get; set; }
         public double Quantity { get; set; }
         public UnitOfMeasure Unit { get; set; }
-        //public Guid? RecipeId { get; set; }
+        public Guid? RecipeId { get; set; }
     }
 }

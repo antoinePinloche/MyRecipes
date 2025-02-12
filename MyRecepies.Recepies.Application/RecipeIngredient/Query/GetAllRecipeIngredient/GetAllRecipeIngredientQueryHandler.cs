@@ -24,7 +24,7 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetAllRecipeIngre
             if (recipeIngredientList is not null)
             {
                 List<GetAllRecipeIngredientQueryResult> listReturn = recipeIngredientList.Select(s => new GetAllRecipeIngredientQueryResult(s.Id, s.IngredientId, s.Ingredient,
-                    s.Quantity, s.Unit /*s.RecipeId, s.Recipe*/)).ToList();
+                    s.Quantity, s.Unit, s.RecipeId/*, s.Recipe*/)).ToList();
                 return listReturn;
             }
             throw new NotImplementedException();

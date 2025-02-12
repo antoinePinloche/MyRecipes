@@ -20,5 +20,11 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient
         public abstract Task UpdateAsync(RecipeIngredient entity);
         public abstract Task UpdateRangeAsync(ICollection<RecipeIngredient> entities);
         public abstract Task CreateOrUpdateSchemaAsync();
+        public abstract Task<ICollection<RecipeIngredient>> GetAllRecipeIngredientByRecipeIdlAsync(Guid Key);
+
+        Task<ICollection<Instruction>> IRepository<RecipeIngredient, Guid>.AddRangeAsync(ICollection<RecipeIngredient> entities)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

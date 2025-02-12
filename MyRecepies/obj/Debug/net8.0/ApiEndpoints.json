@@ -132,6 +132,223 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MyRecipes.Web.API.Controllers.InstructionController",
+    "Method": "CreateInstruction",
+    "RelativePath": "api/Instruction/CreateInstruction",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "MyRecipes.Web.API.Models.Class.CreateInstructionModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.InstructionController",
+    "Method": "CreateInstructionList",
+    "RelativePath": "api/Instruction/CreateInstructionList",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "System.Collections.Generic.List\u00601[[MyRecipes.Web.API.Models.Class.CreateInstructionModel, MyRecipes.Web.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.InstructionController",
+    "Method": "DeleteInstructionById",
+    "RelativePath": "api/Instruction/DeleteInstructionById/{Id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.InstructionController",
+    "Method": "GetAllInstructionList",
+    "RelativePath": "api/Instruction/GetAllInstructionList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.InstructionController",
+    "Method": "GetInstructionById",
+    "RelativePath": "api/Instruction/GetInstructionById/{Id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.InstructionController",
+    "Method": "UpdateInstruction",
+    "RelativePath": "api/Instruction/UpdateInstruction",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "MyRecipes.Web.API.Models.Class.CreateInstructionModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.RecipeController",
+    "Method": "GetInstructionByRecipeId",
+    "RelativePath": "api/Recipe/{Id}/Instructions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.RecipeController",
+    "Method": "GetRecipeIngredientByRecipeId",
+    "RelativePath": "api/Recipe/{Id}/RecipeIngredient",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.RecipeController",
+    "Method": "CreateRecipe",
+    "RelativePath": "api/Recipe/CreateRecipe",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "MyRecipes.Web.API.Models.Class.Recipe.CreateRecipeModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.RecipeController",
+    "Method": "DeleteRecipe",
+    "RelativePath": "api/Recipe/DeleteRecipe/{Id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.RecipeController",
+    "Method": "GetAllRecipe",
+    "RelativePath": "api/Recipe/GetAllRecipe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.RecipeController",
+    "Method": "GetRecipeById",
+    "RelativePath": "api/Recipe/GetRecipeById/{Id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.RecipeController",
+    "Method": "GetRecipeByName",
+    "RelativePath": "api/Recipe/GetRecipeByName/{Name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.RecipeController",
+    "Method": "UpdateRecipe",
+    "RelativePath": "api/Recipe/UpdateRecipe/{Id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "MyRecipes.Web.API.Models.Class.Recipe.UpdateRecipeModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MyRecipes.Web.API.Controllers.RecipeIngredientController",
     "Method": "CreateRecipeIngredient",
     "RelativePath": "api/RecipeIngredient/CreateRecipeIngredient",

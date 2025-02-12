@@ -27,7 +27,7 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredie
             {
                 Domain.Entity.RecipeIngredient result = await _recipeIngredientRepository.GetAsync(request.Id);
                 return new GetRecipeIngredientByIdQueryResult(result.Id, result.IngredientId, result.Ingredient,
-                    result.Quantity, result.Unit /*result.RecipeId, result.Recipe*/);
+                    result.Quantity, result.Unit, result.RecipeId/*, result.Recipe*/);
             }
             catch (Exception ex)
             {

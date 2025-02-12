@@ -19,10 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Ingredient\Command\UpdateIngredient\" />
-    <Folder Include="Instruction\Command\" />
-    <Folder Include="Instruction\Query\" />
-    <Folder Include="Recipe\Command\" />
-    <Folder Include="Recipe\Query\" />
   </ItemGroup>
 
 </Project>

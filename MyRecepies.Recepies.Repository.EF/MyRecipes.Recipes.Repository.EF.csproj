@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyRecepies.Recepies.Domain\MyRecipes.Recipes.Domain.csproj" />
+    <ProjectReference Include="..\MyRecipes.Transverse\MyRecipes.Transverse.csproj" />
   </ItemGroup>
 
   <ItemGroup>

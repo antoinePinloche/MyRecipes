@@ -22,12 +22,6 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             await Context.SaveChangesAsync();
             return ingredientAdd.Entity;
         }
-
-        public override Task<Ingredient> AddRangeAsync(ICollection<Ingredient> entities)
-        {
-            throw new NotImplementedException();
-        }
-
         public override Ingredient FirstOrDefault(Func<Ingredient, bool> predicate)
         {
             throw new NotImplementedException();
@@ -89,6 +83,11 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
         {
             List<Ingredient>? ingredients = await Context.Ingredient.Where(i => i.FoodTypeId == foodTypeId).Include(e => e.FoodType).ToListAsync();
             return ingredients;
+        }
+
+        public override Task<Ingredient> AddRangeAsync(ICollection<Ingredient> entities)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -22,5 +22,10 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryIngredient
         public abstract Task CreateOrUpdateSchemaAsync();
         public abstract Task<bool> HasIngredient(string Name);
         public abstract Task<List<Ingredient>> GetAllIngredientsByFoodTypeId(Guid foodTypeId);
+
+        Task<ICollection<Instruction>> IRepository<Ingredient, Guid>.AddRangeAsync(ICollection<Ingredient> entities)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

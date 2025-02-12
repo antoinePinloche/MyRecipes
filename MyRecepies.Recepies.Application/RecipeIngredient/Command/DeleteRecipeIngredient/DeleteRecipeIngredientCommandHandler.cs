@@ -32,8 +32,7 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIng
                     Ingredient = recipeIngredientFound.Ingredient,
                     Quantity = recipeIngredientFound.Quantity,
                     Unit = recipeIngredientFound.Unit,
-                    //RecipeId = recipeIngredientFound.RecipeId,
-                    //Recipe = recipeIngredientFound.Recipe
+                    RecipeId = recipeIngredientFound.RecipeId
                 };
                 await _recipeIngredientRepository.RemoveAsync(recipeIngredientToDelete);
             }

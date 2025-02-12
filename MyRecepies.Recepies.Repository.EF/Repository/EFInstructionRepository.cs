@@ -17,9 +17,14 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             return entityAdd.Entity;
         }
 
-        public override Task<Instruction> AddRangeAsync(ICollection<Instruction> entities)
+        public async override Task<ICollection<Instruction>> AddRangeAsync(ICollection<Instruction> entities)
         {
-            throw new NotImplementedException();
+
+            foreach (var entity in entities)
+            {
+                await this.AddAsync(entity);
+            }
+            return entities;
         }
 
         public override async Task CreateOrUpdateSchemaAsync()
@@ -36,9 +41,9 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             throw new NotImplementedException();
         }
 
-        public override Task<ICollection<Instruction>> GetAllAsync()
+        public async override Task<ICollection<Instruction>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await Context.Instructions.ToListAsync();
         }
 
         public override Task<Instruction> GetAsync(Guid key)
@@ -47,29 +52,47 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             return entity;
         }
 
-        public override Task RemoveAsync(Instruction entitie)
+        public async override Task RemoveAsync(Instruction entitie)
         {
-            throw new NotImplementedException();
+            Context.Instructions.Remove(entitie);
+            await this.SaveAsync();
         }
 
-        public override Task RemoveRangeAsync(ICollection<Instruction> entities)
+        public async override Task RemoveRangeAsync(ICollection<Instruction> entities)
         {
-            throw new NotImplementedException();
+            foreach(var entity in entities)
+            {
+                await RemoveAsync(entity);
+            }
         }
 
-        public override Task SaveAsync()
+        public override async Task SaveAsync()
         {
-            throw new NotImplementedException();
+            await Context.SaveChangesAsync();
         }
 
-        public override Task UpdateAsync(Instruction entity)
+        public override async Task UpdateAsync(Instruction entity)
         {
-            throw new NotImplementedException();
+            var entityCheck = await Context.Instructions.FirstOrDefaultAsync(f => f.Id == entity.Id);
+            if (entityCheck is null)
+            {
+                throw new Exception();
+            }
+            Context.Update(entity);
+            await this.SaveAsync();
         }
 
-        public override Task UpdateRangeAsync(ICollection<Instruction> entities)
+        public async override Task UpdateRangeAsync(ICollection<Instruction> entities)
         {
-            throw new NotImplementedException();
+            foreach (var entity in entities)
+            {
+                await this.UpdateAsync(entity);
+            }
+        }
+
+        public async override Task<ICollection<Instruction>> GetAllInstructionByRecipeIdAsync(Guid Key)
+        {
+            return await Context.Instructions.Where(w => w.RecipeId == Key).ToListAsync();
         }
     }
 }
