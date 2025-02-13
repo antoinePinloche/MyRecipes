@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyRecipes.Recipes.Repository.EF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e8b60d592bc6942258e122590c76bd6bc709555")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3bc7649e96413d72d5025c222fd067eea9e9b531")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyRecipes.Recipes.Repository.EF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyRecipes.Recipes.Repository.EF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

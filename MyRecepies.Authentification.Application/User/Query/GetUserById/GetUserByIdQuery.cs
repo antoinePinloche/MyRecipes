@@ -11,7 +11,7 @@ namespace MyRecipes.Authentification.Application.User.Query.GetUserById
         public Guid Guid { get; set; }
         public GetUserByIdQuery(Guid id) 
         {
-            
+            Guid = id;
         }
     }
 }

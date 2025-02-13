@@ -13,11 +13,11 @@ using MyRecipes.Web.API.Models.Class.Ingredient;
 namespace MyRecipes.Web.API.Controllers
 {
     [ApiController]
-    public class InstructionController : ControllerBase
+    public class RecipeInstructionController : ControllerBase
     {
         private readonly ISender _sender;
 
-        public InstructionController(ISender mediator)
+        public RecipeInstructionController(ISender mediator)
         {
             _sender = mediator;
         }

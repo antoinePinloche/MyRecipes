@@ -20,7 +20,6 @@ namespace MyRecipes.web.Controllers
             _sender = mediator;
         }
 
-
         [HttpPut]
         [Route("api/[controller]/[action]")]
         public async Task<IActionResult> ModifyUser(CreateUserModel user)

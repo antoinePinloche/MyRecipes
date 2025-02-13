@@ -36,11 +36,10 @@ namespace MyRecipes.Authentification.Repository.EF
 
         public override async Task<User> GetAsync(Guid key)
         {
-            //User? result = await Context.Users.FirstOrDefaultAsync(f => f.Id == key);
-            //if (result is null)
-            //    return null;
-            //return result;
-            throw new NotImplementedException();
+            User? result = await Context.Users.FirstOrDefaultAsync(f => f.Id == key.ToString());
+            if (result is null)
+                return null;
+            return result;
         }
 
         public override async Task RemoveAsync(User entitie)
