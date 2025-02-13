@@ -8,6 +8,7 @@ using MyRecipes.Recipes.Application.FoodType.Query.GetAllFoodType;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTypeId;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
+using MyRecipes.Web.API.Mapper.FoodType;
 using MyRecipes.Web.API.Models.Class.FoodType;
 using System;
 
@@ -46,7 +47,7 @@ namespace MyRecipes.Web.API.Controllers
                 {
                     throw new WrongParameterException(nameof(CreateFoodType), nameof(CreateFoodTypeModel.Name), "Invalid name");
                 }
-                await _sender.Send(new CreateFoodTypeCommand(model.Name));
+                await _sender.Send(model.ToCreateFoodTypeCommand());
                 return Created();
             }
             catch (Exception ex)
@@ -70,7 +71,7 @@ namespace MyRecipes.Web.API.Controllers
                 {
                     return BadRequest("You can't Delete FoodType link to Ingredient(s). You need to delete them before.");
                 }
-                await _sender.Send(new DeleteFoodTypeByIdCommand(guid));
+                await _sender.Send(guid.ToDeleteFoodTypeByIdCommand());
                 return Ok();
             }
             catch (Exception ex)
@@ -92,7 +93,7 @@ namespace MyRecipes.Web.API.Controllers
                 }
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
-                await _sender.Send(new UpdateFoodTypeByIdCommand(guid, model.Name));
+                await _sender.Send(model.ToUpdateFoodTypeByIdCommand(guid));
                 return Ok();
             }
             catch (Exception ex)

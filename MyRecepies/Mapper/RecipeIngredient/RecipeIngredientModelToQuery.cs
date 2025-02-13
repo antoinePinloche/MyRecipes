@@ -1,6 +1,9 @@
-﻿namespace MyRecipes.Web.API.Mapper.RecipeIngredient
+﻿
+
+namespace MyRecipes.Web.API.Mapper.RecipeIngredient
 {
     public static class RecipeIngredientModelToQuery
     {
+
     }
 }

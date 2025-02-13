@@ -11,7 +11,11 @@ using MyRecipes.Recipes.Application.Recipe.Query.GetRecipeByName;
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetAllRecipeIngredient;
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredientByRecipeId;
 using MyRecipes.Transverse.Extension;
-using MyRecipes.Web.API.Models.Class.Recipe;
+using MyRecipes.Web.API.Mapper.Recipe;
+using MyRecipes.Web.API.Models.Class.Recipe.Model;
+using MyRecipes.Web.API.Mapper.RecipeIngredient;
+using MyRecipes.Web.API.Mapper.Instruction;
+
 
 namespace MyRecipes.Web.API.Controllers
 {
@@ -30,7 +34,8 @@ namespace MyRecipes.Web.API.Controllers
         {
             try
             {
-                return Ok(await _sender.Send(new GetAllRecipeQuery()));
+                var result = await _sender.Send(new GetAllRecipeQuery());
+                return Ok(result.ToRecipeResponse());
             }
             catch (Exception ex)
             {
@@ -47,7 +52,9 @@ namespace MyRecipes.Web.API.Controllers
                 {
                     return BadRequest("GetRecipeById : BadParameter" + Id);
                 }
-                return Ok(await _sender.Send(new GetRecipeByIdQuery(guid)));
+                var result = await _sender.Send(new GetRecipeByIdQuery(guid));
+                    
+                return Ok(result.ToRecipeResponse());
             }
             catch (Exception ex)
             {
@@ -64,7 +71,9 @@ namespace MyRecipes.Web.API.Controllers
                 {
                     return BadRequest("GetRecipeById : BadParameter" + Id);
                 }
-                return Ok(await _sender.Send(new GetRecipeIngredientByRecipeIdQuery(guid)));
+                List<GetRecipeIngredientByRecipeIdQueryResult> result = await _sender.Send(new GetRecipeIngredientByRecipeIdQuery(guid));
+                
+                return Ok(result.ToRecipeIngredientResponse());
             }
             catch (Exception ex)
             {
@@ -81,7 +90,8 @@ namespace MyRecipes.Web.API.Controllers
                 {
                     return BadRequest("GetRecipeById : BadParameter" + Id);
                 }
-                return Ok(await _sender.Send(new GetAllInstructionByRecipeIdQuery(guid)));
+                List<GetAllInstructionByRecipeIdQueryResult> result = await _sender.Send(new GetAllInstructionByRecipeIdQuery(guid));
+                return Ok(result.ToInstructionResponse());
             }
             catch (Exception ex)
             {
@@ -96,7 +106,8 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (Name.IsNullOrEmpty() && Name.Count() < 3)
                     throw new Exception();
-                return Ok(await _sender.Send(new GetRecipeByNameQuery(Name)));
+                var result = await _sender.Send(new GetRecipeByNameQuery(Name));
+                return Ok(result.ToRecipeResponse());
             }
             catch (Exception ex)
             {

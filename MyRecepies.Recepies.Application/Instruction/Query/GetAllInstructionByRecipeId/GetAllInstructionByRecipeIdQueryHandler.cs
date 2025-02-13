@@ -11,7 +11,7 @@ namespace MyRecipes.Recipes.Application.Instruction.Query.GetAllInstructionByRec
         public async Task<List<GetAllInstructionByRecipeIdQueryResult>> Handle(GetAllInstructionByRecipeIdQuery request, CancellationToken cancellationToken)
         {
             var entityFound = await _instructionRepository.GetAllInstructionByRecipeIdAsync(request.Id);
-            return entityFound.Select(s =>
+            return entityFound.OrderBy(ob => ob.Step).Select(s =>
                 new GetAllInstructionByRecipeIdQueryResult(
                     s.Id,
                     s.Step,

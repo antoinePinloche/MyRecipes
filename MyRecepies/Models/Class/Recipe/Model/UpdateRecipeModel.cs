@@ -1,6 +1,6 @@
 ﻿using MyRecipes.Recipes.Domain.Entity.Enum;
 
-namespace MyRecipes.Web.API.Models.Class.Recipe
+namespace MyRecipes.Web.API.Models.Class.Recipe.Model
 {
     public class UpdateRecipeModel
     {

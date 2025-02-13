@@ -51,7 +51,7 @@
     "Parameters": [
       {
         "Name": "ingredient",
-        "Type": "MyRecipes.Web.API.Models.Class.CreateIngredientModel",
+        "Type": "MyRecipes.Web.API.Models.Class.Ingredient.CreateIngredientModel",
         "IsRequired": true
       }
     ],
@@ -173,7 +173,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "MyRecipes.Web.API.Models.Class.Recipe.CreateRecipeModel",
+        "Type": "MyRecipes.Web.API.Models.Class.Recipe.Model.CreateRecipeModel",
         "IsRequired": true
       }
     ],
@@ -252,7 +252,7 @@
       },
       {
         "Name": "model",
-        "Type": "MyRecipes.Web.API.Models.Class.Recipe.UpdateRecipeModel",
+        "Type": "MyRecipes.Web.API.Models.Class.Recipe.Model.UpdateRecipeModel",
         "IsRequired": true
       }
     ],
@@ -347,7 +347,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "MyRecipes.Web.API.Models.Class.CreateInstructionModel",
+        "Type": "MyRecipes.Web.API.Models.Class.Instruction.CreateInstructionModel",
         "IsRequired": true
       }
     ],
@@ -363,7 +363,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "System.Collections.Generic.List\u00601[[MyRecipes.Web.API.Models.Class.CreateInstructionModel, MyRecipes.Web.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[MyRecipes.Web.API.Models.Class.Instruction.CreateInstructionModel, MyRecipes.Web.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       }
     ],
@@ -421,7 +421,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "MyRecipes.Web.API.Models.Class.CreateInstructionModel",
+        "Type": "MyRecipes.Web.API.Models.Class.Instruction.CreateInstructionModel",
         "IsRequired": true
       }
     ],

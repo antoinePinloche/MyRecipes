@@ -10,6 +10,5 @@ namespace MyRecipes.Recipes.Domain.Entity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        //public ICollection<Ingredient> Ingredients { get; set; }
     }
 }

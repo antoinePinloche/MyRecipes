@@ -11,4 +11,5 @@
             DisplayName = displayName;
             FoodTypeDisplayName = foodTypeDisplayName;
         }
+    }
 }
