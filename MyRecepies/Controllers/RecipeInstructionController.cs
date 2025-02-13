@@ -7,8 +7,8 @@ using MyRecipes.Recipes.Application.Instruction.Command.DeleteInstruction;
 using MyRecipes.Recipes.Application.Instruction.Query.GetAllInstruction;
 using MyRecipes.Recipes.Application.Instruction.Query.GetInstructionById;
 using MyRecipes.Transverse.Extension;
-using MyRecipes.Web.API.Models.Class;
 using MyRecipes.Web.API.Models.Class.Ingredient;
+using MyRecipes.Web.API.Models.Class.Instruction;
 
 namespace MyRecipes.Web.API.Controllers
 {

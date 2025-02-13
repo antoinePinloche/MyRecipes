@@ -1,6 +1,6 @@
 ﻿using MyRecipes.Recipes.Domain.Entity.Enum;
 
-namespace MyRecipes.Web.API.Models.Class
+namespace MyRecipes.Web.API.Models.Class.Ingredient
 {
     public class CreateIngredientModel
     {

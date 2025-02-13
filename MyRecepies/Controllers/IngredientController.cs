@@ -5,7 +5,6 @@ using MyRecipes.Recipes.Application.Ingredient.Command.CreateIngredient;
 using MyRecipes.Recipes.Application.Ingredient.Command.DeteleIngredient;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTypeId;
-using MyRecipes.Web.API.Models.Class;
 using MyRecipes.Web.API.Models.Class.Ingredient;
 
 namespace MyRecipes.web.Controllers

@@ -1,15 +1,15 @@
-﻿namespace MyRecipes.Web.API.Models.Class
+﻿using MyRecipes.Recipes.Domain.Entity;
+
+namespace MyRecipes.Web.API.Models.Class.Instruction
 {
-    public class CreateInstructionModel
+    public class UpdateInstructionModel
     {
-        public Guid? RecipeId { get; set; }
         public int Step { get; set; }
         public string StepName { get; set; } = string.Empty;
         public string StepInstruction { get; set; } = string.Empty;
 
-        public CreateInstructionModel(Guid? recipeId, int step, string stepName, string stepInstruction)
+        public UpdateInstructionModel(int step, string stepName, string stepInstruction)
         {
-            RecipeId = recipeId;
             Step = step;
             StepName = stepName;
             StepInstruction = stepInstruction;
