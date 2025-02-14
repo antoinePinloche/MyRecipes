@@ -15,6 +15,7 @@ using MyRecipes.Web.API.Mapper.Recipe;
 using MyRecipes.Web.API.Mapper.RecipeIngredient;
 using MyRecipes.Web.API.Mapper.Instruction;
 using MyRecipes.Web.API.Models.Class.Recipe;
+using MyRecipes.Transverse.Exception;
 
 
 namespace MyRecipes.Web.API.Controllers
@@ -93,9 +94,9 @@ namespace MyRecipes.Web.API.Controllers
                 List<GetAllInstructionByRecipeIdQueryResult> result = await _sender.Send(guid.ToAllInstructionByRecipeIdQuery());
                 return Ok(result.ToInstructionResponse());
             }
-            catch (Exception ex)
+            catch (InstructionNotFoundException ex)
             {
-                throw new Exception();
+                throw new InstructionNotFoundException(ex.Error, ex.Message);
             }
         }
 

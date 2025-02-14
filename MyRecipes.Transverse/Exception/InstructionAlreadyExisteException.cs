@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyRecipes.Transverse.Exception
 {
-    public class InstructionNotFoundException : ExceptionBase
+    public class InstructionAlreadyExisteException : ExceptionBase
     {
-        public InstructionNotFoundException(string error, string message) : base(error, message)
+        public InstructionAlreadyExisteException(string error, string message) : base(error, message)
         {
         }
     }

@@ -7,6 +7,7 @@ using MyRecipes.Transverse.Extension;
 using MyRecipes.Web.API.Models.Class.Instruction;
 using MyRecipes.Web.API.Mapper.Instruction;
 using MyRecipes.Web.API.Mapper.RecipeIngredient;
+using MyRecipes.Transverse.Exception;
 
 namespace MyRecipes.Web.API.Controllers
 {
@@ -36,8 +37,15 @@ namespace MyRecipes.Web.API.Controllers
             {
                 return BadRequest("GetInstructionById : BadParameter" + Id);
             }
-            var result = await _sender.Send(guid.ToInstructionByIdQuery());
-            return Ok(result.ToInstructionResponse());
+            try
+            {
+                var result = await _sender.Send(guid.ToInstructionByIdQuery());
+                return Ok(result.ToInstructionResponse());
+            }
+            catch (InstructionNotFoundException ex)
+            {
+                throw new InstructionNotFoundException(ex.Error, ex.Message);
+            }
         }
 
         [HttpPost]
@@ -74,8 +82,15 @@ namespace MyRecipes.Web.API.Controllers
             {
                 throw new Exception();
             }
-            await _sender.Send(model.ToCommand());
-            return Created();
+            try
+            {
+                await _sender.Send(model.ToCommand());
+                return Created();
+            }
+            catch (InstructionAlreadyExisteException ex)
+            {
+                throw new InstructionAlreadyExisteException(ex.Error, ex.Message);
+            }
         }
 
         [HttpPut]
@@ -96,8 +111,19 @@ namespace MyRecipes.Web.API.Controllers
             if (model.StepInstruction.IsNullOrEmpty())
             {
             }
-            await _sender.Send(model.ToCommand(guid));
-            return Created();
+            try
+            {
+                await _sender.Send(model.ToCommand(guid));
+                return Created();
+            }
+            catch (InstructionNotFoundException ex)
+            {
+                throw new InstructionNotFoundException(ex.Error, ex.Message);
+            }
+            catch (InstructionAlreadyExisteException ex)
+            {
+                throw new InstructionAlreadyExisteException(ex.Error, ex.Message);
+            }
         }
 
         [HttpDelete]
@@ -112,11 +138,10 @@ namespace MyRecipes.Web.API.Controllers
             {
                 await _sender.Send(guid.ToDeleteInstructionCommand());
             }
-            catch (Exception ex)
+            catch (InstructionNotFoundException ex)
             {
-                throw new Exception();
+                throw new InstructionNotFoundException(ex.Error, ex.Message);
             }
-            
             return Ok();
         }
     }

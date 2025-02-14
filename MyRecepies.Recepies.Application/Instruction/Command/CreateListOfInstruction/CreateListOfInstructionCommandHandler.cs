@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
+using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
@@ -34,9 +35,10 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruct
                         ICollection<Domain.Entity.Instruction> instructionList = await _instructionRepository.GetAllInstructionByRecipeIdAsync((Guid)elem.Key);
                         var intersect = elem.ToList().IntersectBy(instructionList.Select(s => s.Step),
                                                              ib => ib.Step);
+
                         if (intersect.Any())
                         {
-                            throw new Exception();
+                            throw new InstructionAlreadyExisteException("Can't Create instruction step already Exist", $"Instruction {string.Join(", ", intersect.Select(s => s.Step))} already Exist");
                         }
                     }
 
@@ -51,6 +53,10 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruct
                         StepInstruction = s.StepInstruction
                     }).ToList();
                 await _instructionRepository.AddRangeAsync(instructionsToAdd);
+            }
+            catch(InstructionAlreadyExisteException ex)
+            {
+                throw new InstructionAlreadyExisteException(ex.Error, ex.Message);
             }
             catch (Exception ex)
             {

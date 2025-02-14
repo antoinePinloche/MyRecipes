@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruction;
 using MyRecipes.Recipes.Domain.Entity;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
+using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction
                 var instructionRecipe = await _instructionRepository.GetAllInstructionByRecipeIdAsync((Guid)request.RecipeId);
                 if (instructionRecipe.Any(a => a.Step == request.Step))
                 {
-                    throw new Exception();
+                    throw new InstructionAlreadyExisteException("Can't Create instruction step already Exist", $"Instruction {request.Step} already Exist");
                 }
                 Domain.Entity.Instruction instructionToAdd = new()
                 {
@@ -51,9 +52,9 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction
                 };
                 await _instructionRepository.AddAsync(instructionToAdd);
             }
-            catch (Exception ex)
+            catch (InstructionAlreadyExisteException ex)
             {
-                throw new Exception();
+                throw new InstructionAlreadyExisteException(ex.Error, ex.Message);
             }
         }
     }

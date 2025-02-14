@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
+using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.Instruction.Query.GetAllInstructionByRecipeId
 {
@@ -11,6 +13,8 @@ namespace MyRecipes.Recipes.Application.Instruction.Query.GetAllInstructionByRec
         public async Task<List<GetAllInstructionByRecipeIdQueryResult>> Handle(GetAllInstructionByRecipeIdQuery request, CancellationToken cancellationToken)
         {
             var entityFound = await _instructionRepository.GetAllInstructionByRecipeIdAsync(request.Id);
+            if (entityFound.IsNullOrEmpty())
+                throw new InstructionNotFoundException("Invalide Key", $"Instruction for recipe {request.Id} not found");
             return entityFound.OrderBy(ob => ob.Step).Select(s =>
                 new GetAllInstructionByRecipeIdQueryResult(
                     s.Id,

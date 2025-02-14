@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
+using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
@@ -23,13 +24,14 @@ namespace MyRecipes.Recipes.Application.Instruction.Query.GetInstructionById
             try
             {
                 var entityFound = await _instructionRepository.GetAsync(request.Id);
+                if (entityFound is null)
+                    throw new InstructionNotFoundException("Invalide Key", $"Instruction for recipe {request.Id} not found");
                 return new GetInstructionByIdQueryResult(entityFound.Id, entityFound.Step, entityFound.StepName, entityFound.StepInstruction);
             }
-            catch (Exception ex)
+            catch (InstructionNotFoundException ex)
             {
-                throw new Exception();
+                throw new InstructionNotFoundException("Invalide Key", $"Instruction for recipe {request.Id} not found");
             }
-            throw new NotImplementedException();
         }
     }
 }

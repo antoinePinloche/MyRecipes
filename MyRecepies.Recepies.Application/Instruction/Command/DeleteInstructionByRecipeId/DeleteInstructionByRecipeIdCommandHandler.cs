@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
+using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.DeleteInstructionByR
             {
                 await _instructionRepository.RemoveRangeAsync(RecipeIngredientList);
             }
+            throw new InstructionNotFoundException("Invalide Key", $"Instructions for Recipe {request.Id} not found");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
+using MyRecipes.Transverse.Exception;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +20,14 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.DeleteInstruction
                 throw new Exception();
             var entity = await _instructionRepository.GetAsync(request.Id);
             if (entity is null)
-                throw new Exception();
+                throw new InstructionNotFoundException("Invalide Key", $"Instruction {request.Id} not found");
             try
             {
                 await _instructionRepository.RemoveAsync(entity);
             }
-            catch (Exception ex)
+            catch (InstructionNotFoundException ex)
             {
-                throw new Exception();
+                throw new InstructionNotFoundException("Invalide Key", $"Instruction {request.Id} not found");
             }
         }
     }

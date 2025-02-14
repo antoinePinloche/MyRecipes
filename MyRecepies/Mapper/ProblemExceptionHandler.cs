@@ -75,7 +75,41 @@ namespace MyRecipes.Web.API
             #endregion
 
             #region Instruction
+            if (exception is InstructionAlreadyExisteException instructionAlreadyExisteException)
+            {
+                var problemDetails = new ProblemDetails
+                {
+                    Status = StatusCodes.Status409Conflict,
+                    Title = problemException.Error,
+                    Detail = problemException.Message,
+                    Type = "Conflict"
+                };
+                httpContext.Response.StatusCode = StatusCodes.Status409Conflict;
+                return await _problemDetail.TryWriteAsync(
+                    new ProblemDetailsContext
+                    {
+                        HttpContext = httpContext,
+                        ProblemDetails = problemDetails
+                    });
+            }
 
+            if (exception is InstructionNotFoundException instructionNotFoundException)
+            {
+                var problemDetails = new ProblemDetails
+                {
+                    Status = StatusCodes.Status404NotFound,
+                    Title = problemException.Error,
+                    Detail = problemException.Message,
+                    Type = "NotFound"
+                };
+                httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                return await _problemDetail.TryWriteAsync(
+                    new ProblemDetailsContext
+                    {
+                        HttpContext = httpContext,
+                        ProblemDetails = problemDetails
+                    });
+            }
             #endregion
             return false;
         }
