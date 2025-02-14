@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyRecipes.Transverse.Exception
 {
-    public class RecipeIngredientNotFoundException : ExceptionBase
+    public class RecipeIngredientAlreadyExistException : ExceptionBase
     {
-        public RecipeIngredientNotFoundException(string error, string message) : base(error, message)
+        public RecipeIngredientAlreadyExistException(string error, string message) : base(error, message)
         {
         }
     }

@@ -106,7 +106,41 @@ namespace MyRecipes.Web.API
             #endregion
 
             #region RecipeIngredient
+            if (exception is RecipeIngredientAlreadyExistException recipeIngredientAlreadyExistException)
+            {
+                var problemDetails = new ProblemDetails
+                {
+                    Status = StatusCodes.Status409Conflict,
+                    Title = recipeIngredientAlreadyExistException.Error,
+                    Detail = recipeIngredientAlreadyExistException.Message,
+                    Type = "Conflict"
+                };
+                httpContext.Response.StatusCode = StatusCodes.Status409Conflict;
+                return await _problemDetail.TryWriteAsync(
+                    new ProblemDetailsContext
+                    {
+                        HttpContext = httpContext,
+                        ProblemDetails = problemDetails
+                    });
+            }
 
+            if (exception is RecipeIngredientNotFoundException recipeIngredientNotFoundException)
+            {
+                var problemDetails = new ProblemDetails
+                {
+                    Status = StatusCodes.Status404NotFound,
+                    Title = recipeIngredientNotFoundException.Error,
+                    Detail = recipeIngredientNotFoundException.Message,
+                    Type = "NotFound"
+                };
+                httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                return await _problemDetail.TryWriteAsync(
+                    new ProblemDetailsContext
+                    {
+                        HttpContext = httpContext,
+                        ProblemDetails = problemDetails
+                    });
+            }
             #endregion
 
             #region Instruction
