@@ -19,7 +19,7 @@ namespace MyRecipes.Web.API.Mapper.RecipeIngredient
             };
         }
 
-        public static Delete.DeleteRecipeIngredientCommand ToDeleteCommand(this Guid id)
+        public static Delete.DeleteRecipeIngredientCommand ToDeleteRecipeIngredientCommand(this Guid id)
         {
             return new Delete.DeleteRecipeIngredientCommand(id);
         }

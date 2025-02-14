@@ -13,7 +13,7 @@ namespace MyRecipes.Web.API.Mapper.Recipe
             return new Create.CreateRecipeCommand(model.Name, model.RecipyDifficulty, model.TimeToPrepareRecipe, model.NbGuest);
         }
 
-        public static Delete.DeleteRecipeCommand ToCommand(this Guid id)
+        public static Delete.DeleteRecipeCommand ToDeleteRecipeCommand(this Guid id)
         {
             return new Delete.DeleteRecipeCommand(id);
         }

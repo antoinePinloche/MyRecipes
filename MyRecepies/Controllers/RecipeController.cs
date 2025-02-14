@@ -71,7 +71,7 @@ namespace MyRecipes.Web.API.Controllers
                 {
                     return BadRequest("GetRecipeById : BadParameter" + Id);
                 }
-                List<GetRecipeIngredientByRecipeIdQueryResult> result = await _sender.Send(new GetRecipeIngredientByRecipeIdQuery(guid));
+                List<GetRecipeIngredientByRecipeIdQueryResult> result = await _sender.Send(guid.ToRecipeIngredientByRecipeIdQuery());
                 
                 return Ok(result.ToRecipeIngredientResponse());
             }

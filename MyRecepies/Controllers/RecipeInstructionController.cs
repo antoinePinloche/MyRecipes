@@ -35,7 +35,8 @@ namespace MyRecipes.Web.API.Controllers
             {
                 return BadRequest("GetInstructionById : BadParameter" + Id);
             }
-            return Ok(await _sender.Send(new GetInstructionByIdQuery(guid)));
+            
+            return Ok(await _sender.Send(guid.ToInstructionByIdQuery()));
         }
 
         [HttpPost]
@@ -108,8 +109,7 @@ namespace MyRecipes.Web.API.Controllers
             }
             try
             {
-                DeleteInstructionCommand cmd = guid.ToDeleteInstructionCommand();
-                await _sender.Send(new DeleteInstructionCommand(guid));
+                await _sender.Send(guid.ToDeleteInstructionCommand());
             }
             catch (Exception ex)
             {

@@ -11,7 +11,7 @@ namespace MyRecipes.Web.API.Mapper.Ingredient
             return new Create.CreateIngredientCommand(model.Name, model.IngredientCategoryId);
         }
 
-        public static Delete.DeleteIngredientCommand ToCommand(this Guid id)
+        public static Delete.DeleteIngredientCommand ToDeleteIngredientCommand(this Guid id)
         {
             return new Delete.DeleteIngredientCommand(id);
         }

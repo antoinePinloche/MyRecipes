@@ -37,7 +37,7 @@ namespace MyRecipes.Web.API.Controllers
             {
                 return BadRequest("DeleteUser : BadParameter" + Id);
             }
-            var res = await _sender.Send(new GetRecipeIngredientByIdQuery(guid));
+            var res = await _sender.Send(guid.ToRecipeIngredientByIdQuery());
             return Ok(res);
         }
 
@@ -74,7 +74,7 @@ namespace MyRecipes.Web.API.Controllers
             {
                 return BadRequest("DeleteRecipeIngredient : BadParameter" + Id);
             }
-            await _sender.Send(guid.ToDeleteCommand());
+            await _sender.Send(guid.ToDeleteRecipeIngredientCommand());
             return Ok();
         }
     }

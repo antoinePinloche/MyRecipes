@@ -21,6 +21,12 @@ x64/
 # build folder is nowadays used for build scripts and should not be ignored
 #build/
 
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.dll
+
 # NuGet Packages
 *.nupkg
 # The packages folder can be ignored because of Package Restore
@@ -65,11 +71,6 @@ ipch/
 *.sdf
 *.cachefile
 
-# Visual Studio profiler
-*.psess
-*.vsp
-*.vspx
-*.dll
 
 # Guidance Automation Toolkit
 *.gpState
