@@ -5,6 +5,7 @@ using MyRecipes.Recipes.Application.FoodType.Command.CreateFoodType;
 using MyRecipes.Recipes.Application.FoodType.Command.DeleteFoodTypeById;
 using MyRecipes.Recipes.Application.FoodType.Command.UpdateFoodTypeById;
 using MyRecipes.Recipes.Application.FoodType.Query.GetAllFoodType;
+using MyRecipes.Recipes.Application.FoodType.Query.GetFoodTypeById;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTypeId;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
@@ -28,15 +29,38 @@ namespace MyRecipes.Web.API.Controllers
 
         [HttpGet]
         [Route("/[action]")]
-        public async Task<IActionResult> GetAllFoodType()
+        public async Task<IResult> GetAllFoodType()
         {
             var res = await _sender.Send(new GetAllFoodTypeQuery());
-            return Ok(res);
+            return Results.Ok(res);
+        }
+
+        [HttpGet]
+        [Route("/[action]/{Id}")]
+        public async Task<IResult> GetFoodType(string Id)
+        {
+            if (!Guid.TryParse(Id, out Guid guid))
+            {
+                return Results.BadRequest("DeleteUser : BadParameter" + Id);
+            }
+            try
+            {
+                var res = await _sender.Send(new GetFoodTypeByIdQuery(guid));
+                if (res is null || res.FoodType is null)
+                    throw new FoodTypeNotFoundException("Not Found", $"FoodType with {Id} can't be found");
+                return Results.Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem();
+             //   throw new ExceptionBase("Internal Error", ex.Message);
+            }
+            
         }
 
         [HttpPost]
         [Route("/[action]")]
-        public async Task<IActionResult> CreateFoodType(CreateFoodTypeModel model)
+        public async Task<IResult> CreateFoodType(CreateFoodTypeModel model)
         {
             try
             {
@@ -49,11 +73,11 @@ namespace MyRecipes.Web.API.Controllers
                     throw new WrongParameterException(nameof(CreateFoodType), nameof(CreateFoodTypeModel.Name), "Invalid name");
                 }
                 await _sender.Send(model.ToCreateFoodTypeCommand());
-                return Created();
+                return Results.Created();
             }
-            catch (Exception ex)
+            catch (FoodTypeAlreadyExistException ex)
             {
-                return BadRequest(ex.Message);
+                throw new FoodTypeAlreadyExistException(ex.Error, ex.Message);
             }
         }
 
@@ -75,31 +99,39 @@ namespace MyRecipes.Web.API.Controllers
                 await _sender.Send(guid.ToDeleteFoodTypeByIdCommand());
                 return Ok();
             }
-            catch (Exception ex)
+            catch (FoodTypeNotFoundException ex)
             {
-                return NotFound(ex.Message);
+                throw new FoodTypeNotFoundException(ex.Error, ex.Message);
             }
         }
 
         [HttpPut]
         [Route("/[action]/{id}")]
-        public async Task<IActionResult> UpdateFoodType(UpdateFoodTypeModel model,string id)
+        public async Task<IResult> UpdateFoodType(UpdateFoodTypeModel model,string id)
         {
             Guid guid;
             try
             {
                 if (!Guid.TryParse(id, out guid))
                 {
-                    return BadRequest("DeleteUser : BadParameter" + id);
+                    return Results.BadRequest("DeleteUser : BadParameter" + id);
                 }
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
+                    return Results.BadRequest(ModelState);
                 await _sender.Send(model.ToUpdateFoodTypeByIdCommand(guid));
-                return Ok();
+                return Results.Ok();
+            }
+            catch (FoodTypeAlreadyExistException ex)
+            {
+                throw new FoodTypeAlreadyExistException(ex.Error, ex.Message);
+            }
+            catch (FoodTypeNotFoundException ex)
+            {
+                throw new FoodTypeNotFoundException(ex.Error, ex.Message);
             }
             catch (Exception ex)
             {
-                return NotFound(ex.Message);
+                return Results.Problem();
             }
         }
     }

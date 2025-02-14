@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
+using MyRecipes.Transverse.Exception;
 
 namespace MyRecipes.Recipes.Application.FoodType.Command.CreateFoodType
 {
@@ -19,12 +20,10 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.CreateFoodType
             try
             {
                 var entity = await _foodTypeRepository.AddAsync(entityToAdd);
-                if (entity is null)
-                    throw new Exception("FoodType Already Existe");
             }
-            catch (Exception ex)
+            catch (FoodTypeAlreadyExistException ex)
             {
-                throw new Exception(ex.Message);
+                throw;
             }
             
         }

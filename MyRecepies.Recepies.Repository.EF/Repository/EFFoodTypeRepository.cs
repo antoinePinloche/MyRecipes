@@ -2,6 +2,7 @@
 using MyRecipes.Recipes.Domain.Entity;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Recipes.Repository.EF.DbContext;
+using MyRecipes.Transverse.Exception;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             var entityCheck = await Context.FoodTypes.FirstOrDefaultAsync(w => w.Name.ToUpper() == entity.Name.ToUpper());
             if (entityCheck is not null)
             {
-                return null;
+                throw new FoodTypeAlreadyExistException("invalide creation", $"FoodType {entity.Name} already exist");
             }
             var entityAdd = await Context.FoodTypes.AddAsync(entity);
             await Context.SaveChangesAsync();

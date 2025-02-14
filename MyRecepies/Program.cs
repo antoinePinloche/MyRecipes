@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Http.Features;
 using MyRecipes.Authentification.Application.Extensions;
 using MyRecipes.Recipes.Application.Extensions;
+using MyRecipes.Transverse.Exception;
+using MyRecipes.Web.API;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -21,6 +24,23 @@ builder.Services.AddAuthentificationEx(connectionString);
 //Extension lié a l'application
 builder.Services.AddRecipesEx(connectionString);
 
+//Exception
+builder.Services.AddProblemDetails(options =>
+{
+    options.CustomizeProblemDetails = context =>
+    {
+        context.ProblemDetails.Instance =
+            $"{context.HttpContext.Request.Method} {context.HttpContext.Request.Path}";
+
+        context.ProblemDetails.Extensions.TryAdd("requestId", context.HttpContext.TraceIdentifier);
+
+        var activity = context.HttpContext.Features.Get<IHttpActivityFeature>()?.Activity;
+        context.ProblemDetails.Extensions.TryAdd("traceId", activity?.Id);
+    };
+});
+
+builder.Services.AddExceptionHandler<ProblemExceptionHandler>();
+
 WebApplication app = builder.Build();
 
 //Extension DB Auth
@@ -34,6 +54,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseExceptionHandler();
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

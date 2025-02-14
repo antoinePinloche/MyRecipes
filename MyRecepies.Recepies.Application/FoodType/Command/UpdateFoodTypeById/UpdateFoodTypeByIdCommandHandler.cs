@@ -21,11 +21,11 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.UpdateFoodTypeById
             var entity = await _foodTypeRepository.GetAsync(request.Id);
             if (entity == null)
             {
-                throw new Exception($"FoodType not found {request.Id}");
+                throw new FoodTypeNotFoundException("Not Found", $"FoodType with {request.Id} can't be found");
             }
             if (await _foodTypeRepository.FoodTypeByName(request.Name))
             {
-                throw new Exception($"FoodType Already Exist {request.Name}");
+                throw new FoodTypeAlreadyExistException("invalide creation", $"FoodType {entity.Name} already exist");
             }
             entity.Name = request.Name;
             await _foodTypeRepository.UpdateAsync(entity);

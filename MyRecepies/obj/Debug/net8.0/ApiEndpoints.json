@@ -173,7 +173,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "MyRecipes.Web.API.Models.Class.Recipe.Model.CreateRecipeModel",
+        "Type": "MyRecipes.Web.API.Models.Class.Recipe.CreateRecipeModel",
         "IsRequired": true
       }
     ],
@@ -252,7 +252,7 @@
       },
       {
         "Name": "model",
-        "Type": "MyRecipes.Web.API.Models.Class.Recipe.Model.UpdateRecipeModel",
+        "Type": "MyRecipes.Web.API.Models.Class.Recipe.UpdateRecipeModel",
         "IsRequired": true
       }
     ],
@@ -501,6 +501,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.FoodTypeController",
+    "Method": "GetFoodType",
+    "RelativePath": "GetFoodType/{Id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

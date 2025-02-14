@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Transverse.Exception;
 using System;
@@ -21,16 +22,14 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.DeleteFoodTypeById
             {
                 var entity = await _foodTypeRepository.GetAsync(request.Id);
                 if (entity is null)
-                {
-                    throw new Exception($"Not found FoodEntity with id {request.Id}");
-                }
+                    throw new FoodTypeNotFoundException("Invalide key", $"FoodType with id : {request.Id.ToString()} not found");
                 await _foodTypeRepository.RemoveAsync(entity);
             }
-            catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
 
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }
