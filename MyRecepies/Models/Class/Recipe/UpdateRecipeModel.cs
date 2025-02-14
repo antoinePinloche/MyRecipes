@@ -1,8 +1,8 @@
 ﻿using MyRecipes.Recipes.Domain.Entity.Enum;
 
-namespace MyRecipes.Web.API.Models.Class.Recipe.Model
+namespace MyRecipes.Web.API.Models.Class.Recipe
 {
-    public class CreateRecipeModel
+    public class UpdateRecipeModel
     {
         public string Name { get; set; } = string.Empty;
         public Difficulty RecipyDifficulty { get; set; }

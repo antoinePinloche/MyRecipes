@@ -24,7 +24,8 @@ namespace MyRecipes.Web.API.Controllers
         [Route("api/[controller]/[action]")]
         public async Task<IActionResult> GetAllInstructionList()
         {
-            return Ok(await _sender.Send(new GetAllInstructionQuery()));
+            var result = await _sender.Send(new GetAllInstructionQuery());
+            return Ok(result.ToInstructionResponse());
         }
 
         [HttpGet]
@@ -35,8 +36,8 @@ namespace MyRecipes.Web.API.Controllers
             {
                 return BadRequest("GetInstructionById : BadParameter" + Id);
             }
-            
-            return Ok(await _sender.Send(guid.ToInstructionByIdQuery()));
+            var result = await _sender.Send(guid.ToInstructionByIdQuery());
+            return Ok(result.ToInstructionResponse());
         }
 
         [HttpPost]

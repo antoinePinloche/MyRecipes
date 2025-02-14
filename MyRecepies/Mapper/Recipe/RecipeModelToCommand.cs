@@ -1,5 +1,5 @@
 ﻿using MyRecipes.Web.API.Models.Class.Ingredient;
-using MyRecipes.Web.API.Models.Class.Recipe.Model;
+using MyRecipes.Web.API.Models.Class.Recipe;
 using Create = MyRecipes.Recipes.Application.Recipe.Command.CreateRecipe;
 using Delete = MyRecipes.Recipes.Application.Recipe.Command.DeleteRecipe;
 using Update = MyRecipes.Recipes.Application.Recipe.Command.UpdateRecipe;

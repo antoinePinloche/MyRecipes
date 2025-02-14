@@ -12,9 +12,9 @@ using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetAllRecipeIngredien
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredientByRecipeId;
 using MyRecipes.Transverse.Extension;
 using MyRecipes.Web.API.Mapper.Recipe;
-using MyRecipes.Web.API.Models.Class.Recipe.Model;
 using MyRecipes.Web.API.Mapper.RecipeIngredient;
 using MyRecipes.Web.API.Mapper.Instruction;
+using MyRecipes.Web.API.Models.Class.Recipe;
 
 
 namespace MyRecipes.Web.API.Controllers
@@ -90,7 +90,7 @@ namespace MyRecipes.Web.API.Controllers
                 {
                     return BadRequest("GetRecipeById : BadParameter" + Id);
                 }
-                List<GetAllInstructionByRecipeIdQueryResult> result = await _sender.Send(new GetAllInstructionByRecipeIdQuery(guid));
+                List<GetAllInstructionByRecipeIdQueryResult> result = await _sender.Send(guid.ToAllInstructionByRecipeIdQuery());
                 return Ok(result.ToInstructionResponse());
             }
             catch (Exception ex)
@@ -164,7 +164,7 @@ namespace MyRecipes.Web.API.Controllers
             }
             try
             {
-                await _sender.Send(guid.ToCommand());
+                await _sender.Send(guid.ToDeleteRecipeCommand());
                 return Ok();
             }
             catch (Exception ex)

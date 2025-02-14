@@ -27,7 +27,7 @@ namespace MyRecipes.Web.API.Controllers
         public async Task<IActionResult> GetAllRecipeIngredient()
         {
             var res = await _sender.Send(new GetAllRecipeIngredientQuery());
-            return Ok(res);
+            return Ok(res.ToRecipeIngredientResponse());
         }
 
         [HttpGet("api/[controller]/[action]/{Id}")]
@@ -38,7 +38,7 @@ namespace MyRecipes.Web.API.Controllers
                 return BadRequest("DeleteUser : BadParameter" + Id);
             }
             var res = await _sender.Send(guid.ToRecipeIngredientByIdQuery());
-            return Ok(res);
+            return Ok(res.ToRecipeIngredientResponse());
         }
 
         [HttpPost("api/[controller]/[action]")]

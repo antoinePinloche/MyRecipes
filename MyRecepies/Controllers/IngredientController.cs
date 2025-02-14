@@ -75,7 +75,7 @@ namespace MyRecipes.web.Controllers
                 {
                     return BadRequest("DeleteUser : BadParameter" + id);
                 }
-                await _sender.Send(guid.ToCommand());
+                await _sender.Send(guid.ToDeleteIngredientCommand());
                 return Ok();
             }
             catch (Exception ex)
