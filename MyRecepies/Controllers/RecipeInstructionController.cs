@@ -1,15 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient;
-using MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction;
-using MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruction;
 using MyRecipes.Recipes.Application.Instruction.Command.DeleteInstruction;
 using MyRecipes.Recipes.Application.Instruction.Query.GetAllInstruction;
 using MyRecipes.Recipes.Application.Instruction.Query.GetInstructionById;
 using MyRecipes.Transverse.Extension;
-using MyRecipes.Web.API.Models.Class.Ingredient;
 using MyRecipes.Web.API.Models.Class.Instruction;
-using MyRecipes.Web.API.Models.Class.RecipeIngredient;
+using MyRecipes.Web.API.Mapper.Instruction;
+using MyRecipes.Web.API.Mapper.RecipeIngredient;
 
 namespace MyRecipes.Web.API.Controllers
 {
@@ -59,7 +56,7 @@ namespace MyRecipes.Web.API.Controllers
             if (model.StepInstruction.IsNullOrEmpty())
             {
             }
-            await _sender.Send(new CreateInstructionCommand(model.RecipeId, model.Step, model.StepName, model.StepInstruction));
+            await _sender.Send(model.ToCommand());
             return Created();
         }
 
@@ -75,30 +72,19 @@ namespace MyRecipes.Web.API.Controllers
             {
                 throw new Exception();
             }
-
-            CreateListOfInstructionCommand command  = new CreateListOfInstructionCommand(
-                model.Select(s =>
-                    new CreateListOfInstructionCommand.Instruction(
-                            s.RecipeId,
-                            s.Step,
-                            s.StepName,
-                            s.StepInstruction
-                            )
-                    ).ToList());
-
-            await _sender.Send(command);
+            await _sender.Send(model.ToCommand());
             return Created();
         }
 
         [HttpPut]
-        [Route("api/[controller]/[action]")]
-        public async Task<IActionResult> UpdateInstruction(UpdateRecipeIngredientModel model)
+        [Route("api/[controller]/[action]/{Id}")]
+        public async Task<IActionResult> UpdateInstruction(UpdateInstructionModel model, string Id)
         {
-            if (!ModelState.IsValid)
+            if (!Guid.TryParse(Id, out Guid guid))
             {
-                throw new Exception();
+                return BadRequest("GetInstructionById : BadParameter" + Id);
             }
-            if (model.RecipeId.IsNullOrEmpty())
+            if (!ModelState.IsValid)
             {
                 throw new Exception();
             }
@@ -108,7 +94,7 @@ namespace MyRecipes.Web.API.Controllers
             if (model.StepInstruction.IsNullOrEmpty())
             {
             }
-            await _sender.Send(new CreateInstructionCommand(model.RecipeId, model.Step, model.StepName, model.StepInstruction));
+            await _sender.Send(model.ToCommand(guid));
             return Created();
         }
 
@@ -122,6 +108,7 @@ namespace MyRecipes.Web.API.Controllers
             }
             try
             {
+                DeleteInstructionCommand cmd = guid.ToDeleteInstructionCommand();
                 await _sender.Send(new DeleteInstructionCommand(guid));
             }
             catch (Exception ex)

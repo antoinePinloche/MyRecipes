@@ -25,7 +25,7 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruct
                 StepInstruction = stepInstruction;
             }
         }
-
+        public CreateListOfInstructionCommand() { }
         public CreateListOfInstructionCommand(List<Instruction> instructions) => Instructions = instructions;
     }
 }
