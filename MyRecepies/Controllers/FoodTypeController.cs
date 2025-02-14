@@ -9,6 +9,7 @@ using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTypeId;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 using MyRecipes.Web.API.Mapper.FoodType;
+using MyRecipes.Web.API.Mapper.Ingredient;
 using MyRecipes.Web.API.Models.Class.FoodType;
 using System;
 
@@ -66,7 +67,7 @@ namespace MyRecipes.Web.API.Controllers
                 {
                     return BadRequest("DeleteUser : BadParameter" + id);
                 }
-                var ingredientList = await _sender.Send(new GetIngredientsByFoodTypeIdQuery(guid));
+                var ingredientList = await _sender.Send(guid.FoodTypeToQuery());
                 if (ingredientList.Ingredients.Any())
                 {
                     return BadRequest("You can't Delete FoodType link to Ingredient(s). You need to delete them before.");

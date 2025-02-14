@@ -4,7 +4,7 @@ using RecipeIngredientQuery = MyRecipes.Recipes.Application.RecipeIngredient.Que
 
 namespace MyRecipes.Web.API.Mapper.RecipeIngredient
 {
-    public static class QueryResultToRecipeIngredientResponse
+    public static class HandlerResultToRecipeIngredientResponse
     {
         public static List<RecipeIngredientResponse> ToRecipeIngredientResponse(this List<RecipeIngredientQuery.GetRecipeIngredientByRecipeId.GetRecipeIngredientByRecipeIdQueryResult> recipeIngredient)
         {
@@ -12,7 +12,7 @@ namespace MyRecipes.Web.API.Mapper.RecipeIngredient
                 new RecipeIngredientResponse()
                 {
                     Id = i.Id,
-                    Ingredient = new IngredientResponse(i.Ingredient?.Name, i.Ingredient?.FoodType.Name), //i.Ingredient
+                    Ingredient = new IngredientResponse(i.Ingredient.Id , i.Ingredient?.Name, i.Ingredient?.FoodType.Name),
                     Quantity = i.Quantity,
                     Unit = i.Unit
                 }

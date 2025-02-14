@@ -1,10 +1,9 @@
-﻿using Azure;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using MyRecipes.Recipes.Application.Ingredient.Command.CreateIngredient;
-using MyRecipes.Recipes.Application.Ingredient.Command.DeteleIngredient;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient;
+using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientById;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTypeId;
+using MyRecipes.Web.API.Mapper.Ingredient;
 using MyRecipes.Web.API.Models.Class.Ingredient;
 
 namespace MyRecipes.web.Controllers
@@ -24,20 +23,27 @@ namespace MyRecipes.web.Controllers
         [Route("api/[controller]/[action]")]
         public async Task<IActionResult> GetIngredientList()
         {
-            var result = await _sender.Send(new GetAllIngredientQuery());
-            GetAllIngredientResponse response = new GetAllIngredientResponse();
-            foreach (var item in result.ingredients)
-            {
-                response.Ingredients.Add(new GetAllIngredientResponse.Ingredient(item.Id, item.Name, item.FoodType.Name));
-            }
-            return Ok(response);
+            List<GetAllIngredientQueryResult> result = await _sender.Send(new GetAllIngredientQuery());
+            return Ok(result.ToIngredientResponse());
         }
 
         [HttpGet]
-        [Route("api/[controller]/[action]/{Guid}")]
-        public async Task<IActionResult> GetIngredient(string guid)
+        [Route("api/[controller]/[action]/{Id}")]
+        public async Task<IActionResult> GetIngredient(string Id)
         {
-            return Ok();
+            try
+            {
+                if (!Guid.TryParse(Id, out Guid guid))
+                {
+                    return BadRequest("DeleteUser : BadParameter" + Id);
+                }
+                GetIngredientByIdQueryResult result = await _sender.Send(guid.ToQuery());
+                return Ok(result.ToIngredientResponse());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet]
@@ -50,13 +56,8 @@ namespace MyRecipes.web.Controllers
                 {
                     return BadRequest("DeleteUser : BadParameter" + Id);
                 }
-                var result = await _sender.Send(new GetIngredientsByFoodTypeIdQuery(guid));
-                GetAllIngredientResponse response = new GetAllIngredientResponse();
-                foreach (var item in result.Ingredients)
-                {
-                    response.Ingredients.Add(new GetAllIngredientResponse.Ingredient(item.Id, item.Name, item.FoodTypeName));
-                }
-                return Ok(response);
+                List<GetIngredientsByFoodTypeIdQueryResult> result = await _sender.Send(guid.FoodTypeToQuery());
+                return Ok(result.ToIngredientResponse());
             }
             catch (Exception ex)
             {
@@ -74,13 +75,13 @@ namespace MyRecipes.web.Controllers
                 {
                     return BadRequest("DeleteUser : BadParameter" + id);
                 }
-                await _sender.Send(new DeleteIngredientCommand(guid));
+                await _sender.Send(guid.ToCommand());
+                return Ok();
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-            return Ok();
         }
 
         [HttpPut]
@@ -98,7 +99,7 @@ namespace MyRecipes.web.Controllers
                 return BadRequest(ModelState);
             try
             {
-                await _sender.Send(new CreateIngredientCommand(ingredient.Name, ingredient.IngredientCategoryId));
+                await _sender.Send(ingredient.ToCommand());
             }
             catch(Exception ex)
             {

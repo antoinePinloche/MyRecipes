@@ -2,11 +2,12 @@
 {
     public class IngredientResponse
     {
+        public Guid Id { get; set; }
         public string DisplayName { get; set; } = string.Empty;
         public string FoodTypeDisplayName { get; set; } = string.Empty;
 
         public IngredientResponse() { }
-        public IngredientResponse(string displayName, string foodTypeDisplayName)
+        public IngredientResponse(Guid id, string displayName, string foodTypeDisplayName)
         {
             DisplayName = displayName;
             FoodTypeDisplayName = foodTypeDisplayName;

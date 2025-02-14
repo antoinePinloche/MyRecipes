@@ -52,7 +52,7 @@ namespace MyRecipes.Web.API.Controllers
                 {
                     return BadRequest("GetRecipeById : BadParameter" + Id);
                 }
-                var result = await _sender.Send(new GetRecipeByIdQuery(guid));
+                var result = await _sender.Send(guid.ToRecipeByIdQuery());
                     
                 return Ok(result.ToRecipeResponse());
             }
@@ -106,7 +106,7 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (Name.IsNullOrEmpty() && Name.Count() < 3)
                     throw new Exception();
-                var result = await _sender.Send(new GetRecipeByNameQuery(Name));
+                var result = await _sender.Send(Name.ToRecipeByNameQuery());
                 return Ok(result.ToRecipeResponse());
             }
             catch (Exception ex)
@@ -124,7 +124,7 @@ namespace MyRecipes.Web.API.Controllers
             }
             try
             {
-                await _sender.Send(new CreateRecipeCommand(model.Name, model.RecipyDifficulty, model.TimeToPrepareRecipe, model.NbGuest));
+                await _sender.Send(model.ToCommand());
                 return Created();
             }
             catch (Exception ex)
@@ -146,7 +146,7 @@ namespace MyRecipes.Web.API.Controllers
             }
             try
             {
-                await _sender.Send(new UpdateRecipeCommand(guid, model.Name, model.RecipyDifficulty, model.TimeToPrepareRecipe, model.NbGuest));
+                await _sender.Send(model.ToCommand(guid));
                 return Ok();
             }
             catch (Exception ex)
@@ -164,7 +164,7 @@ namespace MyRecipes.Web.API.Controllers
             }
             try
             {
-                await _sender.Send(new DeleteRecipeCommand(guid));
+                await _sender.Send(guid.ToCommand());
                 return Ok();
             }
             catch (Exception ex)

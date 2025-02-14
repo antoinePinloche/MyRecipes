@@ -19,8 +19,9 @@ namespace MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientById
             Domain.Entity.Ingredient ingredient = await _ingredienRepository.GetAsync(request.Id);
             return new GetIngredientByIdQueryResult()
             {
-                FoodTypeName = "ingredient.FoodType.Name",
-                IngredientFound = new GetIngredientByIdQueryResult.Ingredient(ingredient.Id, ingredient.Name, "ingredient.FoodType.Name")
+                Id = request.Id,
+                FoodTypeName = ingredient.FoodType.Name,
+                Name = ingredient.Name,
             };
         }
     }

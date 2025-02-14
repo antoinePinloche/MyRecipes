@@ -2,7 +2,7 @@
 
 namespace MyRecipes.Web.API.Mapper.Recipe
 {
-    public static class QueryResultToRecipeResponse
+    public static class HandlerResultToRecipeResponse
     {
         public static DetailRecipeResponse ToRecipeResponse(this MyRecipes.Recipes.Application.Recipe.Query.GetRecipeById.GetRecipeByIdQueryResult recipe)
         {

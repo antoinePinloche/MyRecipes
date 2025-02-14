@@ -10,23 +10,29 @@ using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient
 {
-    public class GetAllIngredientQueryhandler : IRequestHandler<GetAllIngredientQuery, GetAllIngredientQueryResult>
+    public class GetAllIngredientQueryhandler : IRequestHandler<GetAllIngredientQuery, List<GetAllIngredientQueryResult>>
     {
         private readonly IIngredientRepository _ingredienRepository;
         public GetAllIngredientQueryhandler(IIngredientRepository ingredienRepository) => _ingredienRepository = ingredienRepository;
 
-        public async Task<GetAllIngredientQueryResult> Handle(GetAllIngredientQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetAllIngredientQueryResult>> Handle(GetAllIngredientQuery request, CancellationToken cancellationToken)
         {
             List<Domain.Entity.Ingredient> result = new List<Domain.Entity.Ingredient>();
             var entities = await _ingredienRepository.GetAllAsync();
             if (entities is not null)
             {
-                foreach (var entity in entities)
-                {
-                    result.Add((Domain.Entity.Ingredient)entity);
-                }
+                entities.Select(e =>
+                    new GetAllIngredientQueryResult()
+                    {
+                        Id = e.Id,
+                        Name = e.Name,
+                        FoodType = e.FoodType,
+                        FoodTypeId = e.FoodTypeId,
+                    }
+
+                ).ToList();
             }
-            return new GetAllIngredientQueryResult(result);
+            return null;
         }
     }
 }

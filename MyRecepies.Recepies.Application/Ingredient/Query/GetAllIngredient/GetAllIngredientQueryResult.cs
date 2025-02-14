@@ -9,11 +9,14 @@ namespace MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient
 {
     public class GetAllIngredientQueryResult
     {
-        public List<Domain.Entity.Ingredient> ingredients {  get; set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public FoodType FoodTypeInformation { get; set; }
 
-        public GetAllIngredientQueryResult(List<Domain.Entity.Ingredient> ingredients)
+        public class FoodType
         {
-            this.ingredients = ingredients;
+            public Guid Id { get; set; }
+            public string Name { get; set; }
         }
     }
 }

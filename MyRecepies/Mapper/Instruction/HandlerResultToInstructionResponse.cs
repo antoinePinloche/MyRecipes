@@ -3,7 +3,7 @@ using InstructionQuery = MyRecipes.Recipes.Application.Instruction.Query;
 
 namespace MyRecipes.Web.API.Mapper.Instruction
 {
-    public static class QueryResultToInstructionResponse
+    public static class HandlerResultToInstructionResponse
     {
         public static List<InstructionResponse> ToInstructionResponse(this List<InstructionQuery.GetAllInstructionByRecipeId.GetAllInstructionByRecipeIdQueryResult> ingredientRecipes)
         {

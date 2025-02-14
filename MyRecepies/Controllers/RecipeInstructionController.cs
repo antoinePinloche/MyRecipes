@@ -9,6 +9,7 @@ using MyRecipes.Recipes.Application.Instruction.Query.GetInstructionById;
 using MyRecipes.Transverse.Extension;
 using MyRecipes.Web.API.Models.Class.Ingredient;
 using MyRecipes.Web.API.Models.Class.Instruction;
+using MyRecipes.Web.API.Models.Class.RecipeIngredient;
 
 namespace MyRecipes.Web.API.Controllers
 {
@@ -91,7 +92,7 @@ namespace MyRecipes.Web.API.Controllers
 
         [HttpPut]
         [Route("api/[controller]/[action]")]
-        public async Task<IActionResult> UpdateInstruction(CreateInstructionModel model)
+        public async Task<IActionResult> UpdateInstruction(UpdateRecipeIngredientModel model)
         {
             if (!ModelState.IsValid)
             {

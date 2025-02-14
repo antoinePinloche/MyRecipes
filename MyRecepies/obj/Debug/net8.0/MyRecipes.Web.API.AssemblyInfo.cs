@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyRecipes.Web.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+36b08de42217dfa3a92c60d52c6e6e88214ef621")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d472152224998437bbfe8d3c0e6cf266957482e")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyRecipes.Web.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyRecipes.Web.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

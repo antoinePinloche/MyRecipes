@@ -7,6 +7,7 @@ using MyRecipes.Recipes.Application.RecipeIngredient.Command.UpdateRecipeIngredi
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetAllRecipeIngredient;
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredientById;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.Web.API.Mapper.RecipeIngredient;
 using MyRecipes.Web.API.Models.Class.RecipeIngredient;
 using System;
 
@@ -47,12 +48,12 @@ namespace MyRecipes.Web.API.Controllers
             {
                 throw new Exception("Bad parameter");
             }
-            await _sender.Send(new CreateRecipeIngredientCommand() { IngredientId = model.IngredientId, Quantity = model.Quantity, RecipeId = model.RecipeId, Unit = model.Unit }); 
+            await _sender.Send(model.ToCommand()); 
             return Ok();
         }
 
         [HttpPut("api/[controller]/[action]/{Id}")]
-        public async Task<IActionResult> UpdateRecipeIngredient(string Id, CreateRecipeIngredientModel model)
+        public async Task<IActionResult> UpdateRecipeIngredient(string Id, UpdateRecipeIngredientModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -62,7 +63,7 @@ namespace MyRecipes.Web.API.Controllers
             {
                 return BadRequest("UpdateRecipeIngredient : BadParameter" + Id);
             }
-            await _sender.Send(new UpdateRecipeIngredientCommand(guid, model.IngredientId, model.Quantity, model.Unit, model.RecipeId));
+            await _sender.Send(model.ToCommand(guid));
             return Ok();
         }
 
@@ -73,7 +74,7 @@ namespace MyRecipes.Web.API.Controllers
             {
                 return BadRequest("DeleteRecipeIngredient : BadParameter" + Id);
             }
-            await _sender.Send(new DeleteRecipeIngredientCommand(guid));
+            await _sender.Send(guid.ToDeleteCommand());
             return Ok();
         }
     }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient
 {
-    public class GetAllIngredientQuery : IRequest<GetAllIngredientQueryResult>
+    public class GetAllIngredientQuery : IRequest<List<GetAllIngredientQueryResult>>
     {
         public GetAllIngredientQuery() { }
     }
