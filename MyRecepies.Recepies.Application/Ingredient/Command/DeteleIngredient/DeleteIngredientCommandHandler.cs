@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
+using MyRecipes.Transverse.Exception;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace MyRecipes.Recipes.Application.Ingredient.Command.DeteleIngredient
             var ingredient = await _ingredientRepository.GetAsync(request.Id);
             if (ingredient is null)
             {
-                throw new Exception($"Ingredient not found {request.Id}");
+                throw new IngredientNotFoundException("NotFound", $"Ingredient not found {request.Id}");
             }
             await _ingredientRepository.RemoveAsync(ingredient);
         }

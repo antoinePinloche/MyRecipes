@@ -2,6 +2,7 @@
 using MyRecipes.Recipes.Domain.Entity;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Recipes.Repository.EF.DbContext;
+using MyRecipes.Transverse.Exception;
 
 namespace MyRecipes.Recipes.Repository.EF.Repository
 {
@@ -34,7 +35,7 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
 
         public override async Task<Ingredient> GetAsync(Guid key)
         {
-            return await Context.Ingredient.FirstOrDefaultAsync(i => i.Id == key);
+            return await Context.Ingredient.Include(i => i.FoodType).FirstOrDefaultAsync(i => i.Id == key);
         }
 
         public override async Task RemoveAsync(Ingredient entitie)
@@ -71,12 +72,10 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             }
         }
 
-        public async override Task<bool> HasIngredient(string Name)
+        public async override Task<Ingredient> HasIngredient(string Name)
         {
-            Ingredient? entityfound = await Context.Ingredient.FirstOrDefaultAsync(f => f.Name == Name);
-            if (entityfound is null)
-                return false;
-            return true;
+            Ingredient? entityfound = await Context.Ingredient.Include(i => i.FoodType).FirstOrDefaultAsync(f => f.Name == Name);
+            return entityfound;
         }
 
         public override async Task<List<Ingredient>> GetAllIngredientsByFoodTypeId(Guid foodTypeId)

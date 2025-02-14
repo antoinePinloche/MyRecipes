@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientById;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTypeId;
+using MyRecipes.Transverse.Exception;
 using MyRecipes.Web.API.Mapper.Ingredient;
 using MyRecipes.Web.API.Models.Class.Ingredient;
 
@@ -40,6 +41,10 @@ namespace MyRecipes.web.Controllers
                 GetIngredientByIdQueryResult result = await _sender.Send(guid.ToQuery());
                 return Ok(result.ToIngredientResponse());
             }
+            catch(IngredientNotFoundException ex)
+            {
+                throw new IngredientNotFoundException(ex.Error, ex.Message);
+            }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
@@ -59,6 +64,10 @@ namespace MyRecipes.web.Controllers
                 List<GetIngredientsByFoodTypeIdQueryResult> result = await _sender.Send(guid.FoodTypeToQuery());
                 return Ok(result.ToIngredientResponse());
             }
+            catch (IngredientNotFoundException ex)
+            {
+                throw new IngredientAlreadyExistException(ex.Error, ex.Message);
+            }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
@@ -77,6 +86,10 @@ namespace MyRecipes.web.Controllers
                 }
                 await _sender.Send(guid.ToDeleteIngredientCommand());
                 return Ok();
+            }
+            catch (IngredientNotFoundException ex)
+            {
+                throw new IngredientNotFoundException(ex.Error, ex.Message);
             }
             catch (Exception ex)
             {
@@ -101,7 +114,11 @@ namespace MyRecipes.web.Controllers
             {
                 await _sender.Send(ingredient.ToCommand());
             }
-            catch(Exception ex)
+            catch (IngredientAlreadyExistException ex)
+            {
+                throw new IngredientAlreadyExistException(ex.Error, ex.Message);
+            }
+            catch (Exception ex)
             {
                 throw new Exception("");
             }

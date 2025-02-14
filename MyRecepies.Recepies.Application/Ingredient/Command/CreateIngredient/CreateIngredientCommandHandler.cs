@@ -21,12 +21,21 @@ namespace MyRecipes.Recipes.Application.Ingredient.Command.CreateIngredient
             {
                 throw new Exception(/*nameof(CreateIngredientCommandHandler), nameof(request.Name), */"wrong parameter");
             }
-            if (await _ingredientRepository.HasIngredient(request.Name))
+            try
             {
-                throw new Exception("Ingredient already Exist");
+                var entity = await _ingredientRepository.HasIngredient(request.Name);
+                if (entity is not null)
+                {
+                    throw new IngredientAlreadyExistException("Conflict", $"Ingredient with Name {request.Name} already exist");
+                }
+                Domain.Entity.Ingredient ingredient = new Domain.Entity.Ingredient() { Id = Guid.NewGuid(), FoodTypeId = request.FoodTypeId, Name = request.Name };
+                await _ingredientRepository.AddAsync(ingredient);
             }
-            Domain.Entity.Ingredient ingredient = new Domain.Entity.Ingredient() {Id = Guid.NewGuid(), FoodTypeId = request.FoodTypeId, Name = request.Name};
-            await _ingredientRepository.AddAsync(ingredient);
+            catch (IngredientAlreadyExistException ex)
+            {
+                throw new IngredientAlreadyExistException(ex.Error, ex.Message);
+            }
+
         }
     }
 }
