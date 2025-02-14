@@ -76,13 +76,13 @@
   {
     "ContainingType": "MyRecipes.web.Controllers.IngredientController",
     "Method": "GetIngredient",
-    "RelativePath": "api/Ingredient/api/Ingredient/GetIngredient/{Guid}",
+    "RelativePath": "api/Ingredient/api/Ingredient/GetIngredient/{Id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "guid",
+        "Name": "Id",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -331,7 +331,7 @@
       },
       {
         "Name": "model",
-        "Type": "MyRecipes.Web.API.Models.Class.RecipeIngredient.CreateRecipeIngredientModel",
+        "Type": "MyRecipes.Web.API.Models.Class.RecipeIngredient.UpdateRecipeIngredientModel",
         "IsRequired": true
       }
     ],
@@ -414,14 +414,19 @@
   {
     "ContainingType": "MyRecipes.Web.API.Controllers.RecipeInstructionController",
     "Method": "UpdateInstruction",
-    "RelativePath": "api/RecipeInstruction/UpdateInstruction",
+    "RelativePath": "api/RecipeInstruction/UpdateInstruction/{Id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "model",
-        "Type": "MyRecipes.Web.API.Models.Class.Instruction.CreateInstructionModel",
+        "Type": "MyRecipes.Web.API.Models.Class.Instruction.UpdateInstructionModel",
+        "IsRequired": true
+      },
+      {
+        "Name": "Id",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

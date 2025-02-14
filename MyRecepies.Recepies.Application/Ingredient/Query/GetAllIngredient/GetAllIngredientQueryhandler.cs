@@ -21,18 +21,21 @@ namespace MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient
             var entities = await _ingredienRepository.GetAllAsync();
             if (entities is not null)
             {
-                entities.Select(e =>
+                return entities.Select(e =>
                     new GetAllIngredientQueryResult()
                     {
                         Id = e.Id,
                         Name = e.Name,
-                        FoodType = e.FoodType,
-                        FoodTypeId = e.FoodTypeId,
+                        FoodTypeInformation = new GetAllIngredientQueryResult.FoodType()
+                        {
+                            Id = e.FoodType.Id,
+                            Name = e.FoodType.Name
+                        }
                     }
 
                 ).ToList();
             }
-            return null;
+            return new List<GetAllIngredientQueryResult>();
         }
     }
 }

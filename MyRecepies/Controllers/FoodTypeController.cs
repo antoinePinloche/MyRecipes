@@ -68,7 +68,7 @@ namespace MyRecipes.Web.API.Controllers
                     return BadRequest("DeleteUser : BadParameter" + id);
                 }
                 var ingredientList = await _sender.Send(guid.FoodTypeToQuery());
-                if (ingredientList.Ingredients.Any())
+                if (ingredientList.Any())
                 {
                     return BadRequest("You can't Delete FoodType link to Ingredient(s). You need to delete them before.");
                 }

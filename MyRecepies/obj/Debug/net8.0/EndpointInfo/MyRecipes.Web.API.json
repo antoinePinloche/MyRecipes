@@ -188,14 +188,14 @@
         }
       }
     },
-    "/api/Ingredient/api/Ingredient/GetIngredient/{Guid}": {
+    "/api/Ingredient/api/Ingredient/GetIngredient/{Id}": {
       "get": {
         "tags": [
           "Ingredient"
         ],
         "parameters": [
           {
-            "name": "guid",
+            "name": "Id",
             "in": "path",
             "required": true,
             "schema": {
@@ -755,17 +755,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateRecipeIngredientModel"
+                "$ref": "#/components/schemas/UpdateRecipeIngredientModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateRecipeIngredientModel"
+                "$ref": "#/components/schemas/UpdateRecipeIngredientModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateRecipeIngredientModel"
+                "$ref": "#/components/schemas/UpdateRecipeIngredientModel"
               }
             }
           }
@@ -904,26 +904,36 @@
         }
       }
     },
-    "/api/RecipeInstruction/UpdateInstruction": {
+    "/api/RecipeInstruction/UpdateInstruction/{Id}": {
       "put": {
         "tags": [
           "RecipeInstruction"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateInstructionModel"
+                "$ref": "#/components/schemas/UpdateInstructionModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateInstructionModel"
+                "$ref": "#/components/schemas/UpdateInstructionModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateInstructionModel"
+                "$ref": "#/components/schemas/UpdateInstructionModel"
               }
             }
           }
@@ -1257,6 +1267,46 @@
           "name": {
             "minLength": 1,
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateInstructionModel": {
+        "type": "object",
+        "properties": {
+          "step": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stepName": {
+            "type": "string",
+            "nullable": true
+          },
+          "stepInstruction": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateRecipeIngredientModel": {
+        "type": "object",
+        "properties": {
+          "ingredientId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "quantity": {
+            "type": "number",
+            "format": "double"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/UnitOfMeasure"
+          },
+          "recipeId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
           }
         },
         "additionalProperties": false

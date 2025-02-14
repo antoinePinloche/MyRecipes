@@ -25,7 +25,7 @@ namespace MyRecipes.Web.API.Mapper.Instruction
                 ).ToList());
         }
 
-        public static Delete.DeleteInstructionCommand ToDeleteCommand(this Guid id)
+        public static Delete.DeleteInstructionCommand ToDeleteInstructionCommand(this Guid id)
         {
             return new Delete.DeleteInstructionCommand(id);
         }
