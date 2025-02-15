@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
+using MyRecipes.Transverse.Exception;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +27,14 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredie
             try
             {
                 Domain.Entity.RecipeIngredient result = await _recipeIngredientRepository.GetAsync(request.Id);
+                if (result is null)
+                    throw new RecipeIngredientNotFoundException("NotFound", $"RecipeIngredient not found with Id {request.Id}");
                 return new GetRecipeIngredientByIdQueryResult(result.Id, result.IngredientId, result.Ingredient,
-                    result.Quantity, result.Unit, result.RecipeId/*, result.Recipe*/);
+                    result.Quantity, result.Unit, result.RecipeId);
             }
-            catch (Exception ex)
+            catch (RecipeIngredientNotFoundException ex)
             {
-                throw new NotImplementedException();
+                throw new RecipeIngredientNotFoundException(ex.Error, ex.Message);
             }
 
         }

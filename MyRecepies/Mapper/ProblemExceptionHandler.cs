@@ -103,6 +103,41 @@ namespace MyRecipes.Web.API
             #endregion
 
             #region Recipe
+            if (exception is RecipeAlreadyExistException recipeAlreadyExistException)
+            {
+                var problemDetails = new ProblemDetails
+                {
+                    Status = StatusCodes.Status409Conflict,
+                    Title = recipeAlreadyExistException.Error,
+                    Detail = recipeAlreadyExistException.Message,
+                    Type = "Conflict"
+                };
+                httpContext.Response.StatusCode = StatusCodes.Status409Conflict;
+                return await _problemDetail.TryWriteAsync(
+                    new ProblemDetailsContext
+                    {
+                        HttpContext = httpContext,
+                        ProblemDetails = problemDetails
+                    });
+            }
+
+            if (exception is RecipeNotFoundException recipeNotFoundException)
+            {
+                var problemDetails = new ProblemDetails
+                {
+                    Status = StatusCodes.Status404NotFound,
+                    Title = recipeNotFoundException.Error,
+                    Detail = recipeNotFoundException.Message,
+                    Type = "NotFound"
+                };
+                httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                return await _problemDetail.TryWriteAsync(
+                    new ProblemDetailsContext
+                    {
+                        HttpContext = httpContext,
+                        ProblemDetails = problemDetails
+                    });
+            }
             #endregion
 
             #region RecipeIngredient
@@ -149,8 +184,8 @@ namespace MyRecipes.Web.API
                 var problemDetails = new ProblemDetails
                 {
                     Status = StatusCodes.Status409Conflict,
-                    Title = problemException.Error,
-                    Detail = problemException.Message,
+                    Title = instructionAlreadyExisteException.Error,
+                    Detail = instructionAlreadyExisteException.Message,
                     Type = "Conflict"
                 };
                 httpContext.Response.StatusCode = StatusCodes.Status409Conflict;
@@ -167,8 +202,8 @@ namespace MyRecipes.Web.API
                 var problemDetails = new ProblemDetails
                 {
                     Status = StatusCodes.Status404NotFound,
-                    Title = problemException.Error,
-                    Detail = problemException.Message,
+                    Title = instructionNotFoundException.Error,
+                    Detail = instructionNotFoundException.Message,
                     Type = "NotFound"
                 };
                 httpContext.Response.StatusCode = StatusCodes.Status404NotFound;

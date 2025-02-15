@@ -37,19 +37,38 @@ namespace MyRecipes.Web.API.Controllers
             {
                 return BadRequest("DeleteUser : BadParameter" + Id);
             }
-            var res = await _sender.Send(guid.ToRecipeIngredientByIdQuery());
-            return Ok(res.ToRecipeIngredientResponse());
+            try
+            {
+                var res = await _sender.Send(guid.ToRecipeIngredientByIdQuery());
+                return Ok(res.ToRecipeIngredientResponse());
+            }
+            catch (RecipeIngredientNotFoundException ex)
+            {
+                throw new RecipeIngredientNotFoundException(ex.Error, ex.Message);
+            }
         }
 
         [HttpPost("api/[controller]/[action]")]
-        public async Task<IActionResult> CreateRecipeIngredient(CreateRecipeIngredientModel model)
+        public async Task<IResult> CreateRecipeIngredient(CreateRecipeIngredientModel model)
         {
             if (!ModelState.IsValid)
             {
                 throw new Exception("Bad parameter");
             }
-            await _sender.Send(model.ToCommand()); 
-            return Ok();
+            try
+            {
+                await _sender.Send(model.ToCommand());
+                return Results.Created();
+            }
+            catch (IngredientNotFoundException ex)
+            {
+                throw new IngredientNotFoundException(ex.Error, ex.Message);
+            }
+            catch (RecipeIngredientAlreadyExistException ex)
+            {
+                throw new RecipeIngredientAlreadyExistException(ex.Error, ex.Message);
+            }
+
         }
 
         [HttpPut("api/[controller]/[action]/{Id}")]
@@ -63,8 +82,16 @@ namespace MyRecipes.Web.API.Controllers
             {
                 return BadRequest("UpdateRecipeIngredient : BadParameter" + Id);
             }
-            await _sender.Send(model.ToCommand(guid));
-            return Ok();
+
+            try 
+            {
+                await _sender.Send(model.ToCommand(guid));
+                return Ok();
+            }
+            catch (RecipeIngredientNotFoundException ex)
+            {
+                throw new RecipeIngredientNotFoundException(ex.Error, ex.Message);
+            }
         }
 
         [HttpDelete("api/[controller]/[action]/{Id}")]
@@ -74,8 +101,16 @@ namespace MyRecipes.Web.API.Controllers
             {
                 return BadRequest("DeleteRecipeIngredient : BadParameter" + Id);
             }
-            await _sender.Send(guid.ToDeleteRecipeIngredientCommand());
-            return Ok();
+            try
+            {
+                await _sender.Send(guid.ToDeleteRecipeIngredientCommand());
+                return Ok();
+            }
+            catch (RecipeIngredientNotFoundException ex)
+            {
+                throw new RecipeIngredientNotFoundException(ex.Error, ex.Message);
+            }
+            
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyRecipes.Transverse.Exception;
 
 namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIngredient
 {
@@ -22,10 +23,14 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIng
         }
         public async Task Handle(DeleteRecipeIngredientCommand request, CancellationToken cancellationToken)
         {
-            var recipeIngredientFound = await _sender.Send(new GetRecipeIngredientByIdQuery(request.Id));
-            if (recipeIngredientFound is not null)
+            try
             {
-                Domain.Entity.RecipeIngredient recipeIngredientToDelete = new ()
+                var recipeIngredientFound = await _sender.Send(new GetRecipeIngredientByIdQuery(request.Id));
+                if (recipeIngredientFound is null)
+                {
+                    throw new RecipeIngredientNotFoundException("NotFound", $"RecipeIngredient not found with Id {request.Id}");
+                }
+                Domain.Entity.RecipeIngredient recipeIngredientToDelete = new()
                 {
                     Id = recipeIngredientFound.Id,
                     IngredientId = recipeIngredientFound.IngredientId,
@@ -35,6 +40,10 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIng
                     RecipeId = recipeIngredientFound.RecipeId
                 };
                 await _recipeIngredientRepository.RemoveAsync(recipeIngredientToDelete);
+            }
+            catch (RecipeIngredientNotFoundException ex)
+            {
+                throw new RecipeIngredientNotFoundException(ex.Error, ex.Message);
             }
         }
     }

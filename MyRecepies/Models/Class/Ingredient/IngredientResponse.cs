@@ -9,6 +9,7 @@
         public IngredientResponse() { }
         public IngredientResponse(Guid id, string displayName, string foodTypeDisplayName)
         {
+            Id = id;
             DisplayName = displayName;
             FoodTypeDisplayName = foodTypeDisplayName;
         }

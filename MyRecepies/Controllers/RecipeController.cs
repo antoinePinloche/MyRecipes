@@ -76,6 +76,10 @@ namespace MyRecipes.Web.API.Controllers
                 
                 return Ok(result.ToRecipeIngredientResponse());
             }
+            catch (RecipeIngredientNotFoundException ex)
+            {
+                throw new RecipeIngredientNotFoundException(ex.Error, ex.Message);
+            }
             catch (Exception ex)
             {
                 throw new Exception();

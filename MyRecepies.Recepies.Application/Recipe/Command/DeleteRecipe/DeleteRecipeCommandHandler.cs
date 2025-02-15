@@ -38,10 +38,16 @@ namespace MyRecipes.Recipes.Application.Recipe.Command.DeleteRecipe
                 throw new Exception();
             }
 
-            await _sender.Send(new DeleteRecipeIngredientByRecipeIdCommand(request.Id));
-            await _sender.Send(new DeleteInstructionByRecipeIdCommand(request.Id));
-            recipeFound.Ingredients = null;
-            recipeFound.Instructions = null;
+            if (recipeFound.Ingredients.Any())
+            {
+                await _sender.Send(new DeleteRecipeIngredientByRecipeIdCommand(request.Id));
+                recipeFound.Ingredients = null;
+            }
+            if (recipeFound.Instructions.Any())
+            { 
+                await _sender.Send(new DeleteInstructionByRecipeIdCommand(request.Id));
+                recipeFound.Instructions = null;
+            }
             await _recipeRepository.RemoveAsync(recipeFound);
         }
     }
