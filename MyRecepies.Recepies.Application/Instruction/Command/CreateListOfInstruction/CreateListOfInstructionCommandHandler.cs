@@ -17,13 +17,9 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruct
 
         public async Task Handle(CreateListOfInstructionCommand request, CancellationToken cancellationToken)
         {
-            if (request is null)
-            {
-                throw new Exception();
-            }
             if (request.Instructions.IsNullOrEmpty())
             {
-                throw new Exception();
+                throw new WrongParameterException("Invalide parameter", "Instructions is invalide");
             }
             try
             {

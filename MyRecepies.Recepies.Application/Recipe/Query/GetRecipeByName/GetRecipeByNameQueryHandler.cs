@@ -2,6 +2,7 @@
 using MyRecipes.Recipes.Application.Recipe.Query.GetAllRecipe;
 using MyRecipes.Recipes.Application.Recipe.Query.GetRecipeById;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
+using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
@@ -19,13 +20,15 @@ namespace MyRecipes.Recipes.Application.Recipe.Query.GetRecipeByName
 
         public async Task<List<GetRecipeByNameQueryResult>> Handle(GetRecipeByNameQuery request, CancellationToken cancellationToken)
         {
-            if (request is null)
-                throw new Exception();
             if (request.Name.IsNullOrEmpty())
-                throw new Exception();
+                throw new WrongParameterException("Invalide parameter", "Name is invalide");
             try
             {
                 ICollection<Domain.Entity.Recipe> recipes = await _recipeRepository.GetByNameAsync(request.Name);
+                if (recipes.IsNullOrEmpty())
+                {
+                    throw new RecipeNotFoundException("invalide key", $"Recipe(s) not found Name contain {request.Name}");
+                }
                 var listToReturn = recipes.Select(s => new GetRecipeByNameQueryResult(
                         s.Id,
                         s.Name,
@@ -39,10 +42,8 @@ namespace MyRecipes.Recipes.Application.Recipe.Query.GetRecipeByName
             }
             catch (Exception ex)
             {
-                throw new Exception();
+                throw;
             }
-            
-            throw new NotImplementedException();
         }
     }
 }

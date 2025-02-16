@@ -17,10 +17,10 @@ namespace MyRecipes.Recipes.Application.Instruction.Query.GetInstructionById
 
         public async Task<GetInstructionByIdQueryResult> Handle(GetInstructionByIdQuery request, CancellationToken cancellationToken)
         {
-            if (request is null)
-                throw new Exception();
             if (request.Id.IsEmpty())
-                throw new Exception();
+            {
+                throw new WrongParameterException("Invalide parameter", "Id is invalide");
+            }
             try
             {
                 var entityFound = await _instructionRepository.GetAsync(request.Id);
@@ -28,9 +28,9 @@ namespace MyRecipes.Recipes.Application.Instruction.Query.GetInstructionById
                     throw new InstructionNotFoundException("Invalide Key", $"Instruction for recipe {request.Id} not found");
                 return new GetInstructionByIdQueryResult(entityFound.Id, entityFound.Step, entityFound.StepName, entityFound.StepInstruction);
             }
-            catch (InstructionNotFoundException ex)
+            catch (Exception ex)
             {
-                throw new InstructionNotFoundException("Invalide Key", $"Instruction for recipe {request.Id} not found");
+                throw;
             }
         }
     }

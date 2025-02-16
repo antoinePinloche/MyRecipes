@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,14 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.UpdateFoodTypeById
 
         public async Task Handle(UpdateFoodTypeByIdCommand request, CancellationToken cancellationToken)
         {
+            if (request.Id.IsEmpty())
+            {
+                throw new WrongParameterException("Invalide parameter", "Id is invalide");
+            }
+            if (request.Name.IsNullOrEmpty())
+            {
+                throw new WrongParameterException("Invalide parameter", "Name is invalide");
+            }
             var entity = await _foodTypeRepository.GetAsync(request.Id);
             if (entity == null)
             {

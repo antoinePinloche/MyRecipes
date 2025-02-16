@@ -2,6 +2,7 @@
 using MyRecipes.Recipes.Application.Instruction.Command.DeleteInstructionByRecipeId;
 using MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIngredientByRecipeId;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
+using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
@@ -24,31 +25,35 @@ namespace MyRecipes.Recipes.Application.Recipe.Command.DeleteRecipe
 
         public async Task Handle(DeleteRecipeCommand request, CancellationToken cancellationToken)
         {
-            if (request is null)
-            {
-                throw new ArgumentNullException(nameof(request));
-            }
             if (request.Id.IsEmpty())
             {
-                throw new Exception();
+                throw new WrongParameterException("Invalide parameter", "Id is invalide");
             }
             Domain.Entity.Recipe recipeFound = await _recipeRepository.GetAsync(request.Id);
             if (recipeFound is null)
             {
-                throw new Exception();
+                throw new RecipeNotFoundException("invalide key", $"Recipe with Id {request.Id} not found");
             }
 
-            if (recipeFound.Ingredients.Any())
+            try
             {
-                await _sender.Send(new DeleteRecipeIngredientByRecipeIdCommand(request.Id));
-                recipeFound.Ingredients = null;
+                if (recipeFound.Ingredients.Any())
+                {
+                    await _sender.Send(new DeleteRecipeIngredientByRecipeIdCommand(request.Id));
+                    recipeFound.Ingredients = null;
+                }
+                if (recipeFound.Instructions.Any())
+                {
+                    await _sender.Send(new DeleteInstructionByRecipeIdCommand(request.Id));
+                    recipeFound.Instructions = null;
+                }
+                await _recipeRepository.RemoveAsync(recipeFound);
             }
-            if (recipeFound.Instructions.Any())
-            { 
-                await _sender.Send(new DeleteInstructionByRecipeIdCommand(request.Id));
-                recipeFound.Instructions = null;
+            catch (Exception ex)
+            {
+                throw;
             }
-            await _recipeRepository.RemoveAsync(recipeFound);
+
         }
     }
 }

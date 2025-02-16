@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,10 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.DeleteFoodTypeById
         {
             try
             {
+                if (request.Id.IsEmpty())
+                {
+                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                }
                 var entity = await _foodTypeRepository.GetAsync(request.Id);
                 if (entity is null)
                     throw new FoodTypeNotFoundException("Invalide key", $"FoodType with id : {request.Id.ToString()} not found");

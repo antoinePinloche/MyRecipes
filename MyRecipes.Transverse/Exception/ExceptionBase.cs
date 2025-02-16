@@ -12,11 +12,6 @@ namespace MyRecipes.Transverse.Exception
         public string Error {  get; set; }
         public string Message {  get; set; }
 
-        //public ExceptionBase(string method, string sourcePath, string message) :
-        //    base($"{Path.GetFileNameWithoutExtension(sourcePath)}.{method} : {message}")
-        //{
-        //}
-
         public ExceptionBase(string error, string message) : base(message)
         {
             Error = error;

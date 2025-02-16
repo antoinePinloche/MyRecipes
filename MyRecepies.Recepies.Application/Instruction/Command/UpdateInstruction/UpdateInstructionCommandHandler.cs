@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,18 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.UpdateInstruction
 
         public async Task Handle(UpdateInstructionCommand request, CancellationToken cancellationToken)
         {
+            if (request.Id.IsEmpty())
+            {
+                throw new WrongParameterException("Invalide parameter", "Id is invalide");
+            }
+            if (request.StepInstruction.IsNullOrEmpty())
+            {
+                throw new WrongParameterException("Invalide parameter", "StepInstruction is invalide");
+            }
+            if (request.StepName.IsNullOrEmpty())
+            {
+                throw new WrongParameterException("Invalide parameter", "StepName is invalide");
+            }
             var entityFound = await _instructionRepository.GetAsync(request.Id);
             if (entityFound is null)
             {

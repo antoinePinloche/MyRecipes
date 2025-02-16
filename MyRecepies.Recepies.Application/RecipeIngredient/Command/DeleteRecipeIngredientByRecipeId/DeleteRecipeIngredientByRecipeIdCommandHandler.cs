@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
+using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIngredientByRecipeId
@@ -14,13 +15,9 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIng
 
         public async Task Handle(DeleteRecipeIngredientByRecipeIdCommand request, CancellationToken cancellationToken)
         {
-            if (request is null)
-            {
-                throw new ArgumentNullException(nameof(request));
-            }
             if (request.Id.IsEmpty())
             {
-                throw new Exception();
+                throw new WrongParameterException("Invalide parameter", "Id is invalide");
             }
             var RecipeIngredientList = await _recipeIngredientRepository.GetAllRecipeIngredientByRecipeIdlAsync(request.Id);
 

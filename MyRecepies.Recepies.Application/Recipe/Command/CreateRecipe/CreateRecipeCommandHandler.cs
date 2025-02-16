@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Azure.Core;
+using MyRecipes.Transverse.Exception;
 
 namespace MyRecipes.Recipes.Application.Recipe.Command.CreateRecipe
 {
@@ -21,13 +22,9 @@ namespace MyRecipes.Recipes.Application.Recipe.Command.CreateRecipe
 
         public async Task Handle(CreateRecipeCommand request, CancellationToken cancellationToken)
         {
-            if (request is null)
-            {
-                throw new Exception();
-            }
             if (request.Name.IsNullOrEmpty())
             {
-                throw new Exception();
+                throw new WrongParameterException("Invalide parameter", "Name is invalide");
             }
             Domain.Entity.Recipe entityToAdd = new()
             {

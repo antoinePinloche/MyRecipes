@@ -2,6 +2,7 @@
 using MyRecipes.Recipes.Application.FoodType.Query.GetAllFoodType;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +20,14 @@ namespace MyRecipes.Recipes.Application.FoodType.Query.GetFoodTypeById
         {
             try
             {
+                if (request.Id.IsEmpty())
+                {
+                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                }
                 var result = await _foodTypeRepository.GetAsync(request.Id);
                 return new GetFoodTypeByIdQueryResult(result);
             }
-            catch (FoodTypeNotFoundException ex)
+            catch (Exception ex)
             {
                 throw;
             }

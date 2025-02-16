@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIngredient
 {
@@ -23,6 +24,10 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIng
         }
         public async Task Handle(DeleteRecipeIngredientCommand request, CancellationToken cancellationToken)
         {
+            if (request.Id.IsEmpty())
+            {
+                throw new WrongParameterException("Invalide parameter", "Id is invalide");
+            }
             try
             {
                 var recipeIngredientFound = await _sender.Send(new GetRecipeIngredientByIdQuery(request.Id));
@@ -41,9 +46,9 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIng
                 };
                 await _recipeIngredientRepository.RemoveAsync(recipeIngredientToDelete);
             }
-            catch (RecipeIngredientNotFoundException ex)
+            catch (Exception ex)
             {
-                throw new RecipeIngredientNotFoundException(ex.Error, ex.Message);
+                throw ;
             }
         }
     }

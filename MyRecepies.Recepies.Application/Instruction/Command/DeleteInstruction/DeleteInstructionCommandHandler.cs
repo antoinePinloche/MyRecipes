@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,10 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.DeleteInstruction
 
         public async Task Handle(DeleteInstructionCommand request, CancellationToken cancellationToken)
         {
-            if (request is null)
-                throw new Exception();
+            if (request.Id.IsEmpty())
+            {
+                throw new WrongParameterException("Invalide parameter", "Id is invalide");
+            }
             var entity = await _instructionRepository.GetAsync(request.Id);
             if (entity is null)
                 throw new InstructionNotFoundException("Invalide Key", $"Instruction {request.Id} not found");
@@ -25,9 +28,9 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.DeleteInstruction
             {
                 await _instructionRepository.RemoveAsync(entity);
             }
-            catch (InstructionNotFoundException ex)
+            catch (Exception ex)
             {
-                throw new InstructionNotFoundException("Invalide Key", $"Instruction {request.Id} not found");
+                throw ;
             }
         }
     }

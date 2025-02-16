@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.Ingredient.Command.CreateIngredient
 {
@@ -13,13 +14,13 @@ namespace MyRecipes.Recipes.Application.Ingredient.Command.CreateIngredient
 
         public async Task Handle(CreateIngredientCommand request, CancellationToken cancellationToken)
         {
-            if (request is null)
-            {
-                throw new Exception(/*nameof(CreateIngredientCommandHandler), nameof(request),*/ "wrong parameter");
-            }
             if (request.Name.IsNullOrEmpty())
             {
-                throw new Exception(/*nameof(CreateIngredientCommandHandler), nameof(request.Name), */"wrong parameter");
+                throw new WrongParameterException("Invalide parameter", "Name is invalide");
+            }
+            if (request.FoodTypeId.IsEmpty())
+            {
+                throw new WrongParameterException("Invalide parameter", "FoodTypeId is invalide");
             }
             try
             {
@@ -31,9 +32,9 @@ namespace MyRecipes.Recipes.Application.Ingredient.Command.CreateIngredient
                 Domain.Entity.Ingredient ingredient = new Domain.Entity.Ingredient() { Id = Guid.NewGuid(), FoodTypeId = request.FoodTypeId, Name = request.Name };
                 await _ingredientRepository.AddAsync(ingredient);
             }
-            catch (IngredientAlreadyExistException ex)
+            catch (Exception ex)
             {
-                throw new IngredientAlreadyExistException(ex.Error, ex.Message);
+                throw;
             }
 
         }

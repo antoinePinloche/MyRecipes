@@ -215,6 +215,26 @@ namespace MyRecipes.Web.API
                     });
             }
             #endregion
+
+            #region
+            if (exception is WrongParameterException wrongParameterException)
+            {
+                var problemDetails = new ProblemDetails
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                    Title = wrongParameterException.Error,
+                    Detail = wrongParameterException.Message,
+                    Type = "Conflict"
+                };
+                httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+                return await _problemDetail.TryWriteAsync(
+                    new ProblemDetailsContext
+                    {
+                        HttpContext = httpContext,
+                        ProblemDetails = problemDetails
+                    });
+            }
+            #endregion
             return false;
         }
     }

@@ -22,7 +22,7 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredie
         {
             if (request.Id == Guid.Empty)
             {
-                throw new ArgumentException(request.Id.ToString());
+                throw new WrongParameterException("Invalide parameter", "Id is invalide");
             }
             try
             {
@@ -32,9 +32,9 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredie
                 return new GetRecipeIngredientByIdQueryResult(result.Id, result.IngredientId, result.Ingredient,
                     result.Quantity, result.Unit, result.RecipeId);
             }
-            catch (RecipeIngredientNotFoundException ex)
+            catch (Exception ex)
             {
-                throw new RecipeIngredientNotFoundException(ex.Error, ex.Message);
+                throw ;
             }
 
         }

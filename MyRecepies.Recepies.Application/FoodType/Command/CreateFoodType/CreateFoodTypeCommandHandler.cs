@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.FoodType.Command.CreateFoodType
 {
@@ -12,6 +13,10 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.CreateFoodType
 
         public async Task Handle(CreateFoodTypeCommand request, CancellationToken cancellationToken)
         {
+            if (request.Name.IsNullOrEmpty())
+            {
+                throw new WrongParameterException("Invalide parameter", "Name is invalide");
+            }
             Domain.Entity.FoodType entityToAdd = new Domain.Entity.FoodType()
             {
                 Id = Guid.NewGuid(),
@@ -21,7 +26,7 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.CreateFoodType
             {
                 var entity = await _foodTypeRepository.AddAsync(entityToAdd);
             }
-            catch (FoodTypeAlreadyExistException ex)
+            catch (Exception ex)
             {
                 throw;
             }

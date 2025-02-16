@@ -19,21 +19,17 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction
         public CreateInstructionCommandHandler(IInstructionRepository instructionRepository) => _instructionRepository = instructionRepository;
         public async Task Handle(CreateInstructionCommand request, CancellationToken cancellationToken)
         {
-            if (request is null)
-            {
-                throw new Exception();
-            }
             if (request.StepInstruction.IsNullOrEmpty())
             {
-                throw new Exception();
+                throw new WrongParameterException("Invalide parameter", "StepInstruction is invalide");
             }
             if (request.StepName.IsNullOrEmpty())
             {
-                throw new Exception();
+                throw new WrongParameterException("Invalide parameter", "StepName is invalide");
             }
             if (request.RecipeId.IsNullOrEmpty())
             {
-                throw new Exception();
+                throw new WrongParameterException("Invalide parameter", "RecipeId is invalide");
             }
             try
             {
@@ -52,9 +48,9 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction
                 };
                 await _instructionRepository.AddAsync(instructionToAdd);
             }
-            catch (InstructionAlreadyExisteException ex)
+            catch (Exception ex)
             {
-                throw new InstructionAlreadyExisteException(ex.Error, ex.Message);
+                throw;
             }
         }
     }

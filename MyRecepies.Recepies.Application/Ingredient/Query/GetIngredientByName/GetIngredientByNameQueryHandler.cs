@@ -19,7 +19,7 @@ namespace MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientByName
         {
             if (request.Name.IsNullOrEmpty())
             {
-
+                throw new WrongParameterException("Invalide parameter", "Name is invalide");
             }
             var entity = await _ingredienRepository.HasIngredient(request.Name);
             if (entity is null)

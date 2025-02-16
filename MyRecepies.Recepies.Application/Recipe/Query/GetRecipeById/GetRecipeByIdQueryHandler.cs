@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
+using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
@@ -17,18 +18,27 @@ namespace MyRecipes.Recipes.Application.Recipe.Query.GetRecipeById
 
         public async Task<GetRecipeByIdQueryResult> Handle(GetRecipeByIdQuery request, CancellationToken cancellationToken)
         {
-            if (request is null)
-                throw new Exception();
             if (request.Id.IsEmpty())
-                throw new Exception();
+                throw new WrongParameterException("Invalide parameter", "Id is invalide");
             try
             {
-                Domain.Entity.Recipe recipe = await _recipeRepository.GetAsync(request.Id);
-                return new GetRecipeByIdQueryResult(recipe.Id, recipe.Name, recipe.Ingredients, recipe.Instructions, recipe.RecipyDifficulty, recipe.TimeToPrepareRecipe, recipe.NbGuest);
+                Domain.Entity.Recipe recipeFound = await _recipeRepository.GetAsync(request.Id);
+                if (recipeFound is null)
+                {
+                    throw new RecipeNotFoundException("invalide key", $"Recipe with Id {request.Id} not found");
+                }
+                return new GetRecipeByIdQueryResult(
+                    recipeFound.Id,
+                    recipeFound.Name,
+                    recipeFound.Ingredients,
+                    recipeFound.Instructions,
+                    recipeFound.RecipyDifficulty,
+                    recipeFound.TimeToPrepareRecipe,
+                    recipeFound.NbGuest);
             }
             catch (Exception ex)
             {
-                throw new Exception();
+                throw ;
             }
         }
     }

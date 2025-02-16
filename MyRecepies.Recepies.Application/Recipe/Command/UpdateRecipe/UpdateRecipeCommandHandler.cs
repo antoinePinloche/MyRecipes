@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
+using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
@@ -21,14 +22,14 @@ namespace MyRecipes.Recipes.Application.Recipe.Command.UpdateRecipe
 
         public async Task Handle(UpdateRecipeCommand request, CancellationToken cancellationToken)
         {
-            if (request is null)
+            if (request.Name.IsNullOrEmpty())
             {
-                throw new Exception();
+                throw new WrongParameterException("Invalide parameter", "Name is invalide");
             }
             var entity = await _recipeRepository.GetAsync(request.Id);
             if (entity is null)
             {
-                throw new Exception();
+                throw new RecipeNotFoundException("invalide key", $"Recipe with Id {request.Id} not found");
             }
             if (!entity.Name.IsNullOrEmpty() && entity.Name != request.Name)
                 entity.Name = request.Name;
@@ -41,7 +42,7 @@ namespace MyRecipes.Recipes.Application.Recipe.Command.UpdateRecipe
             }
             catch (Exception ex)
             {
-                throw new Exception();
+                throw;
             }
         }
     }

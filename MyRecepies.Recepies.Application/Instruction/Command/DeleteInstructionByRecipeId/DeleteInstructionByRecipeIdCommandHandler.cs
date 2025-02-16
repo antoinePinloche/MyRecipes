@@ -17,13 +17,9 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.DeleteInstructionByR
 
         public async Task Handle(DeleteInstructionByRecipeIdCommand request, CancellationToken cancellationToken)
         {
-            if (request is null)
-            {
-                throw new ArgumentNullException(nameof(request));
-            }
             if (request.Id.IsEmpty())
             {
-                throw new Exception();
+                throw new WrongParameterException("Invalide parameter", "Id is invalide");
             }
             var RecipeIngredientList = await _instructionRepository.GetAllInstructionByRecipeIdAsync(request.Id);
 

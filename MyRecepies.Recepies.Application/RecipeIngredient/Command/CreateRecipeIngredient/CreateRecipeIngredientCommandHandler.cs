@@ -25,6 +25,14 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.CreateRecipeIng
 
         public async Task Handle(CreateRecipeIngredientCommand request, CancellationToken cancellationToken)
         {
+            if (request.IngredientId.IsEmpty())
+            {
+                throw new WrongParameterException("Invalide parameter", "IngredientId is invalide");
+            }
+            if (request.RecipeId.IsNullOrEmpty())
+            {
+                throw new WrongParameterException("Invalide parameter", "RecipeId is invalide");
+            }
             List<GetRecipeIngredientByRecipeIdQueryResult> recipeIngredients = new();
             var ingredient = await _sender.Send(new GetIngredientByIdQuery(request.IngredientId));
             

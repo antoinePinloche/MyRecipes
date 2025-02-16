@@ -41,7 +41,7 @@ namespace MyRecipes.Web.API.Controllers
         {
             if (!Guid.TryParse(Id, out Guid guid))
             {
-                return Results.BadRequest("DeleteUser : BadParameter" + Id);
+                throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
             }
             try
             {
@@ -50,10 +50,17 @@ namespace MyRecipes.Web.API.Controllers
                     throw new FoodTypeNotFoundException("Not Found", $"FoodType with {Id} can't be found");
                 return Results.Ok(res);
             }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
+            }
+            catch (FoodTypeNotFoundException ex)
+            {
+                throw new FoodTypeNotFoundException(ex.Error, ex.Message);
+            }
             catch (Exception ex)
             {
                 return Results.Problem();
-             //   throw new ExceptionBase("Internal Error", ex.Message);
             }
             
         }
@@ -66,14 +73,14 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    throw new WrongParameterException(nameof(CreateFoodType), nameof(FoodTypeController), "Invalid model");
-                }
-                if (model.Name.IsNullOrEmpty())
-                {
-                    throw new WrongParameterException(nameof(CreateFoodType), nameof(CreateFoodTypeModel.Name), "Invalid name");
+                    throw new WrongParameterException("Invalide parameter", "model missing parameter");
                 }
                 await _sender.Send(model.ToCreateFoodTypeCommand());
                 return Results.Created();
+            }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
             }
             catch (FoodTypeAlreadyExistException ex)
             {
@@ -89,7 +96,7 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!Guid.TryParse(id, out Guid guid))
                 {
-                    return BadRequest("DeleteUser : BadParameter" + id);
+                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
                 }
                 var ingredientList = await _sender.Send(guid.FoodTypeToQuery());
                 if (ingredientList.Any())
@@ -98,6 +105,10 @@ namespace MyRecipes.Web.API.Controllers
                 }
                 await _sender.Send(guid.ToDeleteFoodTypeByIdCommand());
                 return Ok();
+            }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
             }
             catch (FoodTypeNotFoundException ex)
             {
@@ -114,12 +125,16 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!Guid.TryParse(id, out guid))
                 {
-                    return Results.BadRequest("DeleteUser : BadParameter" + id);
+                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
                 }
                 if (!ModelState.IsValid)
-                    return Results.BadRequest(ModelState);
+                    throw new WrongParameterException("Invalide parameter", "model is invalide");
                 await _sender.Send(model.ToUpdateFoodTypeByIdCommand(guid));
                 return Results.Ok();
+            }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
             }
             catch (FoodTypeAlreadyExistException ex)
             {

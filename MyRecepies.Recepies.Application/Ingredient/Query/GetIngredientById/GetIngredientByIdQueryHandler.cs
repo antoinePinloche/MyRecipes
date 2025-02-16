@@ -2,6 +2,7 @@
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,10 @@ namespace MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientById
 
         public async Task<GetIngredientByIdQueryResult> Handle(GetIngredientByIdQuery request, CancellationToken cancellationToken)
         {
+            if (request.Id.IsEmpty())
+            {
+                throw new WrongParameterException("Invalide parameter", "Id is invalide");
+            }
             Domain.Entity.Ingredient ingredient = await _ingredienRepository.GetAsync(request.Id);
             if (ingredient is null)
                 throw new IngredientNotFoundException("Conflict", $"Ingredient with ID {request.Id} already exist");

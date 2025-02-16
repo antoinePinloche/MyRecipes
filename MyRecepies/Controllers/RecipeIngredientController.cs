@@ -7,6 +7,7 @@ using MyRecipes.Recipes.Application.RecipeIngredient.Command.UpdateRecipeIngredi
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetAllRecipeIngredient;
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredientById;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 using MyRecipes.Web.API.Mapper.RecipeIngredient;
 using MyRecipes.Web.API.Models.Class.RecipeIngredient;
 using System;
@@ -35,12 +36,16 @@ namespace MyRecipes.Web.API.Controllers
         {
             if (!Guid.TryParse(Id, out Guid guid))
             {
-                return BadRequest("DeleteUser : BadParameter" + Id);
+                throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
             }
             try
             {
                 var res = await _sender.Send(guid.ToRecipeIngredientByIdQuery());
                 return Ok(res.ToRecipeIngredientResponse());
+            }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
             }
             catch (RecipeIngredientNotFoundException ex)
             {
@@ -53,12 +58,16 @@ namespace MyRecipes.Web.API.Controllers
         {
             if (!ModelState.IsValid)
             {
-                throw new Exception("Bad parameter");
+                throw new WrongParameterException("Invalide parameter", "model is invalide");
             }
             try
             {
                 await _sender.Send(model.ToCommand());
                 return Results.Created();
+            }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
             }
             catch (IngredientNotFoundException ex)
             {
@@ -76,11 +85,11 @@ namespace MyRecipes.Web.API.Controllers
         {
             if (!ModelState.IsValid)
             {
-                throw new Exception("Bad parameter");
+                throw new WrongParameterException("Invalide parameter", "model is invalide");
             }
             if (!Guid.TryParse(Id, out Guid guid))
             {
-                return BadRequest("UpdateRecipeIngredient : BadParameter" + Id);
+                throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
             }
 
             try 
@@ -88,9 +97,17 @@ namespace MyRecipes.Web.API.Controllers
                 await _sender.Send(model.ToCommand(guid));
                 return Ok();
             }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
+            }
             catch (RecipeIngredientNotFoundException ex)
             {
                 throw new RecipeIngredientNotFoundException(ex.Error, ex.Message);
+            }
+            catch (RecipeIngredientAlreadyExistException ex)
+            {
+                throw new RecipeIngredientAlreadyExistException(ex.Error, ex.Message);
             }
         }
 
@@ -99,12 +116,16 @@ namespace MyRecipes.Web.API.Controllers
         {
             if (!Guid.TryParse(Id, out Guid guid))
             {
-                return BadRequest("DeleteRecipeIngredient : BadParameter" + Id);
+                throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
             }
             try
             {
                 await _sender.Send(guid.ToDeleteRecipeIngredientCommand());
                 return Ok();
+            }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
             }
             catch (RecipeIngredientNotFoundException ex)
             {

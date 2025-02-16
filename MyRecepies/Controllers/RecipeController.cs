@@ -1,21 +1,14 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using MyRecipes.Recipes.Application.Instruction.Query.GetAllInstructionByRecipeId;
-using MyRecipes.Recipes.Application.Recipe.Command.CreateRecipe;
-using MyRecipes.Recipes.Application.Recipe.Command.DeleteRecipe;
-using MyRecipes.Recipes.Application.Recipe.Command.UpdateRecipe;
 using MyRecipes.Recipes.Application.Recipe.Query.GetAllRecipe;
-using MyRecipes.Recipes.Application.Recipe.Query.GetRecipeById;
-using MyRecipes.Recipes.Application.Recipe.Query.GetRecipeByName;
-using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetAllRecipeIngredient;
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredientByRecipeId;
+using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
+using MyRecipes.Web.API.Mapper.Instruction;
 using MyRecipes.Web.API.Mapper.Recipe;
 using MyRecipes.Web.API.Mapper.RecipeIngredient;
-using MyRecipes.Web.API.Mapper.Instruction;
 using MyRecipes.Web.API.Models.Class.Recipe;
-using MyRecipes.Transverse.Exception;
 
 
 namespace MyRecipes.Web.API.Controllers
@@ -51,11 +44,19 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    return BadRequest("GetRecipeById : BadParameter" + Id);
+                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
                 }
                 var result = await _sender.Send(guid.ToRecipeByIdQuery());
                     
                 return Ok(result.ToRecipeResponse());
+            }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
+            }
+            catch (RecipeNotFoundException ex)
+            {
+                throw new RecipeNotFoundException(ex.Error, ex.Message);
             }
             catch (Exception ex)
             {
@@ -70,11 +71,19 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    return BadRequest("GetRecipeById : BadParameter" + Id);
+                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
                 }
                 List<GetRecipeIngredientByRecipeIdQueryResult> result = await _sender.Send(guid.ToRecipeIngredientByRecipeIdQuery());
                 
                 return Ok(result.ToRecipeIngredientResponse());
+            }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
+            }
+            catch (RecipeNotFoundException ex)
+            {
+                throw new RecipeNotFoundException(ex.Error, ex.Message);
             }
             catch (RecipeIngredientNotFoundException ex)
             {
@@ -93,10 +102,18 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    return BadRequest("GetRecipeById : BadParameter" + Id);
+                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
                 }
                 List<GetAllInstructionByRecipeIdQueryResult> result = await _sender.Send(guid.ToAllInstructionByRecipeIdQuery());
                 return Ok(result.ToInstructionResponse());
+            }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
+            }
+            catch (RecipeNotFoundException ex)
+            {
+                throw new RecipeNotFoundException(ex.Error, ex.Message);
             }
             catch (InstructionNotFoundException ex)
             {
@@ -110,9 +127,17 @@ namespace MyRecipes.Web.API.Controllers
             try
             {
                 if (Name.IsNullOrEmpty() && Name.Count() < 3)
-                    throw new Exception();
+                    throw new WrongParameterException("Invalide parameter", "parameter Nale is too short or missing");
                 var result = await _sender.Send(Name.ToRecipeByNameQuery());
                 return Ok(result.ToRecipeResponse());
+            }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
+            }
+            catch (RecipeNotFoundException ex)
+            {
+                throw new RecipeNotFoundException(ex.Error, ex.Message);
             }
             catch (Exception ex)
             {
@@ -125,12 +150,16 @@ namespace MyRecipes.Web.API.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest();
+                throw new WrongParameterException("Invalide parameter", "model is invalide");
             }
             try
             {
                 await _sender.Send(model.ToCommand());
                 return Created();
+            }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
             }
             catch (Exception ex)
             {
@@ -143,16 +172,24 @@ namespace MyRecipes.Web.API.Controllers
         {
             if (!Guid.TryParse(Id, out Guid guid))
             {
-                return BadRequest("UpdateRecipe : BadParameter" + Id);
+                throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
             }
             if (!ModelState.IsValid)
             {
-                return BadRequest();
+                throw new WrongParameterException("Invalide parameter", "model is invalide");
             }
             try
             {
                 await _sender.Send(model.ToCommand(guid));
                 return Ok();
+            }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
+            }
+            catch (RecipeNotFoundException ex)
+            {
+                throw new RecipeNotFoundException(ex.Error, ex.Message);
             }
             catch (Exception ex)
             {
@@ -165,12 +202,20 @@ namespace MyRecipes.Web.API.Controllers
         {
             if (!Guid.TryParse(Id, out Guid guid))
             {
-                return BadRequest("DeleteRecipe : BadParameter" + Id);
+                throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
             }
             try
             {
                 await _sender.Send(guid.ToDeleteRecipeCommand());
                 return Ok();
+            }
+            catch (WrongParameterException ex)
+            {
+                throw new WrongParameterException(ex.Error, ex.Message);
+            }
+            catch (RecipeNotFoundException ex)
+            {
+                throw new RecipeNotFoundException(ex.Error, ex.Message);
             }
             catch (Exception ex)
             {

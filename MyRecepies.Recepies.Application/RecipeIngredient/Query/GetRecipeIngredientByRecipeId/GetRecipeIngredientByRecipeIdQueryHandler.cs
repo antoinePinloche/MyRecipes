@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
@@ -13,25 +14,29 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredie
     public class GetRecipeIngredientByRecipeIdQueryHandler : IRequestHandler<GetRecipeIngredientByRecipeIdQuery, List<GetRecipeIngredientByRecipeIdQueryResult>>
     {
         private readonly IRecipeIngredientRepository _recipeIngredientRepository;
+        private readonly IRecipesRepository _recipesRepository;
         private readonly ISender _sender;
-        public GetRecipeIngredientByRecipeIdQueryHandler(IRecipeIngredientRepository recipeIngredientRepository, ISender sender)
+        public GetRecipeIngredientByRecipeIdQueryHandler(IRecipeIngredientRepository recipeIngredientRepository, IRecipesRepository recipesRepository, ISender sender)
         {
             _recipeIngredientRepository = recipeIngredientRepository;
+            _recipesRepository = recipesRepository;
             _sender = sender;
         }
 
         public async Task<List<GetRecipeIngredientByRecipeIdQueryResult>> Handle(GetRecipeIngredientByRecipeIdQuery request, CancellationToken cancellationToken)
         {
-            if (request is null)
-            {
-                throw new Exception();
-            }
+
             if (request.Id.IsEmpty())
             {
-                throw new Exception();
+                throw new WrongParameterException("Invalide parameter", "Id is invalide");
             }
             try
             {
+                var recipeFound = await _recipesRepository.GetAsync(request.Id);
+                if (recipeFound is null)
+                {
+                    throw new RecipeNotFoundException("Invalide Key", $"Recipe notfound with ID {request.Id}");
+                }
                 var entityFound = await _recipeIngredientRepository.GetAllRecipeIngredientByRecipeIdlAsync(request.Id);
                 if (entityFound.IsNullOrEmpty())
                 {
@@ -45,13 +50,9 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredie
                     s.Quantity,
                     s.Unit)).ToList();
             }
-            catch(RecipeIngredientNotFoundException ex)
-            {
-                throw new RecipeIngredientNotFoundException(ex.Error, ex.Message);
-            }
             catch (Exception ex)
             {
-                throw new Exception();
+                throw;
             }
         }
     }

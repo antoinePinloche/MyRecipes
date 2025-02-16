@@ -1,8 +1,9 @@
 ﻿namespace MyRecipes.Transverse.Exception
 {
-    public class WrongParameterException : System.Exception
+    public class WrongParameterException : ExceptionBase
     {
-        public WrongParameterException(string method, string sourcePath, string message) 
-        : base($"{Path.GetFileNameWithoutExtension(sourcePath)}.{method} : {message}") { }
+        public WrongParameterException(string error, string message) : base(error, message)
+        {
+        }
     }
 }
