@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientByName;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Transverse.Exception;

@@ -7,10 +7,10 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.Ingredient.Command.CreateIngredient
 {
-    public class DeleteIngredientCommandHandler : IRequestHandler<CreateIngredientCommand>
+    public class CreateIngredientCommandHandler : IRequestHandler<CreateIngredientCommand>
     {
         private readonly IIngredientRepository _ingredientRepository;
-        private readonly ILogger<DeleteIngredientCommandHandler> _logger;
+        private readonly ILogger<CreateIngredientCommandHandler> _logger;
         public CreateIngredientCommandHandler(IIngredientRepository ingredientRepository, ILogger<CreateIngredientCommandHandler> logger)
         {
             _ingredientRepository = ingredientRepository;

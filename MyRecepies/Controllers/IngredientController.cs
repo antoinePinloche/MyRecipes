@@ -4,7 +4,6 @@ using MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientById;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTypeId;
 using MyRecipes.Transverse.Exception;
-using MyRecipes.Web.API.Controllers;
 using MyRecipes.Web.API.Mapper.Ingredient;
 using MyRecipes.Web.API.Models.Class.Ingredient;
 

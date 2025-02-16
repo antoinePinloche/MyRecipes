@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTypeId
+﻿namespace MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTypeId
 {
     public class GetIngredientsByFoodTypeIdQueryResult
     {
