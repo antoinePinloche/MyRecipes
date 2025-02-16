@@ -1,5 +1,4 @@
-﻿using MyRecipes.Recipes.Domain.Entity;
-using MyRecipes.Recipes.Domain.Entity.Enum;
+﻿using MyRecipes.Recipes.Domain.Entity.Enum;
 
 namespace MyRecipes.Recipes.Application.Recipe.Query.GetAllRecipe
 {

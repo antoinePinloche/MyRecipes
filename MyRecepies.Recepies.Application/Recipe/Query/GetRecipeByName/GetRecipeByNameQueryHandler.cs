@@ -1,29 +1,27 @@
 ﻿using MediatR;
-using MyRecipes.Recipes.Application.Recipe.Query.GetAllRecipe;
-using MyRecipes.Recipes.Application.Recipe.Query.GetRecipeById;
+using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.Application.Recipe.Query.GetRecipeByName
 {
     public class GetRecipeByNameQueryHandler : IRequestHandler<GetRecipeByNameQuery, List<GetRecipeByNameQueryResult>>
     {
         private readonly IRecipesRepository _recipeRepository;
-
-        public GetRecipeByNameQueryHandler(IRecipesRepository recipeRepository) => _recipeRepository = recipeRepository;
+        private readonly ILogger<GetRecipeByNameQueryHandler> _logger;
+        public GetRecipeByNameQueryHandler(IRecipesRepository recipeRepository, ILogger<GetRecipeByNameQueryHandler> logger)
+        {
+            _recipeRepository = recipeRepository;
+            _logger = logger;
+        }
 
         public async Task<List<GetRecipeByNameQueryResult>> Handle(GetRecipeByNameQuery request, CancellationToken cancellationToken)
         {
-            if (request.Name.IsNullOrEmpty())
-                throw new WrongParameterException("Invalide parameter", "Name is invalide");
             try
             {
+                if (request.Name.IsNullOrEmpty())
+                    throw new WrongParameterException("Invalide parameter", "Name is invalide");
                 ICollection<Domain.Entity.Recipe> recipes = await _recipeRepository.GetByNameAsync(request.Name);
                 if (recipes.IsNullOrEmpty())
                 {
@@ -38,10 +36,12 @@ namespace MyRecipes.Recipes.Application.Recipe.Query.GetRecipeByName
                         s.TimeToPrepareRecipe,
                         s.NbGuest
                         )).ToList();
+                _logger.LogInformation($"GetRecipeByNameQueryHandler : recipe(s) for research {request.Name} found");
                 return listToReturn;
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 throw;
             }
         }
