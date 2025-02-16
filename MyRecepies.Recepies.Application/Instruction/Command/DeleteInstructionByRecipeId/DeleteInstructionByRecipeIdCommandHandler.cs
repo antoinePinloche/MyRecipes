@@ -1,33 +1,44 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.Application.Instruction.Command.DeleteInstructionByRecipeId
 {
     public class DeleteInstructionByRecipeIdCommandHandler : IRequestHandler<DeleteInstructionByRecipeIdCommand>
     {
         private readonly IInstructionRepository _instructionRepository;
-        public DeleteInstructionByRecipeIdCommandHandler(IInstructionRepository instructionRepository) => _instructionRepository = instructionRepository;
+        private readonly ILogger<DeleteInstructionByRecipeIdCommandHandler> _logger;
+        public DeleteInstructionByRecipeIdCommandHandler(IInstructionRepository instructionRepository, ILogger<DeleteInstructionByRecipeIdCommandHandler> logger)
+        {
+            _instructionRepository = instructionRepository;
+            _logger = logger;
+        }
 
         public async Task Handle(DeleteInstructionByRecipeIdCommand request, CancellationToken cancellationToken)
         {
-            if (request.Id.IsEmpty())
+            try
             {
-                throw new WrongParameterException("Invalide parameter", "Id is invalide");
-            }
-            var RecipeIngredientList = await _instructionRepository.GetAllInstructionByRecipeIdAsync(request.Id);
+                if (request.Id.IsEmpty())
+                {
+                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                }
+                var RecipeIngredientList = await _instructionRepository.GetAllInstructionByRecipeIdAsync(request.Id);
 
-            if (!RecipeIngredientList.IsNullOrEmpty())
-            {
+                if (RecipeIngredientList.IsNullOrEmpty())
+                {
+                    throw new InstructionNotFoundException("Invalide Key", $"Instructions for Recipe {request.Id} not found");
+                }
                 await _instructionRepository.RemoveRangeAsync(RecipeIngredientList);
+                _logger.LogInformation($"DeleteInstructionByRecipeIdCommandHandler : All instruction(s) delete for recipe {request.Id}");
             }
-            throw new InstructionNotFoundException("Invalide Key", $"Instructions for Recipe {request.Id} not found");
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw;
+            }
+
         }
     }
 }

@@ -1,29 +1,39 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.Application.Instruction.Query.GetAllInstruction
 {
     public class GetAllInstructionQueryHandler : IRequestHandler<GetAllInstructionQuery, List<GetAllInstructionQueryResult>>
     {
         private readonly IInstructionRepository _instructionRepository;
-        public GetAllInstructionQueryHandler(IInstructionRepository instructionRepository) => _instructionRepository = instructionRepository;
+        private readonly ILogger<GetAllInstructionQueryHandler> _logger;
+        public GetAllInstructionQueryHandler(IInstructionRepository instructionRepository, ILogger<GetAllInstructionQueryHandler> logger)
+        {
+            _instructionRepository = instructionRepository;
+            _logger = logger;
+        }
 
         public async Task<List<GetAllInstructionQueryResult>> Handle(GetAllInstructionQuery request, CancellationToken cancellationToken)
         {
-            var res = await _instructionRepository.GetAllAsync();
-            return res.Select(s =>
-                new GetAllInstructionQueryResult(
-                    s.Id,
-                    s.Step,
-                    s.StepName,
-                    s.StepInstruction
-                    )
-            ).ToList();
+            try
+            {
+                var res = await _instructionRepository.GetAllAsync();
+                _logger.LogInformation("GetAllInstructionQueryHandler : finish without Error");
+                return res.Select(s =>
+                    new GetAllInstructionQueryResult(
+                        s.Id,
+                        s.Step,
+                        s.StepName,
+                        s.StepInstruction
+                        )
+                ).ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw;
+            }
         }
     }
 }

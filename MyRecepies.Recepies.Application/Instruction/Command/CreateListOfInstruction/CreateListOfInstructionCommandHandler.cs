@@ -1,28 +1,30 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruction
 {
     public class CreateListOfInstructionCommandHandler : IRequestHandler<CreateListOfInstructionCommand>
     {
         private readonly IInstructionRepository _instructionRepository;
-        public CreateListOfInstructionCommandHandler(IInstructionRepository instructionRepository) => _instructionRepository = instructionRepository;
+        private readonly ILogger<CreateListOfInstructionCommandHandler> _logger;
+        public CreateListOfInstructionCommandHandler(IInstructionRepository instructionRepository, ILogger<CreateListOfInstructionCommandHandler> logger)
+        {
+            _instructionRepository = instructionRepository;
+            _logger = logger;
+        }
 
         public async Task Handle(CreateListOfInstructionCommand request, CancellationToken cancellationToken)
         {
-            if (request.Instructions.IsNullOrEmpty())
-            {
-                throw new WrongParameterException("Invalide parameter", "Instructions is invalide");
-            }
+
             try
             {
+                if (request.Instructions.IsNullOrEmpty())
+                {
+                    throw new WrongParameterException("Invalide parameter", "Instructions is invalide");
+                }
                 List<IGrouping<Guid?, CreateListOfInstructionCommand.Instruction>> list = request.Instructions.GroupBy(gb => gb.RecipeId).ToList();
                 if (!list.IsNullOrEmpty())
                 {
@@ -49,14 +51,12 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruct
                         StepInstruction = s.StepInstruction
                     }).ToList();
                 await _instructionRepository.AddRangeAsync(instructionsToAdd);
-            }
-            catch(InstructionAlreadyExisteException ex)
-            {
-                throw new InstructionAlreadyExisteException(ex.Error, ex.Message);
+                _logger.LogInformation($"CreateListOfInstructionCommandHandler : List of instructions create");
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                _logger.LogError(ex, ex.Message);
+                throw;
             }
         }
     }

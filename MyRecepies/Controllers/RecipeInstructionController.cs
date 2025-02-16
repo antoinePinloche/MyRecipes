@@ -8,6 +8,7 @@ using MyRecipes.Web.API.Models.Class.Instruction;
 using MyRecipes.Web.API.Mapper.Instruction;
 using MyRecipes.Web.API.Mapper.RecipeIngredient;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.web.Controllers;
 
 namespace MyRecipes.Web.API.Controllers
 {
@@ -15,10 +16,11 @@ namespace MyRecipes.Web.API.Controllers
     public class RecipeInstructionController : ControllerBase
     {
         private readonly ISender _sender;
-
-        public RecipeInstructionController(ISender mediator)
+        private readonly ILogger<RecipeInstructionController> _logger;
+        public RecipeInstructionController(ISender mediator, ILogger<RecipeInstructionController> logger)
         {
             _sender = mediator;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -26,6 +28,7 @@ namespace MyRecipes.Web.API.Controllers
         public async Task<IActionResult> GetAllInstructionList()
         {
             var result = await _sender.Send(new GetAllInstructionQuery());
+            _logger.LogInformation("GetAllInstructionList : finish without error");
             return Ok(result.ToInstructionResponse());
         }
 
@@ -33,21 +36,25 @@ namespace MyRecipes.Web.API.Controllers
         [Route("api/[controller]/[action]/{Id}")]
         public async Task<IActionResult> GetInstructionById(string Id)
         {
-            if (!Guid.TryParse(Id, out Guid guid))
-            {
-                throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
-            }
+
             try
             {
+                if (!Guid.TryParse(Id, out Guid guid))
+                {
+                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
+                }
                 var result = await _sender.Send(guid.ToInstructionByIdQuery());
+                _logger.LogInformation("GetInstructionById : finish without error");
                 return Ok(result.ToInstructionResponse());
             }
             catch (WrongParameterException ex)
             {
+                _logger.LogError(ex, ex.Message);
                 throw new WrongParameterException(ex.Error, ex.Message);
             }
             catch (InstructionNotFoundException ex)
             {
+                _logger.LogError(ex, ex.Message);
                 throw new InstructionNotFoundException(ex.Error, ex.Message);
             }
         }
@@ -56,21 +63,25 @@ namespace MyRecipes.Web.API.Controllers
         [Route("api/[controller]/[action]")]
         public async Task<IActionResult> CreateInstruction(CreateInstructionModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                throw new WrongParameterException("Invalide parameter", "model is invalide");
-            }
+
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    throw new WrongParameterException("Invalide parameter", "model is invalide");
+                }
                 await _sender.Send(model.ToCommand());
+                _logger.LogInformation("CreateInstruction : finish without error");
                 return Created();
             }
             catch (WrongParameterException ex)
             {
+                _logger.LogError(ex, ex.Message);
                 throw new WrongParameterException(ex.Error, ex.Message);
             }
             catch (InstructionAlreadyExisteException ex)
             {
+                _logger.LogError(ex, ex.Message);
                 throw new InstructionAlreadyExisteException(ex.Error, ex.Message);
             }
 
@@ -80,25 +91,29 @@ namespace MyRecipes.Web.API.Controllers
         [Route("api/[controller]/[action]")]
         public async Task<IActionResult> CreateInstructionList(List<CreateInstructionModel> model)
         {
-            if (!ModelState.IsValid)
-            {
-                throw new WrongParameterException("Invalide parameter", "model is invalide");
-            }
-            if (model.IsNullOrEmpty())
-            {
-                throw new WrongParameterException("Invalide parameter", "model is empty");
-            }
+
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    throw new WrongParameterException("Invalide parameter", "model is invalide");
+                }
+                if (model.IsNullOrEmpty())
+                {
+                    throw new WrongParameterException("Invalide parameter", "model is empty");
+                }
                 await _sender.Send(model.ToCommand());
+                _logger.LogInformation("CreateInstructionList : finish without error");
                 return Created();
             }
             catch (WrongParameterException ex)
             {
+                _logger.LogError(ex, ex.Message);
                 throw new WrongParameterException(ex.Error, ex.Message);
             }
             catch (InstructionAlreadyExisteException ex)
             {
+                _logger.LogError(ex, ex.Message);
                 throw new InstructionAlreadyExisteException(ex.Error, ex.Message);
             }
         }
@@ -107,29 +122,34 @@ namespace MyRecipes.Web.API.Controllers
         [Route("api/[controller]/[action]/{Id}")]
         public async Task<IActionResult> UpdateInstruction(UpdateInstructionModel model, string Id)
         {
-            if (!Guid.TryParse(Id, out Guid guid))
-            {
-                throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
-            }
-            if (!ModelState.IsValid)
-            {
-                throw new WrongParameterException("Invalide parameter", "model is invalide");
-            }
+
             try
             {
+                if (!Guid.TryParse(Id, out Guid guid))
+                {
+                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
+                }
+                if (!ModelState.IsValid)
+                {
+                    throw new WrongParameterException("Invalide parameter", "model is invalide");
+                }
                 await _sender.Send(model.ToCommand(guid));
-                return Created();
+                _logger.LogInformation("UpdateInstruction : finish without error");
+                return Ok();
             }
             catch (WrongParameterException ex)
             {
+                _logger.LogError(ex, ex.Message);
                 throw new WrongParameterException(ex.Error, ex.Message);
             }
             catch (InstructionNotFoundException ex)
             {
+                _logger.LogError(ex, ex.Message);
                 throw new InstructionNotFoundException(ex.Error, ex.Message);
             }
             catch (InstructionAlreadyExisteException ex)
             {
+                _logger.LogError(ex, ex.Message);
                 throw new InstructionAlreadyExisteException(ex.Error, ex.Message);
             }
         }
@@ -138,23 +158,26 @@ namespace MyRecipes.Web.API.Controllers
         [Route("api/[controller]/[action]/{Id}")]
         public async Task<IActionResult> DeleteInstructionById(string Id)
         {
-            if (!Guid.TryParse(Id, out Guid guid))
-            {
-                throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
-            }
             try
             {
+                if (!Guid.TryParse(Id, out Guid guid))
+                {
+                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
+                }
                 await _sender.Send(guid.ToDeleteInstructionCommand());
+                _logger.LogInformation("UpdateInstruction : finish without error");
+                return Ok();
             }
             catch (WrongParameterException ex)
             {
+                _logger.LogError(ex, ex.Message);
                 throw new WrongParameterException(ex.Error, ex.Message);
             }
             catch (InstructionNotFoundException ex)
             {
+                _logger.LogError(ex, ex.Message);
                 throw new InstructionNotFoundException(ex.Error, ex.Message);
             }
-            return Ok();
         }
     }
 }
