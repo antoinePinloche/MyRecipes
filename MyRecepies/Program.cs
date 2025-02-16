@@ -3,6 +3,7 @@ using MyRecipes.Authentification.Application.Extensions;
 using MyRecipes.Recipes.Application.Extensions;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Web.API;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -41,7 +42,15 @@ builder.Services.AddProblemDetails(options =>
 
 builder.Services.AddExceptionHandler<ProblemExceptionHandler>();
 
+//logger
+builder.Host.UseSerilog((context, loggerConfig) =>
+    loggerConfig.ReadFrom.Configuration(context.Configuration));
+
+
+
 WebApplication app = builder.Build();
+Log.Information("Application build");
+
 
 //Extension DB Auth
 app.AuthentificationDataBaseCreateOrUpdate();
@@ -63,4 +72,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+Log.Information("Application run");
 app.Run();

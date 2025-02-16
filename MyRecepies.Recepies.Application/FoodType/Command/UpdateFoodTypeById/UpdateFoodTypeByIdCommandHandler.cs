@@ -1,12 +1,8 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.Application.FoodType.Command.UpdateFoodTypeById
 {
@@ -14,9 +10,12 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.UpdateFoodTypeById
     public class UpdateFoodTypeByIdCommandHandler : IRequestHandler<UpdateFoodTypeByIdCommand>
     {
         private readonly IFoodTypeRepository _foodTypeRepository;
-
-        public UpdateFoodTypeByIdCommandHandler(IFoodTypeRepository foodTypeRepository) => _foodTypeRepository = foodTypeRepository;
-
+        private readonly ILogger<UpdateFoodTypeByIdCommandHandler> _logger;
+        public UpdateFoodTypeByIdCommandHandler(IFoodTypeRepository foodTypeRepository, ILogger<UpdateFoodTypeByIdCommandHandler> logger)
+        {
+            _foodTypeRepository = foodTypeRepository;
+            _logger = logger;
+        }
         public async Task Handle(UpdateFoodTypeByIdCommand request, CancellationToken cancellationToken)
         {
             if (request.Id.IsEmpty())
@@ -38,6 +37,7 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.UpdateFoodTypeById
             }
             entity.Name = request.Name;
             await _foodTypeRepository.UpdateAsync(entity);
+            _logger.LogInformation($"UpdateFoodTypeByIdCommandHandler : FoodType {request.Id} update");
         }
     }
 }

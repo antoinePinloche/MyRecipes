@@ -196,3 +196,16 @@ C:\Users\antoine\source\Git\MyRecipes\MyRecepies\obj\Debug\net8.0\MyRecipes.Web.
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies\obj\Debug\net8.0\ref\MyRecipes.Web.API.dll
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\MyRecipes.Transverse.dll
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\MyRecipes.Transverse.pdb
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\Serilog.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\Serilog.AspNetCore.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies\bin\Debug\net8.0\Serilog.Sinks.File.dll
