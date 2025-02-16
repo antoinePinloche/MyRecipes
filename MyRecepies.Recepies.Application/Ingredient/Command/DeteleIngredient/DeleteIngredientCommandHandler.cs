@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
+using MyRecipes.Recipes.Application.Ingredient.Command.CreateIngredient;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
@@ -13,20 +15,34 @@ namespace MyRecipes.Recipes.Application.Ingredient.Command.DeteleIngredient
     public class DeleteIngredientCommandHandler : IRequestHandler<DeleteIngredientCommand>
     {
         private readonly IIngredientRepository _ingredientRepository;
-        public DeleteIngredientCommandHandler(IIngredientRepository ingredientRepository) => _ingredientRepository = ingredientRepository;
+        private readonly ILogger<DeleteIngredientCommandHandler> _logger;
+        public DeleteIngredientCommandHandler(IIngredientRepository ingredientRepository, ILogger<DeleteIngredientCommandHandler> logger)
+        {
+            _ingredientRepository = ingredientRepository;
+            _logger = logger;
+        }
 
         public async Task Handle(DeleteIngredientCommand request, CancellationToken cancellationToken)
         {
-            if (request.Id.IsEmpty())
+            try
             {
-                throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                if (request.Id.IsEmpty())
+                {
+                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                }
+                var ingredient = await _ingredientRepository.GetAsync(request.Id);
+                if (ingredient is null)
+                {
+                    throw new IngredientNotFoundException("NotFound", $"Ingredient not found {request.Id}");
+                }
+                await _ingredientRepository.RemoveAsync(ingredient);
+                _logger.LogInformation($"DeleteIngredientCommand : Ingredient {ingredient.Name} delete");
             }
-            var ingredient = await _ingredientRepository.GetAsync(request.Id);
-            if (ingredient is null)
+            catch (Exception ex)
             {
-                throw new IngredientNotFoundException("NotFound", $"Ingredient not found {request.Id}");
+                _logger.LogError(ex, ex.Message);
+                throw;
             }
-            await _ingredientRepository.RemoveAsync(ingredient);
         }
     }
 }
