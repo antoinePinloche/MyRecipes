@@ -1,15 +1,10 @@
-﻿using Azure.Core;
-using MediatR;
+﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.UpdateRecipeIngredient
 {
@@ -18,13 +13,13 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.UpdateRecipeIng
         private readonly IRecipeIngredientRepository _recipeIngredientRepository;
         private readonly IIngredientRepository _ingredientRepository;
         private readonly IRecipesRepository _recipesRepository;
-        private readonly ISender _sender;
-        public UpdateRecipeIngredientCommandHandler(IRecipeIngredientRepository recipeIngredientRepository, IIngredientRepository ingredientRepository, IRecipesRepository recipesRepository, ISender sender)
+        private readonly ILogger<UpdateRecipeIngredientCommandHandler> _logger;
+        public UpdateRecipeIngredientCommandHandler(IRecipeIngredientRepository recipeIngredientRepository, IIngredientRepository ingredientRepository, IRecipesRepository recipesRepository, ILogger<UpdateRecipeIngredientCommandHandler> logger)
         {
             _recipeIngredientRepository = recipeIngredientRepository;
             _ingredientRepository = ingredientRepository;
             _recipesRepository = recipesRepository;
-            _sender = sender;
+            _logger = logger;
         }
         public async Task Handle(UpdateRecipeIngredientCommand request, CancellationToken cancellationToken)
         {
@@ -69,9 +64,11 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.UpdateRecipeIng
                 riFound.Unit = request.Unit;
                 riFound.Quantity = request.Quantity;
                 await _recipeIngredientRepository.UpdateAsync(riFound);
+                _logger.LogInformation($"UpdateRecipeIngredientCommandHandler : recipe ingredient {request.Id} update");
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 throw;
             }
         }

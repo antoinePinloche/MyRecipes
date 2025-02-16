@@ -1,13 +1,9 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredientByRecipeId
 {
@@ -15,23 +11,22 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredie
     {
         private readonly IRecipeIngredientRepository _recipeIngredientRepository;
         private readonly IRecipesRepository _recipesRepository;
-        private readonly ISender _sender;
-        public GetRecipeIngredientByRecipeIdQueryHandler(IRecipeIngredientRepository recipeIngredientRepository, IRecipesRepository recipesRepository, ISender sender)
+        private readonly ILogger<GetRecipeIngredientByRecipeIdQueryHandler> _logger;
+        public GetRecipeIngredientByRecipeIdQueryHandler(IRecipeIngredientRepository recipeIngredientRepository, IRecipesRepository recipesRepository, ILogger<GetRecipeIngredientByRecipeIdQueryHandler> logger)
         {
             _recipeIngredientRepository = recipeIngredientRepository;
             _recipesRepository = recipesRepository;
-            _sender = sender;
+            _logger = logger;
         }
 
         public async Task<List<GetRecipeIngredientByRecipeIdQueryResult>> Handle(GetRecipeIngredientByRecipeIdQuery request, CancellationToken cancellationToken)
         {
-
-            if (request.Id.IsEmpty())
-            {
-                throw new WrongParameterException("Invalide parameter", "Id is invalide");
-            }
             try
             {
+                if (request.Id.IsEmpty())
+                {
+                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                }
                 var recipeFound = await _recipesRepository.GetAsync(request.Id);
                 if (recipeFound is null)
                 {
@@ -42,6 +37,7 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredie
                 {
                     throw new RecipeIngredientNotFoundException("NotFound", $"RecipeIngredient Not found for recipe {request.Id}");
                 }
+                _logger.LogInformation($"GetRecipeIngredientByRecipeIdQueryHandler : return all recipe ingredient for recipe {request.Id}");
                 return entityFound.Select(s => 
                 new GetRecipeIngredientByRecipeIdQueryResult(
                     s.Id,
@@ -52,6 +48,7 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredie
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 throw;
             }
         }

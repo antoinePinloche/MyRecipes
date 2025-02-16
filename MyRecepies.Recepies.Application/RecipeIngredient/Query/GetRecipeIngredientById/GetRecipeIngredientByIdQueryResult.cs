@@ -1,5 +1,4 @@
-﻿using MyRecipes.Recipes.Domain.Entity;
-using MyRecipes.Recipes.Domain.Entity.Enum;
+﻿using MyRecipes.Recipes.Domain.Entity.Enum;
 
 namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredientById
 {
@@ -11,9 +10,8 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredie
         public double Quantity { get; set; }
         public UnitOfMeasure Unit { get; set; }
         public Guid? RecipeId { get; set; }
-        //public Recipe? Recipe { get; set; }
         public GetRecipeIngredientByIdQueryResult(Guid id, Guid? ingredientId, Domain.Entity.Ingredient? ingredient,
-            double quantity, UnitOfMeasure unit, Guid? recipeId/*, Recipe? recipe*/)
+            double quantity, UnitOfMeasure unit, Guid? recipeId)
         {
             Id = id;
             IngredientId = ingredientId;
@@ -21,7 +19,6 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredie
             Quantity = quantity;
             Unit = unit;
             RecipeId = recipeId;
-            //Recipe = recipe;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
@@ -8,23 +9,35 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIng
     public class DeleteRecipeIngredientByRecipeIdCommandHandler : IRequestHandler<DeleteRecipeIngredientByRecipeIdCommand>
     {
         private readonly IRecipeIngredientRepository _recipeIngredientRepository;
-        public DeleteRecipeIngredientByRecipeIdCommandHandler(IRecipeIngredientRepository recipeIngredientRepository)
+        private readonly ILogger<DeleteRecipeIngredientByRecipeIdCommandHandler> _logger;
+        public DeleteRecipeIngredientByRecipeIdCommandHandler(IRecipeIngredientRepository recipeIngredientRepository, ILogger<DeleteRecipeIngredientByRecipeIdCommandHandler> logger)
         {
             _recipeIngredientRepository = recipeIngredientRepository;
+            _logger = logger;
         }
 
         public async Task Handle(DeleteRecipeIngredientByRecipeIdCommand request, CancellationToken cancellationToken)
         {
-            if (request.Id.IsEmpty())
+            try
             {
-                throw new WrongParameterException("Invalide parameter", "Id is invalide");
-            }
-            var RecipeIngredientList = await _recipeIngredientRepository.GetAllRecipeIngredientByRecipeIdlAsync(request.Id);
+                if (request.Id.IsEmpty())
+                {
+                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                }
+                var RecipeIngredientList = await _recipeIngredientRepository.GetAllRecipeIngredientByRecipeIdlAsync(request.Id);
 
-            if (!RecipeIngredientList.IsNullOrEmpty())
-            {
-                await _recipeIngredientRepository.RemoveRangeAsync(RecipeIngredientList);
+                if (!RecipeIngredientList.IsNullOrEmpty())
+                {
+                    await _recipeIngredientRepository.RemoveRangeAsync(RecipeIngredientList);
+                    _logger.LogInformation($"DeleteRecipeIngredientByRecipeIdCommandHandler : recipe ingredient delete for recipe {request.Id}");
+                }
             }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw;
+            }
+
         }
     }
 }
