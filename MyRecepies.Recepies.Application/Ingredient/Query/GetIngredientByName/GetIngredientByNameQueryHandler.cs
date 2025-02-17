@@ -25,7 +25,7 @@ namespace MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientByName
                 }
                 var entity = await _ingredienRepository.HasIngredient(request.Name);
                 if (entity is null)
-                    throw new IngredientAlreadyExistException("Conflict", $"Ingredient with Name {request.Name} already exist");
+                    throw new IngredientNotFoundException("invalide key", $"Ingredient with Name {request.Name} not found");
                 _logger.LogInformation($"GetIngredientByNameQueryHandler : Ingredient {entity.Name} return");
                 return new GetIngredientByNameQueryResult() 
                 {
