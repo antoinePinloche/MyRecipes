@@ -22,6 +22,7 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.CreateFoodType
             {
                 throw new WrongParameterException("Invalide parameter", "Name is invalide");
             }
+            //checker si le foodType existe déja
             Domain.Entity.FoodType entityToAdd = new Domain.Entity.FoodType()
             {
                 Id = Guid.NewGuid(),

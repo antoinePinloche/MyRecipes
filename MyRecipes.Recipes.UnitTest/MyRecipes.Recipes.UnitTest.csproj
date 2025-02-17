@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="Moq.AutoMock" Version="3.5.0" />
+    <PackageReference Include="xunit" Version="2.5.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\FoodType\Query\" />
+    <Folder Include="Application\Ingredient\Command\" />
+    <Folder Include="Application\Ingredient\Query\" />
+    <Folder Include="Application\Instruction\Command\" />
+    <Folder Include="Application\Instruction\Query\" />
+    <Folder Include="Application\RecipeIngredient\Command\" />
+    <Folder Include="Application\RecipeIngredient\Query\" />
+    <Folder Include="Application\Recipe\Command\" />
+    <Folder Include="Application\Recipe\Query\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Application\FoodType\Command\DeleteFoodTypeByIdCommandTest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyRecepies.Recepies.Application\MyRecipes.Recipes.Application.csproj" />
+  </ItemGroup>
+
+</Project>
