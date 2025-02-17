@@ -25,6 +25,18 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruct
                 {
                     throw new WrongParameterException("Invalide parameter", "Instructions is invalide");
                 }
+                var checkDuplicateRequest = request.Instructions.GroupBy(gb => gb.Step).Where(w => w.Count() > 1);
+                foreach (var instruction in checkDuplicateRequest)
+                {
+                    if(instruction.ToList().GroupBy(g => g.RecipeId)
+                        .Where(w => w.Count() > 1)
+                        .Select(s => s.Key)
+                        .Any())
+                    {
+                        throw new WrongParameterException("Invalide parameter", "Duplication step for same recipe");
+                    }
+                }
+
                 List<IGrouping<Guid?, CreateListOfInstructionCommand.Instruction>> list = request.Instructions.GroupBy(gb => gb.RecipeId).ToList();
                 if (!list.IsNullOrEmpty())
                 {

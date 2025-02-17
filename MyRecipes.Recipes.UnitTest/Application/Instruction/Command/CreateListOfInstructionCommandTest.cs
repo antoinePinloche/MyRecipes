@@ -16,19 +16,38 @@ namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
 {
     public sealed class CreateListOfInstructionCommandTest
     {
-        //CreateListOfInstructionCommand
         private readonly Mock<IInstructionRepository> _instructionRepository = new();
         private readonly Mock<ILogger<CreateListOfInstructionCommandHandler>> _logger = new();
         private CancellationToken _cancellationToken = CancellationToken.None;
 
         [Fact]
         [Description("CreateListOfInstructionCommand : WrongParameterException id")]
-        public void CreateListOfInstructionCommandTest_WrongParameterException_id()
+        public async void CreateListOfInstructionCommandTest_WrongParameterException_id()
         {
             CreateListOfInstructionCommand query = new CreateListOfInstructionCommand(null);
             CreateListOfInstructionCommandHandler handler = new CreateListOfInstructionCommandHandler(_instructionRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+        }
+
+        [Fact]
+        [Description("CreateListOfInstructionCommand : WrongParameterException id")]
+        public async void CreateListOfInstructionCommandTest_WrongParameterException_multipleStepDuplication()
+        {
+            Guid recipeGuid = Guid.NewGuid();
+            int step = 0;
+            string stepName = "stepName";
+            string stepDescription = "StepDescription";
+            CreateListOfInstructionCommand query = new CreateListOfInstructionCommand(new List<CreateListOfInstructionCommand.Instruction>()
+            {
+                new CreateListOfInstructionCommand.Instruction(recipeGuid, 0, stepName, stepDescription),
+                new CreateListOfInstructionCommand.Instruction(recipeGuid, 0, "stepName2", stepDescription),
+                new CreateListOfInstructionCommand.Instruction(recipeGuid, 1, "stepName3", stepDescription)
+            });
+
+            CreateListOfInstructionCommandHandler handler = new CreateListOfInstructionCommandHandler(_instructionRepository.Object, _logger.Object);
+
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]
