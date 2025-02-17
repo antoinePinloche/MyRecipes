@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
+using MyRecipes.Recipes.Domain.Entity;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
@@ -25,6 +26,10 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.UpdateRecipeIng
         {
             try
             {
+                if (request.Id.IsEmpty())
+                {
+                    throw new WrongParameterException("Invalide key", $"request paramater RecipeID is empty");
+                }
                 if (request.RecipeId.IsNullOrEmpty())
                 {
                     throw new WrongParameterException("Invalide key", $"request paramater RecipeID is null or empty");
@@ -38,18 +43,17 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.UpdateRecipeIng
                 {
                     throw new RecipeIngredientNotFoundException("Invalide Key", $"Ingredient Recipe with Id {request.Id} not found");
                 }
-                if (!request.RecipeId.IsNullOrEmpty())
+
+                var recipe = await _recipesRepository.GetAsync((Guid)request.RecipeId);
+                if (recipe is null)
                 {
-                    var recipe = await _recipesRepository.GetAsync((Guid)request.RecipeId);
-                    if (recipe is null)
-                    {
-                        throw new RecipeNotFoundException("Invalide key", $"Recipe with ID {request.RecipeId} not found");
-                    }
-                    var recipeIngredients = await _recipeIngredientRepository.GetAllRecipeIngredientByRecipeIdlAsync((Guid)request.RecipeId);
-                    if (recipeIngredients.Any(ri => ri.IngredientId == request.IngredientId))
-                    {
-                        throw new RecipeIngredientAlreadyExistException("invalide key", $"Recipe with ingredient {request.IngredientId} already exist");
-                    }
+                    throw new RecipeNotFoundException("Invalide key", $"Recipe with ID {request.RecipeId} not found");
+                }
+                var recipeIngredients = await _recipeIngredientRepository.GetAllRecipeIngredientByRecipeIdlAsync((Guid)request.RecipeId);
+
+                if (recipeIngredients is not null && recipeIngredients.Any(ri => ri.IngredientId == request.IngredientId))
+                {
+                    throw new RecipeIngredientAlreadyExistException("invalide key", $"Recipe with ingredient {request.IngredientId} already exist");
                 }
 
                 if (riFound.IngredientId != request.IngredientId)

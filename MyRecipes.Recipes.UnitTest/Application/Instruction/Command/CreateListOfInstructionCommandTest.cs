@@ -41,7 +41,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
             string stepDescription = "StepDescription";
             CreateListOfInstructionCommand query = new CreateListOfInstructionCommand(new List<CreateListOfInstructionCommand.Instruction>()
             {
-                new CreateListOfInstructionCommand.Instruction(recipeGuid, 1, stepName, stepDescription)
+                new CreateListOfInstructionCommand.Instruction(recipeGuid, 0, stepName, stepDescription)
             });
             CreateListOfInstructionCommandHandler handler = new CreateListOfInstructionCommandHandler(_instructionRepository.Object, _logger.Object);
 

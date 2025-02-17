@@ -10,7 +10,6 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIng
     public class DeleteRecipeIngredientCommandHandler : IRequestHandler<DeleteRecipeIngredientCommand>
     {
         private readonly IRecipeIngredientRepository _recipeIngredientRepository;
-
         private readonly ISender _sender;
         private readonly ILogger<DeleteRecipeIngredientCommandHandler> _logger;
         public DeleteRecipeIngredientCommandHandler(IRecipeIngredientRepository recipeIngredientRepository, ISender sender, ILogger<DeleteRecipeIngredientCommandHandler> logger)

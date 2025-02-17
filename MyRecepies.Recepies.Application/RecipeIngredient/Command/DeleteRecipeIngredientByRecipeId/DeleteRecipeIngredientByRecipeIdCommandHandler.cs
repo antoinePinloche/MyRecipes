@@ -25,11 +25,14 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIng
                     throw new WrongParameterException("Invalide parameter", "Id is invalide");
                 }
                 var RecipeIngredientList = await _recipeIngredientRepository.GetAllRecipeIngredientByRecipeIdlAsync(request.Id);
-
                 if (!RecipeIngredientList.IsNullOrEmpty())
                 {
                     await _recipeIngredientRepository.RemoveRangeAsync(RecipeIngredientList);
                     _logger.LogInformation($"DeleteRecipeIngredientByRecipeIdCommandHandler : recipe ingredient delete for recipe {request.Id}");
+                }
+                else
+                {
+                    _logger.LogInformation($"DeleteRecipeIngredientByRecipeIdCommandHandler : Finish without error because no recipeIngredient to delete");
                 }
             }
             catch (Exception ex)
