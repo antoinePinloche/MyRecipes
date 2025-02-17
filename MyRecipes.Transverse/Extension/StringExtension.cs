@@ -10,11 +10,11 @@ namespace MyRecipes.Transverse.Extension
     {
         public static bool IsNullOrEmpty(this string str)
         {
-            if (str is not null)
-                return false;
-            if (!str.Equals(string.Empty))
-                return false;
-            return true;
+            if (str is null)
+                return true;
+            if (str.Equals(string.Empty))
+                return true;
+            return false;
         }
     }
 }
