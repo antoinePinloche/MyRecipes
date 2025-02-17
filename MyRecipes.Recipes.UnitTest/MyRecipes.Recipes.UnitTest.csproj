@@ -24,7 +24,6 @@
   <ItemGroup>
     <Folder Include="Application\RecipeIngredient\Command\" />
     <Folder Include="Application\RecipeIngredient\Query\" />
-    <Folder Include="Application\Recipe\Query\" />
   </ItemGroup>
 
   <ItemGroup>
