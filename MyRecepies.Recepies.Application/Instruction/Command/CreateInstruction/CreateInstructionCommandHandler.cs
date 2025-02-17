@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
+using System.Diagnostics.CodeAnalysis;
 
 namespace MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction
 {
@@ -34,10 +35,14 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction
                     throw new WrongParameterException("Invalide parameter", "RecipeId is invalide");
                 }
                 var instructionRecipe = await _instructionRepository.GetAllInstructionByRecipeIdAsync((Guid)request.RecipeId);
-                if (instructionRecipe.Any(a => a.Step == request.Step))
+                if (instructionRecipe is not null)
                 {
-                    throw new InstructionAlreadyExisteException("Can't Create instruction step already Exist", $"Instruction {request.Step} already Exist");
+                    if (instructionRecipe.Any(a => a.Step == request.Step))
+                    {
+                        throw new InstructionAlreadyExisteException("Can't Create instruction step already Exist", $"Instruction {request.Step} already Exist");
+                    }
                 }
+
                 Domain.Entity.Instruction instructionToAdd = new()
                 {
                     Id = Guid.NewGuid(),
