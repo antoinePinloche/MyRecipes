@@ -34,12 +34,12 @@ namespace MyRecipes.Recipes.Application.Recipe.Command.DeleteRecipe
                 {
                     throw new RecipeNotFoundException("invalide key", $"Recipe with Id {request.Id} not found");
                 }
-                if (recipeFound.Ingredients.Any())
+                if (recipeFound.Ingredients is null || recipeFound.Ingredients.Any())
                 {
                     await _sender.Send(new DeleteRecipeIngredientByRecipeIdCommand(request.Id));
                     recipeFound.Ingredients = null;
                 }
-                if (recipeFound.Instructions.Any())
+                if (recipeFound.Instructions is null || recipeFound.Instructions.Any())
                 {
                     await _sender.Send(new DeleteInstructionByRecipeIdCommand(request.Id));
                     recipeFound.Instructions = null;

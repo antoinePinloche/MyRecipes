@@ -29,7 +29,7 @@ namespace MyRecipes.Recipes.Application.Recipe.Command.UpdateRecipe
                 {
                     throw new RecipeNotFoundException("invalide key", $"Recipe with Id {request.Id} not found");
                 }
-                if (!entity.Name.IsNullOrEmpty() && entity.Name != request.Name)
+                if (entity.Name != request.Name)
                     entity.Name = request.Name;
                 entity.RecipyDifficulty = request.RecipyDifficulty;
                 entity.NbGuest = request.NbGuest;

@@ -18,7 +18,6 @@ namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
     public sealed class CreateInstructionCommandTest
     {
         private readonly Mock<IInstructionRepository> _instructionRepository = new();
-        private readonly Mock<IRecipesRepository> _recipesRepository = new();
         private readonly Mock<ILogger<CreateInstructionCommandHandler>> _logger = new();
         private CancellationToken _cancellationToken = CancellationToken.None;
 

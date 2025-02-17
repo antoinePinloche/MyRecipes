@@ -17,7 +17,6 @@ namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
     public sealed class DeleteInstructionByRecipeIdCommandTest
     {
         private readonly Mock<IInstructionRepository> _instructionRepository = new();
-        private readonly Mock<IRecipesRepository> _recipesRepository = new();
         private readonly Mock<ILogger<DeleteInstructionByRecipeIdCommandHandler>> _logger = new();
         private CancellationToken _cancellationToken = CancellationToken.None;
 
