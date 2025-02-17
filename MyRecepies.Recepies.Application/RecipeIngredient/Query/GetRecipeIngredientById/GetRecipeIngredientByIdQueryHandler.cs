@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredientById
 {
@@ -18,7 +19,7 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredie
         {
             try
             {
-                if (request.Id == Guid.Empty)
+                if (request.Id.IsEmpty())
                 {
                     throw new WrongParameterException("Invalide parameter", "Id is invalide");
                 }
