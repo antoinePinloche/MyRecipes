@@ -52,7 +52,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.RecipeIngredient.Query
 
             await Assert.ThrowsAsync<InstructionNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
         }
-        
+
 
         [Fact]
         [Description("CheckRecipeIngredientAccesQuery : Ok false return")]
