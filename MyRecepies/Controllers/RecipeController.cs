@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Connections;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyRecipes.Recipes.Application.Instruction.Query.GetAllInstructionByRecipeId;
 using MyRecipes.Recipes.Application.Recipe.Query.GetAllRecipe;
@@ -15,7 +17,7 @@ using MyRecipes.Web.API.Models.Class.Recipe;
 namespace MyRecipes.Web.API.Controllers
 {
     [ApiController]
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User,Administrator")]
     public class RecipeController : ControllerBase
     {
         private readonly ISender _sender;
@@ -31,6 +33,9 @@ namespace MyRecipes.Web.API.Controllers
         {
             try
             {
+                var user = this.User;
+                AuthorizeAttribute currentAuthorizeAttribute = (AuthorizeAttribute)Attribute.GetCustomAttribute(typeof(RecipeController), typeof(AuthorizeAttribute));
+                string roles = currentAuthorizeAttribute.Roles;
                 var result = await _sender.Send(new GetAllRecipeQuery());
                 _logger.LogInformation("GetAllRecipe : finish without error");
                 return Ok(result.ToRecipeResponse());
