@@ -12,8 +12,8 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.CheckRecipeIngred
     {
         private readonly IRecipeIngredientRepository _recipeIngredientRepository;
         private readonly IRecipesRepository _recipesRepository;
-        private readonly ILogger<GetAllInstructionByRecipeIdQueryHandler> _logger;
-        public CheckRecipeIngredientAccesQueryHandler(IRecipeIngredientRepository recipeIngredientRepository, IRecipesRepository recipesRepository, ILogger<GetAllInstructionByRecipeIdQueryHandler> logger)
+        private readonly ILogger<CheckRecipeIngredientAccesQueryHandler> _logger;
+        public CheckRecipeIngredientAccesQueryHandler(IRecipeIngredientRepository recipeIngredientRepository, IRecipesRepository recipesRepository, ILogger<CheckRecipeIngredientAccesQueryHandler> logger)
         {
             _recipesRepository = recipesRepository;
             _recipeIngredientRepository = recipeIngredientRepository;

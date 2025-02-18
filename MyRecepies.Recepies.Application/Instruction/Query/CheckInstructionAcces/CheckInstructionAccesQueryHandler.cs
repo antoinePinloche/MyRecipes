@@ -12,8 +12,8 @@ namespace MyRecipes.Recipes.Application.Instruction.Query.CheckInstructionAcces
     {
         private readonly IInstructionRepository _instructionRepository;
         private readonly IRecipesRepository _recipesRepository;
-        private readonly ILogger<GetAllInstructionByRecipeIdQueryHandler> _logger;
-        public CheckInstructionAccesQueryHandler(IInstructionRepository instructionRepository, IRecipesRepository recipesRepository, ILogger<GetAllInstructionByRecipeIdQueryHandler> logger)
+        private readonly ILogger<CheckInstructionAccesQueryHandler> _logger;
+        public CheckInstructionAccesQueryHandler(IInstructionRepository instructionRepository, IRecipesRepository recipesRepository, ILogger<CheckInstructionAccesQueryHandler> logger)
         {
             _recipesRepository = recipesRepository;
             _instructionRepository = instructionRepository;
