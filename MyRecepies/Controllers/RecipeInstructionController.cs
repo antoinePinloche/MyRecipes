@@ -9,10 +9,12 @@ using MyRecipes.Web.API.Mapper.Instruction;
 using MyRecipes.Web.API.Mapper.RecipeIngredient;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.web.Controllers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyRecipes.Web.API.Controllers
 {
     [ApiController]
+    [Authorize(Roles = "User")]
     public class RecipeInstructionController : ControllerBase
     {
         private readonly ISender _sender;

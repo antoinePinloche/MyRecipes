@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientById;
@@ -11,6 +12,7 @@ namespace MyRecipes.web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "User")]
     public class IngredientController : ControllerBase
     {
         private readonly ISender _sender;

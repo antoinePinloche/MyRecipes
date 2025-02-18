@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyRecipes.Recipes.Application.Instruction.Query.GetAllInstructionByRecipeId;
 using MyRecipes.Recipes.Application.Recipe.Query.GetAllRecipe;
@@ -14,6 +15,7 @@ using MyRecipes.Web.API.Models.Class.Recipe;
 namespace MyRecipes.Web.API.Controllers
 {
     [ApiController]
+    [Authorize(Roles = "User")]
     public class RecipeController : ControllerBase
     {
         private readonly ISender _sender;

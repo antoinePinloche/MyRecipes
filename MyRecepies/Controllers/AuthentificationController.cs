@@ -1,28 +1,26 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MyRecipes.Authentification.Application.User.Command.CreateUser;
 using MyRecipes.Authentification.Application.User.Command.DeleteUser;
-using MyRecipes.Authentification.Application.User.Command.UpdatePassword;
 using MyRecipes.Authentification.Application.User.Query.GetAllUsers;
-using MyRecipes.web.Models.Class;
 
 namespace MyRecipes.web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthentificationController : ControllerBase
+    [Authorize(Roles = "Administrator")]
+    public class AdminUserController : ControllerBase
     {
         private readonly ISender _sender;
 
-        public AuthentificationController(ISender mediator)
+        public AdminUserController(ISender mediator)
         {
             _sender = mediator;
         }
 
         [HttpPut]
-        [Route("api/[controller]/[action]")]
-        public async Task<IActionResult> ModifyUser(CreateUserModel user)
+        [Route("api/[controller]/[action]/User/{Guid}/Role/{NewRole}")]
+        public async Task<IActionResult> ModifyUserRole(string Guid, string NewRole)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

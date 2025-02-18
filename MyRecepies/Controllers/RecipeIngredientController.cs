@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetAllRecipeIngredient;
 using MyRecipes.Transverse.Exception;
@@ -8,6 +9,7 @@ using MyRecipes.Web.API.Models.Class.RecipeIngredient;
 namespace MyRecipes.Web.API.Controllers
 {
     [ApiController]
+    [Authorize(Roles = "User")]
     public class RecipeIngredientController : ControllerBase
     {
         private readonly ISender _sender;

@@ -1,8 +1,8 @@
 [
   {
-    "ContainingType": "MyRecipes.web.Controllers.AuthentificationController",
+    "ContainingType": "MyRecipes.web.Controllers.AdminUserController",
     "Method": "DeleteUser",
-    "RelativePath": "api/Authentification/api/Authentification/DeleteUser/{guid}",
+    "RelativePath": "api/AdminUser/api/AdminUser/DeleteUser/{guid}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -16,9 +16,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MyRecipes.web.Controllers.AuthentificationController",
+    "ContainingType": "MyRecipes.web.Controllers.AdminUserController",
     "Method": "GetAllUsers",
-    "RelativePath": "api/Authentification/api/Authentification/GetAllUsers",
+    "RelativePath": "api/AdminUser/api/AdminUser/GetAllUsers",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -26,16 +26,21 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MyRecipes.web.Controllers.AuthentificationController",
-    "Method": "ModifyUser",
-    "RelativePath": "api/Authentification/api/Authentification/ModifyUser",
+    "ContainingType": "MyRecipes.web.Controllers.AdminUserController",
+    "Method": "ModifyUserRole",
+    "RelativePath": "api/AdminUser/api/AdminUser/ModifyUserRole/User/{Guid}/Role/{NewRole}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
-        "Type": "MyRecipes.web.Models.Class.CreateUserModel",
+        "Name": "Guid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "NewRole",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
