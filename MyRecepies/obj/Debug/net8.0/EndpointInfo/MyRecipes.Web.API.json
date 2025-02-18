@@ -5,14 +5,14 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/AdminUser/api/AdminUser/ModifyUserRole/User/{Guid}/Role/{NewRole}": {
+    "/api/AdminUser/api/AdminUser/ModifyUserRole/User/{Id}/Role/{NewRole}": {
       "put": {
         "tags": [
           "AdminUser"
         ],
         "parameters": [
           {
-            "name": "Guid",
+            "name": "Id",
             "in": "path",
             "required": true,
             "schema": {
@@ -25,6 +25,14 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "ToAdd",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": true
             }
           }
         ],

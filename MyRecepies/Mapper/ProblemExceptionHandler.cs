@@ -235,6 +235,64 @@ namespace MyRecipes.Web.API
                     });
             }
             #endregion
+
+            #region User
+            if (exception is UserNotFoundException userNotFoundException)
+            {
+                var problemDetails = new ProblemDetails
+                {
+                    Status = StatusCodes.Status404NotFound,
+                    Title = userNotFoundException.Error,
+                    Detail = userNotFoundException.Message,
+                    Type = "NotFound"
+                };
+                httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                return await _problemDetail.TryWriteAsync(
+                    new ProblemDetailsContext
+                    {
+                        HttpContext = httpContext,
+                        ProblemDetails = problemDetails
+                    });
+            }
+            #endregion
+
+            #region UserRole
+            if (exception is UserRoleAlreadyExistException userRoleAlreadyExistException)
+            {
+                var problemDetails = new ProblemDetails
+                {
+                    Status = StatusCodes.Status409Conflict,
+                    Title = userRoleAlreadyExistException.Error,
+                    Detail = userRoleAlreadyExistException.Message,
+                    Type = "Conflict"
+                };
+                httpContext.Response.StatusCode = StatusCodes.Status409Conflict;
+                return await _problemDetail.TryWriteAsync(
+                    new ProblemDetailsContext
+                    {
+                        HttpContext = httpContext,
+                        ProblemDetails = problemDetails
+                    });
+            }
+
+            if (exception is UserRoleNotFoundException userRoleNotFoundException)
+            {
+                var problemDetails = new ProblemDetails
+                {
+                    Status = StatusCodes.Status404NotFound,
+                    Title = userRoleNotFoundException.Error,
+                    Detail = userRoleNotFoundException.Message,
+                    Type = "NotFound"
+                };
+                httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                return await _problemDetail.TryWriteAsync(
+                    new ProblemDetailsContext
+                    {
+                        HttpContext = httpContext,
+                        ProblemDetails = problemDetails
+                    });
+            }
+            #endregion
             return false;
         }
     }

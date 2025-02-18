@@ -2,6 +2,8 @@
 using MyRecipes.Authentification.Domain.Entities;
 using MyRecipes.Authentification.Domain.Repository.RepositoryUser;
 using MyRecipes.Authentification.Repository.EF.DbContext;
+using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Authentification.Repository.EF
 {
@@ -42,16 +44,6 @@ namespace MyRecipes.Authentification.Repository.EF
             return result;
         }
 
-        public override async Task RemoveAsync(User entitie)
-        {
-            User? userFound = await Context.Users.FirstOrDefaultAsync(f => f == entitie);
-            if (userFound != null)
-            {
-                Context.Users.Remove(entitie);
-                await Context.SaveChangesAsync();
-            }
-        }
-
         public override Task RemoveRangeAsync(ICollection<User> entities)
         {
             throw new NotImplementedException();
@@ -79,6 +71,24 @@ namespace MyRecipes.Authentification.Repository.EF
             if (pendingMigration)
             {
                 await Context.Database.MigrateAsync();
+            }
+        }
+
+        public override Task<bool> ChangeRoleUserAsync(User user, string newRole)
+        {
+            if (newRole.IsNullOrEmpty())
+                throw new WrongParameterException("", "");
+            Func<bool> func = () => { return true; };
+            return new Task<bool>(func);
+        }
+
+        public async override Task RemoveAsync(User entitie)
+        {
+            User? userFound = await Context.Users.FirstOrDefaultAsync(f => f == entitie);
+            if (userFound != null)
+            {
+                Context.Users.Remove(entitie);
+                await Context.SaveChangesAsync();
             }
         }
     }

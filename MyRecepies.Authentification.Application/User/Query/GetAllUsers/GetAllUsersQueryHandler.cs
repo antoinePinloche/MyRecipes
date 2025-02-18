@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using MyRecipes.Authentification.Domain.Repository.RepositoryUser;
 
 namespace MyRecipes.Authentification.Application.User.Query.GetAllUsers
@@ -6,12 +7,27 @@ namespace MyRecipes.Authentification.Application.User.Query.GetAllUsers
     public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQueryRequest, GetAllUsersQueryResult>
     {
         private readonly IUsersRepository _usersRepository;
-        public GetAllUsersQueryHandler(IUsersRepository usersRepository) => _usersRepository = usersRepository;
+        private readonly ILogger<GetAllUsersQueryHandler> _logger;
+        public GetAllUsersQueryHandler(IUsersRepository usersRepository, ILogger<GetAllUsersQueryHandler> logger)
+        {
+            _usersRepository = usersRepository;
+            _logger = logger;
+        }
 
         public async Task<GetAllUsersQueryResult> Handle(GetAllUsersQueryRequest request, CancellationToken cancellationToken)
         {
-            var result = await _usersRepository.GetAllAsync();
-            return new GetAllUsersQueryResult(result);
+            try
+            {
+                var result = await _usersRepository.GetAllAsync();
+                _logger.LogInformation("GetAllUsersQueryHandler : Finish with success and return all user");
+                return new GetAllUsersQueryResult(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw;
+            }
+
         }
     }
 }

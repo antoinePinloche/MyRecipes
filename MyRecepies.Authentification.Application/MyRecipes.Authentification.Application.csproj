@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="User\Command\UpdateUserInformation\" />
-    <Folder Include="User\Command\SignInUser\" />
+    <Compile Remove="User\Command\SignInUser\**" />
+    <Compile Remove="User\Command\UpdateUserInformation\**" />
+    <EmbeddedResource Remove="User\Command\SignInUser\**" />
+    <EmbeddedResource Remove="User\Command\UpdateUserInformation\**" />
+    <None Remove="User\Command\SignInUser\**" />
+    <None Remove="User\Command\UpdateUserInformation\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +24,10 @@
     <ProjectReference Include="..\MyRecepies.Authentification.Domain\MyRecipes.Authentification.Domain.csproj" />
     <ProjectReference Include="..\MyRecepies.Authentification.Repository.EF\MyRecipes.Authentification.Repository.EF.csproj" />
     <ProjectReference Include="..\MyRecipes.Transverse\MyRecipes.Transverse.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="User\Query\GetUserUserByRole\" />
   </ItemGroup>
 
 </Project>

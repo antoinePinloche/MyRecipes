@@ -1,9 +1,13 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using MyRecipes.Authentification.Application.User.Command.DeleteUser;
+using MyRecipes.Authentification.Application.User.Command.UpdateUserRole;
 using MyRecipes.Authentification.Application.User.Query.GetAllUsers;
 using MyRecipes.Transverse.Constant;
+using MyRecipes.Transverse.Exception;
 
 namespace MyRecipes.web.Controllers
 {
@@ -13,20 +17,49 @@ namespace MyRecipes.web.Controllers
     public class AdminUserController : ControllerBase
     {
         private readonly ISender _sender;
+        private readonly ILogger<AdminUserController> _logger;
 
-        public AdminUserController(ISender mediator)
+        public AdminUserController(ISender mediator, ILogger<AdminUserController> logger)
         {
             _sender = mediator;
+            _logger = logger;
         }
 
         [HttpPut]
-        [Route("api/[controller]/[action]/User/{Guid}/Role/{NewRole}")]
-        public async Task<IActionResult> ModifyUserRole(string Guid, string NewRole)
+        [Route("api/[controller]/[action]/User/{Id}/Role/{NewRole}")]
+        public async Task<IActionResult> ModifyUserRole(string Id, string NewRole, bool ToAdd = true)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            return BadRequest();
+            try
+            {
+                if (!Guid.TryParse(Id, out Guid guid))
+                {
+                    _logger.LogError("ModifyUserRole : wrong Id parameter");
+                    throw new WrongParameterException("Invalide key", "ModifyUserRole : wrong Id parameter");
+                }
+                await _sender.Send(new UpdateUserRoleCommand(guid, NewRole, ToAdd));
+                _logger.LogInformation("ModifyUserRole : Finish without error");
+                return Ok();
+            }
+            catch(WrongParameterException ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw new WrongParameterException(ex.Error, ex.Message);
+            }
+            catch(UserNotFoundException ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw new UserNotFoundException(ex.Error, ex.Message);
+            }
+            catch (UserRoleAlreadyExistException ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw new UserNotFoundException(ex.Error, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw new Exception(ex.Message);
+            }
         }
 
         [HttpGet]
@@ -34,6 +67,7 @@ namespace MyRecipes.web.Controllers
         public async Task<IActionResult> GetAllUsers()
         {
             var tmp = await _sender.Send(new GetAllUsersQueryRequest());
+            _logger.LogInformation("GetAllUsers : return All users");
             return Ok(tmp);
         }
 
@@ -41,12 +75,34 @@ namespace MyRecipes.web.Controllers
         [Route("api/[controller]/[action]/{guid}")]
         public async Task<IActionResult> DeleteUser(string guid)
         {
-            if (!Guid.TryParse(guid, out Guid guidSend))
+            try
             {
-                return BadRequest("DeleteUser : BadParameter" + guid);
+                if (!Guid.TryParse(guid, out Guid guidSend))
+                {
+                    _logger.LogError("DeleteUser : BadParameter");
+                    return BadRequest("DeleteUser : BadParameter" + guid);
+                }
+
+                await _sender.Send(new DeleteUserCommand(guidSend));
+                _logger.LogInformation("DeleteUser : Complete without error");
+                return Ok();
             }
-            await _sender.Send(new DeleteUserCommand(guidSend));
-            return Ok();
+            catch (WrongParameterException ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw new WrongParameterException(ex.Error, ex.Message);
+            }
+            catch (UserNotFoundException ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw new UserNotFoundException(ex.Error, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw new Exception(ex.Message);
+            }
+
         }
     }
 }
