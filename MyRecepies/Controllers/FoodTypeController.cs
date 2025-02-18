@@ -1,20 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using MyRecipes.Recipes.Application.FoodType.Command.CreateFoodType;
-using MyRecipes.Recipes.Application.FoodType.Command.DeleteFoodTypeById;
-using MyRecipes.Recipes.Application.FoodType.Command.UpdateFoodTypeById;
 using MyRecipes.Recipes.Application.FoodType.Query.GetAllFoodType;
 using MyRecipes.Recipes.Application.FoodType.Query.GetFoodTypeById;
-using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTypeId;
 using MyRecipes.Transverse.Exception;
-using MyRecipes.Transverse.Extension;
 using MyRecipes.Web.API.Mapper.FoodType;
 using MyRecipes.Web.API.Mapper.Ingredient;
 using MyRecipes.Web.API.Models.Class.FoodType;
-using System;
 
 namespace MyRecipes.Web.API.Controllers
 {
