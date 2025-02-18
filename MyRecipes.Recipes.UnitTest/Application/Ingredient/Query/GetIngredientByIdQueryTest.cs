@@ -28,7 +28,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Ingredient.Query
         public async void GetIngredientByIdQueryTest_IngredientNotFoundException()
         {
             Guid guid = Guid.NewGuid();
-            GetIngredientByIdQuery query = new GetIngredientByIdQuery(Guid.Empty);
+            GetIngredientByIdQuery query = new GetIngredientByIdQuery(guid);
             GetIngredientByIdQueryHandler handler = new GetIngredientByIdQueryHandler(_ingredientRepository.Object, _logger.Object);
 
 

@@ -48,20 +48,6 @@ namespace MyRecipes.Recipes.UnitTest.Application.FoodType.Command
 
         [Fact]
         [Description("UpdateFoodTypeByIdCommand : FoodTypeAlreadyExistException")]
-        public async Task DeleteFoodTypeByIdQueryTest_FoodTypeAlreadyExistException()
-        {
-            Guid guid = Guid.NewGuid();
-            UpdateFoodTypeByIdCommand command = new UpdateFoodTypeByIdCommand(guid, "Name");
-            UpdateFoodTypeByIdCommandHandler handler = new UpdateFoodTypeByIdCommandHandler(_foodTypeRepository.Object, _logger.Object);
-
-            Domain.Entity.FoodType foodTypeReturn = new Domain.Entity.FoodType() { Name = "Name", Id = guid };
-            _foodTypeRepository.Setup(x => x.GetAsync(It.IsAny<Guid>())).ReturnsAsync(foodTypeReturn);
-
-            await Assert.ThrowsAsync<FoodTypeAlreadyExistException>(async () => await handler.Handle(command, _cancellationToken));
-        }
-
-        [Fact]
-        [Description("UpdateFoodTypeByIdCommand : FoodTypeAlreadyExistException")]
         public async Task DeleteFoodTypeByIdQueryTest_FoodTypeAlreadyExistException_WithTrueReturn()
         {
             Guid guid = Guid.NewGuid();

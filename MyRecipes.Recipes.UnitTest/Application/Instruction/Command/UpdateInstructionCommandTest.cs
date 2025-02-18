@@ -48,7 +48,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
             Guid guid = Guid.NewGuid();
             int step = 0;
             string stepName = "stepName";
-            string stepDescription = "StepDescription";
+            string stepDescription = "";
             UpdateInstructionCommand query = new UpdateInstructionCommand(guid, step, stepName, stepDescription);
             UpdateInstructionCommandHandler handler = new UpdateInstructionCommandHandler(_instructionRepository.Object, _logger.Object);
 

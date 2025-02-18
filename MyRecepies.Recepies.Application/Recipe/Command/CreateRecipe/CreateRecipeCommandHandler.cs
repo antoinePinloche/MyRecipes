@@ -37,7 +37,7 @@ namespace MyRecipes.Recipes.Application.Recipe.Command.CreateRecipe
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
-                throw new Exception();
+                throw;
             }
         }
     }
