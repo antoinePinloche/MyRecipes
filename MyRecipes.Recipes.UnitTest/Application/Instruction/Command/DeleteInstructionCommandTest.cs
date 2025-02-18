@@ -1,16 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
 using MyRecipes.Recipes.Application.Instruction.Command.DeleteInstruction;
-using MyRecipes.Recipes.Application.Instruction.Query.GetAllInstructionByRecipeId;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
-using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
 {
@@ -22,24 +15,24 @@ namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
 
         [Fact]
         [Description("DeleteInstructionCommand : WrongParameterException")]
-        public void DeleteInstructionCommandTest_WrongParameterException()
+        public async Task DeleteInstructionCommandTest_WrongParameterExceptionAsync()
         {
             Guid guid = Guid.Empty;
             DeleteInstructionCommand query = new DeleteInstructionCommand(guid);
             DeleteInstructionCommandHandler handler = new DeleteInstructionCommandHandler(_instructionRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]
         [Description("DeleteInstructionCommand : InstructionNotFoundException")]
-        public void DeleteInstructionCommandTest_InstructionNotFoundException()
+        public async Task DeleteInstructionCommandTest_InstructionNotFoundExceptionAsync()
         {
             Guid guid = Guid.NewGuid();
             DeleteInstructionCommand query = new DeleteInstructionCommand(guid);
             DeleteInstructionCommandHandler handler = new DeleteInstructionCommandHandler(_instructionRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<InstructionNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<InstructionNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]

@@ -1,16 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using MyRecipes.Recipes.Application.Instruction.Command.DeleteInstruction;
 using MyRecipes.Recipes.Application.Instruction.Command.DeleteInstructionByRecipeId;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
-using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
 {
@@ -22,23 +15,23 @@ namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
 
         [Fact]
         [Description("DeleteInstructionByRecipeIdCommand : WrongParameterException")]
-        public void DeleteInstructionByRecipeIdCommandTest_WrongParameterException()
+        public async Task DeleteInstructionByRecipeIdCommandTest_WrongParameterExceptionAsync()
         {
             Guid guid = Guid.Empty;
             DeleteInstructionByRecipeIdCommand query = new DeleteInstructionByRecipeIdCommand(guid);
             DeleteInstructionByRecipeIdCommandHandler handler = new DeleteInstructionByRecipeIdCommandHandler(_instructionRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
         }
         [Fact]
         [Description("DeleteInstructionByRecipeIdCommand : InstructionNotFoundException")]
-        public void DeleteInstructionByRecipeIdCommandTest_InstructionNotFoundException()
+        public async Task DeleteInstructionByRecipeIdCommandTest_InstructionNotFoundExceptionAsync()
         {
             Guid guid = Guid.NewGuid();
             DeleteInstructionByRecipeIdCommand query = new DeleteInstructionByRecipeIdCommand(guid);
             DeleteInstructionByRecipeIdCommandHandler handler = new DeleteInstructionByRecipeIdCommandHandler(_instructionRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<InstructionNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<InstructionNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
         }
         [Fact]
         [Description("DeleteInstructionByRecipeIdCommand : InstructionNotFoundException")]

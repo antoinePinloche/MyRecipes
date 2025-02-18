@@ -1,17 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
 using MyRecipes.Recipes.Application.Recipe.Query.GetAllRecipe;
-using MyRecipes.Recipes.Application.Recipe.Query.GetRecipeById;
-using MyRecipes.Recipes.Application.Recipe.Query.GetRecipeByName;
 using MyRecipes.Recipes.Domain.Entity.Enum;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.UnitTest.Application.Recipe.Query
 {

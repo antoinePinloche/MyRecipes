@@ -1,16 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using MyRecipes.Recipes.Application.FoodType.Query.GetFoodTypeById;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientById;
-using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.UnitTest.Application.Ingredient.Query
 {
@@ -22,12 +15,12 @@ namespace MyRecipes.Recipes.UnitTest.Application.Ingredient.Query
 
         [Fact]
         [Description("GetIngredientByIdQuery : WrongParameterException")]
-        public void GetIngredientByIdQueryTest_WrongParameterException_withEmpty_Name()
+        public async Task GetIngredientByIdQueryTest_WrongParameterException_withEmpty_NameAsync()
         {
             GetIngredientByIdQuery query = new GetIngredientByIdQuery(Guid.Empty);
             GetIngredientByIdQueryHandler handler = new GetIngredientByIdQueryHandler(_ingredientRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]
@@ -41,7 +34,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Ingredient.Query
 
             _ingredientRepository.Setup(x => x.GetAsync(It.IsAny<Guid>()));
             
-            Assert.ThrowsAsync<IngredientNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<IngredientNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]

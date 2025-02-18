@@ -1,15 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using MyRecipes.Recipes.Application.Ingredient.Command.CreateIngredient;
 using MyRecipes.Recipes.Application.Ingredient.Command.DeteleIngredient;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.UnitTest.Application.Ingredient.Command
 {
@@ -21,22 +15,22 @@ namespace MyRecipes.Recipes.UnitTest.Application.Ingredient.Command
 
         [Fact]
         [Description("DeleteIngredientCommand : Wrong parameter exception with empty Name")]
-        public void DeleteIngredientCommandTest_WrongParameterException_withEmpty_Name()
+        public async Task DeleteIngredientCommandTest_WrongParameterException_withEmpty_NameAsync()
         {
             DeleteIngredientCommand command = new DeleteIngredientCommand(Guid.Empty);
             DeleteIngredientCommandHandler handler = new DeleteIngredientCommandHandler(_ingredientRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(command, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(command, _cancellationToken));
         }
 
         [Fact]
         [Description("DeleteIngredientCommand : Wrong parameter exception with empty Id")]
-        public void DeleteIngredientCommandTest_IngredientNotFoundException()
+        public async Task DeleteIngredientCommandTest_IngredientNotFoundExceptionAsync()
         {
             DeleteIngredientCommand command = new DeleteIngredientCommand(Guid.NewGuid());
             DeleteIngredientCommandHandler handler = new DeleteIngredientCommandHandler(_ingredientRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<IngredientNotFoundException>(async () => await handler.Handle(command, _cancellationToken));
+            await Assert.ThrowsAsync<IngredientNotFoundException>(async () => await handler.Handle(command, _cancellationToken));
         }
 
         [Fact]

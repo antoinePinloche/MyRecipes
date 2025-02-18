@@ -16,7 +16,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Recipe.Query
 
         [Fact]
         [Description("GetRecipeByIdQuery : WrongParameterException ")]
-        public void GetRecipeByIdQueryTest_WrongParameterException_id()
+        public async Task GetRecipeByIdQueryTest_WrongParameterException_idAsync()
         {
             Guid guid = Guid.Empty;
 
@@ -28,19 +28,19 @@ namespace MyRecipes.Recipes.UnitTest.Application.Recipe.Query
             GetRecipeByIdQuery query = new GetRecipeByIdQuery(guid);
             GetRecipeByIdQueryHandler handler = new GetRecipeByIdQueryHandler(_recipesRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]
         [Description("GetRecipeByIdQuery : RecipeNotFoundException ")]
-        public void GetRecipeByIdQueryTest_RecipeNotFoundException()
+        public async Task GetRecipeByIdQueryTest_RecipeNotFoundExceptionAsync()
         {
             Guid guid = Guid.NewGuid();
 
             GetRecipeByIdQuery query = new GetRecipeByIdQuery(guid);
             GetRecipeByIdQueryHandler handler = new GetRecipeByIdQueryHandler(_recipesRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<RecipeNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<RecipeNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]

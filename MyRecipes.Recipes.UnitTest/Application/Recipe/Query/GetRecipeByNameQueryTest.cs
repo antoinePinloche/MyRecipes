@@ -1,16 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using MyRecipes.Recipes.Application.Recipe.Query.GetRecipeById;
 using MyRecipes.Recipes.Application.Recipe.Query.GetRecipeByName;
 using MyRecipes.Recipes.Domain.Entity.Enum;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.UnitTest.Application.Recipe.Query
 {
@@ -22,26 +16,26 @@ namespace MyRecipes.Recipes.UnitTest.Application.Recipe.Query
 
         [Fact]
         [Description("GetRecipeByNameQuery : WrongParameterException ")]
-        public void GetRecipeByNameQueryTest_WrongParameterException_id()
+        public async Task GetRecipeByNameQueryTest_WrongParameterException_idAsync()
         {
             string name = string.Empty;
 
             GetRecipeByNameQuery query = new GetRecipeByNameQuery(name);
             GetRecipeByNameQueryHandler handler = new GetRecipeByNameQueryHandler(_recipesRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]
         [Description("GetRecipeByNameQuery : RecipeNotFoundException ")]
-        public void GetRecipeByNameQueryTest_RecipeNotFoundException()
+        public async Task GetRecipeByNameQueryTest_RecipeNotFoundExceptionAsync()
         {
             string name = "Banane flambée";
 
             GetRecipeByNameQuery query = new GetRecipeByNameQuery(name);
             GetRecipeByNameQueryHandler handler = new GetRecipeByNameQueryHandler(_recipesRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<RecipeNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<RecipeNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]

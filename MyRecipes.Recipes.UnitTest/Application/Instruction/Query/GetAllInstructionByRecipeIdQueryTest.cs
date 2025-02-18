@@ -1,18 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientByName;
 using MyRecipes.Recipes.Application.Instruction.Query.GetAllInstructionByRecipeId;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Query
 {
@@ -25,29 +17,29 @@ namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Query
 
         [Fact]
         [Description("GetAllInstructionByRecipeIdQuery : WrongParameterException")]
-        public void GetAllInstructionByRecipeIdQueryTest_WrongParameterException()
+        public async Task GetAllInstructionByRecipeIdQueryTest_WrongParameterExceptionAsync()
         {
             Guid guid = Guid.Empty;
             GetAllInstructionByRecipeIdQuery query = new GetAllInstructionByRecipeIdQuery(guid);
             GetAllInstructionByRecipeIdQueryHandler handler = new GetAllInstructionByRecipeIdQueryHandler(_instructionRepository.Object, _recipesRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]
         [Description("GetAllInstructionByRecipeIdQuery : RecipeNotFoundException")]
-        public void GetAllInstructionByRecipeIdQueryTest_RecipeNotFoundException()
+        public async Task GetAllInstructionByRecipeIdQueryTest_RecipeNotFoundExceptionAsync()
         {
             Guid guid = Guid.NewGuid();
             GetAllInstructionByRecipeIdQuery query = new GetAllInstructionByRecipeIdQuery(guid);
             GetAllInstructionByRecipeIdQueryHandler handler = new GetAllInstructionByRecipeIdQueryHandler(_instructionRepository.Object, _recipesRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<RecipeNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<RecipeNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]
         [Description("GetAllInstructionByRecipeIdQuery : InstructionNotFoundException")]
-        public void GetAllInstructionByRecipeIdQueryTest_InstructionNotFoundException()
+        public async Task GetAllInstructionByRecipeIdQueryTest_InstructionNotFoundExceptionAsync()
         {
             Guid guid = Guid.NewGuid();
             Guid recipeGuid = Guid.NewGuid();
@@ -57,7 +49,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Query
             Domain.Entity.Recipe recipe = new Domain.Entity.Recipe() { Id = recipeGuid, Ingredients = null, Instructions = null, Name = "Boeuf Sauté", NbGuest = 1, RecipyDifficulty = Domain.Entity.Enum.Difficulty.Beginner, TimeToPrepareRecipe = 120 };
             _recipesRepository.Setup(x => x.GetAsync(It.IsAny<Guid>())).ReturnsAsync(recipe);
 
-            Assert.ThrowsAsync<InstructionNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<InstructionNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]

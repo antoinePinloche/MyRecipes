@@ -1,18 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction;
-using MyRecipes.Recipes.Application.Instruction.Command.DeleteInstructionByRecipeId;
 using MyRecipes.Recipes.Application.Recipe.Command.CreateRecipe;
-using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
-using MyRecipes.Recipes.Repository.EF.Repository;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.UnitTest.Application.Recipe.Command
 {
@@ -24,7 +15,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Recipe.Command
 
         [Fact]
         [Description("CreateRecipeCommand : WrongParameterException ")]
-        public void CreateRecipeCommandTest_WrongParameterException_id()
+        public async Task CreateRecipeCommandTest_WrongParameterException_idAsync()
         {
             string name = null;
             Domain.Entity.Enum.Difficulty difficulty = Domain.Entity.Enum.Difficulty.Normal;
@@ -33,7 +24,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Recipe.Command
             CreateRecipeCommand query = new CreateRecipeCommand(name, difficulty, TimeToPrepareRecipe, nbGuest);
             CreateRecipeCommandHandler handler = new CreateRecipeCommandHandler(_recipesRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]

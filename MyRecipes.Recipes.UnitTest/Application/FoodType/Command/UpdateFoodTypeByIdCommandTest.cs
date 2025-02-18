@@ -15,22 +15,22 @@ namespace MyRecipes.Recipes.UnitTest.Application.FoodType.Command
 
         [Fact]
         [Description("UpdateFoodTypeByIdCommand : Wrong parameter exception with empty Id")]
-        public void UpdateFoodTypeByIdCommandTest_WrongParameterException_withEmpty_Id()
+        public async Task UpdateFoodTypeByIdCommandTest_WrongParameterException_withEmpty_IdAsync()
         {
             UpdateFoodTypeByIdCommand command = new UpdateFoodTypeByIdCommand(Guid.Empty, "N");
             UpdateFoodTypeByIdCommandHandler handler = new UpdateFoodTypeByIdCommandHandler(_foodTypeRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(command, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(command, _cancellationToken));
         }
 
         [Fact]
         [Description("UpdateFoodTypeByIdCommand : Wrong parameter exception with empty Name")]
-        public void UpdateFoodTypeByIdCommandTest_WrongParameterException_withEmpty_Name()
+        public async Task UpdateFoodTypeByIdCommandTest_WrongParameterException_withEmpty_NameAsync()
         {
             UpdateFoodTypeByIdCommand command = new UpdateFoodTypeByIdCommand(Guid.NewGuid(), "");
             UpdateFoodTypeByIdCommandHandler handler = new UpdateFoodTypeByIdCommandHandler(_foodTypeRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(command, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(command, _cancellationToken));
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.FoodType.Command
 
             Domain.Entity.FoodType foodTypeReturn = new Domain.Entity.FoodType() { Name = "Name", Id = guid };
 
-            Assert.ThrowsAsync<FoodTypeNotFoundException>(async () => await handler.Handle(command, _cancellationToken));
+            await Assert.ThrowsAsync<FoodTypeNotFoundException>(async () => await handler.Handle(command, _cancellationToken));
         }
 
         [Fact]
@@ -51,13 +51,13 @@ namespace MyRecipes.Recipes.UnitTest.Application.FoodType.Command
         public async Task DeleteFoodTypeByIdQueryTest_FoodTypeAlreadyExistException()
         {
             Guid guid = Guid.NewGuid();
-            UpdateFoodTypeByIdCommand command = new UpdateFoodTypeByIdCommand(Guid.NewGuid(), "Name");
+            UpdateFoodTypeByIdCommand command = new UpdateFoodTypeByIdCommand(guid, "Name");
             UpdateFoodTypeByIdCommandHandler handler = new UpdateFoodTypeByIdCommandHandler(_foodTypeRepository.Object, _logger.Object);
 
             Domain.Entity.FoodType foodTypeReturn = new Domain.Entity.FoodType() { Name = "Name", Id = guid };
             _foodTypeRepository.Setup(x => x.GetAsync(It.IsAny<Guid>())).ReturnsAsync(foodTypeReturn);
 
-            Assert.ThrowsAsync<FoodTypeAlreadyExistException>(async () => await handler.Handle(command, _cancellationToken));
+            await Assert.ThrowsAsync<FoodTypeAlreadyExistException>(async () => await handler.Handle(command, _cancellationToken));
         }
 
         [Fact]

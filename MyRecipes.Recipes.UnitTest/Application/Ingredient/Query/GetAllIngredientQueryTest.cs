@@ -1,14 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient;
-using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientById;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.UnitTest.Application.Ingredient.Query
 {

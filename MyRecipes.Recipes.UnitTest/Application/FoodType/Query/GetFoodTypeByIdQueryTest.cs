@@ -1,15 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using MyRecipes.Recipes.Application.FoodType.Command.CreateFoodType;
 using MyRecipes.Recipes.Application.FoodType.Query.GetFoodTypeById;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.UnitTest.Application.FoodType.Query
 {
@@ -21,12 +15,12 @@ namespace MyRecipes.Recipes.UnitTest.Application.FoodType.Query
 
         [Fact]
         [Description("GetFoodTypeByIdQuery : Wrong parameter exception")]
-        public void GetFoodTypeByIdQueryTest_WrongParameterException_withEmpty_Name()
+        public async Task GetFoodTypeByIdQueryTest_WrongParameterException_withEmpty_NameAsync()
         {
             GetFoodTypeByIdQuery query = new GetFoodTypeByIdQuery(Guid.Empty);
             GetFoodTypeByIdQueryHandler handler = new GetFoodTypeByIdQueryHandler(_foodTypeRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]

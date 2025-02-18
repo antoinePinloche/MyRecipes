@@ -1,19 +1,12 @@
-﻿using MediatR;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Moq;
-using MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIngredient;
 using MyRecipes.Recipes.Application.RecipeIngredient.Command.UpdateRecipeIngredient;
 using MyRecipes.Recipes.Domain.Entity.Enum;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.UnitTest.Application.RecipeIngredient.Command
 {
@@ -23,7 +16,6 @@ namespace MyRecipes.Recipes.UnitTest.Application.RecipeIngredient.Command
         private readonly Mock<IIngredientRepository> _ingredientRepository = new();
         private readonly Mock<IRecipesRepository> _recipesRepository = new();
         private readonly Mock<ILogger<UpdateRecipeIngredientCommandHandler>> _logger = new();
-        private readonly Mock<ISender> _sender = new();
         private CancellationToken _cancellationToken = CancellationToken.None;
 
         [Fact]

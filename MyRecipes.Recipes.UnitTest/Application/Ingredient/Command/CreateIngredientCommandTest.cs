@@ -1,16 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using MyRecipes.Recipes.Application.FoodType.Command.CreateFoodType;
 using MyRecipes.Recipes.Application.Ingredient.Command.CreateIngredient;
-using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.UnitTest.Application.Ingredient.Command
 {
@@ -22,27 +15,27 @@ namespace MyRecipes.Recipes.UnitTest.Application.Ingredient.Command
 
         [Fact]
         [Description("CreateIngredientCommand : Wrong parameter exception with empty Name")]
-        public void CreateIngredientCommandest_WrongParameterException_withEmpty_Name()
+        public async Task CreateIngredientCommandest_WrongParameterException_withEmpty_NameAsync()
         {
             CreateIngredientCommand command = new CreateIngredientCommand("", Guid.Empty);
             CreateIngredientCommandHandler handler = new CreateIngredientCommandHandler(_ingredientRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(command, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(command, _cancellationToken));
         }
 
         [Fact]
         [Description("CreateIngredientCommand : Wrong parameter exception with empty Id")]
-        public void CreateIngredientCommandest_WrongParameterException_withEmpty_Id()
+        public async Task CreateIngredientCommandest_WrongParameterException_withEmpty_IdAsync()
         {
             CreateIngredientCommand command = new CreateIngredientCommand("Name", Guid.Empty);
             CreateIngredientCommandHandler handler = new CreateIngredientCommandHandler(_ingredientRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(command, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(command, _cancellationToken));
         }
 
         [Fact]
         [Description("CreateIngredientCommand : Wrong parameter exception with empty Id")]
-        public void CreateIngredientCommandest_WrongParameterException_IngredientAlreadyExistException()
+        public async Task CreateIngredientCommandest_WrongParameterException_IngredientAlreadyExistExceptionAsync()
         {
             Guid guid = Guid.NewGuid();
             Guid foodTypeId = Guid.NewGuid();
@@ -61,7 +54,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Ingredient.Command
             };
             _ingredientRepository.Setup(x => x.HasIngredient(It.IsAny<string>())).ReturnsAsync(ingredientReturn);
 
-            Assert.ThrowsAsync<IngredientAlreadyExistException>(async () => await handler.Handle(command, _cancellationToken));
+            await Assert.ThrowsAsync<IngredientAlreadyExistException>(async () => await handler.Handle(command, _cancellationToken));
         }
 
 

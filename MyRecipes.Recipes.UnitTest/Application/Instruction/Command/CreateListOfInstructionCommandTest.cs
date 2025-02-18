@@ -1,16 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction;
 using MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruction;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
-using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
 {
@@ -31,7 +24,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
         }
 
         [Fact]
-        [Description("CreateListOfInstructionCommand : WrongParameterException id")]
+        [Description("CreateListOfInstructionCommand : WrongParameterException duplication Step for same RecipeId")]
         public async void CreateListOfInstructionCommandTest_WrongParameterException_multipleStepDuplication()
         {
             Guid recipeGuid = Guid.NewGuid();

@@ -1,16 +1,10 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using Moq;
-using MyRecipes.Recipes.Application.Recipe.Command.CreateRecipe;
 using MyRecipes.Recipes.Application.Recipe.Command.DeleteRecipe;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.UnitTest.Application.Recipe.Command
 {
@@ -23,26 +17,26 @@ namespace MyRecipes.Recipes.UnitTest.Application.Recipe.Command
 
         [Fact]
         [Description("DeleteRecipeCommand : WrongParameterException ")]
-        public void DeleteRecipeCommandTest_WrongParameterException_id()
+        public async Task DeleteRecipeCommandTest_WrongParameterException_idAsync()
         {
             Guid id = Guid.Empty;
 
             DeleteRecipeCommand query = new DeleteRecipeCommand(id);
             DeleteRecipeCommandHandler handler = new DeleteRecipeCommandHandler(_recipesRepository.Object, _sender.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
         }
         
         [Fact]
         [Description("DeleteRecipeCommand : RecipeNotFoundException ")]
-        public void DeleteRecipeCommandTest_RecipeNotFoundException()
+        public async Task DeleteRecipeCommandTest_RecipeNotFoundExceptionAsync()
         {
             Guid id = Guid.NewGuid();
 
             DeleteRecipeCommand query = new DeleteRecipeCommand(id);
             DeleteRecipeCommandHandler handler = new DeleteRecipeCommandHandler(_recipesRepository.Object, _sender.Object, _logger.Object);
 
-            Assert.ThrowsAsync<RecipeNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<RecipeNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]

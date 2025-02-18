@@ -2,7 +2,6 @@
 using Moq;
 using MyRecipes.Recipes.Application.Instruction.Command.UpdateInstruction;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
-using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Transverse.Exception;
 using System.ComponentModel;
 
@@ -16,7 +15,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
 
         [Fact]
         [Description("UpdateInstructionCommand : WrongParameterException id")]
-        public void UpdateInstructionCommandTest_WrongParameterException_id()
+        public async Task UpdateInstructionCommandTest_WrongParameterException_idAsync()
         {
             Guid guid = Guid.Empty;
             int step = 0;
@@ -25,12 +24,12 @@ namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
             UpdateInstructionCommand query = new UpdateInstructionCommand(guid, step, stepName, stepDescription);
             UpdateInstructionCommandHandler handler = new UpdateInstructionCommandHandler(_instructionRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]
         [Description("UpdateInstructionCommand : WrongParameterException stepName")]
-        public void UpdateInstructionCommandTest_WrongParameterException_stepName()
+        public async Task UpdateInstructionCommandTest_WrongParameterException_stepNameAsync()
         {
             Guid guid = Guid.NewGuid();
             int step = 0;
@@ -39,12 +38,12 @@ namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
             UpdateInstructionCommand query = new UpdateInstructionCommand(guid, step, stepName, stepDescription);
             UpdateInstructionCommandHandler handler = new UpdateInstructionCommandHandler(_instructionRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]
         [Description("UpdateInstructionCommand : WrongParameterException stepDescription")]
-        public void UpdateInstructionCommandTest_WrongParameterException_stepDescription()
+        public async Task UpdateInstructionCommandTest_WrongParameterException_stepDescriptionAsync()
         {
             Guid guid = Guid.NewGuid();
             int step = 0;
@@ -53,7 +52,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Instruction.Command
             UpdateInstructionCommand query = new UpdateInstructionCommand(guid, step, stepName, stepDescription);
             UpdateInstructionCommandHandler handler = new UpdateInstructionCommandHandler(_instructionRepository.Object, _logger.Object);
 
-            Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
         [Fact]
