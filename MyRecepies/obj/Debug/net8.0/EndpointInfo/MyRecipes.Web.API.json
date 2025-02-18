@@ -510,6 +510,18 @@
         }
       }
     },
+    "/api/Recipe/GetMyRecipe": {
+      "get": {
+        "tags": [
+          "Recipe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Recipe/GetRecipeById/{Id}": {
       "get": {
         "tags": [

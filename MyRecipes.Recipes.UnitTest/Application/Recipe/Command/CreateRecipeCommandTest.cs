@@ -21,7 +21,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Recipe.Command
             Domain.Entity.Enum.Difficulty difficulty = Domain.Entity.Enum.Difficulty.Normal;
             int nbGuest = 1;
             int TimeToPrepareRecipe = 120;
-            CreateRecipeCommand query = new CreateRecipeCommand(name, difficulty, TimeToPrepareRecipe, nbGuest);
+            CreateRecipeCommand query = new CreateRecipeCommand(name, difficulty, TimeToPrepareRecipe, nbGuest, Guid.NewGuid());
             CreateRecipeCommandHandler handler = new CreateRecipeCommandHandler(_recipesRepository.Object, _logger.Object);
 
             await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
@@ -35,7 +35,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Recipe.Command
             Domain.Entity.Enum.Difficulty difficulty = Domain.Entity.Enum.Difficulty.Normal;
             int nbGuest = 1;
             int TimeToPrepareRecipe = 120;
-            CreateRecipeCommand query = new CreateRecipeCommand(name, difficulty, TimeToPrepareRecipe, nbGuest);
+            CreateRecipeCommand query = new CreateRecipeCommand(name, difficulty, TimeToPrepareRecipe, nbGuest, Guid.NewGuid());
             CreateRecipeCommandHandler handler = new CreateRecipeCommandHandler(_recipesRepository.Object, _logger.Object);
             _recipesRepository.Setup(s => s.AddAsync(It.IsAny<Domain.Entity.Recipe>()));
             await handler.Handle(query, _cancellationToken);

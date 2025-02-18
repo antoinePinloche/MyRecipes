@@ -1,7 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MyRecipes.Recipes.Application.Instruction.Query.CheckInstructionAcces;
 using MyRecipes.Recipes.Application.Instruction.Query.GetAllInstruction;
+using MyRecipes.Recipes.Application.RecipeIngredient.Query.CheckRecipeIngredientAcces;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 using MyRecipes.Web.API.Mapper.Instruction;
@@ -11,7 +14,7 @@ using MyRecipes.Web.API.Models.Class.Instruction;
 namespace MyRecipes.Web.API.Controllers
 {
     [ApiController]
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = Constant.ROLE.ADMINANDUSER)]
     public class RecipeInstructionController : ControllerBase
     {
         private readonly ISender _sender;
@@ -132,6 +135,11 @@ namespace MyRecipes.Web.API.Controllers
                 {
                     throw new WrongParameterException("Invalide parameter", "model is invalide");
                 }
+                if (!this.CheckIsAdmin())
+                {
+                    if (!await _sender.Send(new CheckInstructionAccesQuery(guid, this.GetUserGuid())))
+                        throw new Exception();
+                }
                 await _sender.Send(model.ToCommand(guid));
                 _logger.LogInformation("UpdateInstruction : finish without error");
                 return Ok();
@@ -162,6 +170,11 @@ namespace MyRecipes.Web.API.Controllers
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
                     throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
+                }
+                if (!this.CheckIsAdmin())
+                {
+                    if (!await _sender.Send(new CheckInstructionAccesQuery(guid, this.GetUserGuid())))
+                        throw new Exception();
                 }
                 await _sender.Send(guid.ToDeleteInstructionCommand());
                 _logger.LogInformation("UpdateInstruction : finish without error");

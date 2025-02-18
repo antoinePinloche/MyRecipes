@@ -84,6 +84,12 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             throw new NotImplementedException();
         }
 
-
+        public async override Task<ICollection<Recipe>> GetByRecipeIdAsync(Guid recipeId)
+        {
+            return await Context.Recipes.Include(i => i.Ingredients).ThenInclude(th => th.Ingredient.FoodType)
+                    .Include(i => i.Instructions)
+                    .Where(w => w.UserId == recipeId)
+                    .ToListAsync();
+        }
     }
 }

@@ -11,8 +11,9 @@ namespace MyRecipes.Transverse.Constant
         #region ROLES
         public static class ROLE
         {
-            public static readonly string USER = "User";
-            public static readonly string ADMIN = "Administrator";
+            public const string USER = "User";
+            public const string ADMIN = "Administrator";
+            public const string ADMINANDUSER = USER + "," + ADMIN;
         }
 
         #endregion  

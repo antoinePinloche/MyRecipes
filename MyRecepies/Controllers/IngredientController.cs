@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientById;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTypeId;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 using MyRecipes.Web.API.Mapper.Ingredient;
 using MyRecipes.Web.API.Models.Class.Ingredient;
 
@@ -12,7 +14,7 @@ namespace MyRecipes.web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = Constant.ROLE.ADMINANDUSER)]
     public class IngredientController : ControllerBase
     {
         private readonly ISender _sender;
@@ -110,6 +112,10 @@ namespace MyRecipes.web.Controllers
                 {
                     throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
                 }
+                if (this.CheckIsAdmin())
+                {
+                    //check car user
+                }
                 await _sender.Send(guid.ToDeleteIngredientCommand());
                 _logger.LogInformation("DeleteIngredient : finish without problem");
                 return Ok();
@@ -135,6 +141,10 @@ namespace MyRecipes.web.Controllers
         [Route("api/[controller]/[action]/{Guid}")]
         public async Task<IActionResult> UpdateIngredient(string guid)
         {
+            if (this.CheckIsAdmin())
+            {
+                //check car user
+            }
             return Ok();
         }
 

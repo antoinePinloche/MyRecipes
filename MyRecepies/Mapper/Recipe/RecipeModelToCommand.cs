@@ -8,9 +8,9 @@ namespace MyRecipes.Web.API.Mapper.Recipe
 {
     public static class RecipeModelToCommand
     {
-        public static Create.CreateRecipeCommand ToCommand(this CreateRecipeModel model)
+        public static Create.CreateRecipeCommand ToCommand(this CreateRecipeModel model, Guid userGuid)
         {
-            return new Create.CreateRecipeCommand(model.Name, model.RecipyDifficulty, model.TimeToPrepareRecipe, model.NbGuest);
+            return new Create.CreateRecipeCommand(model.Name, model.RecipyDifficulty, model.TimeToPrepareRecipe, model.NbGuest, userGuid);
         }
 
         public static Delete.DeleteRecipeCommand ToDeleteRecipeCommand(this Guid id)

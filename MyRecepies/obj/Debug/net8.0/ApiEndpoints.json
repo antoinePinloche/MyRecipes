@@ -212,6 +212,16 @@
   },
   {
     "ContainingType": "MyRecipes.Web.API.Controllers.RecipeController",
+    "Method": "GetMyRecipe",
+    "RelativePath": "api/Recipe/GetMyRecipe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyRecipes.Web.API.Controllers.RecipeController",
     "Method": "GetRecipeById",
     "RelativePath": "api/Recipe/GetRecipeById/{Id}",
     "HttpMethod": "GET",

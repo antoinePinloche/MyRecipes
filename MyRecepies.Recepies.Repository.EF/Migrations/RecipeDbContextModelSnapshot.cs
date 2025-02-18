@@ -104,6 +104,9 @@ namespace MyRecipes.Recipes.Repository.EF.Migrations
                     b.Property<int>("TimeToPrepareRecipe")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.ToTable("Recipes", "Recipe");
@@ -149,11 +152,9 @@ namespace MyRecipes.Recipes.Repository.EF.Migrations
 
             modelBuilder.Entity("MyRecipes.Recipes.Domain.Entity.Instruction", b =>
                 {
-                    b.HasOne("MyRecipes.Recipes.Domain.Entity.Recipe", "Recipe")
+                    b.HasOne("MyRecipes.Recipes.Domain.Entity.Recipe", null)
                         .WithMany("Instructions")
                         .HasForeignKey("RecipeId");
-
-                    b.Navigation("Recipe");
                 });
 
             modelBuilder.Entity("MyRecipes.Recipes.Domain.Entity.RecipeIngredient", b =>

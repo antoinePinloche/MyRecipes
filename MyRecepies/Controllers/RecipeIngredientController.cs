@@ -1,15 +1,19 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MyRecipes.Recipes.Application.Recipe.Query.CheckRecipeAcces;
+using MyRecipes.Recipes.Application.RecipeIngredient.Query.CheckRecipeIngredientAcces;
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetAllRecipeIngredient;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 using MyRecipes.Web.API.Mapper.RecipeIngredient;
 using MyRecipes.Web.API.Models.Class.RecipeIngredient;
 
 namespace MyRecipes.Web.API.Controllers
 {
     [ApiController]
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = Constant.ROLE.ADMINANDUSER)]
     public class RecipeIngredientController : ControllerBase
     {
         private readonly ISender _sender;
@@ -99,6 +103,11 @@ namespace MyRecipes.Web.API.Controllers
                 {
                     throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
                 }
+                if (!this.CheckIsAdmin())
+                {
+                    if (!await _sender.Send(new CheckRecipeIngredientAccesQuery(guid, this.GetUserGuid())))
+                        throw new Exception();
+                }
                 await _sender.Send(model.ToCommand(guid));
                 _logger.LogInformation("UpdateRecipeIngredient : finish without error");
                 return Ok();
@@ -129,6 +138,11 @@ namespace MyRecipes.Web.API.Controllers
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
                     throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
+                }
+                if (!this.CheckIsAdmin())
+                {
+                    if (!await _sender.Send(new CheckRecipeIngredientAccesQuery(guid, this.GetUserGuid())))
+                        throw new Exception();
                 }
                 await _sender.Send(guid.ToDeleteRecipeIngredientCommand());
                 _logger.LogInformation("DeleteRecipeIngredient : finish without error");

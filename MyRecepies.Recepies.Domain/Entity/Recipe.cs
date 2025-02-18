@@ -11,5 +11,6 @@ namespace MyRecipes.Recipes.Domain.Entity
         public Difficulty RecipyDifficulty { get; set; }
         public int TimeToPrepareRecipe { get; set; }
         public int NbGuest {  get; set; }
+        public Guid UserId { get; set; }
     }
 }

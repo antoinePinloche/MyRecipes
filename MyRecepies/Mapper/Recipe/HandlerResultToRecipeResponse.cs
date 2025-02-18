@@ -34,6 +34,23 @@ namespace MyRecipes.Web.API.Mapper.Recipe
                 }).ToList();
         }
 
+        public static List<RecipeResponse> ToRecipeResponse(this List<MyRecipes.Recipes.Application.Recipe.Query.GetMyRecipe.GetMyRecipeQueryResult> recipes)
+        {
+            return recipes.Select(r =>
+
+                new RecipeResponse()
+                {
+                    Id = r.Id,
+                    Name = r.Name,
+                    Ingredients = r.Ingredients?.ToRecipeResponseIngredient(),
+                    Instructions = r.Instructions?.ToRecipeResponseInstruction(),
+                    RecipyDifficulty = r.RecipyDifficulty,
+                    TimeToPrepareRecipe = r.TimeToPrepareRecipe,
+                    NbGuest = r.NbGuest,
+                }).ToList();
+        }
+        
+
         public static List<RecipeByNameReponse> ToRecipeResponse(this List<Recipes.Application.Recipe.Query.GetRecipeByName.GetRecipeByNameQueryResult> recipes)
         {
             return recipes.Select(r =>

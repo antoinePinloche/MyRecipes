@@ -26,5 +26,7 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryRecipe
         {
             throw new NotImplementedException();
         }
+
+        public abstract Task<ICollection<Recipe>> GetByRecipeIdAsync(Guid recipeId);
     }
 }

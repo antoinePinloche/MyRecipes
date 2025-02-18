@@ -4,8 +4,11 @@ using Microsoft.AspNetCore.Connections;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyRecipes.Recipes.Application.Instruction.Query.GetAllInstructionByRecipeId;
+using MyRecipes.Recipes.Application.Recipe.Query.CheckRecipeAcces;
 using MyRecipes.Recipes.Application.Recipe.Query.GetAllRecipe;
+using MyRecipes.Recipes.Application.Recipe.Query.GetMyRecipe;
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredientByRecipeId;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 using MyRecipes.Web.API.Mapper.Instruction;
@@ -17,7 +20,7 @@ using MyRecipes.Web.API.Models.Class.Recipe;
 namespace MyRecipes.Web.API.Controllers
 {
     [ApiController]
-    [Authorize(Roles = "User,Administrator")]
+    [Authorize(Roles = Constant.ROLE.ADMINANDUSER)]
     public class RecipeController : ControllerBase
     {
         private readonly ISender _sender;
@@ -33,9 +36,6 @@ namespace MyRecipes.Web.API.Controllers
         {
             try
             {
-                var user = this.User;
-                AuthorizeAttribute currentAuthorizeAttribute = (AuthorizeAttribute)Attribute.GetCustomAttribute(typeof(RecipeController), typeof(AuthorizeAttribute));
-                string roles = currentAuthorizeAttribute.Roles;
                 var result = await _sender.Send(new GetAllRecipeQuery());
                 _logger.LogInformation("GetAllRecipe : finish without error");
                 return Ok(result.ToRecipeResponse());
@@ -46,6 +46,33 @@ namespace MyRecipes.Web.API.Controllers
                 throw new Exception();
             }
         }
+
+        [HttpGet("api/[controller]/[action]")]
+        public async Task<IActionResult> GetMyRecipe()
+        {
+            try
+            {
+                var result = await _sender.Send(new GetMyRecipeQuery(this.GetUserGuid()));
+                _logger.LogInformation("GetAllRecipe : finish without error");
+                return Ok(result.ToRecipeResponse());
+            }
+            catch (WrongParameterException ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw new WrongParameterException(ex.Error, ex.Message);
+            }
+            catch (RecipeNotFoundException ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw new RecipeNotFoundException(ex.Error, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw new Exception();
+            }
+        }
+
 
         [HttpGet("api/[controller]/[action]/{Id}")]
         public async Task<IActionResult> GetRecipeById(string Id)
@@ -179,7 +206,7 @@ namespace MyRecipes.Web.API.Controllers
                 {
                     throw new WrongParameterException("Invalide parameter", "model is invalide");
                 }
-                await _sender.Send(model.ToCommand());
+                await _sender.Send(model.ToCommand(this.GetUserGuid()));
                 _logger.LogInformation("CreateRecipe : finish without error");
                 return Created();
             }
@@ -208,6 +235,11 @@ namespace MyRecipes.Web.API.Controllers
                 if (!ModelState.IsValid)
                 {
                     throw new WrongParameterException("Invalide parameter", "model is invalide");
+                }
+                if (!this.CheckIsAdmin())
+                {
+                    if (!await _sender.Send(new CheckRecipeAccesQuery(guid, this.GetUserGuid())))
+                        throw new Exception();
                 }
                 await _sender.Send(model.ToCommand(guid));
                 _logger.LogInformation("UpdateRecipe : finish without error");
@@ -238,6 +270,12 @@ namespace MyRecipes.Web.API.Controllers
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
                     throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
+                }
+
+                if (!this.CheckIsAdmin())
+                {
+                    if (!await _sender.Send(new CheckRecipeAccesQuery(guid, this.GetUserGuid())))
+                        throw new Exception();
                 }
                 await _sender.Send(guid.ToDeleteRecipeCommand());
                 _logger.LogInformation("UpdateRecipe : finish without error");

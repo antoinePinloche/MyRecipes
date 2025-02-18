@@ -29,7 +29,8 @@ namespace MyRecipes.Recipes.Application.Recipe.Command.CreateRecipe
                     Name = request.Name,
                     RecipyDifficulty = request.RecipyDifficulty,
                     TimeToPrepareRecipe = request.TimeToPrepareRecipe,
-                    NbGuest = request.NbGuest
+                    NbGuest = request.NbGuest,
+                    UserId = request.UserId
                 };
                 await _recipeRepository.AddAsync(entityToAdd);
                 _logger.LogInformation($"CreateRecipeCommandHandler : recipe {request.Name} create");

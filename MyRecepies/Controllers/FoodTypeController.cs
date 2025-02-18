@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyRecipes.Recipes.Application.FoodType.Query.GetAllFoodType;
 using MyRecipes.Recipes.Application.FoodType.Query.GetFoodTypeById;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Web.API.Mapper.FoodType;
 using MyRecipes.Web.API.Mapper.Ingredient;
@@ -12,7 +13,7 @@ namespace MyRecipes.Web.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = Constant.ROLE.ADMINANDUSER)]
     public class FoodTypeController : ControllerBase
     {
         private readonly ISender _sender;
@@ -100,6 +101,7 @@ namespace MyRecipes.Web.API.Controllers
 
         [HttpDelete]
         [Route("/[action]/{id}")]
+        [Authorize(Roles = Constant.ROLE.ADMIN)]
         public async Task<IActionResult> DeleteFoodType(string id)
         {
             try

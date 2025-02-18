@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyRecipes.Authentification.Application.User.Command.DeleteUser;
 using MyRecipes.Authentification.Application.User.Query.GetAllUsers;
+using MyRecipes.Transverse.Constant;
 
 namespace MyRecipes.web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = Constant.ROLE.ADMIN)]
     public class AdminUserController : ControllerBase
     {
         private readonly ISender _sender;
