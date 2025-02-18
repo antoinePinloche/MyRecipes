@@ -34,3 +34,5 @@ C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Authentification.Application\bi
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Authentification.Application\bin\Debug\net8.0\MyRecipes.Authentification.Repository.EF.pdb
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Authentification.Application\obj\Debug\net8.0\MyRecipe.F1722D6B.Up2Date
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Authentification.Application\obj\Debug\net8.0\ref\MyRecipes.Authentification.Application.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Authentification.Application\bin\Debug\net8.0\MyRecipes.Transverse.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Authentification.Application\bin\Debug\net8.0\MyRecipes.Transverse.pdb

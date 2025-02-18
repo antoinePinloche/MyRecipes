@@ -11,7 +11,8 @@
           "Microsoft.Extensions.Configuration": "9.0.0",
           "Microsoft.Extensions.DependencyInjection": "9.0.0",
           "MyRecipes.Authentification.Domain": "1.0.0",
-          "MyRecipes.Authentification.Repository.EF": "1.0.0"
+          "MyRecipes.Authentification.Repository.EF": "1.0.0",
+          "MyRecipes.Transverse": "1.0.0"
         },
         "runtime": {
           "MyRecipes.Authentification.Application.dll": {}
@@ -1040,10 +1041,19 @@
           "Microsoft.EntityFrameworkCore.Abstractions": "9.0.0",
           "Microsoft.EntityFrameworkCore.Relational": "9.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
-          "MyRecipes.Authentification.Domain": "1.0.0"
+          "MyRecipes.Authentification.Domain": "1.0.0",
+          "MyRecipes.Transverse": "1.0.0"
         },
         "runtime": {
           "MyRecipes.Authentification.Repository.EF.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "MyRecipes.Transverse/1.0.0": {
+        "runtime": {
+          "MyRecipes.Transverse.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1812,6 +1822,11 @@
       "sha512": ""
     },
     "MyRecipes.Authentification.Repository.EF/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MyRecipes.Transverse/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -38,6 +38,9 @@
               },
               "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies.Authentification.Repository.EF\\MyRecipes.Authentification.Repository.EF.csproj": {
                 "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies.Authentification.Repository.EF\\MyRecipes.Authentification.Repository.EF.csproj"
+              },
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecipes.Transverse\\MyRecipes.Transverse.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecipes.Transverse\\MyRecipes.Transverse.csproj"
               }
             }
           }
@@ -193,6 +196,9 @@
             "projectReferences": {
               "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj": {
                 "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecepies.Authentification.Domain\\MyRecipes.Authentification.Domain.csproj"
+              },
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecipes.Transverse\\MyRecipes.Transverse.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecipes.Transverse\\MyRecipes.Transverse.csproj"
               }
             }
           }

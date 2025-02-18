@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using MyRecipes.Transverse.Constant;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Security.Claims;
@@ -79,7 +80,7 @@ namespace MyRecipes.Authentification.Application.Overrides
                     {
                         return CreateValidationProblem(result);
                     }
-
+                    await userManager.AddToRoleAsync(user, Constant.ROLE.USER);
                     //await SendConfirmationEmailAsync(user, userManager, context, email);
                     return TypedResults.Ok();
                 });

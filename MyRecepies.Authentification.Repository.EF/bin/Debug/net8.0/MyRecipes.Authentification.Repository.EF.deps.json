@@ -17,7 +17,8 @@
           "Microsoft.EntityFrameworkCore.Relational": "9.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.0",
-          "MyRecipes.Authentification.Domain": "1.0.0"
+          "MyRecipes.Authentification.Domain": "1.0.0",
+          "MyRecipes.Transverse": "1.0.0"
         },
         "runtime": {
           "MyRecipes.Authentification.Repository.EF.dll": {}
@@ -1450,6 +1451,14 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "MyRecipes.Transverse/1.0.0": {
+        "runtime": {
+          "MyRecipes.Transverse.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -2363,6 +2372,11 @@
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
     "MyRecipes.Authentification.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MyRecipes.Transverse/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
