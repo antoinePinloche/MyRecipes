@@ -1,19 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using MyRecipes.Recipes.Application.Instruction.Query.GetAllInstructionByRecipeId;
-using MyRecipes.Recipes.Application.Recipe.Query.CheckRecipeAcces;
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.CheckRecipeIngredientAcces;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
-using MyRecipes.Recipes.Repository.EF.Repository;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.UnitTest.Application.RecipeIngredient.Query
 {
