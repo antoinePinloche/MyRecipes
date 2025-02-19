@@ -12,9 +12,9 @@ using MyRecipes.Web.API.Models.Class.Ingredient;
 
 namespace MyRecipes.web.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     [Authorize(Roles = Constant.ROLE.ADMINANDUSER)]
+    [Route(Constant.CONTROLLER_ROUTE.INGREDIENT)]
     public class IngredientController : ControllerBase
     {
         private readonly ISender _sender;
@@ -27,7 +27,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpGet]
-        [Route("api/[controller]/[action]")]
+        [Route("[action]")]
         public async Task<IActionResult> GetIngredientList()
         {
             List<GetAllIngredientQueryResult> result = await _sender.Send(new GetAllIngredientQuery());
@@ -36,7 +36,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpGet]
-        [Route("api/[controller]/[action]/{Id}")]
+        [Route("[action]/{Id}")]
         public async Task<IActionResult> GetIngredient(string Id)
         {
             try
@@ -67,7 +67,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpGet]
-        [Route("api/[controller]/[action]/{Id}")]
+        [Route("[action]/{Id}")]
         public async Task<IActionResult> GetIngredientsByFoodType(string Id)
         {
             try
@@ -103,7 +103,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpDelete]
-        [Route("api/[controller]/[action]/{id}")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> DeleteIngredient(string id)
         {
             try
@@ -138,7 +138,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpPut]
-        [Route("api/[controller]/[action]/{Guid}")]
+        [Route("[action]/{Guid}")]
         public async Task<IActionResult> UpdateIngredient(string guid)
         {
             if (this.CheckIsAdmin())
@@ -149,7 +149,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpPost]
-        [Route("api/[controller]/[action]")]
+        [Route("[action]")]
         public async Task<IActionResult> CreateIngredient(CreateIngredientModel ingredient)
         {
             try

@@ -11,9 +11,10 @@ using MyRecipes.Transverse.Exception;
 
 namespace MyRecipes.web.Controllers
 {
-    [Route("api/[controller]")]
+    
     [ApiController]
     [Authorize(Roles = Constant.ROLE.ADMIN)]
+    [Route(Constant.CONTROLLER_ROUTE.ADMIN_USER)]
     public class AdminUserController : ControllerBase
     {
         private readonly ISender _sender;
@@ -26,7 +27,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpPut]
-        [Route("api/[controller]/[action]/User/{Id}/Role/{NewRole}")]
+        [Route("User/{Id}/Role/{NewRole}")]
         public async Task<IActionResult> ModifyUserRole(string Id, string NewRole, bool ToAdd = true)
         {
             try
@@ -63,7 +64,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpGet]
-        [Route("api/[controller]/[action]")]
+        [Route("[action]")]
         public async Task<IActionResult> GetAllUsers()
         {
             var tmp = await _sender.Send(new GetAllUsersQueryRequest());
@@ -72,7 +73,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpDelete]
-        [Route("api/[controller]/[action]/{guid}")]
+        [Route("[action]/{guid}")]
         public async Task<IActionResult> DeleteUser(string guid)
         {
             try

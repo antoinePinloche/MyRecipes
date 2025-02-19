@@ -14,6 +14,7 @@ namespace MyRecipes.Web.API.Controllers
 {
     [ApiController]
     [Authorize(Roles = Constant.ROLE.ADMINANDUSER)]
+    [Route(Constant.CONTROLLER_ROUTE.RECIPE_INGREDIENT)]
     public class RecipeIngredientController : ControllerBase
     {
         private readonly ISender _sender;
@@ -25,7 +26,7 @@ namespace MyRecipes.Web.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet("api/[controller]/[action]")]
+        [HttpGet("[action]")]
         public async Task<IActionResult> GetAllRecipeIngredient()
         {
             var res = await _sender.Send(new GetAllRecipeIngredientQuery());
@@ -33,7 +34,7 @@ namespace MyRecipes.Web.API.Controllers
             return Ok(res.ToRecipeIngredientResponse());
         }
 
-        [HttpGet("api/[controller]/[action]/{Id}")]
+        [HttpGet("[action]/{Id}")]
         public async Task<IActionResult> GetRecipeIngredient(string Id)
         {
 
@@ -59,7 +60,7 @@ namespace MyRecipes.Web.API.Controllers
             }
         }
 
-        [HttpPost("api/[controller]/[action]")]
+        [HttpPost("[action]")]
         public async Task<IResult> CreateRecipeIngredient(CreateRecipeIngredientModel model)
         {
             try
@@ -90,7 +91,7 @@ namespace MyRecipes.Web.API.Controllers
 
         }
 
-        [HttpPut("api/[controller]/[action]/{Id}")]
+        [HttpPut("[action]/{Id}")]
         public async Task<IActionResult> UpdateRecipeIngredient(string Id, UpdateRecipeIngredientModel model)
         {
             try 
@@ -129,7 +130,7 @@ namespace MyRecipes.Web.API.Controllers
             }
         }
 
-        [HttpDelete("api/[controller]/[action]/{Id}")]
+        [HttpDelete("[action]/{Id}")]
         public async Task<IActionResult> DeleteRecipeIngredient(string Id)
         {
 

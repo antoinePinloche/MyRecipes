@@ -1,18 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Moq;
 using MyRecipes.Authentification.Application.User.Command.DeleteUser;
 using MyRecipes.Authentification.Domain.Repository.RepositoryUser;
-using MyRecipes.Authentification.Repository.EF.DbContext;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Authentification.UnitTest
 {

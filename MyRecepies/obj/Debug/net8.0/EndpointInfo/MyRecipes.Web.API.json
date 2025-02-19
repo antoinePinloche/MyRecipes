@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/AdminUser/api/AdminUser/ModifyUserRole/User/{Id}/Role/{NewRole}": {
+    "/api/AdminUser/User/{Id}/Role/{NewRole}": {
       "put": {
         "tags": [
           "AdminUser"
@@ -43,7 +43,7 @@
         }
       }
     },
-    "/api/AdminUser/api/AdminUser/GetAllUsers": {
+    "/api/AdminUser/GetAllUsers": {
       "get": {
         "tags": [
           "AdminUser"
@@ -55,7 +55,7 @@
         }
       }
     },
-    "/api/AdminUser/api/AdminUser/DeleteUser/{guid}": {
+    "/api/AdminUser/DeleteUser/{guid}": {
       "delete": {
         "tags": [
           "AdminUser"
@@ -77,7 +77,7 @@
         }
       }
     },
-    "/GetAllFoodType": {
+    "/api/FoodType/GetAllFoodType": {
       "get": {
         "tags": [
           "FoodType"
@@ -89,7 +89,7 @@
         }
       }
     },
-    "/GetFoodType/{Id}": {
+    "/api/FoodType/GetFoodType/{Id}": {
       "get": {
         "tags": [
           "FoodType"
@@ -111,7 +111,7 @@
         }
       }
     },
-    "/CreateFoodType": {
+    "/api/FoodType/CreateFoodType": {
       "post": {
         "tags": [
           "FoodType"
@@ -142,7 +142,7 @@
         }
       }
     },
-    "/DeleteFoodType/{id}": {
+    "/api/FoodType/DeleteFoodType/{id}": {
       "delete": {
         "tags": [
           "FoodType"
@@ -164,7 +164,7 @@
         }
       }
     },
-    "/UpdateFoodType/{id}": {
+    "/api/FoodType/UpdateFoodType/{id}": {
       "put": {
         "tags": [
           "FoodType"
@@ -205,7 +205,7 @@
         }
       }
     },
-    "/api/Ingredient/api/Ingredient/GetIngredientList": {
+    "/api/Ingredient/GetIngredientList": {
       "get": {
         "tags": [
           "Ingredient"
@@ -217,29 +217,7 @@
         }
       }
     },
-    "/api/Ingredient/api/Ingredient/GetIngredient/{Id}": {
-      "get": {
-        "tags": [
-          "Ingredient"
-        ],
-        "parameters": [
-          {
-            "name": "Id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Ingredient/api/Ingredient/GetIngredientsByFoodType/{Id}": {
+    "/api/Ingredient/GetIngredient/{Id}": {
       "get": {
         "tags": [
           "Ingredient"
@@ -261,7 +239,29 @@
         }
       }
     },
-    "/api/Ingredient/api/Ingredient/DeleteIngredient/{id}": {
+    "/api/Ingredient/GetIngredientsByFoodType/{Id}": {
+      "get": {
+        "tags": [
+          "Ingredient"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Ingredient/DeleteIngredient/{id}": {
       "delete": {
         "tags": [
           "Ingredient"
@@ -283,7 +283,7 @@
         }
       }
     },
-    "/api/Ingredient/api/Ingredient/UpdateIngredient/{Guid}": {
+    "/api/Ingredient/UpdateIngredient/{Guid}": {
       "put": {
         "tags": [
           "Ingredient"
@@ -305,7 +305,7 @@
         }
       }
     },
-    "/api/Ingredient/api/Ingredient/CreateIngredient": {
+    "/api/Ingredient/CreateIngredient": {
       "post": {
         "tags": [
           "Ingredient"
@@ -336,7 +336,7 @@
         }
       }
     },
-    "/register": {
+    "/api/Authentification/register": {
       "post": {
         "tags": [
           "MyRecipes.Web.API"
@@ -368,7 +368,7 @@
         }
       }
     },
-    "/login": {
+    "/api/Authentification/login": {
       "post": {
         "tags": [
           "MyRecipes.Web.API"
@@ -413,7 +413,7 @@
         }
       }
     },
-    "/refresh": {
+    "/api/Authentification/refresh": {
       "post": {
         "tags": [
           "MyRecipes.Web.API"
@@ -442,7 +442,7 @@
         }
       }
     },
-    "/forgotPassword": {
+    "/api/Authentification/forgotPassword": {
       "post": {
         "tags": [
           "MyRecipes.Web.API"
@@ -474,7 +474,7 @@
         }
       }
     },
-    "/resetPassword": {
+    "/api/Authentification/resetPassword": {
       "post": {
         "tags": [
           "MyRecipes.Web.API"

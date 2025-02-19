@@ -46,7 +46,7 @@ namespace MyRecipes.Authentification.Application.Overrides
             // We'll figure out a unique endpoint name based on the final route pattern during endpoint generation.
             string? confirmEmailEndpointName = null;
 
-            var routeGroup = endpoints.MapGroup("");
+            var routeGroup = endpoints.MapGroup(Constant.CONTROLLER_ROUTE.AUTHENTIFICATION);
 
             if (configureOptions.IncludeRegisterPost)
             {

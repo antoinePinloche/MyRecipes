@@ -40,10 +40,25 @@ namespace MyRecipes.Authentification.Application.User.Command.DeleteUser
                     var roles = await userManager.GetRolesAsync(userfound);
                     foreach (var role in roles)
                     {
-                        var result = await userManager.RemoveFromRoleAsync(userfound, role);
+                        var resultRemiveRole = await userManager.RemoveFromRoleAsync(userfound, role);
+                        if (resultRemiveRole.Succeeded)
+                        {
+                            _logger.LogInformation($"DeleteUserCommand : UserRole {role} delete with success for {userfound.Id}");
+                        }
+                        else
+                        {
+                            _logger.LogWarning($"DeleteUserCommand : UserRole {role} not delete with success for {userfound.Id}");
+                        }
                     }
-                    await _usersRepository.RemoveAsync(userfound);
-                    _logger.LogInformation($"DeleteUserCommand User {request.Guid} Delete with success");
+                    var resultRemoveUser = await userManager.DeleteAsync(userfound);
+                    if (resultRemoveUser.Succeeded)
+                    {
+                        _logger.LogInformation($"DeleteUserCommand : User {request.Guid} delete with success");
+                    }
+                    else
+                    {
+                        _logger.LogWarning($"DeleteUserCommand : User {request.Guid} not delete with success");
+                    }
                 }
             }
             catch (Exception ex)

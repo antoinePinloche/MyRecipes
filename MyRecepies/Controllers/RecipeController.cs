@@ -21,6 +21,7 @@ namespace MyRecipes.Web.API.Controllers
 {
     [ApiController]
     [Authorize(Roles = Constant.ROLE.ADMINANDUSER)]
+    [Route(Constant.CONTROLLER_ROUTE.RECIPE)]
     public class RecipeController : ControllerBase
     {
         private readonly ISender _sender;
@@ -31,7 +32,7 @@ namespace MyRecipes.Web.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet("api/[controller]/[action]")]
+        [HttpGet("[action]")]
         public async Task<IActionResult> GetAllRecipe()
         {
             try
@@ -47,7 +48,7 @@ namespace MyRecipes.Web.API.Controllers
             }
         }
 
-        [HttpGet("api/[controller]/[action]")]
+        [HttpGet("[action]")]
         public async Task<IActionResult> GetMyRecipe()
         {
             try
@@ -74,7 +75,7 @@ namespace MyRecipes.Web.API.Controllers
         }
 
 
-        [HttpGet("api/[controller]/[action]/{Id}")]
+        [HttpGet("[action]/{Id}")]
         public async Task<IActionResult> GetRecipeById(string Id)
         {
             try
@@ -104,7 +105,7 @@ namespace MyRecipes.Web.API.Controllers
             }
         }
 
-        [HttpGet("api/[controller]/{Id}/RecipeIngredient")]
+        [HttpGet("{Id}/RecipeIngredient")]
         public async Task<IActionResult> GetRecipeIngredientByRecipeId(string Id)
         {
             try
@@ -139,7 +140,7 @@ namespace MyRecipes.Web.API.Controllers
             }
         }
 
-        [HttpGet("api/[controller]/{Id}/Instructions")]
+        [HttpGet("{Id}/Instructions")]
         public async Task<IActionResult> GetInstructionByRecipeId(string Id)
         {
             try
@@ -169,7 +170,7 @@ namespace MyRecipes.Web.API.Controllers
             }
         }
 
-        [HttpGet("api/[controller]/[action]/{Name}")]
+        [HttpGet("[action]/{Name}")]
         public async Task<IActionResult> GetRecipeByName(string Name)
         {
             try
@@ -197,7 +198,7 @@ namespace MyRecipes.Web.API.Controllers
             }
         }
 
-        [HttpPost("api/[controller]/[action]")]
+        [HttpPost("[action]")]
         public async Task<IActionResult> CreateRecipe(CreateRecipeModel model)
         {
             try
@@ -222,7 +223,7 @@ namespace MyRecipes.Web.API.Controllers
             }
         }
 
-        [HttpPut("api/[controller]/[action]/{Id}")]
+        [HttpPut("[action]/{Id}")]
         public async Task<IActionResult> UpdateRecipe(string Id, UpdateRecipeModel model)
         {
 
@@ -262,7 +263,7 @@ namespace MyRecipes.Web.API.Controllers
             }
         }
 
-        [HttpDelete("api/[controller]/[action]/{Id}")]
+        [HttpDelete("[action]/{Id}")]
         public async Task<IActionResult> DeleteRecipe(string Id)
         {
             try

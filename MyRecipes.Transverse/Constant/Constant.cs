@@ -18,14 +18,27 @@ namespace MyRecipes.Transverse.Constant
 
         #endregion  
         #region CONTROLLER
-        public static class CONTROLLER
+        public static class CONTROLLER_ROUTE
         {
-            public static readonly string INGREDIENT = "Ingredient";
-            public static readonly string ADMIN_USER = "AdminUser";
-            public static readonly string FOOD_TYPE = "FoodType";
-            public static readonly string RECIPE = "Recipe";
-            public static readonly string RECIPE_INGREDIENT = "RecipeIngredient";
-            public static readonly string RECIPE_INSTRUCTION = "RecipeInstruction";
+            public const string INGREDIENT = "api/Ingredient";
+            public const string ADMIN_USER = "api/AdminUser";
+            public const string FOOD_TYPE = "api/FoodType";
+            public const string RECIPE = "api/Recipe";
+            public const string RECIPE_INGREDIENT = "api/RecipeIngredient";
+            public const string RECIPE_INSTRUCTION = "api/RecipeInstruction";
+            public const string AUTHENTIFICATION = "api/Authentification";
+        }
+        #endregion
+
+        #region Exception
+        public static class EXCEPTION
+        {
+            public static class TITLE
+            {
+                public static readonly string INVALIDE_KEY = "Invalide key";
+                public static readonly string CONFLICT = "Conflict";
+                public static readonly string NOT_FOUND = "Not found";
+            }
         }
         #endregion
     }
