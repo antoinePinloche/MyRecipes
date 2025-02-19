@@ -34,7 +34,7 @@ namespace MyRecipes.Authentification.Application.User.Command.DeleteUser
                 {
                     throw new UserNotFoundException("Invalide key ",$"User With Guid {request.Guid} doesn't exist");
                 }
-                var userManager = _serviceProvider.GetRequiredService<UserManager<Domain.Entities.User>>();
+                UserManager<Domain.Entities.User> userManager = _serviceProvider.GetRequiredService<UserManager<Domain.Entities.User>>();
                 if (userManager is not null)
                 {
                     var roles = await userManager.GetRolesAsync(userfound);
@@ -43,9 +43,8 @@ namespace MyRecipes.Authentification.Application.User.Command.DeleteUser
                         var result = await userManager.RemoveFromRoleAsync(userfound, role);
                     }
                     await _usersRepository.RemoveAsync(userfound);
+                    _logger.LogInformation($"DeleteUserCommand User {request.Guid} Delete with success");
                 }
-
-                _logger.LogInformation($"DeleteUserCommand User {request.Guid} Delete with success");
             }
             catch (Exception ex)
             {

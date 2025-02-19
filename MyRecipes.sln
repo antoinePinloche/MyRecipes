@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipes.Transverse.UnitTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipes.Recipes.UnitTest", "MyRecipes.Recipes.UnitTest\MyRecipes.Recipes.UnitTest.csproj", "{B8A7E513-80D9-486A-AEBF-2782A72FA035}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipes.Authentification.UnitTest", "MyRecipes.Authentification.UnitTest\MyRecipes.Authentification.UnitTest.csproj", "{20A99E24-D459-4077-B611-808FF592A3C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{B8A7E513-80D9-486A-AEBF-2782A72FA035}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8A7E513-80D9-486A-AEBF-2782A72FA035}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8A7E513-80D9-486A-AEBF-2782A72FA035}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20A99E24-D459-4077-B611-808FF592A3C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20A99E24-D459-4077-B611-808FF592A3C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20A99E24-D459-4077-B611-808FF592A3C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20A99E24-D459-4077-B611-808FF592A3C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,5 +95,6 @@ Global
 		{AAE8EAB0-5D30-4CE1-8FB8-241BF7F2CA25} = {C87D0570-F3D0-4AE1-AAE7-66C03E715B8B}
 		{8413E120-B532-4490-9A55-1E5240E45CD7} = {C87D0570-F3D0-4AE1-AAE7-66C03E715B8B}
 		{B8A7E513-80D9-486A-AEBF-2782A72FA035} = {A784A47C-819A-418D-9A41-4D76C04C15A4}
+		{20A99E24-D459-4077-B611-808FF592A3C8} = {C1CC77BD-7FFD-48CD-A297-6B35E7020B4B}
 	EndGlobalSection
 EndGlobal

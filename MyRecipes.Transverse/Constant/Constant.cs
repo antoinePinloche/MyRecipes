@@ -21,6 +21,11 @@ namespace MyRecipes.Transverse.Constant
         public static class CONTROLLER
         {
             public static readonly string INGREDIENT = "Ingredient";
+            public static readonly string ADMIN_USER = "AdminUser";
+            public static readonly string FOOD_TYPE = "FoodType";
+            public static readonly string RECIPE = "Recipe";
+            public static readonly string RECIPE_INGREDIENT = "RecipeIngredient";
+            public static readonly string RECIPE_INSTRUCTION = "RecipeInstruction";
         }
         #endregion
     }
