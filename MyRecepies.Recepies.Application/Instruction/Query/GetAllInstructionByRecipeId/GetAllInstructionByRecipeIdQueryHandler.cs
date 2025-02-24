@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -25,16 +26,28 @@ namespace MyRecipes.Recipes.Application.Instruction.Query.GetAllInstructionByRec
             {
                 if (request.Id.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "GetAllInstructionByRecipeIdQueryHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 var recipeFound = await _recipesRepository.GetAsync(request.Id);
                 if (recipeFound is null)
                 {
-                    throw new RecipeNotFoundException("Invalide Key", $"Recipe notfound with ID {request.Id}");
+                    throw new RecipeNotFoundException(_logger,
+                        nameof(Handle),
+                        "GetAllInstructionByRecipeIdQueryHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"Recipe notfound with ID {request.Id}");
                 }
                 var entityFound = await _instructionRepository.GetAllInstructionByRecipeIdAsync(request.Id);
                 if (entityFound.IsNullOrEmpty())
-                    throw new InstructionNotFoundException("Invalide Key", $"Instruction for recipe {request.Id} not found");
+                    throw new InstructionNotFoundException(_logger,
+                        nameof(Handle),
+                        "GetAllInstructionByRecipeIdQueryHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"Instruction for recipe {request.Id} not found");
                 _logger.LogInformation($"GetAllInstructionByRecipeIdQueryHandler : instruction found for recipe {request.Id}");
                 return entityFound.OrderBy(ob => ob.Step).Select(s =>
                     new GetAllInstructionByRecipeIdQueryResult(

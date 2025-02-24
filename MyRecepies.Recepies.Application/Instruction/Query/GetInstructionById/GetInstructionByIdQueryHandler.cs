@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -22,11 +23,19 @@ namespace MyRecipes.Recipes.Application.Instruction.Query.GetInstructionById
             {
                 if (request.Id.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "GetInstructionByIdQueryHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 var entityFound = await _instructionRepository.GetAsync(request.Id);
                 if (entityFound is null)
-                    throw new InstructionNotFoundException("Invalide Key", $"Instruction for recipe {request.Id} not found");
+                    throw new InstructionNotFoundException(_logger,
+                        nameof(Handle),
+                        "GetInstructionByIdQueryHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"Instruction for recipe {request.Id} not found");
                 _logger.LogInformation($"GetInstructionByIdQueryHandler : instruction {request.Id} found");
                 return new GetInstructionByIdQueryResult(entityFound.Id, entityFound.Step, entityFound.StepName, entityFound.StepInstruction);
             }

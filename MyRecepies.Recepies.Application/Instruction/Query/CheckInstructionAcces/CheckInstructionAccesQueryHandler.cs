@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using MyRecipes.Recipes.Application.Instruction.Query.GetAllInstructionByRecipeId;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -24,16 +24,28 @@ namespace MyRecipes.Recipes.Application.Instruction.Query.CheckInstructionAcces
         {
             if (request.InstructionId.IsEmpty())
             {
-                throw new WrongParameterException("Invalide Key", "InstructionId is empty");
+                throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "CheckInstructionAccesQueryHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.INGREDIENT_ID);
             }
             if (request.UserId.IsEmpty())
             {
-                throw new WrongParameterException("Invalide Key", "UserId is empty");
+                throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "CheckInstructionAccesQueryHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.USER_ID);
             }
             var instruction = await _instructionRepository.GetAsync(request.InstructionId);
             if (instruction is null)
             {
-                throw new InstructionNotFoundException("NotFound", $"Instruction with {request.InstructionId} not found");
+                throw new InstructionNotFoundException(_logger,
+                        nameof(Handle),
+                        "CheckInstructionAccesQueryHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"Instruction with {request.InstructionId} not found");
             }
             var recipe = await _recipesRepository.GetAsync((Guid)instruction.RecipeId);
             if (recipe is null)
