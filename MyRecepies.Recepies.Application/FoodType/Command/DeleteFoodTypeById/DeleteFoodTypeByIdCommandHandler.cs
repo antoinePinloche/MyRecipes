@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -22,11 +23,19 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.DeleteFoodTypeById
             {
                 if (request.Id.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                    throw new WrongParameterException(
+                        _logger,
+                        nameof(Handle),
+                        "DeleteFoodTypeByIdCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_KEY,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 var entity = await _foodTypeRepository.GetAsync(request.Id);
                 if (entity is null)
-                    throw new FoodTypeNotFoundException("Invalide key", $"FoodType with id : {request.Id.ToString()} not found");
+                    throw new FoodTypeNotFoundException(_logger,
+                        nameof(Handle),
+                        "DeleteFoodTypeByIdCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_KEY, $"FoodType with id : {request.Id.ToString()} not found");
                 await _foodTypeRepository.RemoveAsync(entity);
                 _logger.LogInformation($"DeleteFoodTypeByIdCommandHandler : FoodType {entity.Name} Delete");
             }

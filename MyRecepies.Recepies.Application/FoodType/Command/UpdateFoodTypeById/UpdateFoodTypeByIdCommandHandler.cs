@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -20,20 +21,35 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.UpdateFoodTypeById
         {
             if (request.Id.IsEmpty())
             {
-                throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "UpdateFoodTypeByIdCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
             }
             if (request.Name.IsNullOrEmpty())
             {
-                throw new WrongParameterException("Invalide parameter", "Name is invalide");
+                throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "UpdateFoodTypeByIdCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.NAME);
             }
             var entity = await _foodTypeRepository.GetAsync(request.Id);
             if (entity == null)
             {
-                throw new FoodTypeNotFoundException("Not Found", $"FoodType with {request.Id} can't be found");
+                throw new FoodTypeNotFoundException(_logger,
+                        nameof(Handle),
+                        "UpdateFoodTypeByIdCommandHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"FoodType with {request.Id} can't be found");
             }
             if (await _foodTypeRepository.FoodTypeByName(request.Name))
             {
-                throw new FoodTypeAlreadyExistException("invalide creation", $"FoodType {entity.Name} already exist");
+                throw new FoodTypeAlreadyExistException(_logger,
+                        nameof(Handle),
+                        "UpdateFoodTypeByIdCommandHandler",
+                        Constant.EXCEPTION.TITLE.CONFLICT, $"FoodType {entity.Name} already exist");
             }
             entity.Name = request.Name;
             await _foodTypeRepository.UpdateAsync(entity);

@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -23,7 +24,12 @@ namespace MyRecipes.Recipes.Application.FoodType.Query.GetFoodTypeById
             {
                 if (request.Id.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                    throw new WrongParameterException(
+                        _logger,
+                        nameof(Handle),
+                        "GetFoodTypeByIdQueryHandler", 
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 var result = await _foodTypeRepository.GetAsync(request.Id);
                 _logger.LogInformation($"GetFoodTypeByIdQueryHandler : found FoodType {request.Id}");

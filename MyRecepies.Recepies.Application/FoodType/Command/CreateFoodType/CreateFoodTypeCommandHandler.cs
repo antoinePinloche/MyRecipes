@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -20,11 +21,21 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.CreateFoodType
         {
             if (request.Name.IsNullOrEmpty())
             {
-                throw new WrongParameterException("Invalide parameter", "Name is invalide");
+                throw new WrongParameterException(
+                    _logger,
+                    nameof(Handle),
+                    "CreateFoodTypeCommandHandler",
+                    Constant.EXCEPTION.TITLE.INVALIDE_KEY,
+                    Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.NAME);
             }
             if (!(await _foodTypeRepository.FoodTypeByName(request.Name)))
             {
-                throw new FoodTypeAlreadyExistException("Conflict", $"FoodType {request.Name} alreadyExist");
+                throw new FoodTypeAlreadyExistException(
+                    _logger,
+                    nameof(Handle),
+                    "CreateFoodTypeCommandHandler",
+                    Constant.EXCEPTION.TITLE.CONFLICT,
+                    $"FoodType {request.Name} alreadyExist");
             }
             Domain.Entity.FoodType entityToAdd = new Domain.Entity.FoodType()
             {
