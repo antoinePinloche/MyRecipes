@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -22,13 +23,21 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.DeleteInstructionByR
             {
                 if (request.Id.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "DeleteInstructionByRecipeIdCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 var RecipeIngredientList = await _instructionRepository.GetAllInstructionByRecipeIdAsync(request.Id);
 
                 if (RecipeIngredientList.IsNullOrEmpty())
                 {
-                    throw new InstructionNotFoundException("Invalide Key", $"Instructions for Recipe {request.Id} not found");
+                    throw new InstructionNotFoundException(_logger,
+                        nameof(Handle),
+                        "DeleteInstructionByRecipeIdCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_KEY,
+                        $"Instructions for Recipe {request.Id} not found");
                 }
                 await _instructionRepository.RemoveRangeAsync(RecipeIngredientList);
                 _logger.LogInformation($"DeleteInstructionByRecipeIdCommandHandler : All instruction(s) delete for recipe {request.Id}");

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 using System.Diagnostics.CodeAnalysis;
@@ -24,22 +25,39 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction
             {
                 if (request.StepInstruction.IsNullOrEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "StepInstruction is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "CreateInstructionCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.STEP_INSTRUCTION);
                 }
                 if (request.StepName.IsNullOrEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "StepName is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "CreateInstructionCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.STEP_NAME);
                 }
                 if (request.RecipeId.IsNullOrEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "RecipeId is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "CreateInstructionCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.RECIPE_ID);
                 }
                 var instructionRecipe = await _instructionRepository.GetAllInstructionByRecipeIdAsync((Guid)request.RecipeId);
                 if (instructionRecipe is not null)
                 {
                     if (instructionRecipe.Any(a => a.Step == request.Step))
                     {
-                        throw new InstructionAlreadyExisteException("Can't Create instruction step already Exist", $"Instruction {request.Step} already Exist");
+                        throw new InstructionAlreadyExisteException(
+                            _logger,
+                            nameof(Handle),
+                            "CreateInstructionCommandHandler",
+                            Constant.EXCEPTION.TITLE.INSTRUCTION_DUPLICATION,
+                            Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.DUPLICATION_INSTRUCTION);
                     }
                 }
 

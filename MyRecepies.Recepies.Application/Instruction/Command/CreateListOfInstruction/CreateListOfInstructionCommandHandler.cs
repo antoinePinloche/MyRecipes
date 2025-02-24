@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -23,7 +24,11 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruct
             {
                 if (request.Instructions.IsNullOrEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "Instructions is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "CreateListOfInstructionCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.INSTRUCTION);
                 }
                 var checkDuplicateRequest = request.Instructions.GroupBy(gb => gb.Step).Where(w => w.Count() > 1);
                 foreach (var instruction in checkDuplicateRequest)
@@ -33,7 +38,11 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruct
                         .Select(s => s.Key)
                         .Any())
                     {
-                        throw new WrongParameterException("Invalide parameter", "Duplication step for same recipe");
+                        throw new WrongParameterException(_logger,
+                            nameof(Handle),
+                            "CreateListOfInstructionCommandHandler",
+                            Constant.EXCEPTION.TITLE.INSTRUCTION_DUPLICATION,
+                            Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.DUPLICATION_INSTRUCTION);
                     }
                 }
 
@@ -48,7 +57,11 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruct
 
                         if (intersect.Any())
                         {
-                            throw new InstructionAlreadyExisteException("Can't Create instruction step already Exist", $"Instruction {string.Join(", ", intersect.Select(s => s.Step))} already Exist");
+                            throw new InstructionAlreadyExisteException(_logger,
+                                nameof(Handle),
+                                "CreateListOfInstructionCommandHandler",
+                                Constant.EXCEPTION.TITLE.INSTRUCTION_DUPLICATION,
+                                $"Instruction {string.Join(", ", intersect.Select(s => s.Step))} already Exist");
                         }
                     }
 
