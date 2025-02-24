@@ -67,7 +67,7 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "CreateRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
+                    throw new WrongParameterException(nameof(CreateRecipeIngredient), Path.GetFileName("RecipeIngredientController"), Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "CreateRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
                 }
                 await _sender.Send(model.ToCommand());
                 _logger.LogInformation("CreateRecipeIngredient : finish without error");
@@ -98,16 +98,16 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "UpdateRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
+                    throw new WrongParameterException(nameof(UpdateRecipeIngredient), Path.GetFileName("RecipeIngredientController"), Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "UpdateRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
                 }
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "UpdateRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
+                    throw new WrongParameterException(nameof(UpdateRecipeIngredient), Path.GetFileName("RecipeIngredientController"), Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "UpdateRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 if (!this.CheckIsAdmin())
                 {
                     if (!await _sender.Send(new CheckRecipeIngredientAccesQuery(guid, this.GetUserGuid())))
-                        throw new ForbiddenAccessException(Constant.EXCEPTION.TITLE.FORBIDDEN, "UpdateRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.FORBIDDEN);
+                        throw new ForbiddenAccessException(nameof(UpdateRecipeIngredient), Path.GetFileName("RecipeIngredientController"), Constant.EXCEPTION.TITLE.FORBIDDEN, "UpdateRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.FORBIDDEN);
                 }
                 await _sender.Send(model.ToCommand(guid));
                 _logger.LogInformation("UpdateRecipeIngredient : finish without error");
@@ -143,12 +143,12 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
+                    throw new WrongParameterException(nameof(DeleteRecipeIngredient), Path.GetFileName("RecipeIngredientController"), Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "DeleteRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 if (!this.CheckIsAdmin())
                 {
                     if (!await _sender.Send(new CheckRecipeIngredientAccesQuery(guid, this.GetUserGuid())))
-                        throw new ForbiddenAccessException(Constant.EXCEPTION.TITLE.FORBIDDEN, Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.FORBIDDEN);
+                        throw new ForbiddenAccessException(nameof(DeleteRecipeIngredient), Path.GetFileName("RecipeIngredientController"), Constant.EXCEPTION.TITLE.FORBIDDEN, "DeleteRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.FORBIDDEN);
                 }
                 await _sender.Send(guid.ToDeleteRecipeIngredientCommand());
                 _logger.LogInformation("DeleteRecipeIngredient : finish without error");

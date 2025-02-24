@@ -43,7 +43,7 @@ namespace MyRecipes.web.Controllers
             {
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "GetIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
+                    throw new WrongParameterException(nameof(GetIngredient), Path.GetFileName("IngredientController"), Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "GetIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 GetIngredientByIdQueryResult result = await _sender.Send(guid.ToQuery());
                 _logger.LogInformation("GetIngredient : finish without problem");
@@ -74,7 +74,7 @@ namespace MyRecipes.web.Controllers
             {
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "GetIngredientsByFoodType : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
+                    throw new WrongParameterException(nameof(GetIngredientsByFoodType), Path.GetFileName("IngredientController"), Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "GetIngredientsByFoodType : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 List<GetIngredientsByFoodTypeIdQueryResult> result = await _sender.Send(guid.FoodTypeToQuery());
                 _logger.LogInformation("GetIngredientsByFoodType : finish without problem");
@@ -111,7 +111,7 @@ namespace MyRecipes.web.Controllers
             {
                 if (!Guid.TryParse(id, out Guid guid))
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "DeleteIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
+                    throw new WrongParameterException(nameof(DeleteIngredient), Path.GetFileName("IngredientController"), Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "DeleteIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 await _sender.Send(guid.ToDeleteIngredientCommand());
                 _logger.LogInformation("DeleteIngredient : finish without problem");
@@ -149,7 +149,7 @@ namespace MyRecipes.web.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "CreateIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
+                    throw new WrongParameterException(nameof(CreateIngredient), Path.GetFileName("IngredientController"), Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "CreateIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
                 await _sender.Send(ingredient.ToCommand());
                 _logger.LogInformation("DeleteIngredient : finish without problem");
                 return Created();

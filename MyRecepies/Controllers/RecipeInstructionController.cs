@@ -44,7 +44,7 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "GetInstructionById : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
+                    throw new WrongParameterException(nameof(GetInstructionById), Path.GetFileName("RecipeInstructionController"), Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "GetInstructionById : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 var result = await _sender.Send(guid.ToInstructionByIdQuery());
                 _logger.LogInformation("GetInstructionById : finish without error");
@@ -71,7 +71,7 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "CreateInstruction : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
+                    throw new WrongParameterException(nameof(CreateInstruction), Path.GetFileName("RecipeInstructionController"), Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "CreateInstruction : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
                 }
                 await _sender.Send(model.ToCommand());
                 _logger.LogInformation("CreateInstruction : finish without error");
@@ -99,11 +99,19 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "CreateInstructionList : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
+                    throw new WrongParameterException(
+                        nameof(CreateInstructionList),
+                        Path.GetFileName("RecipeInstructionController"),
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        "CreateInstructionList : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
                 }
                 if (model.IsNullOrEmpty())
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "CreateInstructionList : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
+                    throw new WrongParameterException(
+                        nameof(CreateInstructionList),
+                        Path.GetFileName("RecipeInstructionController"),
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        "CreateInstructionList : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
                 }
                 await _sender.Send(model.ToCommand());
                 _logger.LogInformation("CreateInstructionList : finish without error");
@@ -130,16 +138,27 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "UpdateInstruction : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
+                    throw new WrongParameterException(nameof(UpdateInstruction),
+                        Path.GetFileName("RecipeInstructionController"),
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        "UpdateInstruction : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 if (!ModelState.IsValid)
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "UpdateInstruction : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
+                    throw new WrongParameterException(
+                        nameof(UpdateInstruction),
+                        Path.GetFileName("RecipeInstructionController"),
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        "UpdateInstruction : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
                 }
                 if (!this.CheckIsAdmin())
                 {
                     if (!await _sender.Send(new CheckInstructionAccesQuery(guid, this.GetUserGuid())))
-                        throw new ForbiddenAccessException(Constant.EXCEPTION.TITLE.FORBIDDEN, "UpdateInstruction : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.FORBIDDEN);
+                        throw new ForbiddenAccessException(
+                            nameof(UpdateInstruction),
+                            Path.GetFileName("RecipeInstructionController"), 
+                            Constant.EXCEPTION.TITLE.FORBIDDEN,
+                            "UpdateInstruction : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.FORBIDDEN);
                 }
                 await _sender.Send(model.ToCommand(guid));
                 _logger.LogInformation("UpdateInstruction : finish without error");
@@ -175,15 +194,23 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "DeleteInstructionById : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
+                    throw new WrongParameterException(
+                        nameof(DeleteInstructionById),
+                        Path.GetFileName("RecipeInstructionController"),
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        "DeleteInstructionById : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 if (!this.CheckIsAdmin())
                 {
                     if (!await _sender.Send(new CheckInstructionAccesQuery(guid, this.GetUserGuid())))
-                        throw new ForbiddenAccessException(Constant.EXCEPTION.TITLE.FORBIDDEN, "DeleteInstructionById : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.FORBIDDEN);
+                        throw new ForbiddenAccessException(
+                        nameof(DeleteInstructionById),
+                        Path.GetFileName("RecipeInstructionController"),
+                        Constant.EXCEPTION.TITLE.FORBIDDEN,
+                        "DeleteInstructionById : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.FORBIDDEN);
                 }
                 await _sender.Send(guid.ToDeleteInstructionCommand());
-                _logger.LogInformation("UpdateInstruction : finish without error");
+                _logger.LogInformation("DeleteInstructionById : finish without error");
                 return Ok();
             }
             catch (WrongParameterException ex)
