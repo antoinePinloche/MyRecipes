@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Authentification.Domain.Repository.RepositoryUser;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -26,14 +27,23 @@ namespace MyRecipes.Authentification.Application.User.Command.DeleteUser
             {
                 if (request.Guid.IsEmpty())
                 {
-                    throw new WrongParameterException(_logger, nameof(DeleteUserCommandHandler), "DeleteUserCommandHandler", "User Id is empty");
-                    //throw new WrongParameterException("Invalide Key", "User Id is empty");
+                    throw new WrongParameterException(
+                        _logger,
+                        nameof(Handle),
+                        "DeleteUserCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 Domain.Entities.User userfound = await _usersRepository.GetAsync(request.Guid);
 
                 if (userfound is null)
                 {
-                    throw new UserNotFoundException("Invalide key ",$"User With Guid {request.Guid} doesn't exist");
+                    throw new UserNotFoundException(
+                        _logger,
+                        nameof(Handle),
+                        "DeleteUserCommandHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"User With Guid {request.Guid} doesn't exist");
                 }
                 UserManager<Domain.Entities.User> userManager = _serviceProvider.GetRequiredService<UserManager<Domain.Entities.User>>();
                 if (userManager is not null)

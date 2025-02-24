@@ -42,7 +42,7 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "GetRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
+                    throw new WrongParameterException(nameof(GetRecipeIngredient), Path.GetFileName("RecipeIngredientController"), Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "GetRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 var res = await _sender.Send(guid.ToRecipeIngredientByIdQuery());
                 _logger.LogInformation("GetRecipeIngredient : finish without error");
