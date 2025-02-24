@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -25,17 +26,29 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredie
             {
                 if (request.Id.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "GetRecipeIngredientByRecipeIdQueryHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.RECIPE_INGREDIENT_ID);
                 }
                 var recipeFound = await _recipesRepository.GetAsync(request.Id);
                 if (recipeFound is null)
                 {
-                    throw new RecipeNotFoundException("Invalide Key", $"Recipe notfound with ID {request.Id}");
+                    throw new RecipeNotFoundException(_logger,
+                        nameof(Handle),
+                        "GetRecipeIngredientByRecipeIdQueryHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"Recipe notfound with ID {request.Id}");
                 }
                 var entityFound = await _recipeIngredientRepository.GetAllRecipeIngredientByRecipeIdlAsync(request.Id);
                 if (entityFound.IsNullOrEmpty())
                 {
-                    throw new RecipeIngredientNotFoundException("NotFound", $"RecipeIngredient Not found for recipe {request.Id}");
+                    throw new RecipeIngredientNotFoundException(_logger,
+                        nameof(Handle),
+                        "GetRecipeIngredientByRecipeIdQueryHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"RecipeIngredient Not found for recipe {request.Id}");
                 }
                 _logger.LogInformation($"GetRecipeIngredientByRecipeIdQueryHandler : return all recipe ingredient for recipe {request.Id}");
                 return entityFound.Select(s => 

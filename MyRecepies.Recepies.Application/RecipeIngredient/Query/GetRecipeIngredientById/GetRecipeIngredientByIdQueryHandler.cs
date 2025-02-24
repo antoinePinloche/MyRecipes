@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -21,11 +22,19 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredie
             {
                 if (request.Id.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "GetRecipeIngredientByIdQueryHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 Domain.Entity.RecipeIngredient result = await _recipeIngredientRepository.GetAsync(request.Id);
                 if (result is null)
-                    throw new RecipeIngredientNotFoundException("NotFound", $"RecipeIngredient not found with Id {request.Id}");
+                    throw new RecipeIngredientNotFoundException(_logger,
+                        nameof(Handle),
+                        "GetRecipeIngredientByIdQueryHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"RecipeIngredient not found with Id {request.Id}");
                 _logger.LogInformation($"GetRecipeIngredientByIdQueryHandler : recipe ingredient return");
                 return new GetRecipeIngredientByIdQueryResult(result.Id, result.IngredientId, result.Ingredient,
                     result.Quantity, result.Unit, result.RecipeId);

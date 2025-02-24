@@ -56,6 +56,7 @@ namespace MyRecipes.Transverse.Constant
                 public static readonly string STEP_NAME = "request paramater StepName is empty or null";
                 public static readonly string USER_ID = "request paramater UserId is empty or null";
                 public static readonly string RECIPE_ID = "request paramater RecipeId is empty or null";
+                public static readonly string RECIPE_INGREDIENT_ID = "request paramater RecipeIngredientId is empty or null";
                 public static readonly string INGREDIENT_ID = "request paramater IngredientId is empty or null";
                 public static readonly string INSTRUCTION = "request paramater Instruction is empty or null";
                 public static readonly string INSTRUCTION_ID = "request paramater InstructionId is empty or null";
