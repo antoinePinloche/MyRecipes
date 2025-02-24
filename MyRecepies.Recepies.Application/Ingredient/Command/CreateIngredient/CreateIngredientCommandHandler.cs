@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -23,16 +24,31 @@ namespace MyRecipes.Recipes.Application.Ingredient.Command.CreateIngredient
             {
                 if (request.Name.IsNullOrEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "Name is invalide");
+                    throw new WrongParameterException(
+                        _logger,
+                        nameof(Handle),
+                        "CreateIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.NAME);
                 }
                 if (request.FoodTypeId.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "FoodTypeId is invalide");
+                    throw new WrongParameterException(
+                        _logger,
+                        nameof(Handle),
+                        "CreateIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.FOOD_TYPE_ID);
                 }
                 var entity = await _ingredientRepository.HasIngredient(request.Name);
                 if (entity is not null)
                 {
-                    throw new IngredientAlreadyExistException("Conflict", $"Ingredient with Name {request.Name} already exist");
+                    throw new IngredientAlreadyExistException(
+                        _logger,
+                        nameof(Handle),
+                        "CreateIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.CONFLICT,
+                        $"Ingredient with Name {request.Name} already exist");
                 }
                 Domain.Entity.Ingredient ingredient = new Domain.Entity.Ingredient() { Id = Guid.NewGuid(), FoodTypeId = request.FoodTypeId, Name = request.Name };
                 await _ingredientRepository.AddAsync(ingredient);

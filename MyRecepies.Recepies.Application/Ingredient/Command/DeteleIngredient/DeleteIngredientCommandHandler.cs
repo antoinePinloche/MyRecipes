@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -22,12 +23,22 @@ namespace MyRecipes.Recipes.Application.Ingredient.Command.DeteleIngredient
             {
                 if (request.Id.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                    throw new WrongParameterException(
+                        _logger,
+                        nameof(Handle),
+                        "DeleteIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 var ingredient = await _ingredientRepository.GetAsync(request.Id);
                 if (ingredient is null)
                 {
-                    throw new IngredientNotFoundException("NotFound", $"Ingredient not found {request.Id}");
+                    throw new IngredientNotFoundException(
+                        _logger,
+                        nameof(Handle),
+                        "DeleteIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"Ingredient not found {request.Id}");
                 }
                 await _ingredientRepository.RemoveAsync(ingredient);
                 _logger.LogInformation($"DeleteIngredientCommand : Ingredient {ingredient.Name} delete");

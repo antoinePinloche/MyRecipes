@@ -27,7 +27,7 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.DeleteFoodTypeById
                         _logger,
                         nameof(Handle),
                         "DeleteFoodTypeByIdCommandHandler",
-                        Constant.EXCEPTION.TITLE.INVALIDE_KEY,
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
                         Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 var entity = await _foodTypeRepository.GetAsync(request.Id);

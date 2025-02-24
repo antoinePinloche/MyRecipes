@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -25,12 +26,21 @@ namespace MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTyp
             {
                 if (request.Id.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                    throw new WrongParameterException(
+                        _logger,
+                        nameof(Handle),
+                        "GetIngredientsByFoodTypeIdQueryHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 Domain.Entity.FoodType foodType = await _foodTypeRepository.GetAsync(request.Id);
                 if (foodType is null)
                 {
-                    throw new FoodTypeNotFoundException("Invalide key", $"FoodType not Found with Id {request.Id}");
+                    throw new FoodTypeNotFoundException(
+                        _logger,
+                        nameof(Handle),
+                        "GetIngredientsByFoodTypeIdQueryHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_KEY, $"FoodType not Found with Id {request.Id}");
                 }
                 List<Domain.Entity.Ingredient> ingredients = await _ingredienRepository.GetAllIngredientsByFoodTypeId(request.Id);
 
