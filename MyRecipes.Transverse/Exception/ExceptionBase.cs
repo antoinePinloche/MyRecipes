@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
+﻿using Microsoft.Extensions.Logging;
 
 namespace MyRecipes.Transverse.Exception
 {
@@ -12,10 +7,15 @@ namespace MyRecipes.Transverse.Exception
         public string Error {  get; set; }
         public string Message {  get; set; }
 
+        internal ExceptionBase(string message) : base(message) { }
+
+
         public ExceptionBase(string error, string message) : base(message)
         {
             Error = error;
             Message = message;
         }
+
+        public ExceptionBase(ILogger<object> logger, string error, string message) : base(message) => logger.LogError(message);
     }
 }
