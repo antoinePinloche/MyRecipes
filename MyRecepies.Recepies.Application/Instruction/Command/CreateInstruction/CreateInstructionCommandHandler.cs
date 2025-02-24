@@ -56,7 +56,7 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction
                             _logger,
                             nameof(Handle),
                             "CreateInstructionCommandHandler",
-                            Constant.EXCEPTION.TITLE.INSTRUCTION_DUPLICATION,
+                            Constant.EXCEPTION.TITLE.INSTRUCTION_DUPLICATION_CREATE,
                             Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.DUPLICATION_INSTRUCTION);
                     }
                 }

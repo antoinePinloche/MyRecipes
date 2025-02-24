@@ -22,7 +22,7 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             var entityCheck = await Context.FoodTypes.FirstOrDefaultAsync(w => w.Name.ToUpper() == entity.Name.ToUpper());
             if (entityCheck is not null)
             {
-                throw new FoodTypeAlreadyExistException("invalide creation", $"FoodType {entity.Name} already exist");
+                throw new FoodTypeAlreadyExistException(nameof(AddAsync), Path.GetFullPath("EFFoodTypeRepository"), "invalide creation", $"FoodType {entity.Name} already exist");
             }
             var entityAdd = await Context.FoodTypes.AddAsync(entity);
             await Context.SaveChangesAsync();

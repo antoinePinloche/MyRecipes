@@ -41,7 +41,7 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruct
                         throw new WrongParameterException(_logger,
                             nameof(Handle),
                             "CreateListOfInstructionCommandHandler",
-                            Constant.EXCEPTION.TITLE.INSTRUCTION_DUPLICATION,
+                            Constant.EXCEPTION.TITLE.INSTRUCTION_DUPLICATION_CREATE,
                             Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.DUPLICATION_INSTRUCTION);
                     }
                 }
@@ -60,7 +60,7 @@ namespace MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruct
                             throw new InstructionAlreadyExisteException(_logger,
                                 nameof(Handle),
                                 "CreateListOfInstructionCommandHandler",
-                                Constant.EXCEPTION.TITLE.INSTRUCTION_DUPLICATION,
+                                Constant.EXCEPTION.TITLE.INSTRUCTION_DUPLICATION_CREATE,
                                 $"Instruction {string.Join(", ", intersect.Select(s => s.Step))} already Exist");
                         }
                     }

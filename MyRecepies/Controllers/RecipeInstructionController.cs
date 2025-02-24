@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyRecipes.Recipes.Application.Instruction.Query.CheckInstructionAcces;
 using MyRecipes.Recipes.Application.Instruction.Query.GetAllInstruction;
-using MyRecipes.Recipes.Application.RecipeIngredient.Query.CheckRecipeIngredientAcces;
 using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
