@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredientById;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -24,12 +25,19 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIng
             {
                 if (request.Id.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "DeleteRecipeIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 var recipeIngredientFound = await _sender.Send(new GetRecipeIngredientByIdQuery(request.Id));
                 if (recipeIngredientFound is null)
                 {
-                    throw new RecipeIngredientNotFoundException("NotFound", $"RecipeIngredient not found with Id {request.Id}");
+                    throw new RecipeIngredientNotFoundException(_logger,
+                        nameof(Handle),
+                        "DeleteRecipeIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND, $"RecipeIngredient not found with Id {request.Id}");
                 }
                 Domain.Entity.RecipeIngredient recipeIngredientToDelete = new()
                 {

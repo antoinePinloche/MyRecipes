@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientById;
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredientByRecipeId;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -26,24 +27,39 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.CreateRecipeIng
             {
                 if (request.IngredientId.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "IngredientId is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "CreateRecipeIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.INGREDIENT_ID);
                 }
                 if (request.RecipeId.IsNullOrEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "RecipeId is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "CreateRecipeIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.RECIPE_ID);
                 }
                 List<GetRecipeIngredientByRecipeIdQueryResult> recipeIngredients = new();
                 var ingredient = await _sender.Send(new GetIngredientByIdQuery(request.IngredientId));
                 if (ingredient is null)
                 {
-                    throw new IngredientNotFoundException("invalide key", $"Ingredient with Id {request.IngredientId} not found");
+                    throw new IngredientNotFoundException(_logger,
+                        nameof(Handle),
+                        "CreateRecipeIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND, $"Ingredient with Id {request.IngredientId} not found");
                 }
                 if (!request.RecipeId.IsNullOrEmpty())
                 {
                     recipeIngredients = await _sender.Send(new GetRecipeIngredientByRecipeIdQuery((Guid)request.RecipeId));
                     if (recipeIngredients.Any(rc => rc.Ingredient.Name == ingredient.Name))
                     {
-                        throw new RecipeIngredientAlreadyExistException("Conflict", $"RecipeIngredien with ingredient Name {ingredient.Name} for Recipe {request.RecipeId}");
+                        throw new RecipeIngredientAlreadyExistException(_logger,
+                        nameof(Handle),
+                        "CreateRecipeIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.CONFLICT,
+                        $"RecipeIngredien with ingredient Name {ingredient.Name} for Recipe {request.RecipeId}");
                     }
                 }
                 await _recipeIngredientRepository.AddAsync(new Domain.Entity.RecipeIngredient()

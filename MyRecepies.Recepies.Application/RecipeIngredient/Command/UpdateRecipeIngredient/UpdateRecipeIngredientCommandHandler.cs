@@ -4,6 +4,7 @@ using MyRecipes.Recipes.Domain.Entity;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -28,32 +29,56 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.UpdateRecipeIng
             {
                 if (request.Id.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide key", $"request paramater RecipeID is empty");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "UpdateRecipeIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 if (request.RecipeId.IsNullOrEmpty())
                 {
-                    throw new WrongParameterException("Invalide key", $"request paramater RecipeID is null or empty");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "UpdateRecipeIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.RECIPE_ID);
                 }
                 if (request.IngredientId.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide key", $"request paramater IngredientId is empty");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "UpdateRecipeIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.INGREDIENT_ID);
                 }
                 var riFound = await _recipeIngredientRepository.GetAsync(request.Id);
                 if (riFound is null)
                 {
-                    throw new RecipeIngredientNotFoundException("Invalide Key", $"Ingredient Recipe with Id {request.Id} not found");
+                    throw new RecipeIngredientNotFoundException(_logger,
+                        nameof(Handle),
+                        "UpdateRecipeIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"Ingredient Recipe with Id {request.Id} not found");
                 }
 
                 var recipe = await _recipesRepository.GetAsync((Guid)request.RecipeId);
                 if (recipe is null)
                 {
-                    throw new RecipeNotFoundException("Invalide key", $"Recipe with ID {request.RecipeId} not found");
+                    throw new RecipeNotFoundException(_logger,
+                        nameof(Handle),
+                        "UpdateRecipeIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"Recipe with ID {request.RecipeId} not found");
                 }
                 var recipeIngredients = await _recipeIngredientRepository.GetAllRecipeIngredientByRecipeIdlAsync((Guid)request.RecipeId);
 
                 if (recipeIngredients is not null && recipeIngredients.Any(ri => ri.IngredientId == request.IngredientId))
                 {
-                    throw new RecipeIngredientAlreadyExistException("invalide key", $"Recipe with ingredient {request.IngredientId} already exist");
+                    throw new RecipeIngredientAlreadyExistException(_logger,
+                        nameof(Handle),
+                        "UpdateRecipeIngredientCommandHandler",
+                        Constant.EXCEPTION.TITLE.CONFLICT,
+                        $"Recipe with ingredient {request.IngredientId} already exist");
                 }
 
                 if (riFound.IngredientId != request.IngredientId)
