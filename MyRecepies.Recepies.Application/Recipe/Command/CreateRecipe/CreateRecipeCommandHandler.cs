@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -21,7 +22,12 @@ namespace MyRecipes.Recipes.Application.Recipe.Command.CreateRecipe
             {
                 if (request.Name.IsNullOrEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "Name is invalide");
+                    throw new WrongParameterException(
+                        _logger,
+                        nameof(Handle),
+                        "CreateRecipeCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.NAME);
                 }
                 Domain.Entity.Recipe entityToAdd = new()
                 {

@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -21,16 +22,24 @@ namespace MyRecipes.Recipes.Application.Recipe.Query.CheckRecipeAcces
         {
             if (request.RecipeId.IsEmpty())
             {
-                throw new WrongParameterException("Invalide Key", "InstructionId is empty");
+                throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "CheckRecipeAccesQueryHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.RECIPE_ID);
             }
             if (request.UserId.IsEmpty())
             {
-                throw new WrongParameterException("Invalide Key", "UserId is empty");
+                throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "CheckRecipeAccesQueryHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.USER_ID);
             }
             var recipe = await _recipesRepository.GetAsync(request.RecipeId);
             if (recipe is null)
             {
-                if (recipe.UserId == request.UserId)
+                if (recipe?.UserId == request.UserId)
                     return true;
             }
             return false;

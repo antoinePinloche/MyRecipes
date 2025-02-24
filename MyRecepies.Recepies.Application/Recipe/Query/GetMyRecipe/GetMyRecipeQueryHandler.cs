@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Application.Recipe.Query.GetRecipeById;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 using System;
@@ -15,8 +16,8 @@ namespace MyRecipes.Recipes.Application.Recipe.Query.GetMyRecipe
     public class GetMyRecipeQueryHandler : IRequestHandler<GetMyRecipeQuery, List<GetMyRecipeQueryResult>>
     {
         private readonly IRecipesRepository _recipeRepository;
-        private readonly ILogger<GetRecipeByIdQueryHandler> _logger;
-        public GetMyRecipeQueryHandler(IRecipesRepository recipeRepository, ILogger<GetRecipeByIdQueryHandler> logger)
+        private readonly ILogger<GetMyRecipeQueryHandler> _logger;
+        public GetMyRecipeQueryHandler(IRecipesRepository recipeRepository, ILogger<GetMyRecipeQueryHandler> logger)
         {
             _recipeRepository = recipeRepository;
             _logger = logger;
@@ -27,13 +28,21 @@ namespace MyRecipes.Recipes.Application.Recipe.Query.GetMyRecipe
             try
             {
                 if (request.Id.IsEmpty())
-                    throw new WrongParameterException("Invalide parameter", "Id is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "GetMyRecipeQueryHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 var recipeFound = await _recipeRepository.GetByRecipeIdAsync(request.Id);
                 if (recipeFound.IsNullOrEmpty())
                 {
-                    throw new RecipeNotFoundException("invalide key", $"Recipe not found");
+                    throw new RecipeNotFoundException(_logger,
+                        nameof(Handle),
+                        "GetMyRecipeQueryHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.RECIPE_NOT_FOUND);
                 }
-                _logger.LogInformation($"GetRecipeByIdQueryHandler : recipe {request.Id} found");
+                _logger.LogInformation($"GetMyRecipeQueryHandler : recipe {request.Id} found");
                 return recipeFound.Select(s =>
                     new GetMyRecipeQueryResult(
                         s.Id,

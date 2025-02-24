@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -22,12 +23,20 @@ namespace MyRecipes.Recipes.Application.Recipe.Command.UpdateRecipe
             {
                 if (request.Name.IsNullOrEmpty())
                 {
-                    throw new WrongParameterException("Invalide parameter", "Name is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "UpdateRecipeCommandHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.NAME);
                 }
                 var entity = await _recipeRepository.GetAsync(request.Id);
                 if (entity is null)
                 {
-                    throw new RecipeNotFoundException("invalide key", $"Recipe with Id {request.Id} not found");
+                    throw new RecipeNotFoundException(_logger,
+                        nameof(Handle),
+                        "UpdateRecipeCommandHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"Recipe with Id {request.Id} not found");
                 }
                 if (entity.Name != request.Name)
                     entity.Name = request.Name;

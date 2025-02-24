@@ -60,6 +60,7 @@ namespace MyRecipes.Transverse.Constant
                 public static readonly string INSTRUCTION = "request paramater Instruction is empty or null";
                 public static readonly string INSTRUCTION_ID = "request paramater InstructionId is empty or null";
                 public static readonly string FOOD_TYPE_ID = "request paramater FoodTypeId is empty or null";
+                public static readonly string RECIPE_NOT_FOUND = "Recipe not found";
             }
         }
         #endregion

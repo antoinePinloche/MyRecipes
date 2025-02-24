@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -21,11 +22,19 @@ namespace MyRecipes.Recipes.Application.Recipe.Query.GetRecipeByName
             try
             {
                 if (request.Name.IsNullOrEmpty())
-                    throw new WrongParameterException("Invalide parameter", "Name is invalide");
+                    throw new WrongParameterException(_logger,
+                        nameof(Handle),
+                        "GetRecipeByNameQueryHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.NAME);
                 ICollection<Domain.Entity.Recipe> recipes = await _recipeRepository.GetByNameAsync(request.Name);
                 if (recipes.IsNullOrEmpty())
                 {
-                    throw new RecipeNotFoundException("invalide key", $"Recipe(s) not found Name contain {request.Name}");
+                    throw new RecipeNotFoundException(_logger,
+                        nameof(Handle),
+                        "GetRecipeByNameQueryHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"Recipe(s) not found Name contain {request.Name}");
                 }
                 var listToReturn = recipes.Select(s => new GetRecipeByNameQueryResult(
                         s.Id,
