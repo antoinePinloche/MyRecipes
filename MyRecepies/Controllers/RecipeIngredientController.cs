@@ -42,7 +42,7 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "GetRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 var res = await _sender.Send(guid.ToRecipeIngredientByIdQuery());
                 _logger.LogInformation("GetRecipeIngredient : finish without error");
@@ -67,7 +67,7 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    throw new WrongParameterException("Invalide parameter", "model is invalide");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "CreateRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
                 }
                 await _sender.Send(model.ToCommand());
                 _logger.LogInformation("CreateRecipeIngredient : finish without error");
@@ -98,16 +98,16 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    throw new WrongParameterException("Invalide parameter", "model is invalide");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "UpdateRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
                 }
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "UpdateRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 if (!this.CheckIsAdmin())
                 {
                     if (!await _sender.Send(new CheckRecipeIngredientAccesQuery(guid, this.GetUserGuid())))
-                        throw new Exception();
+                        throw new ForbiddenAccessException(Constant.EXCEPTION.TITLE.FORBIDDEN, "UpdateRecipeIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.FORBIDDEN);
                 }
                 await _sender.Send(model.ToCommand(guid));
                 _logger.LogInformation("UpdateRecipeIngredient : finish without error");
@@ -128,6 +128,11 @@ namespace MyRecipes.Web.API.Controllers
                 _logger.LogError(ex, ex.Message);
                 throw new RecipeIngredientAlreadyExistException(ex.Error, ex.Message);
             }
+            catch (ForbiddenAccessException ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw new ForbiddenAccessException(ex.Error, ex.Message);
+            }
         }
 
         [HttpDelete("[action]/{Id}")]
@@ -138,12 +143,12 @@ namespace MyRecipes.Web.API.Controllers
             {
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 if (!this.CheckIsAdmin())
                 {
                     if (!await _sender.Send(new CheckRecipeIngredientAccesQuery(guid, this.GetUserGuid())))
-                        throw new Exception();
+                        throw new ForbiddenAccessException(Constant.EXCEPTION.TITLE.FORBIDDEN, Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.FORBIDDEN);
                 }
                 await _sender.Send(guid.ToDeleteRecipeIngredientCommand());
                 _logger.LogInformation("DeleteRecipeIngredient : finish without error");
@@ -159,7 +164,11 @@ namespace MyRecipes.Web.API.Controllers
                 _logger.LogError(ex, ex.Message);
                 throw new RecipeIngredientNotFoundException(ex.Error, ex.Message);
             }
-            
+            catch(ForbiddenAccessException ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw new ForbiddenAccessException(ex.Error, ex.Message);
+            }
         }
     }
 }

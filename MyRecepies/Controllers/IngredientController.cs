@@ -43,7 +43,7 @@ namespace MyRecipes.web.Controllers
             {
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "GetIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 GetIngredientByIdQueryResult result = await _sender.Send(guid.ToQuery());
                 _logger.LogInformation("GetIngredient : finish without problem");
@@ -74,7 +74,7 @@ namespace MyRecipes.web.Controllers
             {
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
-                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "GetIngredientsByFoodType : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 List<GetIngredientsByFoodTypeIdQueryResult> result = await _sender.Send(guid.FoodTypeToQuery());
                 _logger.LogInformation("GetIngredientsByFoodType : finish without problem");
@@ -103,6 +103,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = Constant.ROLE.ADMIN)]
         [Route("[action]/{id}")]
         public async Task<IActionResult> DeleteIngredient(string id)
         {
@@ -110,11 +111,7 @@ namespace MyRecipes.web.Controllers
             {
                 if (!Guid.TryParse(id, out Guid guid))
                 {
-                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
-                }
-                if (this.CheckIsAdmin())
-                {
-                    //check car user
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "DeleteIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 await _sender.Send(guid.ToDeleteIngredientCommand());
                 _logger.LogInformation("DeleteIngredient : finish without problem");
@@ -138,13 +135,10 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = Constant.ROLE.ADMIN)]
         [Route("[action]/{Guid}")]
         public async Task<IActionResult> UpdateIngredient(string guid)
         {
-            if (this.CheckIsAdmin())
-            {
-                //check car user
-            }
             return Ok();
         }
 
@@ -155,7 +149,7 @@ namespace MyRecipes.web.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    throw new WrongParameterException("Invalide parameter", "model is invalide");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "CreateIngredient : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
                 await _sender.Send(ingredient.ToCommand());
                 _logger.LogInformation("DeleteIngredient : finish without problem");
                 return Created();

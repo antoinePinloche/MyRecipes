@@ -234,6 +234,24 @@ namespace MyRecipes.Web.API
                         ProblemDetails = problemDetails
                     });
             }
+
+            if (exception is ForbiddenAccessException forbiddenAccessException)
+            {
+                var problemDetails = new ProblemDetails
+                {
+                    Status = StatusCodes.Status403Forbidden,
+                    Title = forbiddenAccessException.Error,
+                    Detail = forbiddenAccessException.Message,
+                    Type = "Forbidden"
+                };
+                httpContext.Response.StatusCode = StatusCodes.Status403Forbidden;
+                return await _problemDetail.TryWriteAsync(
+                    new ProblemDetailsContext
+                    {
+                        HttpContext = httpContext,
+                        ProblemDetails = problemDetails
+                    });
+            }
             #endregion
 
             #region User

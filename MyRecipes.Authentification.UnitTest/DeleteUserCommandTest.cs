@@ -25,7 +25,8 @@ namespace MyRecipes.Authentification.UnitTest
             DeleteUserCommand query = new DeleteUserCommand(userId);
             DeleteUserCommandHandler handler = new DeleteUserCommandHandler(_usersRepository.Object, _serviceProvider.Object, _logger.Object);
 
-            await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            var result = await Assert.ThrowsAsync<WrongParameterException>(async () => await handler.Handle(query, _cancellationToken));
+            Assert.NotNull(result);
         }
 
         [Fact]

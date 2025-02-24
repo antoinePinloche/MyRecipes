@@ -41,7 +41,7 @@ namespace MyRecipes.Web.API.Controllers
             if (!Guid.TryParse(Id, out Guid guid))
             {
                 _logger.LogError("GetFoodType : parameter ID is invalide");
-                throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
+                throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "GetFoodType : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
             }
             try
             {
@@ -49,7 +49,7 @@ namespace MyRecipes.Web.API.Controllers
                 if (res is null || res.FoodType is null)
                 {
                     _logger.LogError($"GetFoodType : FoodType with {Id} can't be found");
-                    throw new FoodTypeNotFoundException("Not Found", $"FoodType with {Id} can't be found");
+                    throw new FoodTypeNotFoundException(Constant.EXCEPTION.TITLE.NOT_FOUND, $"GetFoodType : FoodType with {Id} can't be found");
                 }
                 _logger.LogInformation("GetFoodType : finish without problem");
                 return Results.Ok(res);
@@ -81,7 +81,7 @@ namespace MyRecipes.Web.API.Controllers
                 if (!ModelState.IsValid)
                 {
                     _logger.LogError("CreateFoodType : model is invalide");
-                    throw new WrongParameterException("Invalide parameter", "model invalide");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "CreateFoodType : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
                 }
                 await _sender.Send(model.ToCreateFoodTypeCommand());
                 _logger.LogInformation("CreateFoodType : finish without problem");
@@ -100,8 +100,8 @@ namespace MyRecipes.Web.API.Controllers
         }
 
         [HttpDelete]
-        [Route("[action]/{id}")]
         [Authorize(Roles = Constant.ROLE.ADMIN)]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> DeleteFoodType(string id)
         {
             try
@@ -109,7 +109,7 @@ namespace MyRecipes.Web.API.Controllers
                 if (!Guid.TryParse(id, out Guid guid))
                 {
                     _logger.LogError("DeleteFoodType : parameter ID is invalide");
-                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "DeleteFoodType : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 var ingredientList = await _sender.Send(guid.FoodTypeToQuery());
                 if (ingredientList.Any())
@@ -134,6 +134,7 @@ namespace MyRecipes.Web.API.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = Constant.ROLE.ADMIN)]
         [Route("[action]/{id}")]
         public async Task<IResult> UpdateFoodType(UpdateFoodTypeModel model,string id)
         {
@@ -142,12 +143,12 @@ namespace MyRecipes.Web.API.Controllers
                 if (!Guid.TryParse(id, out Guid guid))
                 {
                     _logger.LogError("UpdateFoodType : parameter ID is invalide)");
-                    throw new WrongParameterException("Invalide parameter", "parameter ID is invalide");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "UpdateFoodType : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 if (!ModelState.IsValid)
                 {
                     _logger.LogError("UpdateFoodType : model is invalide)");
-                    throw new WrongParameterException("Invalide parameter", "model is invalide");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "UpdateFoodType : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.MODEL);
                 }
                     
                 await _sender.Send(model.ToUpdateFoodTypeByIdCommand(guid));

@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.VisualBasic;
 using MyRecipes.Authentification.Domain.Repository.RepositoryUser;
+using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 
@@ -27,17 +29,17 @@ namespace MyRecipes.Authentification.Application.User.Command.UpdateUserRole
             {
                 if (request.UserID.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide Key", "User Id is empty");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_KEY, Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.USER_ID);
                 }
                 if (request.UserRole.IsNullOrEmpty())
                 {
-                    throw new WrongParameterException("Invalide Key", "UserRole is empty");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_KEY, Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.USER_ROLE);
                 }
                 Domain.Entities.User userfound = await _usersRepository.GetAsync(request.UserID);
 
                 if (userfound is null)
                 {
-                    throw new UserNotFoundException("Invalide key ", $"User With Guid {request.UserID} doesn't exist");
+                    throw new UserNotFoundException(Constant.EXCEPTION.TITLE.INVALIDE_KEY, $"User With Guid {request.UserID} doesn't exist");
                 }
                 var userManager = _serviceProvider.GetRequiredService<UserManager<Domain.Entities.User>>();
                 var roleManager = _serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
@@ -49,7 +51,7 @@ namespace MyRecipes.Authentification.Application.User.Command.UpdateUserRole
                     {
                         if (role == request.UserRole && request.ToAdd)
                         {
-                            throw new UserRoleAlreadyExistException("Conflict", $"User {userfound.UserName} already Have the role  {request.UserRole}");
+                            throw new UserRoleAlreadyExistException(Constant.EXCEPTION.TITLE.CONFLICT, $"User {userfound.UserName} already Have the role  {request.UserRole}");
                         }
                         else if (role == request.UserRole && !request.ToAdd)
                         {

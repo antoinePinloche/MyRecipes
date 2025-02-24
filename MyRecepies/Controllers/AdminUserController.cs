@@ -35,7 +35,7 @@ namespace MyRecipes.web.Controllers
                 if (!Guid.TryParse(Id, out Guid guid))
                 {
                     _logger.LogError("ModifyUserRole : wrong Id parameter");
-                    throw new WrongParameterException("Invalide key", "ModifyUserRole : wrong Id parameter");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "ModifyUserRole : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
                 await _sender.Send(new UpdateUserRoleCommand(guid, NewRole, ToAdd));
                 _logger.LogInformation("ModifyUserRole : Finish without error");
@@ -80,8 +80,8 @@ namespace MyRecipes.web.Controllers
             {
                 if (!Guid.TryParse(guid, out Guid guidSend))
                 {
-                    _logger.LogError("DeleteUser : BadParameter");
-                    return BadRequest("DeleteUser : BadParameter" + guid);
+                    _logger.LogError("DeleteUser : wrong Id parameter");
+                    throw new WrongParameterException(Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER, "DeleteUser : " + Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
                 }
 
                 await _sender.Send(new DeleteUserCommand(guidSend));

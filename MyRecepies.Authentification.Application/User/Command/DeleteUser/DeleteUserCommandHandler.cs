@@ -26,7 +26,8 @@ namespace MyRecipes.Authentification.Application.User.Command.DeleteUser
             {
                 if (request.Guid.IsEmpty())
                 {
-                    throw new WrongParameterException("Invalide Key", "User Id is empty");
+                    throw new WrongParameterException(_logger, nameof(DeleteUserCommandHandler), "DeleteUserCommandHandler", "User Id is empty");
+                    //throw new WrongParameterException("Invalide Key", "User Id is empty");
                 }
                 Domain.Entities.User userfound = await _usersRepository.GetAsync(request.Guid);
 
