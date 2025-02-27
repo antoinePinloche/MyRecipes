@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Authentification.Domain.Repository.RepositoryUser;
+using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Authentification.Application.User.Query.GetAllUsers
 {
-    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQueryRequest, GetAllUsersQueryResult>
+    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, GetAllUsersQueryResult>
     {
         private readonly IUsersRepository _usersRepository;
         private readonly ILogger<GetAllUsersQueryHandler> _logger;
@@ -14,7 +15,7 @@ namespace MyRecipes.Authentification.Application.User.Query.GetAllUsers
             _logger = logger;
         }
 
-        public async Task<GetAllUsersQueryResult> Handle(GetAllUsersQueryRequest request, CancellationToken cancellationToken)
+        public async Task<GetAllUsersQueryResult> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
             try
             {

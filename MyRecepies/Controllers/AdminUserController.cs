@@ -67,7 +67,7 @@ namespace MyRecipes.web.Controllers
         [Route("[action]")]
         public async Task<IActionResult> GetAllUsers()
         {
-            var tmp = await _sender.Send(new GetAllUsersQueryRequest());
+            var tmp = await _sender.Send(new GetAllUsersQuery());
             _logger.LogInformation("GetAllUsers : return All users");
             return Ok(tmp);
         }

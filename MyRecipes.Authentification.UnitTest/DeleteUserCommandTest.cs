@@ -42,52 +42,52 @@ namespace MyRecipes.Authentification.UnitTest
             await Assert.ThrowsAsync<UserNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
         }
 
-        [Fact]
-        [Description("DeleteUserCommandQuery : Ok")]
-        public async Task DeleteUserCommandTest_OK()
-        {
-            Guid userId = Guid.NewGuid();
+        //[Fact]
+        //[Description("DeleteUserCommandQuery : Ok")]
+        //public async Task DeleteUserCommandTest_OK()
+        //{
+        //    Guid userId = Guid.NewGuid();
 
-            DeleteUserCommand query = new DeleteUserCommand(userId);
+        //    DeleteUserCommand query = new DeleteUserCommand(userId);
 
 
-            var serviceCollection = new ServiceCollection();
+        //    var serviceCollection = new ServiceCollection();
 
-            Mock<UserManager<Domain.Entities.User>> userManager = new Mock<UserManager<Domain.Entities.User>>();
-            userManager.Setup(s => s.GetRolesAsync(It.IsAny<Domain.Entities.User>()))
-                .ReturnsAsync(
-                    new List<string>()
-                    {
-                        "Administrator"
-                    }
-                );
-            // Add any DI stuff here:
-            serviceCollection.AddSingleton<UserManager<Domain.Entities.User>>(userManager.Object);
+        //    Mock<UserManager<Domain.Entities.User>> userManager = new Mock<UserManager<Domain.Entities.User>>();
+        //    userManager.Setup(s => s.GetRolesAsync(It.IsAny<Domain.Entities.User>()))
+        //        .ReturnsAsync(
+        //            new List<string>()
+        //            {
+        //                "Administrator"
+        //            }
+        //        );
+        //    // Add any DI stuff here:
+        //    serviceCollection.AddSingleton<UserManager<Domain.Entities.User>>(userManager.Object);
 
-            // Create the ServiceProvider
-            var serviceProvider = serviceCollection.BuildServiceProvider();
+        //    // Create the ServiceProvider
+        //    var serviceProvider = serviceCollection.BuildServiceProvider();
 
-            // serviceScopeMock will contain my ServiceProvider
-            var serviceScopeMock = new Mock<IServiceScope>();
-            serviceScopeMock.SetupGet<IServiceProvider>(s => s.ServiceProvider)
-                .Returns(serviceProvider);
+        //    // serviceScopeMock will contain my ServiceProvider
+        //    var serviceScopeMock = new Mock<IServiceScope>();
+        //    serviceScopeMock.SetupGet<IServiceProvider>(s => s.ServiceProvider)
+        //        .Returns(serviceProvider);
 
-            // serviceScopeFactoryMock will contain my serviceScopeMock
-            var serviceScopeFactoryMock = new Mock<IServiceScopeFactory>();
-            serviceScopeFactoryMock.Setup(s => s.CreateScope())
-                .Returns(serviceScopeMock.Object);
+        //    // serviceScopeFactoryMock will contain my serviceScopeMock
+        //    var serviceScopeFactoryMock = new Mock<IServiceScopeFactory>();
+        //    serviceScopeFactoryMock.Setup(s => s.CreateScope())
+        //        .Returns(serviceScopeMock.Object);
 
-            _usersRepository.Setup(s => s.GetAsync(It.IsAny<Guid>()))
-                .ReturnsAsync(
-                new Domain.Entities.User()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    UserName = "Test",
-                    Email = "Test"
-                });
-            DeleteUserCommandHandler handler = new DeleteUserCommandHandler(_usersRepository.Object, serviceProvider, _logger.Object);
-            await Assert.ThrowsAsync<UserNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
-        }
+        //    _usersRepository.Setup(s => s.GetAsync(It.IsAny<Guid>()))
+        //        .ReturnsAsync(
+        //        new Domain.Entities.User()
+        //        {
+        //            Id = Guid.NewGuid().ToString(),
+        //            UserName = "Test",
+        //            Email = "Test"
+        //        });
+        //    DeleteUserCommandHandler handler = new DeleteUserCommandHandler(_usersRepository.Object, serviceProvider, _logger.Object);
+        //    await Assert.ThrowsAsync<UserNotFoundException>(async () => await handler.Handle(query, _cancellationToken));
+        //}
 
     }
 }

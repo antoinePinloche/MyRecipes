@@ -1,4 +1,6 @@
-﻿namespace MyRecipes.Authentification.Application.User.Query.GetAllUsers
+﻿using MyRecipes.Transverse.Extension;
+
+namespace MyRecipes.Authentification.Application.User.Query.GetAllUsers
 {
     public class GetAllUsersQueryResult
     {
@@ -6,9 +8,9 @@
 
         public GetAllUsersQueryResult(ICollection<Domain.Entities.User> user)
         {
-            if (user is not null && user.Count() > 0)
+            if (!user.IsNullOrEmpty())
                 users = user.ToList();
-            user = new List<Domain.Entities.User>();
+            users = new List<Domain.Entities.User>();
         }
     }
 }

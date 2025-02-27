@@ -1,12 +1,9 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using MyRecipes.Authentification.Application.User.Command.DeleteUser;
 using MyRecipes.Authentification.Domain.Repository.RepositoryUser;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MyRecipes.Transverse.Constant;
+using MyRecipes.Transverse.Exception;
+using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Authentification.Application.User.Query.GetUserById
 {
@@ -14,17 +11,42 @@ namespace MyRecipes.Authentification.Application.User.Query.GetUserById
     {
         private IUsersRepository _usersRepository;
         private readonly ILogger<GetUserByIdQueryHandler> _logger;
-        private readonly IServiceProvider _serviceProvider;
-        public GetUserByIdQueryHandler(IUsersRepository usersRepository, IServiceProvider serviceProvider, ILogger<GetUserByIdQueryHandler> logger)
+        public GetUserByIdQueryHandler(IUsersRepository usersRepository, ILogger<GetUserByIdQueryHandler> logger)
         {
             _usersRepository = usersRepository;
-            _serviceProvider = serviceProvider;
             _logger = logger;
         }
 
         public async Task<Domain.Entities.User> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _usersRepository.GetAsync(request.Guid);
+            try
+            {
+                if (request.Guid.IsEmpty())
+                {
+                    throw new WrongParameterException(
+                        _logger,
+                        nameof(Handle),
+                        "GetUserByIdQueryHandler",
+                        Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
+                        Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
+                }
+                var result = await _usersRepository.GetAsync(request.Guid);
+                if (result == null)
+                {
+                    throw new UserNotFoundException(
+                        _logger,
+                        nameof(Handle),
+                        "GetUserByIdQueryHandler",
+                        Constant.EXCEPTION.TITLE.NOT_FOUND,
+                        $"User with Id {request.Guid} not found");
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"GetUserByIdQueryHandler : throw Exception {ex.Message}");
+                throw;
+            }
         }
     }
 }
