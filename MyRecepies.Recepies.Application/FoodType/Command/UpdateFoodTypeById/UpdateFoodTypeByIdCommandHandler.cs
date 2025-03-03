@@ -7,7 +7,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.FoodType.Command.UpdateFoodTypeById
 {
-
+    /// <summary>
+    /// Handler de la commande <see cref="UpdateFoodTypeByIdCommand"/>
+    /// </summary>
     public class UpdateFoodTypeByIdCommandHandler : IRequestHandler<UpdateFoodTypeByIdCommand>
     {
         private readonly IFoodTypeRepository _foodTypeRepository;

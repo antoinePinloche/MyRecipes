@@ -7,6 +7,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.FoodType.Command.CreateFoodType
 {
+    /// <summary>
+    /// handler de la command <see cref="CreateFoodTypeCommand"/>
+    /// </summary>
     public class CreateFoodTypeCommandHandler : IRequestHandler<CreateFoodTypeCommand>
     {
         private readonly IFoodTypeRepository _foodTypeRepository;

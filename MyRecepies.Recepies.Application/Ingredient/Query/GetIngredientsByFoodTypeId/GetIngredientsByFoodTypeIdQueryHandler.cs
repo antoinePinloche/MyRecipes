@@ -8,6 +8,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTypeId
 {
+    /// <summary>
+    /// Handler de la query <see cref="GetIngredientsByFoodTypeIdQuery"/>
+    /// </summary>
     public class GetIngredientsByFoodTypeIdQueryHandler : IRequestHandler<GetIngredientsByFoodTypeIdQuery, List<GetIngredientsByFoodTypeIdQueryResult>>
     {
         private readonly IIngredientRepository _ingredienRepository;

@@ -7,6 +7,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.FoodType.Command.DeleteFoodTypeById
 {
+    /// <summary>
+    /// Handler de la commande <see cref="DeleteFoodTypeByIdCommand"/>
+    /// </summary>
     public class DeleteFoodTypeByIdCommandHandler : IRequestHandler<DeleteFoodTypeByIdCommand>
     {
         private readonly IFoodTypeRepository _foodTypeRepository;

@@ -4,11 +4,14 @@ using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 
 namespace MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient
 {
-    public class GetAllIngredientQueryhandler : IRequestHandler<GetAllIngredientQuery, List<GetAllIngredientQueryResult>>
+    /// <summary>
+    /// Handler de la query <see cref="GetAllIngredientQuery"/>
+    /// </summary>
+    public class GetAllIngredientQueryHandler : IRequestHandler<GetAllIngredientQuery, List<GetAllIngredientQueryResult>>
     {
         private readonly IIngredientRepository _ingredienRepository;
-        private readonly ILogger<GetAllIngredientQueryhandler> _logger;
-        public GetAllIngredientQueryhandler(IIngredientRepository ingredienRepository, ILogger<GetAllIngredientQueryhandler> logger)
+        private readonly ILogger<GetAllIngredientQueryHandler> _logger;
+        public GetAllIngredientQueryHandler(IIngredientRepository ingredienRepository, ILogger<GetAllIngredientQueryHandler> logger)
         {
             _ingredienRepository = ingredienRepository;
             _logger = logger;
@@ -20,7 +23,7 @@ namespace MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient
             var entities = await _ingredienRepository.GetAllAsync();
             if (entities is not null)
             {
-                _logger.LogInformation($"GetAllIngredientQueryhandler : Ingredient found return");
+                _logger.LogInformation($"GetAllIngredientQueryHandler : Ingredient found return");
                 return entities.Select(e =>
                     new GetAllIngredientQueryResult()
                     {
@@ -35,7 +38,7 @@ namespace MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient
 
                 ).ToList();
             }
-            _logger.LogInformation($"GetAllIngredientQueryhandler : complete without error and no ingredient to return");
+            _logger.LogInformation($"GetAllIngredientQueryHandler : complete without error and no ingredient to return");
             return new List<GetAllIngredientQueryResult>();
         }
     }

@@ -4,6 +4,9 @@ using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 
 namespace MyRecipes.Recipes.Application.FoodType.Query.GetAllFoodType
 {
+    /// <summary>
+    /// Handler de la query <see cref="GetAllFoodTypeQuery"/>
+    /// </summary>
     public class GetAllFoodTypeQueryHandler : IRequestHandler<GetAllFoodTypeQuery, GetAllFoodTypeQueryResult>
     {
         private readonly IFoodTypeRepository _foodTypeRepository;

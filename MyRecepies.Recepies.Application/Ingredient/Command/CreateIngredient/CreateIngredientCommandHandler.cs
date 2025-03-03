@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
@@ -8,6 +7,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.Ingredient.Command.CreateIngredient
 {
+    /// <summary>
+    /// handler de la command <see cref="CreateIngredientCommand"/>
+    /// </summary>
     public class CreateIngredientCommandHandler : IRequestHandler<CreateIngredientCommand>
     {
         private readonly IIngredientRepository _ingredientRepository;
