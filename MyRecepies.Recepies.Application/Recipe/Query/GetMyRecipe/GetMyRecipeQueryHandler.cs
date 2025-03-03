@@ -30,7 +30,7 @@ namespace MyRecipes.Recipes.Application.Recipe.Query.GetMyRecipe
                         "GetMyRecipeQueryHandler",
                         Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
                         Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.ID);
-                var recipeFound = await _recipeRepository.GetByRecipeIdAsync(request.Id);
+                var recipeFound = await _recipeRepository.GetByRecipeByUserIdAsync(request.Id);
                 if (recipeFound.IsNullOrEmpty())
                 {
                     throw new RecipeNotFoundException(_logger,
