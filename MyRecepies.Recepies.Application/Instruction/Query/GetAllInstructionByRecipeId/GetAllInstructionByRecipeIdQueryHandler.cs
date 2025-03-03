@@ -8,6 +8,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.Instruction.Query.GetAllInstructionByRecipeId
 {
+    /// <summary>
+    /// Handler de la query <see cref="GetAllInstructionByRecipeIdQuery"/>
+    /// </summary>
     public class GetAllInstructionByRecipeIdQueryHandler : IRequestHandler<GetAllInstructionByRecipeIdQuery, List<GetAllInstructionByRecipeIdQueryResult>>
     {
         private readonly IInstructionRepository _instructionRepository;

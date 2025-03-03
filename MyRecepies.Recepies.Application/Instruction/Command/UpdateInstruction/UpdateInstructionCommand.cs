@@ -2,6 +2,10 @@
 
 namespace MyRecipes.Recipes.Application.Instruction.Command.UpdateInstruction
 {
+    /// <summary>
+    /// Command pour modifier une instruction par son ID
+    /// <see cref="UpdateInstructionCommandHandler"/>
+    /// </summary>
     public class UpdateInstructionCommand : IRequest
     {
         public Guid Id { get; set; }

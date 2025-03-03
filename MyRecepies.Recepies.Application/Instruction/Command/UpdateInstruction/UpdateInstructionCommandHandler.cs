@@ -7,6 +7,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.Instruction.Command.UpdateInstruction
 {
+    /// <summary>
+    /// Handler de la command <see cref="UpdateInstructionCommand"/>
+    /// </summary>
     public class UpdateInstructionCommandHandler : IRequestHandler<UpdateInstructionCommand>
     {
         private readonly IInstructionRepository _instructionRepository;

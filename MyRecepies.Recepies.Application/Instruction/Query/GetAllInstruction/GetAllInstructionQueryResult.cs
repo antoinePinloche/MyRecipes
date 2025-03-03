@@ -1,5 +1,8 @@
 ﻿namespace MyRecipes.Recipes.Application.Instruction.Query.GetAllInstruction
 {
+    /// <summary>
+    /// reponse de la query <see cref="GetAllInstructionQuery"/>
+    /// </summary>
     public class GetAllInstructionQueryResult
     {
         public Guid Id { get; set; }

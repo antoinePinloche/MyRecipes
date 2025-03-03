@@ -2,6 +2,10 @@
 
 namespace MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction
 {
+    /// <summary>
+    /// Command pour crée L'instruction d'une recette
+    /// <see cref="CreateInstructionCommandHandler"/>
+    /// </summary>
     public class CreateInstructionCommand : IRequest
     {
         public Guid? RecipeId { get; set; }

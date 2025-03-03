@@ -7,6 +7,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruction
 {
+    /// <summary>
+    /// Handler de la command <see cref="CreateListOfInstructionCommand"/>
+    /// </summary>
     public class CreateListOfInstructionCommandHandler : IRequestHandler<CreateListOfInstructionCommand>
     {
         private readonly IInstructionRepository _instructionRepository;

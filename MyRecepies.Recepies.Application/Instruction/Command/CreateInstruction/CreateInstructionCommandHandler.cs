@@ -5,10 +5,12 @@ using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
 using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
-using System.Diagnostics.CodeAnalysis;
 
 namespace MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction
 {
+    /// <summary>
+    /// Handler de la command <see cref="GetFoodTypeByIdQuery"/>
+    /// </summary>
     public class CreateInstructionCommandHandler : IRequestHandler<CreateInstructionCommand>
     {
         private readonly IInstructionRepository _instructionRepository;

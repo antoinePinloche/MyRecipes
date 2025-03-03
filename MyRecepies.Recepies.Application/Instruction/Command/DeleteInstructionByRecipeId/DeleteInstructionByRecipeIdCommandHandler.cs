@@ -7,6 +7,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.Instruction.Command.DeleteInstructionByRecipeId
 {
+    /// <summary>
+    /// Handler de la command <see cref="CreateInstructionCommand"/>
+    /// </summary>
     public class DeleteInstructionByRecipeIdCommandHandler : IRequestHandler<DeleteInstructionByRecipeIdCommand>
     {
         private readonly IInstructionRepository _instructionRepository;

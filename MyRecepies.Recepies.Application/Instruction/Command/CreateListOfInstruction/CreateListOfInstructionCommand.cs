@@ -2,6 +2,10 @@
 
 namespace MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruction
 {
+    /// <summary>
+    /// Command pour crée une liste d'instruction d'une recette
+    /// <see cref="CreateListOfInstructionCommandHandler"/>
+    /// </summary>
     public class CreateListOfInstructionCommand : IRequest
     {
         public List<Instruction> Instructions { get; set; }

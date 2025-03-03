@@ -4,6 +4,9 @@ using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
 
 namespace MyRecipes.Recipes.Application.Instruction.Query.GetAllInstruction
 {
+    /// <summary>
+    /// Handler de la query <see cref="GetAllInstructionQuery"/>
+    /// </summary>
     public class GetAllInstructionQueryHandler : IRequestHandler<GetAllInstructionQuery, List<GetAllInstructionQueryResult>>
     {
         private readonly IInstructionRepository _instructionRepository;

@@ -7,6 +7,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.Instruction.Query.GetInstructionById
 {
+    /// <summary>
+    /// Handler de la query <see cref="GetInstructionByIdQuery"/>
+    /// </summary>
     public class GetInstructionByIdQueryHandler : IRequestHandler<GetInstructionByIdQuery, GetInstructionByIdQueryResult>
     {
         private readonly IInstructionRepository _instructionRepository;
