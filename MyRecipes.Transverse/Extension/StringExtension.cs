@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyRecipes.Transverse.Extension
+﻿namespace MyRecipes.Transverse.Extension
 {
+    /// <summary>
+    /// Methode d'extension pour la class string
+    /// </summary>
     public static class StringExtension
     {
+        /// <summary>
+        /// permet de savoir si une string est null ou empty
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static bool IsNullOrEmpty(this string str)
         {
             if (str is null)

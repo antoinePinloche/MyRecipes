@@ -2,6 +2,9 @@
 
 namespace MyRecipes.Transverse.Exception
 {
+    /// <summary>
+    /// Exception lever losqu'un Parametre est mauvais
+    /// </summary>
     public class WrongParameterException : ExceptionBase
     {
 

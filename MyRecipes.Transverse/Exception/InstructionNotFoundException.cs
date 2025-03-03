@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace MyRecipes.Transverse.Exception
 {
+    /// <summary>
+    /// Exception lever losqu'une Instruction n'existe pas
+    /// </summary>
     public class InstructionNotFoundException : ExceptionBase
     {
         public InstructionNotFoundException(string error, string message) : base(error, message)

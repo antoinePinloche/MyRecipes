@@ -2,6 +2,9 @@
 
 namespace MyRecipes.Transverse.Exception
 {
+    /// <summary>
+    /// Exception lever losqu'une User n'existe pas
+    /// </summary>
     public class UserNotFoundException : ExceptionBase
     {
         public UserNotFoundException(string error, string message) : base(error, message)

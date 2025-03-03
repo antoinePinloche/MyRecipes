@@ -2,6 +2,9 @@
 
 namespace MyRecipes.Transverse.Exception
 {
+    /// <summary>
+    /// Exception lever losqu'une Instruction existe déja
+    /// </summary>
     public class InstructionAlreadyExisteException : ExceptionBase
     {
         public InstructionAlreadyExisteException(string error, string message) : base(error, message)

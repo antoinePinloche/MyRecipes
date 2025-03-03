@@ -2,6 +2,9 @@
 
 namespace MyRecipes.Transverse.Exception
 {
+    /// <summary>
+    /// Exception lever losqu'une UserRole n'existe pas
+    /// </summary>
     public class UserRoleNotFoundException : ExceptionBase
     {
         public UserRoleNotFoundException(string error, string message) : base(error, message)

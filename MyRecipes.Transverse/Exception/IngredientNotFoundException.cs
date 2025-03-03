@@ -2,6 +2,9 @@
 
 namespace MyRecipes.Transverse.Exception
 {
+    /// <summary>
+    /// Exception lever losqu'un Ingredient n'existe pas
+    /// </summary>
     public class IngredientNotFoundException : ExceptionBase
     {
         public IngredientNotFoundException(string error, string message) : base(error, message)

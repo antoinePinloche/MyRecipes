@@ -2,6 +2,9 @@
 
 namespace MyRecipes.Transverse.Exception
 {
+    /// <summary>
+    /// Exception lever losqu'un Ingredient existe déja
+    /// </summary>
     public class IngredientAlreadyExistException : ExceptionBase
     {
         public IngredientAlreadyExistException(string error, string message) : base(error, message)

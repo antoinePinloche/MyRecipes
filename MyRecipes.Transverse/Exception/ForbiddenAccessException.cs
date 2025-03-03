@@ -2,6 +2,9 @@
 
 namespace MyRecipes.Transverse.Exception
 {
+    /// <summary>
+    /// Exception lever losqu'un utilisateur essaie d'exploiter un endpoit avec des acces non suffissant
+    /// </summary>
     public class ForbiddenAccessException : ExceptionBase
     {
         public ForbiddenAccessException(string error, string message) : base(error, message)

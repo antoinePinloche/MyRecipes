@@ -2,6 +2,9 @@
 
 namespace MyRecipes.Transverse.Exception
 {
+    /// <summary>
+    /// Exception lever losqu'une User existe déja
+    /// </summary>
     public class UserRoleAlreadyExistException : ExceptionBase
     {
         public UserRoleAlreadyExistException(string error, string message) : base(error, message)
