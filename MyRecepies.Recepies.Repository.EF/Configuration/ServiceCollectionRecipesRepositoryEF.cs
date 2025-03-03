@@ -1,14 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Recipes.Domain.Repository.RepositoryInstruction;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
 using MyRecipes.Recipes.Repository.EF.DbContext;
 using MyRecipes.Recipes.Repository.EF.Repository;
-using Microsoft.AspNetCore.Builder;
-using MyRecipes.Recipes.Domain.Entity;
-using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 
 namespace MyRecipes.Recipes.Repository.EF.Configuration
 {
