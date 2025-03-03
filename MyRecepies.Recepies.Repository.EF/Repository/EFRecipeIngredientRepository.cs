@@ -10,14 +10,19 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
         public RecipeDbContext Context { get; set; }
 
         public EFRecipeIngredientRepository(RecipeDbContext context) => Context = context;
+        /// <summary>
+        /// <see cref="InstructionBase.GetAllInstructionByRecipeIdAsync"/>
+        /// </summary>
         public override async Task<RecipeIngredient> AddAsync(RecipeIngredient entity)
         {
             var entityAdd = await Context.RecipeIngredients.AddAsync(entity);
             await this.SaveAsync();
             return entityAdd.Entity;
         }
-
-        public override Task<RecipeIngredient> AddRangeAsync(ICollection<RecipeIngredient> entities)
+        /// <summary>
+        /// <see cref="InstructionBase.GetAllInstructionByRecipeIdAsync"/>
+        /// </summary>
+        public override Task<ICollection<RecipeIngredient>> AddRangeAsync(ICollection<RecipeIngredient> entities)
         {
             throw new NotImplementedException();
         }

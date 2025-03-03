@@ -10,7 +10,9 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
         public RecipeDbContext Context { get; set; }
 
         public EFIngredientRepository(RecipeDbContext context) => Context = context;
-
+        /// <summary>
+        /// <see cref="IngredientBase.AddAsync"/>
+        /// </summary>
         public override async Task<Ingredient> AddAsync(Ingredient entity)
         {
             var ingredient = await Context.Ingredient.FirstOrDefaultAsync(f => f.Name == entity.Name);
@@ -22,11 +24,16 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             await Context.SaveChangesAsync();
             return ingredientAdd.Entity;
         }
+        /// <summary>
+        /// <see cref="IngredientBase.FirstOrDefault"/>
+        /// </summary>
         public override Ingredient FirstOrDefault(Func<Ingredient, bool> predicate)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// <see cref="IngredientBase.AddAsync"/>
+        /// </summary>
         public override async Task<ICollection<Ingredient>> GetAllAsync()
         {
             return await Context.Ingredient.Include(i => i.FoodType).ToListAsync();

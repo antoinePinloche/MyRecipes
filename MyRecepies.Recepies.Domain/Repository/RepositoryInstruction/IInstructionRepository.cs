@@ -5,6 +5,11 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryInstruction
 {
     public interface IInstructionRepository : IRepository<Instruction, Guid>
     {
+        /// <summary>
+        /// retourne toutes les instructions d'un recette par son ID
+        /// </summary>
+        /// <param name="Key"></param>
+        /// <returns></returns>
         public Task<ICollection<Instruction>> GetAllInstructionByRecipeIdAsync(Guid Key);
     }
 }

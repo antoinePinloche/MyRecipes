@@ -20,7 +20,13 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryIngredient
         public abstract Task UpdateAsync(Ingredient entity);
         public abstract Task UpdateRangeAsync(ICollection<Ingredient> entities);
         public abstract Task CreateOrUpdateSchemaAsync();
+        /// <summary>
+        /// <see cref="IIngredientRepository.HasIngredient"/> 
+        /// </summary>
         public abstract Task<Ingredient> HasIngredient(string Name);
+        /// <summary>
+        /// <see cref="IIngredientRepository.GetAllIngredientsByFoodTypeId"/> 
+        /// </summary>
         public abstract Task<List<Ingredient>> GetAllIngredientsByFoodTypeId(Guid foodTypeId);
     }
 }

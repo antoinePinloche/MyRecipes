@@ -8,7 +8,6 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryRecipe
         public abstract Task<ICollection<Recipe>> AddRangeAsync(ICollection<Recipe> entities);
         public abstract Recipe FirstOrDefault(Func<Recipe, bool> predicate);
         public abstract Task<ICollection<Recipe>> GetAllAsync();
-        public abstract Task<ICollection<Recipe>> GetByNameAsync(string Name);
         public abstract Task<Recipe> GetAsync(Guid key);
         public abstract Task RemoveAsync(Recipe entitie);
         public abstract Task RemoveRangeAsync(ICollection<Recipe> entities);
@@ -16,6 +15,13 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryRecipe
         public abstract Task UpdateAsync(Recipe entity);
         public abstract Task UpdateRangeAsync(ICollection<Recipe> entities);
         public abstract Task CreateOrUpdateSchemaAsync();
-        public abstract Task<ICollection<Recipe>> GetByRecipeIdAsync(Guid recipeId);
+        /// <summary>
+        /// <see cref="IRecipesRepository.GetByRecipeByUserIdAsync"/>
+        /// </summary>
+        public abstract Task<ICollection<Recipe>> GetByRecipeByUserIdAsync(Guid userId);
+        /// <summary>
+        /// <see cref="IRecipesRepository.GetByNameAsync"/>
+        /// </summary>
+        public abstract Task<ICollection<Recipe>> GetByNameAsync(string Name);
     }
 }

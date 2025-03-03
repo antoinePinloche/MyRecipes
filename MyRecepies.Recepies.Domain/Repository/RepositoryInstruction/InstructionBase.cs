@@ -15,6 +15,9 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryInstruction
         public abstract Task UpdateAsync(Instruction entity);
         public abstract Task UpdateRangeAsync(ICollection<Instruction> entities);
         public abstract Task CreateOrUpdateSchemaAsync();
+        /// <summary>
+        /// <see cref="IInstructionRepository.GetAllInstructionByRecipeIdAsync"/> 
+        /// </summary>
         public abstract Task<ICollection<Instruction>> GetAllInstructionByRecipeIdAsync(Guid Key);
     }
 }

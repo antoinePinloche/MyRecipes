@@ -5,7 +5,17 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryRecipe
 {
     public interface IRecipesRepository : IRepository<Recipe, Guid>
     {
+        /// <summary>
+        /// retourne toutes les recette qui possede dans leur Name la string
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
         public Task<ICollection<Recipe>> GetByNameAsync(string Name);
-        public Task<ICollection<Recipe>> GetByRecipeIdAsync(Guid recipeId);
+        /// <summary>
+        /// retourne les recettes d'un utilisateur
+        /// </summary>
+        /// <param name="recipeId"></param>
+        /// <returns></returns>
+        public Task<ICollection<Recipe>> GetByRecipeByUserIdAsync(Guid userId);
     }
 }
