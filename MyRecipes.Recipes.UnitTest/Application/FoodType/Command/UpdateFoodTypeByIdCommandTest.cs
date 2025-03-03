@@ -56,7 +56,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.FoodType.Command
 
             Domain.Entity.FoodType foodTypeReturn = new Domain.Entity.FoodType() { Name = "Name", Id = guid };
             _foodTypeRepository.Setup(x => x.GetAsync(It.IsAny<Guid>())).ReturnsAsync(foodTypeReturn);
-            _foodTypeRepository.Setup(x => x.FoodTypeByName(It.IsAny<string>())).ReturnsAsync(true);
+            _foodTypeRepository.Setup(x => x.FoodTypeExist(It.IsAny<string>())).ReturnsAsync(true);
 
             await Assert.ThrowsAsync<FoodTypeAlreadyExistException>(async () => await handler.Handle(command, _cancellationToken));
         }
@@ -71,7 +71,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.FoodType.Command
 
             Domain.Entity.FoodType foodTypeReturn = new Domain.Entity.FoodType() { Name = "Name", Id = guid };
             _foodTypeRepository.Setup(x => x.GetAsync(It.IsAny<Guid>())).ReturnsAsync(foodTypeReturn);
-            _foodTypeRepository.Setup(x => x.FoodTypeByName(It.IsAny<string>())).ReturnsAsync(false);
+            _foodTypeRepository.Setup(x => x.FoodTypeExist(It.IsAny<string>())).ReturnsAsync(false);
 
             await handler.Handle(command, _cancellationToken);
         }

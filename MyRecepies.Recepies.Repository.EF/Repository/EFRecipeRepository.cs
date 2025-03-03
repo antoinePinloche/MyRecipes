@@ -17,7 +17,7 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             return entityAdd.Entity;
         }
 
-        public override Task<List<Recipe>> AddRangeAsync(ICollection<Recipe> entities)
+        public override Task<ICollection<Recipe>> AddRangeAsync(ICollection<Recipe> entities)
         {
             throw new NotImplementedException();
         }

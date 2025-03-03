@@ -31,7 +31,7 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.CreateFoodType
                     Constant.EXCEPTION.TITLE.INVALIDE_PARAMETER,
                     Constant.EXCEPTION.WRONG_PARAMETER_MESSAGE.NAME);
             }
-            if (!(await _foodTypeRepository.FoodTypeByName(request.Name)))
+            if (!(await _foodTypeRepository.FoodTypeExist(request.Name)))
             {
                 throw new FoodTypeAlreadyExistException(
                     _logger,

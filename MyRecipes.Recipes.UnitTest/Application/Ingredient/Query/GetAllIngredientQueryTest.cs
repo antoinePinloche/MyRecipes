@@ -9,7 +9,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Ingredient.Query
     public sealed class GetAllIngredientQueryTest
     {
         private readonly Mock<IIngredientRepository> _ingredientRepository = new Mock<IIngredientRepository>();
-        private readonly Mock<ILogger<GetAllIngredientQueryhandler>> _logger = new Mock<ILogger<GetAllIngredientQueryhandler>>();
+        private readonly Mock<ILogger<GetAllIngredientQueryHandler>> _logger = new Mock<ILogger<GetAllIngredientQueryHandler>>();
         private CancellationToken _cancellationToken = CancellationToken.None;
 
         [Fact]
@@ -20,7 +20,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Ingredient.Query
 
             Guid foodTypeId = Guid.NewGuid();
             GetAllIngredientQuery query = new GetAllIngredientQuery();
-            GetAllIngredientQueryhandler handler = new GetAllIngredientQueryhandler(_ingredientRepository.Object, _logger.Object);
+            GetAllIngredientQueryHandler handler = new GetAllIngredientQueryHandler(_ingredientRepository.Object, _logger.Object);
 
             Domain.Entity.Ingredient ingredientReturn1 = new Domain.Entity.Ingredient()
             {
@@ -60,7 +60,7 @@ namespace MyRecipes.Recipes.UnitTest.Application.Ingredient.Query
 
             Guid foodTypeId = Guid.NewGuid();
             GetAllIngredientQuery query = new GetAllIngredientQuery();
-            GetAllIngredientQueryhandler handler = new GetAllIngredientQueryhandler(_ingredientRepository.Object, _logger.Object);
+            GetAllIngredientQueryHandler handler = new GetAllIngredientQueryHandler(_ingredientRepository.Object, _logger.Object);
 
             _ingredientRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(new List<Domain.Entity.Ingredient>() {});
             List<GetAllIngredientQueryResult> result = await handler.Handle(query, _cancellationToken);

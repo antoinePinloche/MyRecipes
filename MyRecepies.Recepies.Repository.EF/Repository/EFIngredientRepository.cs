@@ -2,7 +2,6 @@
 using MyRecipes.Recipes.Domain.Entity;
 using MyRecipes.Recipes.Domain.Repository.RepositoryIngredient;
 using MyRecipes.Recipes.Repository.EF.DbContext;
-using MyRecipes.Transverse.Exception;
 
 namespace MyRecipes.Recipes.Repository.EF.Repository
 {
@@ -84,7 +83,7 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             return ingredients;
         }
 
-        public override Task<Ingredient> AddRangeAsync(ICollection<Ingredient> entities)
+        public override Task<ICollection<Ingredient>> AddRangeAsync(ICollection<Ingredient> entities)
         {
             throw new NotImplementedException();
         }

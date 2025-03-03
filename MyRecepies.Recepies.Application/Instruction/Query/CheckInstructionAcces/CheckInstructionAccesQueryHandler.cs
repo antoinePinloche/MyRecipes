@@ -8,6 +8,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.Instruction.Query.CheckInstructionAcces
 {
+    /// <summary>
+    /// Handler de la query <see cref="CheckInstructionAccesQuery"/>
+    /// </summary>
     public class CheckInstructionAccesQueryHandler : IRequestHandler<CheckInstructionAccesQuery, bool>
     {
         private readonly IInstructionRepository _instructionRepository;

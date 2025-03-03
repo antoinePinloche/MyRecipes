@@ -3,11 +3,6 @@ using MyRecipes.Recipes.Domain.Entity;
 using MyRecipes.Recipes.Domain.Repository.RepositoryFoodType;
 using MyRecipes.Recipes.Repository.EF.DbContext;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.Repository.EF.Repository
 {
@@ -29,7 +24,7 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             return entity;
         }
 
-        public override Task<FoodType> AddRangeAsync(ICollection<FoodType> entities)
+        public override Task<ICollection<FoodType>> AddRangeAsync(ICollection<FoodType> entities)
         {
             throw new NotImplementedException();
         }
@@ -93,7 +88,7 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             throw new NotImplementedException();
         }
 
-        public async override Task<bool> FoodTypeByName(string name)
+        public async override Task<bool> FoodTypeExist(string name)
         {
             FoodType? foodType = await Context.FoodTypes.FirstOrDefaultAsync(f => f.Name == name);
             if (foodType is null) 

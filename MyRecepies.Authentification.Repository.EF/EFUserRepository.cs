@@ -2,8 +2,6 @@
 using MyRecipes.Authentification.Domain.Entities;
 using MyRecipes.Authentification.Domain.Repository.RepositoryUser;
 using MyRecipes.Authentification.Repository.EF.DbContext;
-using MyRecipes.Transverse.Exception;
-using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Authentification.Repository.EF
 {
@@ -20,7 +18,7 @@ namespace MyRecipes.Authentification.Repository.EF
             return result.Entity;
         }
 
-        public override Task<User> AddRangeAsync(ICollection<User> entities)
+        public override Task<ICollection<User>> AddRangeAsync(ICollection<User> entities)
         {
             throw new NotImplementedException();
         }
@@ -72,14 +70,6 @@ namespace MyRecipes.Authentification.Repository.EF
             {
                 await Context.Database.MigrateAsync();
             }
-        }
-
-        public override Task<bool> ChangeRoleUserAsync(User user, string newRole)
-        {
-            if (newRole.IsNullOrEmpty())
-                throw new WrongParameterException("", "");
-            Func<bool> func = () => { return true; };
-            return new Task<bool>(func);
         }
 
         public async override Task RemoveAsync(User entitie)

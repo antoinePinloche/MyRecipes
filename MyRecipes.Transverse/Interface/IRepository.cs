@@ -1,9 +1,15 @@
-﻿namespace MyRecipes.Authentification.Domain.Repository
+﻿namespace MyRecipes.Transverse.Interface
 {
+    /// <summary>
+    /// Interface avec les command Crud de base 
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TKey"></typeparam>
     public interface IRepository<TEntity, TKey> where TEntity : class
     {
+
         public Task<TEntity> AddAsync(TEntity entity);
-        public Task<TEntity> AddRangeAsync(ICollection<TEntity> entities);
+        public Task<ICollection<TEntity>> AddRangeAsync(ICollection<TEntity> entities);
         public Task<TEntity> GetAsync(TKey key);
         public Task<ICollection<TEntity>> GetAllAsync();
         public Task RemoveAsync(TEntity entitie);

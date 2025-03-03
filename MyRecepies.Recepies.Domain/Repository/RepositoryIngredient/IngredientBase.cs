@@ -10,7 +10,7 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryIngredient
     public abstract class IngredientBase : IIngredientRepository
     {
         public abstract Task<Ingredient> AddAsync(Ingredient entity);
-        public abstract Task<Ingredient> AddRangeAsync(ICollection<Ingredient> entities);
+        public abstract Task<ICollection<Ingredient>> AddRangeAsync(ICollection<Ingredient> entities);
         public abstract Ingredient FirstOrDefault(Func<Ingredient, bool> predicate);
         public abstract Task<ICollection<Ingredient>> GetAllAsync();
         public abstract Task<Ingredient> GetAsync(Guid key);
@@ -22,10 +22,5 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryIngredient
         public abstract Task CreateOrUpdateSchemaAsync();
         public abstract Task<Ingredient> HasIngredient(string Name);
         public abstract Task<List<Ingredient>> GetAllIngredientsByFoodTypeId(Guid foodTypeId);
-
-        Task<ICollection<Instruction>> IRepository<Ingredient, Guid>.AddRangeAsync(ICollection<Ingredient> entities)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

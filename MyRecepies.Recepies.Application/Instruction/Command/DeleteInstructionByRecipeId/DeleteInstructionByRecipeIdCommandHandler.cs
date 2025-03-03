@@ -8,7 +8,7 @@ using MyRecipes.Transverse.Extension;
 namespace MyRecipes.Recipes.Application.Instruction.Command.DeleteInstructionByRecipeId
 {
     /// <summary>
-    /// Handler de la command <see cref="CreateInstructionCommand"/>
+    /// Handler de la command <see cref="DeleteInstructionByRecipeIdCommand"/>
     /// </summary>
     public class DeleteInstructionByRecipeIdCommandHandler : IRequestHandler<DeleteInstructionByRecipeIdCommand>
     {

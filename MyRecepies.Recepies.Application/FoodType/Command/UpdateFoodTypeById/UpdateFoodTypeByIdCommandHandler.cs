@@ -46,7 +46,7 @@ namespace MyRecipes.Recipes.Application.FoodType.Command.UpdateFoodTypeById
                         Constant.EXCEPTION.TITLE.NOT_FOUND,
                         $"FoodType with {request.Id} can't be found");
             }
-            if (await _foodTypeRepository.FoodTypeByName(request.Name))
+            if (await _foodTypeRepository.FoodTypeExist(request.Name))
             {
                 throw new FoodTypeAlreadyExistException(_logger,
                         nameof(Handle),

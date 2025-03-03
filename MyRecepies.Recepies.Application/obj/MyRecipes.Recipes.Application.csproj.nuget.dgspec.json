@@ -118,7 +118,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecipes.Transverse\\MyRecipes.Transverse.csproj": {
+                "projectPath": "C:\\Users\\antoine\\source\\Git\\MyRecipes\\MyRecipes.Transverse\\MyRecipes.Transverse.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

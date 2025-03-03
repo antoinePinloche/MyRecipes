@@ -9,7 +9,7 @@ using MyRecipes.Transverse.Extension;
 namespace MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction
 {
     /// <summary>
-    /// Handler de la command <see cref="GetFoodTypeByIdQuery"/>
+    /// Handler de la command <see cref="CreateInstructionCommand"/>
     /// </summary>
     public class CreateInstructionCommandHandler : IRequestHandler<CreateInstructionCommand>
     {

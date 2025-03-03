@@ -1,4 +1,5 @@
 ﻿using MyRecipes.Recipes.Domain.Entity;
+using MyRecipes.Transverse.Interface;
 
 namespace MyRecipes.Recipes.Domain.Repository.RepositoryRecipe
 {
