@@ -1,8 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using MyRecipes.Authentification.Application.User.Command.DeleteUser;
 using MyRecipes.Authentification.Application.User.Command.UpdateUserRole;
 using MyRecipes.Authentification.Application.User.Query.GetAllUsers;
@@ -11,7 +9,7 @@ using MyRecipes.Transverse.Exception;
 
 namespace MyRecipes.web.Controllers
 {
-    
+
     [ApiController]
     [Authorize(Roles = Constant.ROLE.ADMIN)]
     [Route(Constant.CONTROLLER_ROUTE.ADMIN_USER)]
@@ -64,7 +62,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpGet]
-        [Route("[action]")]
+        [Route("User")]
         public async Task<IActionResult> GetAllUsers()
         {
             var tmp = await _sender.Send(new GetAllUsersQuery());
@@ -73,7 +71,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpDelete]
-        [Route("[action]/{guid}")]
+        [Route("User/{guid}")]
         public async Task<IActionResult> DeleteUser(string guid)
         {
             try

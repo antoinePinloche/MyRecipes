@@ -43,7 +43,7 @@
         }
       }
     },
-    "/api/AdminUser/GetAllUsers": {
+    "/api/AdminUser/User": {
       "get": {
         "tags": [
           "AdminUser"
@@ -55,7 +55,7 @@
         }
       }
     },
-    "/api/AdminUser/DeleteUser/{guid}": {
+    "/api/AdminUser/User/{guid}": {
       "delete": {
         "tags": [
           "AdminUser"
@@ -77,7 +77,7 @@
         }
       }
     },
-    "/api/FoodType/GetAllFoodType": {
+    "/api/FoodType": {
       "get": {
         "tags": [
           "FoodType"
@@ -87,31 +87,7 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/FoodType/GetFoodType/{Id}": {
-      "get": {
-        "tags": [
-          "FoodType"
-        ],
-        "parameters": [
-          {
-            "name": "Id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/FoodType/CreateFoodType": {
+      },
       "post": {
         "tags": [
           "FoodType"
@@ -142,7 +118,29 @@
         }
       }
     },
-    "/api/FoodType/DeleteFoodType/{id}": {
+    "/api/FoodType/{Id}": {
+      "get": {
+        "tags": [
+          "FoodType"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/FoodType/{id}": {
       "delete": {
         "tags": [
           "FoodType"
@@ -162,9 +160,7 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/FoodType/UpdateFoodType/{id}": {
+      },
       "put": {
         "tags": [
           "FoodType"
@@ -205,7 +201,7 @@
         }
       }
     },
-    "/api/Ingredient/GetIngredientList": {
+    "/api/Ingredient": {
       "get": {
         "tags": [
           "Ingredient"
@@ -215,97 +211,7 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/Ingredient/GetIngredient/{Id}": {
-      "get": {
-        "tags": [
-          "Ingredient"
-        ],
-        "parameters": [
-          {
-            "name": "Id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Ingredient/GetIngredientsByFoodType/{Id}": {
-      "get": {
-        "tags": [
-          "Ingredient"
-        ],
-        "parameters": [
-          {
-            "name": "Id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Ingredient/DeleteIngredient/{id}": {
-      "delete": {
-        "tags": [
-          "Ingredient"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Ingredient/UpdateIngredient/{Guid}": {
-      "put": {
-        "tags": [
-          "Ingredient"
-        ],
-        "parameters": [
-          {
-            "name": "guid",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Ingredient/CreateIngredient": {
+      },
       "post": {
         "tags": [
           "Ingredient"
@@ -329,6 +235,94 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Ingredient/{Id}": {
+      "get": {
+        "tags": [
+          "Ingredient"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Ingredient/FoodType/{Id}": {
+      "get": {
+        "tags": [
+          "Ingredient"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Ingredient/{id}": {
+      "delete": {
+        "tags": [
+          "Ingredient"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Ingredient/{Guid}": {
+      "put": {
+        "tags": [
+          "Ingredient"
+        ],
+        "parameters": [
+          {
+            "name": "guid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -506,7 +500,48 @@
         }
       }
     },
-    "/api/Recipe/GetAllRecipe": {
+    "/api/Recipe": {
+      "get": {
+        "tags": [
+          "Recipe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Recipe"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecipeModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecipeModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecipeModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Recipe/MyRecipe": {
       "get": {
         "tags": [
           "Recipe"
@@ -518,20 +553,67 @@
         }
       }
     },
-    "/api/Recipe/GetMyRecipe": {
+    "/api/Recipe/{Id}": {
       "get": {
         "tags": [
           "Recipe"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/Recipe/GetRecipeById/{Id}": {
-      "get": {
+      },
+      "put": {
+        "tags": [
+          "Recipe"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRecipeModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRecipeModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRecipeModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
         "tags": [
           "Recipe"
         ],
@@ -574,7 +656,7 @@
         }
       }
     },
-    "/api/Recipe/{Id}/Instructions": {
+    "/api/Recipe/{Id}/Instruction": {
       "get": {
         "tags": [
           "Recipe"
@@ -596,7 +678,7 @@
         }
       }
     },
-    "/api/Recipe/GetRecipeByName/{Name}": {
+    "/api/Recipe/Name/{Name}": {
       "get": {
         "tags": [
           "Recipe"
@@ -618,101 +700,7 @@
         }
       }
     },
-    "/api/Recipe/CreateRecipe": {
-      "post": {
-        "tags": [
-          "Recipe"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateRecipeModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateRecipeModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateRecipeModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Recipe/UpdateRecipe/{Id}": {
-      "put": {
-        "tags": [
-          "Recipe"
-        ],
-        "parameters": [
-          {
-            "name": "Id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateRecipeModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateRecipeModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateRecipeModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Recipe/DeleteRecipe/{Id}": {
-      "delete": {
-        "tags": [
-          "Recipe"
-        ],
-        "parameters": [
-          {
-            "name": "Id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/RecipeIngredient/GetAllRecipeIngredient": {
+    "/api/RecipeIngredient": {
       "get": {
         "tags": [
           "RecipeIngredient"
@@ -722,31 +710,7 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/RecipeIngredient/GetRecipeIngredient/{Id}": {
-      "get": {
-        "tags": [
-          "RecipeIngredient"
-        ],
-        "parameters": [
-          {
-            "name": "Id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/RecipeIngredient/CreateRecipeIngredient": {
+      },
       "post": {
         "tags": [
           "RecipeIngredient"
@@ -777,7 +741,27 @@
         }
       }
     },
-    "/api/RecipeIngredient/UpdateRecipeIngredient/{Id}": {
+    "/api/RecipeIngredient/{Id}": {
+      "get": {
+        "tags": [
+          "RecipeIngredient"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "put": {
         "tags": [
           "RecipeIngredient"
@@ -816,9 +800,7 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/RecipeIngredient/DeleteRecipeIngredient/{Id}": {
+      },
       "delete": {
         "tags": [
           "RecipeIngredient"
@@ -840,7 +822,7 @@
         }
       }
     },
-    "/api/RecipeInstruction/GetAllInstructionList": {
+    "/api/RecipeInstruction": {
       "get": {
         "tags": [
           "RecipeInstruction"
@@ -850,9 +832,38 @@
             "description": "OK"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "RecipeInstruction"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateInstructionModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateInstructionModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateInstructionModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
-    "/api/RecipeInstruction/GetInstructionById/{Id}": {
+    "/api/RecipeInstruction/{Id}": {
       "get": {
         "tags": [
           "RecipeInstruction"
@@ -872,80 +883,7 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/RecipeInstruction/CreateInstruction": {
-      "post": {
-        "tags": [
-          "RecipeInstruction"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateInstructionModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateInstructionModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateInstructionModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/RecipeInstruction/CreateInstructionList": {
-      "post": {
-        "tags": [
-          "RecipeInstruction"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/CreateInstructionModel"
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/CreateInstructionModel"
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/CreateInstructionModel"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/RecipeInstruction/UpdateInstruction/{Id}": {
+      },
       "put": {
         "tags": [
           "RecipeInstruction"
@@ -984,9 +922,7 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/RecipeInstruction/DeleteInstructionById/{Id}": {
+      },
       "delete": {
         "tags": [
           "RecipeInstruction"
@@ -1001,6 +937,46 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/RecipeInstructions": {
+      "post": {
+        "tags": [
+          "RecipeInstruction"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CreateInstructionModel"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CreateInstructionModel"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CreateInstructionModel"
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"

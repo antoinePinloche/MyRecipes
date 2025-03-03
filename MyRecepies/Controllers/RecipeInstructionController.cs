@@ -26,7 +26,7 @@ namespace MyRecipes.Web.API.Controllers
         }
 
         [HttpGet]
-        [Route("[action]")]
+        [Route("")]
         public async Task<IActionResult> GetAllInstructionList()
         {
             var result = await _sender.Send(new GetAllInstructionQuery());
@@ -35,7 +35,7 @@ namespace MyRecipes.Web.API.Controllers
         }
 
         [HttpGet]
-        [Route("[action]/{Id}")]
+        [Route("{Id}")]
         public async Task<IActionResult> GetInstructionById(string Id)
         {
 
@@ -62,7 +62,7 @@ namespace MyRecipes.Web.API.Controllers
         }
 
         [HttpPost]
-        [Route("[action]")]
+        [Route("")]
         public async Task<IActionResult> CreateInstruction(CreateInstructionModel model)
         {
 
@@ -90,7 +90,7 @@ namespace MyRecipes.Web.API.Controllers
         }
 
         [HttpPost]
-        [Route("[action]")]
+        [Route("/" + Constant.CONTROLLER_ROUTE.RECIPE_INSTRUCTION + "s")]
         public async Task<IActionResult> CreateInstructionList(List<CreateInstructionModel> model)
         {
 
@@ -129,7 +129,7 @@ namespace MyRecipes.Web.API.Controllers
         }
 
         [HttpPut]
-        [Route("[action]/{Id}")]
+        [Route("{Id}")]
         public async Task<IActionResult> UpdateInstruction(UpdateInstructionModel model, string Id)
         {
 
@@ -186,7 +186,7 @@ namespace MyRecipes.Web.API.Controllers
         }
 
         [HttpDelete]
-        [Route("[action]/{Id}")]
+        [Route("{Id}")]
         public async Task<IActionResult> DeleteInstructionById(string Id)
         {
             try

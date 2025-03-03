@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using MyRecipes.Recipes.Domain.Entity;
 
 namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.CheckRecipeIngredientAcces
 {

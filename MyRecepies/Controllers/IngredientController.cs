@@ -6,7 +6,6 @@ using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientById;
 using MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTypeId;
 using MyRecipes.Transverse.Constant;
 using MyRecipes.Transverse.Exception;
-using MyRecipes.Transverse.Extension;
 using MyRecipes.Web.API.Mapper.Ingredient;
 using MyRecipes.Web.API.Models.Class.Ingredient;
 
@@ -27,7 +26,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpGet]
-        [Route("[action]")]
+        [Route("")]
         public async Task<IActionResult> GetIngredientList()
         {
             List<GetAllIngredientQueryResult> result = await _sender.Send(new GetAllIngredientQuery());
@@ -36,7 +35,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpGet]
-        [Route("[action]/{Id}")]
+        [Route("{Id}")]
         public async Task<IActionResult> GetIngredient(string Id)
         {
             try
@@ -67,7 +66,7 @@ namespace MyRecipes.web.Controllers
         }
 
         [HttpGet]
-        [Route("[action]/{Id}")]
+        [Route("FoodType/{Id}")]
         public async Task<IActionResult> GetIngredientsByFoodType(string Id)
         {
             try
@@ -104,7 +103,7 @@ namespace MyRecipes.web.Controllers
 
         [HttpDelete]
         [Authorize(Roles = Constant.ROLE.ADMIN)]
-        [Route("[action]/{id}")]
+        [Route("{id}")]
         public async Task<IActionResult> DeleteIngredient(string id)
         {
             try
@@ -136,14 +135,14 @@ namespace MyRecipes.web.Controllers
 
         [HttpPut]
         [Authorize(Roles = Constant.ROLE.ADMIN)]
-        [Route("[action]/{Guid}")]
+        [Route("{Guid}")]
         public async Task<IActionResult> UpdateIngredient(string guid)
         {
             return Ok();
         }
 
         [HttpPost]
-        [Route("[action]")]
+        [Route("")]
         public async Task<IActionResult> CreateIngredient(CreateIngredientModel ingredient)
         {
             try

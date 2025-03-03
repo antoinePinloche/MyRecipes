@@ -26,7 +26,7 @@ namespace MyRecipes.Web.API.Controllers
         }
 
         [HttpGet]
-        [Route("[action]")]
+        [Route("")]
         public async Task<IResult> GetAllFoodType()
         {
             var res = await _sender.Send(new GetAllFoodTypeQuery());
@@ -35,7 +35,7 @@ namespace MyRecipes.Web.API.Controllers
         }
 
         [HttpGet]
-        [Route("[action]/{Id}")]
+        [Route("{Id}")]
         public async Task<IResult> GetFoodType(string Id)
         {
             if (!Guid.TryParse(Id, out Guid guid))
@@ -73,7 +73,7 @@ namespace MyRecipes.Web.API.Controllers
         }
 
         [HttpPost]
-        [Route("[action]")]
+        [Route("")]
         public async Task<IResult> CreateFoodType(CreateFoodTypeModel model)
         {
             try
@@ -101,7 +101,7 @@ namespace MyRecipes.Web.API.Controllers
 
         [HttpDelete]
         [Authorize(Roles = Constant.ROLE.ADMIN)]
-        [Route("[action]/{id}")]
+        [Route("{id}")]
         public async Task<IActionResult> DeleteFoodType(string id)
         {
             try
@@ -135,7 +135,7 @@ namespace MyRecipes.Web.API.Controllers
 
         [HttpPut]
         [Authorize(Roles = Constant.ROLE.ADMIN)]
-        [Route("[action]/{id}")]
+        [Route("{id}")]
         public async Task<IResult> UpdateFoodType(UpdateFoodTypeModel model,string id)
         {
             try

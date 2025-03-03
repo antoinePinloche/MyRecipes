@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MyRecipes.Recipes.Application.Recipe.Query.CheckRecipeAcces;
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.CheckRecipeIngredientAcces;
 using MyRecipes.Recipes.Application.RecipeIngredient.Query.GetAllRecipeIngredient;
 using MyRecipes.Transverse.Constant;
@@ -26,7 +25,7 @@ namespace MyRecipes.Web.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet("[action]")]
+        [HttpGet("")]
         public async Task<IActionResult> GetAllRecipeIngredient()
         {
             var res = await _sender.Send(new GetAllRecipeIngredientQuery());
@@ -34,7 +33,7 @@ namespace MyRecipes.Web.API.Controllers
             return Ok(res.ToRecipeIngredientResponse());
         }
 
-        [HttpGet("[action]/{Id}")]
+        [HttpGet("{Id}")]
         public async Task<IActionResult> GetRecipeIngredient(string Id)
         {
 
@@ -60,7 +59,7 @@ namespace MyRecipes.Web.API.Controllers
             }
         }
 
-        [HttpPost("[action]")]
+        [HttpPost("")]
         public async Task<IResult> CreateRecipeIngredient(CreateRecipeIngredientModel model)
         {
             try
@@ -91,7 +90,7 @@ namespace MyRecipes.Web.API.Controllers
 
         }
 
-        [HttpPut("[action]/{Id}")]
+        [HttpPut("{Id}")]
         public async Task<IActionResult> UpdateRecipeIngredient(string Id, UpdateRecipeIngredientModel model)
         {
             try 
@@ -135,7 +134,7 @@ namespace MyRecipes.Web.API.Controllers
             }
         }
 
-        [HttpDelete("[action]/{Id}")]
+        [HttpDelete("{Id}")]
         public async Task<IActionResult> DeleteRecipeIngredient(string Id)
         {
 
