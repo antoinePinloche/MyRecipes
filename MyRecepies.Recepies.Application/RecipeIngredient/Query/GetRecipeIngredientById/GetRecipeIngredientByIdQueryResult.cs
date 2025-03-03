@@ -2,6 +2,9 @@
 
 namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetRecipeIngredientById
 {
+    /// <summary>
+    /// resultat de la query <see cref="GetRecipeIngredientByIdQuery"/>
+    /// </summary>
     public class GetRecipeIngredientByIdQueryResult
     {
         public Guid Id { get; set; }

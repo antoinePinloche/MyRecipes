@@ -8,6 +8,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIngredient
 {
+    /// <summary>
+    /// handler de la command <see cref="DeleteRecipeIngredientCommand"/>
+    /// </summary>
     public class DeleteRecipeIngredientCommandHandler : IRequestHandler<DeleteRecipeIngredientCommand>
     {
         private readonly IRecipeIngredientRepository _recipeIngredientRepository;

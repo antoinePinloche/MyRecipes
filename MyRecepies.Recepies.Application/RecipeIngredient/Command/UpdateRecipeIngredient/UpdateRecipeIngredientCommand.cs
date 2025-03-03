@@ -3,6 +3,10 @@ using MyRecipes.Recipes.Domain.Entity.Enum;
 
 namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.UpdateRecipeIngredient
 {
+    /// <summary>
+    /// Command pour modifier un RecipeIngredient 
+    /// <see cref="UpdateRecipeIngredientCommandHandler"/>
+    /// </summary>
     public class UpdateRecipeIngredientCommand : IRequest
     {
         public Guid Id { get; set; }

@@ -4,6 +4,9 @@ using MyRecipes.Recipes.Domain.Repository.RepositoryRecipeIngredient;
 
 namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetAllRecipeIngredient
 {
+    /// <summary>
+    /// handler de la query <see cref="CheckRecipeIngredientAccesQuery"/>
+    /// </summary>
     public class GetAllRecipeIngredientQueryHandler : IRequestHandler<GetAllRecipeIngredientQuery, List<GetAllRecipeIngredientQueryResult>>
     {
         private readonly IRecipeIngredientRepository _recipeIngredientRepository;

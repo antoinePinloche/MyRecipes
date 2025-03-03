@@ -9,6 +9,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.RecipeIngredient.Command.CreateRecipeIngredient
 {
+    /// <summary>
+    /// handler de la command <see cref="CreateRecipeIngredientCommand"/>
+    /// </summary>
     public class CreateRecipeIngredientCommandHandler : IRequestHandler<CreateRecipeIngredientCommand>
     {
         private readonly IRecipeIngredientRepository _recipeIngredientRepository;

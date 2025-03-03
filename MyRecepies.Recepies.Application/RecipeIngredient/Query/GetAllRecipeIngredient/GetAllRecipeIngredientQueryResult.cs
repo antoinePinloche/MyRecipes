@@ -2,6 +2,9 @@
 
 namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetAllRecipeIngredient
 {
+    /// <summary>
+    /// resultat de la query <see cref="GetAllRecipeIngredientQuery"/>
+    /// </summary>
     public class GetAllRecipeIngredientQueryResult
     {
         public Guid Id { get; set; }
@@ -10,7 +13,6 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetAllRecipeIngre
         public double Quantity { get; set; }
         public UnitOfMeasure Unit { get; set; }
         public Guid? RecipeId { get; set; }
-        //public Recipe? Recipe { get; set; }
         public GetAllRecipeIngredientQueryResult(Guid id, Guid? ingredientId, Domain.Entity.Ingredient? ingredient,
             double quantity, UnitOfMeasure unit, Guid? recipeId/*, Recipe? recipe*/)
         {
@@ -20,7 +22,6 @@ namespace MyRecipes.Recipes.Application.RecipeIngredient.Query.GetAllRecipeIngre
             Quantity = quantity;
             Unit = unit;
             RecipeId = recipeId;
-            //Recipe = recipe;
         }
     }
 }
