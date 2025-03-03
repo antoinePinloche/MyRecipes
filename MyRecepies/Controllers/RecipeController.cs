@@ -1,7 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Connections;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyRecipes.Recipes.Application.Instruction.Query.GetAllInstructionByRecipeId;
 using MyRecipes.Recipes.Application.Recipe.Query.CheckRecipeAcces;
@@ -14,7 +12,7 @@ using MyRecipes.Transverse.Extension;
 using MyRecipes.Web.API.Mapper.Instruction;
 using MyRecipes.Web.API.Mapper.Recipe;
 using MyRecipes.Web.API.Mapper.RecipeIngredient;
-using MyRecipes.Web.API.Models.Class.Recipe;
+using MyRecipes.Web.API.Models.Class.Recipe.Model;
 
 
 namespace MyRecipes.Web.API.Controllers

@@ -1,7 +1,7 @@
 ﻿using MyRecipes.Recipes.Domain.Entity.Enum;
-using MyRecipes.Web.API.Models.Class.Ingredient;
+using MyRecipes.Web.API.Models.Class.Ingredient.Response;
 
-namespace MyRecipes.Web.API.Models.Class.RecipeIngredient
+namespace MyRecipes.Web.API.Models.Class.RecipeIngredient.Response
 {
     public class RecipeIngredientResponse
     {

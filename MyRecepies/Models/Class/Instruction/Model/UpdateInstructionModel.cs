@@ -1,6 +1,6 @@
 ﻿using MyRecipes.Recipes.Domain.Entity;
 
-namespace MyRecipes.Web.API.Models.Class.Instruction
+namespace MyRecipes.Web.API.Models.Class.Instruction.Model
 {
     public class UpdateInstructionModel
     {

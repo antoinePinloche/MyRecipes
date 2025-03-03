@@ -1,8 +1,9 @@
 ﻿using MyRecipes.Recipes.Domain.Entity.Enum;
+using MyRecipes.Recipes.Domain.Entity;
 
-namespace MyRecipes.Web.API.Models.Class.RecipeIngredient
+namespace MyRecipes.Web.API.Models.Class.RecipeIngredient.Model
 {
-    public class UpdateRecipeIngredientModel
+    public class CreateRecipeIngredientModel
     {
         public Guid IngredientId { get; set; }
         public double Quantity { get; set; }

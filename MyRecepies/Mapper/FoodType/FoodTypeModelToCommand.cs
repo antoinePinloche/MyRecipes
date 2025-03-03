@@ -1,7 +1,7 @@
 ﻿using MyRecipes.Recipes.Application.FoodType.Command.CreateFoodType;
 using MyRecipes.Recipes.Application.FoodType.Command.DeleteFoodTypeById;
 using MyRecipes.Recipes.Application.FoodType.Command.UpdateFoodTypeById;
-using MyRecipes.Web.API.Models.Class.FoodType;
+using MyRecipes.Web.API.Models.Class.FoodType.Model;
 
 namespace MyRecipes.Web.API.Mapper.FoodType
 {

@@ -1,4 +1,4 @@
-﻿using MyRecipes.Web.API.Models.Class.RecipeIngredient;
+﻿using MyRecipes.Web.API.Models.Class.RecipeIngredient.Model;
 using Create = MyRecipes.Recipes.Application.RecipeIngredient.Command.CreateRecipeIngredient;
 using Delete = MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIngredient;
 using DeleteByRecipeId = MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIngredientByRecipeId;

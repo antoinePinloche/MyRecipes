@@ -1,4 +1,4 @@
-﻿using MyRecipes.Web.API.Models.Class.Instruction;
+﻿using MyRecipes.Web.API.Models.Class.Instruction.Model;
 using Create = MyRecipes.Recipes.Application.Instruction.Command.CreateInstruction;
 using CreateList = MyRecipes.Recipes.Application.Instruction.Command.CreateListOfInstruction;
 using Delete = MyRecipes.Recipes.Application.Instruction.Command.DeleteInstruction;

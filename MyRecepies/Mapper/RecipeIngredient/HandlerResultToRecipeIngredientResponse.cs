@@ -1,5 +1,5 @@
-﻿using MyRecipes.Web.API.Models.Class.Ingredient;
-using MyRecipes.Web.API.Models.Class.RecipeIngredient;
+﻿using MyRecipes.Web.API.Models.Class.Ingredient.Response;
+using MyRecipes.Web.API.Models.Class.RecipeIngredient.Response;
 using RecipeIngredientQuery = MyRecipes.Recipes.Application.RecipeIngredient.Query;
 
 namespace MyRecipes.Web.API.Mapper.RecipeIngredient

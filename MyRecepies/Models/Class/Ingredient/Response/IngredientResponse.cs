@@ -1,4 +1,4 @@
-﻿namespace MyRecipes.Web.API.Models.Class.Ingredient
+﻿namespace MyRecipes.Web.API.Models.Class.Ingredient.Response
 {
     public class IngredientResponse
     {

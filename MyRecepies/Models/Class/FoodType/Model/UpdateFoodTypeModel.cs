@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MyRecipes.Web.API.Models.Class.FoodType
+namespace MyRecipes.Web.API.Models.Class.FoodType.Model
 {
     public class UpdateFoodTypeModel
     {

@@ -1,4 +1,4 @@
-﻿using MyRecipes.Web.API.Models.Class.Ingredient;
+﻿using MyRecipes.Web.API.Models.Class.Ingredient.Response;
 using IgAll = MyRecipes.Recipes.Application.Ingredient.Query.GetAllIngredient;
 using IgbyFoodType = MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientsByFoodTypeId;
 using IgById = MyRecipes.Recipes.Application.Ingredient.Query.GetIngredientById;

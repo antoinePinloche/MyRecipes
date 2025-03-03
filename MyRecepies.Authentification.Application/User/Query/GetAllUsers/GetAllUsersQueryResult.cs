@@ -10,7 +10,8 @@ namespace MyRecipes.Authentification.Application.User.Query.GetAllUsers
         {
             if (!user.IsNullOrEmpty())
                 users = user.ToList();
-            users = new List<Domain.Entities.User>();
+            else
+                users = new List<Domain.Entities.User>();
         }
     }
 }

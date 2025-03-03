@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using MyRecipes.Transverse.Exception;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Web.API
 {
+    /// <summary>
+    /// Handler pour transformer une exception en IProblemDetailsService avec les informations a retourner
+    /// </summary>
     public class ProblemExceptionHandler : IExceptionHandler
     {
         private readonly IProblemDetailsService _problemDetail;

@@ -8,7 +8,7 @@ using MyRecipes.Transverse.Exception;
 using MyRecipes.Transverse.Extension;
 using MyRecipes.Web.API.Mapper.Instruction;
 using MyRecipes.Web.API.Mapper.RecipeIngredient;
-using MyRecipes.Web.API.Models.Class.Instruction;
+using MyRecipes.Web.API.Models.Class.Instruction.Model;
 
 namespace MyRecipes.Web.API.Controllers
 {

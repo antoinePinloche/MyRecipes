@@ -1,20 +1,12 @@
-﻿using MyRecipes.Recipes.Domain.Entity;
-using MyRecipes.Web.API.Models.Class.Recipe.Response;
-using System.Runtime.CompilerServices;
+﻿using MyRecipes.Web.API.Models.Class.Recipe.Response;
 
 namespace MyRecipes.Web.API.Mapper
 {
+    /// <summary>
+    /// Class permettant de transformer les entity des domain en class de response
+    /// </summary>
     public static class DomainToDtoMapper
     {
-        //public static IngredientResponse ToIngredientResponse(this Ingredient recipe)
-        //{
-        //    return new IngredientResponse
-        //    {
-        //        DisplayName = recipe.Name,
-        //        FoodTypeDisplayName = recipe.FoodType.Name
-        //    };
-        //}
-
         public static List<RecipeResponse.InstructionResponse> ToRecipeResponseInstruction(this IEnumerable<Recipes.Domain.Entity.Instruction?> instructions)
         {
             if (instructions is null)
