@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MyRecipes.Recipes.Application.Instruction.Command.DeleteInstructionByRecipeId;
-using MyRecipes.Recipes.Application.Recipe.Command.CreateRecipe;
 using MyRecipes.Recipes.Application.RecipeIngredient.Command.DeleteRecipeIngredientByRecipeId;
 using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 using MyRecipes.Transverse.Constant;
@@ -10,6 +9,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.Recipe.Command.DeleteRecipe
 {
+    /// <summary>
+    /// Handler de la command <see cref="DeleteRecipeCommand"/>
+    /// </summary>
     public class DeleteRecipeCommandHandler : IRequestHandler<DeleteRecipeCommand>
     {
         private readonly IRecipesRepository _recipeRepository;

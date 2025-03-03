@@ -7,6 +7,9 @@ using MyRecipes.Transverse.Extension;
 
 namespace MyRecipes.Recipes.Application.Recipe.Query.CheckRecipeAcces
 {
+    /// <summary>
+    /// Handler de la query <see cref="CheckRecipeAccesQuery"/>
+    /// </summary>
     public class CheckRecipeAccesQueryHandler : IRequestHandler<CheckRecipeAccesQuery, bool>
     {
         private readonly IRecipesRepository _recipesRepository;

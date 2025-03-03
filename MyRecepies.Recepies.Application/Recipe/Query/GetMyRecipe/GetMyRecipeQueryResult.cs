@@ -1,12 +1,10 @@
 ﻿using MyRecipes.Recipes.Domain.Entity.Enum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.Application.Recipe.Query.GetMyRecipe
 {
+    /// <summary>
+    /// Resultat de la query <see cref="GetMyRecipeQuery"/>
+    /// </summary>
     public class GetMyRecipeQueryResult
     {
         public Guid Id { get; set; }

@@ -3,6 +3,10 @@ using MyRecipes.Recipes.Domain.Entity.Enum;
 
 namespace MyRecipes.Recipes.Application.Recipe.Command.CreateRecipe
 {
+    /// <summary>
+    /// Command pour crée une recette
+    /// <see cref="CreateRecipeCommandHandler"/>
+    /// </summary>
     public class CreateRecipeCommand : IRequest
     {
         public string Name { get; set; } = string.Empty;

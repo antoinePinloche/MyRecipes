@@ -4,6 +4,9 @@ using MyRecipes.Recipes.Domain.Repository.RepositoryRecipe;
 
 namespace MyRecipes.Recipes.Application.Recipe.Query.GetAllRecipe
 {
+    /// <summary>
+    /// Handler de la query <see cref="GetAllRecipeQuery"/>
+    /// </summary>
     public class GetAllRecipeQueryHandler : IRequestHandler<GetAllRecipeQuery, List<GetAllRecipeQueryResult>>
     {
         private readonly IRecipesRepository _recipeRepository;

@@ -2,6 +2,9 @@
 
 namespace MyRecipes.Recipes.Application.Recipe.Query.GetRecipeByName
 {
+    /// <summary>
+    /// Resultat de la query <see cref="GetRecipeByNameQuery"/>
+    /// </summary>
     public class GetRecipeByNameQueryResult
     {
         public Guid Id { get; set; }

@@ -1,12 +1,11 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.Application.Recipe.Query.GetMyRecipe
 {
+    /// <summary>
+    /// Query pour retourner toutes les recettes de l'utilisateur
+    /// <see cref="GetMyRecipeQueryHandler"/>
+    /// </summary>
     public class GetMyRecipeQuery: IRequest<List<GetMyRecipeQueryResult>>
     {
         public Guid Id { get; set; }
