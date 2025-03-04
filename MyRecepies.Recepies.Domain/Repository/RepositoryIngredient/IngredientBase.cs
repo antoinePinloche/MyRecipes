@@ -1,12 +1,11 @@
 ﻿using MyRecipes.Recipes.Domain.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipes.Recipes.Domain.Repository.RepositoryIngredient
 {
+    /// <summary>
+    /// Class abstraite repressentant la base des appels en DB pour l'entité Ingredient
+    /// <see cref="IIngredientRepository"/>
+    /// </summary>
     public abstract class IngredientBase : IIngredientRepository
     {
         public abstract Task<Ingredient> AddAsync(Ingredient entity);
@@ -19,7 +18,6 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryIngredient
         public abstract Task SaveAsync();
         public abstract Task UpdateAsync(Ingredient entity);
         public abstract Task UpdateRangeAsync(ICollection<Ingredient> entities);
-        public abstract Task CreateOrUpdateSchemaAsync();
         /// <summary>
         /// <see cref="IIngredientRepository.HasIngredient"/> 
         /// </summary>

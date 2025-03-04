@@ -24,3 +24,6 @@ C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Authentification.Domain\obj\Deb
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Authentification.Domain\obj\Debug\net8.0\refint\MyRecipes.Authentification.Domain.dll
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Authentification.Domain\obj\Debug\net8.0\MyRecipes.Authentification.Domain.pdb
 C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Authentification.Domain\obj\Debug\net8.0\ref\MyRecipes.Authentification.Domain.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Authentification.Domain\bin\Debug\net8.0\MyRecipes.Transverse.dll
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Authentification.Domain\bin\Debug\net8.0\MyRecipes.Transverse.pdb
+C:\Users\antoine\source\Git\MyRecipes\MyRecepies.Authentification.Domain\obj\Debug\net8.0\MyRecipe.B1581C89.Up2Date

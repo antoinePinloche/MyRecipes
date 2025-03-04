@@ -2,6 +2,10 @@
 
 namespace MyRecipes.Recipes.Domain.Repository.RepositoryRecipe
 {
+    /// <summary>
+    /// Class abstraite repressentant la base des appels en DB pour l'entité Recipe
+    /// <see cref="IRecipesRepository"/>
+    /// </summary>
     public abstract class RecipesBase : IRecipesRepository
     {
         public abstract Task<Recipe> AddAsync(Recipe entity);
@@ -14,7 +18,6 @@ namespace MyRecipes.Recipes.Domain.Repository.RepositoryRecipe
         public abstract Task SaveAsync();
         public abstract Task UpdateAsync(Recipe entity);
         public abstract Task UpdateRangeAsync(ICollection<Recipe> entities);
-        public abstract Task CreateOrUpdateSchemaAsync();
         /// <summary>
         /// <see cref="IRecipesRepository.GetByRecipeByUserIdAsync"/>
         /// </summary>

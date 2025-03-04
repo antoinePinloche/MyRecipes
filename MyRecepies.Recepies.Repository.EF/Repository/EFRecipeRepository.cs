@@ -27,17 +27,6 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             throw new NotImplementedException();
         }
         /// <summary>
-        /// <see cref="RecipesBase.CreateOrUpdateSchemaAsync"/>
-        /// </summary>
-        public override async Task CreateOrUpdateSchemaAsync()
-        {
-            bool pendingMigration = (await Context.Database.GetPendingMigrationsAsync()).Any();
-            if (pendingMigration)
-            {
-                await Context.Database.MigrateAsync();
-            }
-        }
-        /// <summary>
         /// <see cref="RecipesBase.FirstOrDefault"/>
         /// </summary>
         public override Recipe FirstOrDefault(Func<Recipe, bool> predicate)

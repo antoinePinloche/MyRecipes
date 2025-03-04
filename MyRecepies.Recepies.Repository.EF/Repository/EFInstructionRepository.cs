@@ -32,17 +32,6 @@ namespace MyRecipes.Recipes.Repository.EF.Repository
             return entities;
         }
         /// <summary>
-        /// <see cref="InstructionBase.CreateOrUpdateSchemaAsync"/>
-        /// </summary>
-        public override async Task CreateOrUpdateSchemaAsync()
-        {
-            bool pendingMigration = (await Context.Database.GetPendingMigrationsAsync()).Any();
-            if (pendingMigration)
-            {
-                await Context.Database.MigrateAsync();
-            }
-        }
-        /// <summary>
         /// <see cref="InstructionBase.FirstOrDefault"/>
         /// </summary>
         public override Instruction FirstOrDefault(Func<Instruction, bool> predicate)

@@ -3,6 +3,10 @@ using MyRecipes.Transverse.Interface;
 
 namespace MyRecipes.Recipes.Domain.Repository.RepositoryInstruction
 {
+    /// <summary>
+    /// Interface pour le DBContext Instruction
+    /// <see cref="IRepository{TEntity, TKey}"/>
+    /// </summary>
     public interface IInstructionRepository : IRepository<Instruction, Guid>
     {
         /// <summary>

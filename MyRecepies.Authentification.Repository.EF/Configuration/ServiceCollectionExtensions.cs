@@ -38,10 +38,13 @@ namespace MyRecipes.Authentification.Repository.EF.Configuration
             using var scope = webApp.Services.CreateScope();
             {
                 var services = scope.ServiceProvider;
+                var dbContext = services.GetRequiredService<AuthentificationDbContext>();
 
-                var AuthentificationContext = services.GetRequiredService<IUsersRepository>();
-                EFUserRepository context = (EFUserRepository)AuthentificationContext;
-                await context.CreateOrUpdateSchemaAsync();
+                bool pendingMogration = (await dbContext.Database.GetPendingMigrationsAsync()).Any();
+                if (pendingMogration)
+                {
+                    await dbContext.Database.MigrateAsync();
+                }
 
                 var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 

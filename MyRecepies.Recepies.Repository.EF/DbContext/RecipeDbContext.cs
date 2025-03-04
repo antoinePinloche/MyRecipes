@@ -23,11 +23,6 @@ namespace MyRecipes.Recipes.Repository.EF.DbContext
 
             modelBuilder.HasDefaultSchema("Recipe");
 
-            //modelBuilder.Entity<FoodType>()
-            //    .HasMany(e => e.Ingredients)
-            //    .WithOne(e => e.FoodType)
-            //    .HasForeignKey(e => e.FoodTypeId)
-            //    .IsRequired();
             modelBuilder.Entity<Ingredient>()
                 .HasOne(e => e.FoodType);
             modelBuilder.Entity<Recipe>()

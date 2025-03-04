@@ -34,25 +34,16 @@ namespace MyRecipes.Recipes.Repository.EF.Configuration
         public static async Task InitOrUpdateRecipesDbExtension(this WebApplication webApp)
         {
             using var scope = webApp.Services.CreateScope();
-            var services = scope.ServiceProvider;
+            {
+                var services = scope.ServiceProvider;
+                var dbContext = services.GetRequiredService<RecipeDbContext>();
 
-            var IngredientContext = services.GetRequiredService<IIngredientRepository>();
-            var RecipeIngredientContext = services.GetRequiredService<IRecipeIngredientRepository>();
-            var RecipesContext = services.GetRequiredService<IRecipesRepository>();
-            var IInstructionContext = services.GetRequiredService<IInstructionRepository>();
-            var IFoodTypeContext = services.GetRequiredService<IFoodTypeRepository>();
-
-            EFIngredientRepository contextIngredient = (EFIngredientRepository)IngredientContext;
-            EFRecipeIngredientRepository contextRecipeIngredient = (EFRecipeIngredientRepository)RecipeIngredientContext;
-            EFRecipeRepository contextRecipe = (EFRecipeRepository)RecipesContext;
-            EFInstructionRepository contextInstruction = (EFInstructionRepository)IInstructionContext;
-            EFFoodTypeRepository contextFoodType = (EFFoodTypeRepository)IFoodTypeContext;
-
-            await contextIngredient.CreateOrUpdateSchemaAsync();
-            await contextRecipeIngredient.CreateOrUpdateSchemaAsync();
-            await contextRecipe.CreateOrUpdateSchemaAsync();
-            await contextInstruction.CreateOrUpdateSchemaAsync();
-            await contextFoodType.CreateOrUpdateSchemaAsync();
+                bool pendingMogration = (await dbContext.Database.GetPendingMigrationsAsync()).Any();
+                if (pendingMogration)
+                {
+                    await dbContext.Database.MigrateAsync();
+                }
+            }
         }
     }
 }

@@ -1043,7 +1043,8 @@
       },
       "MyRecipes.Authentification.Domain/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore": "2.1.7"
+          "Microsoft.AspNetCore": "2.1.7",
+          "MyRecipes.Transverse": "1.0.0"
         },
         "runtime": {
           "MyRecipes.Authentification.Domain.dll": {
