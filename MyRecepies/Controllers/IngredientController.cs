@@ -133,14 +133,6 @@ namespace MyRecipes.web.Controllers
             }
         }
 
-        [HttpPut]
-        [Authorize(Roles = Constant.ROLE.ADMIN)]
-        [Route("{Guid}")]
-        public async Task<IActionResult> UpdateIngredient(string guid)
-        {
-            return Ok();
-        }
-
         [HttpPost]
         [Route("")]
         public async Task<IActionResult> CreateIngredient(CreateIngredientModel ingredient)
